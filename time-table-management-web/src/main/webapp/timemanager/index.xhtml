@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta content="text/html" charset="UTF-8" />
+	<title>EDT</title> 
+<!-- 	<link rel="stylesheet" href="../prime-ui/development/afternoon/theme.css" />   -->
+	<link rel="stylesheet" href="resources/css/bootstrap.css" />
+	<link rel="stylesheet" href="resources/css/bootstrap-theme.css" /> 
+<!-- 	<script type="text/javascript" src="resources/jquery.js" /> -->
+
+</h:head>
+<h:body>
+
+
+	<!-- 	<p:panel id="panel" style="height: 70px; background:gray; "> -->
+
+	<!-- 	</p:panel> -->
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="west" resizable="true" size="250" minSize="250" maxSize="500" styleClass="layoutunit" >
+
+			<p:button value="Accueil" icon="ui-icon-home" href="/timemanager/index.xhtml" styleClass="btn-default ">
+			</p:button>
+			<h:form>
+				<p:panelMenu  style="width:250px" >
+					<p:submenu label="Gestion des Enseignants" icon="ui-icon-person" styleClass="btn-info">
+						<p:menuitem value="Ajouter un enseignant" icon="ui-icon-plusthick" url="/timemanager/enseignant/ajouter.xhtml" ajax="true"></p:menuitem>
+						<p:menuitem value="Lister les enseignants" icon="ui-icon-note" url="/timemanager/enseignant/lister.xhtml" ajax="false" />
+							<p:submenu label="Gestion des Statuts" styleClass="submenu">
+								<p:menuitem value="Ajouter un statut " icon="ui-icon-plusthick" url="/timemanager/statut/ajouter.xhtml" ajax="false" />
+								<p:menuitem value="Lister les statuts" icon="ui-icon-note" url="/timemanager/statut/lister.xhtml" ajax="false"></p:menuitem>
+							</p:submenu>
+							<p:submenu label="Gestion des Grades" styleClass="submenu">
+								<p:menuitem value="Ajouter un grade" icon="ui-icon-plusthick" url="/timemanager/grade/ajouter.xhtml" ajax="false" />
+								<p:menuitem value="Lister les grades" icon="ui-icon-note" url="/timemanager/grade/lister.xhtml" ajax="false"></p:menuitem>
+							</p:submenu>
+							<p:submenu label="Gestion des Disponibilites" styleClass="submenu">
+								<p:menuitem value="Ajouter une disponibilite" icon="ui-icon-plusthick" url="/timemanager/disponibilite/ajouter.xhtml" />
+								<p:menuitem value="Lister les disponibilites" icon="ui-icon-note" url="/timemanager/disponibilite/lister.xhtml"/>
+							</p:submenu>
+					</p:submenu>
+					
+					<p:submenu label="Gestion des Departements" styleClass="submenu">
+						<p:menuitem value="Ajouter un departement" icon="ui-icon-plusthick" url="/timemanager/departement/ajouter.xhtml" />
+						<p:menuitem value="Lister les departements" icon="ui-icon-note" url="/timemanager/departement/lister.xhtml"/>
+						<p:submenu label="Gestion des Cursus" styleClass="submenu">
+							<p:menuitem value="Ajouter" icon="ui-icon-plusthick" url="/timemanager/cursus/ajouter.xhtml" />
+							<p:menuitem value="Lister" icon="ui-icon-note" url="/timemanager/cursus/lister.xhtml" />
+						</p:submenu>
+						<p:submenu label="Gestion des Parcours" styleClass="submenu">
+							<p:menuitem value="Ajouter" icon="ui-icon-plusthick" url="/timemanager/parcours/ajouter.xhtml" />
+							<p:menuitem value="Lister" icon="ui-icon-note" url="/timemanager/parcours/lister.xhtml"></p:menuitem>
+						</p:submenu>
+						<p:submenu label="Gestion des Niveaux" styleClass="submenu">
+							<p:menuitem value="Ajouter un niveau" icon="ui-icon-plusthick" url="/timemanager/niveau/ajouter.xhtml" />
+							<p:menuitem value="Lister les niveaux" icon="ui-icon-note" url="/timemanager/niveau/lister.xhtml"></p:menuitem>
+						</p:submenu>
+						<p:submenu label="Gestion des Plans d'Etudes" styleClass="submenu">
+							<p:menuitem value="Creer un plan d'etude" icon="ui-icon-plusthick" url="/timemanager/planetude/ajouter.xhtml" />
+							<p:menuitem value="Lister un plan d'etude" icon="ui-icon-note" url="/timemanager/planetude/lister.xhtml"></p:menuitem>
+						</p:submenu>
+					</p:submenu>
+					
+					<p:submenu label="Gestion des Creneaux" styleClass="submenu">
+						<p:menuitem value="Ajouter" icon="ui-icon-plusthick" url="/timemanager/creneau/ajouter.xhtml" />
+						<p:menuitem value="Lister" icon="ui-icon-note" url="/timemanager/creneau/lister.xhtml"/>
+					</p:submenu>
+					
+					<p:submenu label="Gestion des Salles" styleClass="submenu">
+						<p:menuitem value="Ajouter" icon="ui-icon-plusthick" url="/timemanager/salle/ajouter.xhtml" />
+						<p:menuitem value="Lister" icon="ui-icon-note" url="/timemanager/salle/lister.xhtml" />
+						<p:submenu label="Gestion des Types de Salle" styleClass="submenu">
+							<p:menuitem value="Ajouter" icon="ui-icon-plusthick" url="/timemanager/typesalle/ajouter.xhtml" />
+							<p:menuitem value="Lister" icon="ui-icon-note" url="/timemanager/typesalle/lister.xhtml" />
+						</p:submenu>
+						<p:submenu label="Gestion des Ressources" styleClass="submenu">
+							<p:menuitem value="Ajouter" icon="ui-icon-plusthick" url="/timemanager/ressources/ajouter.xhtml" />
+							<p:menuitem value="Lister" icon="ui-icon-note" url="/timemanager/ressources//lister.xhtml" />
+						</p:submenu>
+					</p:submenu>
+				</p:panelMenu>
+			</h:form>
+		</p:layoutUnit>
+		<!-- Fin layout west -->
+		<p:layoutUnit position="north" size="50">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="/timemanager/index.xhtml">EDT-MANAGER</a>
+						<div>
+							<SPAN style="">Bienvenue #{authenticationBean.userName}</SPAN>
+						</div>
+						<h:form>
+							<p:menuButton value="Options" style="float:right; margin:auto;">
+								<p:menuitem value="Gestion des utilisateursz"  icon="ui-icon-disk" />
+								<p:menuitem value="Update"  icon="ui-icon-arrowrefresh-1-w" />
+								<p:menuitem value="Delete"  ajax="false" icon="ui-icon-close" />
+								<p:separator />
+								<p:menuitem value="Deconnexion" action="#{authenticationBean.logout()}" icon="ui-icon-extlink" />
+							</p:menuButton>
+						</h:form>
+					</div>
+					<!--     <div> -->
+					<!--       <ul class="nav navbar-nav"> -->
+					<!--         <li class="active"><a href="#">Home</a></li> -->
+					<!--         <li><a href="#">Page 1</a></li> -->
+					<!--         <li><a href="#">Page 2</a></li>  -->
+					<!--         <li><a href="#">Page 3</a></li>  -->
+					<!--       </ul> -->
+					<!--     </div> -->
+				</div>
+			</nav>
+				
+		</p:layoutUnit>
+		<p:layoutUnit position="south" size="35">
+			Copyright © 2015
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center" styleClass="layoutunit">
+
+			<!-- 			<p:growl sticky="4000" id="commonMessages"/> -->
+
+			<ui:insert name="content"></ui:insert>
+
+
+		</p:layoutUnit>
+
+	</p:layout>
+	<!-- 	<p:panel id="footer" style="height:70px;"> -->
+	<!-- 			Copyright © 2015 -->
+	<!-- 		</p:panel> -->
+
+
+
+</h:body>
+</html>

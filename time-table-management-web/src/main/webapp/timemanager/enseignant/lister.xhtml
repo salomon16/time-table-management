@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/timemanager/index.xhtml">
+
+	<ui:define name="content">
+		<h:form id="form">
+		
+			<!-- table d'affichage des enseignants -->
+			<p:dataTable  id="enseignantDataTable" var="enseignant" value="#{enseignantBean.allEnseignant}"
+				widgetVar="enseignantTable" 
+				emptyMessage="Aucun enseignant trouve"
+				editable="true"   selection="#{enseignantBean.selectedEnseignant}">
+				
+<!-- 					 <p:column selectionMode="single" style="width:2%" />  -->
+				<f:facet name="header">
+					<p:outputPanel>
+						<h:outputText value="Recherche generale :" />
+						<p:inputText id="globalFilter"
+							onkeyup="PF('enseignantTable').filter()" style="width:150px"
+							placeholder="mot cle" />
+					</p:outputPanel>
+				</f:facet>
+
+				<p:column headerText="Nom" filterBy="#{enseignant.nom}"
+					filterMatchMode="contains">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{enseignant.nom}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{enseignant.nom}" />
+						</f:facet>
+					</p:cellEditor>
+
+				</p:column>
+
+				<p:column headerText="Prenom" filterBy="#{enseignant.prenom}"
+					filterMatchMode="contains">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{enseignant.prenom}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{enseignant.prenom}" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Cin" filterBy="#{enseignant.cin}"
+					filterMatchMode="contains">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{enseignant.cin}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{enseignant.cin}"></p:inputText>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Adresse" filterBy="#{enseignant.adresse}"
+					filterMatchMode="contains">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{enseignant.adresse}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{enseignant.adresse}"></p:inputText>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Tel" filterBy="#{enseignant.telephoneMobile}"
+					filterMatchMode="contains">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{enseignant.telephoneMobile}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{enseignant.telephoneMobile}"></p:inputText>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Statut" filterBy="#{enseignant.statutDto.nom}"
+					filterMatchMode="exact">
+					<f:facet name="filter">
+						<p:selectOneMenu onchange="PF('enseignantTable').filter()">
+							<f:selectItem itemLabel="Select One" itemValue="#{null}"
+								noSelectionOption="true" />
+							<f:selectItems value="#{enseignantBean.allStatuts}" var="statut"
+								itemLabel="#{statut.nom}" itemValue="#{statut.nom}" />
+						</p:selectOneMenu>
+					</f:facet>
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{enseignant.statutDto.nom}" />
+						</f:facet>
+						<f:facet name="input">
+							<h:selectOneMenu value="#{enseignant.statutDto.nom}"
+								style="width:100%">
+								<f:selectItems value="#{enseignantBean.allStatuts}" var="statut"
+									itemLabel="#{statut.nom}" itemValue="#{statut.nom}" />
+							</h:selectOneMenu>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Grade" filterBy="#{enseignant.gradeDto.nom}"
+					filterMatchMode="contains">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{enseignant.gradeDto.nom}" />
+						</f:facet>
+						<f:facet name="input">
+							<h:selectOneMenu value="#{enseignant.gradeDto.nom}"
+								style="width:100%">
+								<f:selectItems value="#{enseignantBean.allGrades}" var="grade"
+									itemLabel="#{grade.nom}" itemValue="#{grade.nom}" />
+							</h:selectOneMenu>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Specialite"
+					filterBy="#{enseignant.specialite}" filterMatchMode="contains">
+
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{enseignant.specialite}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{enseignant.specialite}"></p:inputText>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column style="width:4%">
+					<p:commandButton id="modifButton" title="editer" action="#{enseignantBean.selectEnseignant(enseignant.enseignantID)}"
+							icon="ui-icon-pencil"   update=":form2:displayModif" oncomplete="PF('enseignantModif').show()" />
+				</p:column>
+				<p:column style="width:4%">
+						<p:commandButton id="deleteButton" title="supprimer"
+							icon="ui-icon-trash"  update=":form3:displayDelete" action="#{enseignantBean.selectEnseignant(enseignant.enseignantID)}" oncomplete="PF('enseignantDelete').show()" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+		<p:dialog header="Modifier enseignant" widgetVar="enseignantModif"
+			resizable="true" id="enseignantModif" showEffect="clip" hideEffect="clip">
+			<h:form id="form2">
+				<h:panelGrid id="displayModif" columns="2" cellpadding="4"
+					style="margin:0 auto;">
+
+					<h:outputText value="Nom:" />
+					<p:inputText id="nom" value="#{enseignantBean.selectedEnseignant.nom}" placeholder="#{enseignantBean.selectedEnseignant.nom}" />
+
+					<h:outputText for="prenom" value="Prenom:" />
+					<p:inputText id="prenom" value="#{enseignantBean.selectedEnseignant.prenom}" placeholder="#{enseignantBean.selectedEnseignant.prenom}" />
+
+					
+					<h:outputLabel for="cin" value="Cin:" />
+					<p:inputText id="cin" value="#{enseignantBean.selectedEnseignant.cin}" placeholder="#{enseignantBean.selectedEnseignant.cin}"/>
+						
+					<h:outputText value="Email:" />
+					<p:inputText id="email" value="#{enseignantBean.selectedEnseignant.email}" placeholder="#{enseignantBean.selectedEnseignant.email}" />
+						
+						
+					<h:outputText value="Tel:" />
+					<p:inputText id="tel" value="#{enseignantBean.selectedEnseignant.telephoneMobile}" placeholder="#{enseignantBean.selectedEnseignant.telephoneMobile}" />
+					
+					<h:outputLabel for="statut" value="Statut:" />
+					<h:selectOneMenu id="statut" value="#{enseignantBean.statut}"
+								style="width:100%">
+								<f:selectItem itemValue="#{enseignantBean.selectedEnseignant.statutDto.nom}"/>
+								<f:selectItems value="#{enseignantBean.allStatuts}" var="statut"
+									itemLabel="#{statut.nom}" itemValue="#{statut.nom}" />
+							</h:selectOneMenu>
+							
+					<h:outputText for="grade" value="Grade:" />
+					<h:selectOneMenu id="grade" value="#{enseignantBean.grade}"
+								style="width:100%">
+								<f:selectItem itemValue="#{enseignantBean.selectedEnseignant.gradeDto.nom}"/>
+								<f:selectItems value="#{enseignantBean.allGrades}" var="grade"
+									itemLabel="#{grade.nom}" itemValue="#{grade.nom}" />
+							</h:selectOneMenu>
+							
+					<p:outputLabel value="Specialites:" for="specialite"></p:outputLabel>
+					<p:inputTextarea id="specialite" value="#{enseignantBean.selectedEnseignant.specialite}" placeholder="#{enseignantBean.selectedEnseignant.specialite}"/>
+					
+					<p:outputLabel value="Adresse:" for="adresse"></p:outputLabel>
+					<p:inputTextarea id="adresse" value="#{enseignantBean.selectedEnseignant.adresse}" placeholder="#{enseignantBean.selectedEnseignant.adresse}" />
+					
+					
+					<p:commandButton value="Modifier" action="#{enseignantBean.update()}" oncomplete="PF('enseignantModif').hide();" update=":form:enseignantDataTable" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+		<p:dialog header="Supprimer enseignant" widgetVar="enseignantDelete"
+			resizable="false" id="enseignantDelete" showEffect="clip" hideEffect="clip" >
+			<h:form id="form3">
+				<h:panelGrid id="displayDelete" columns="1" cellpadding="5"	style="margin:0 auto;">
+
+					<h:outputText value="Voulez vous supprimer ce enseignant ?" />
+					<p:commandButton value="Supprimer"
+						action="#{enseignantBean.delete()}"
+						oncomplete="PF('enseignantDelete').hide();" update=":form:enseignantDataTable" />
+
+				</h:panelGrid>
+			</h:form>
+
+		</p:dialog>
+
+	</ui:define>
+</ui:composition>

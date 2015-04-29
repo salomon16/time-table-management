@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition>
+		<ui:define name="content">
+			<h:form>
+			<p:panel header="Nouveau Creneau">
+				<h:panelGrid id="grid" columns="2" cellpadding="5"
+					styleClass="panelGrid">
+
+					<h:outputLabel value="Nom: " for="nom" />
+					<p:inputText id="nom" value="#{gradeBean.gradeDto.nom}"
+						required="true" />
+					<p:message for="nom" display="icon" />
+				</h:panelGrid>
+
+				<p:commandButton value="Reinitialiser" icon="ui-icon-refresh"
+					styleClass="btn btn-default" type="reset" ajax="false" />
+				<p:commandButton type="submit" value="Enregistrer"
+					icon="ui-icon-check" action="#{gradeBean.save()}" ajax="true" />
+
+			</p:panel>
+
+		</h:form>
+			
+		</ui:define>
+	</ui:composition>
+</html>

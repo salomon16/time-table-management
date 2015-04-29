@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/timemanager/index.xhtml">
+
+	<ui:include src="/resources/css/style.css" />
+	<ui:define name="content">
+		<h:form>
+
+			<p:dataTable var="grade" value="#{gradeBean.allGrade}" editable="true">
+
+				<p:column headerText="Nom">
+				<p:cellEditor>
+						<f:facet name="output"><h:outputText value="#{grade.nom}" /></f:facet>
+						<f:facet name="input"><p:inputText value="#{grade.nom}"></p:inputText></f:facet>
+					</p:cellEditor>
+					
+				</p:column>
+				<p:column headerText="Actions">
+					<p:rowEditor  />
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+	</ui:composition>

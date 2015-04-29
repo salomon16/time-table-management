@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<!-- <http auto-config="true"> <intercept-url pattern="/protected.jsf" access="ROLE_ADMIN" 
+		/> Custom login page <form-login login-page='/login.jsf' /> <access-denied-handler 
+		error-page='/403page.jsf' /> Custom logout page <logout /> </http> -->
+
+	<http use-expressions="true">
+		<intercept-url pattern="/timemanager/**" access="isAuthenticated()" /> 
+		<intercept-url pattern="/timemanager/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/**" access="permitAll()" />
+		
+		<!-- Custom login page -->
+		<form-login login-page="/login.xhtml" />
+		
+		<!-- Custom logout page -->
+	 	<logout logout-success-url="/login.xhtml" />
+	</http>
+
+
+
+<!-- 	<authentication-manager> -->
+<!-- 		<authentication-provider> -->
+<!-- 			<jdbc-user-service data-source-ref="dataSource" -->
+<!-- 				users-by-username-query="select username,password, enabled from users where username=?" -->
+<!-- 				authorities-by-username-query="select username, role from user_roles where username =?  " /> -->
+<!-- 		</authentication-provider> -->
+<!-- 	</authentication-manager> -->
+
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider>
+			<user-service>
+				<user name="admin" password="1234" authorities="ROLE_ADMIN" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+	
+	 <!-- Inject authentication Manager to our LoginBean -->
+    <beans:bean name="authenticationBean" class="edu.ipsas.edt.managed.bean.AuthenticationBean">
+        <beans:property name="authenticationManager" ref="authenticationManager"></beans:property>
+    </beans:bean>
+</beans:beans>

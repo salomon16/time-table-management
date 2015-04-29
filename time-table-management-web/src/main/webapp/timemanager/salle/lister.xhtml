@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/timemanager/index.xhtml">
+<ui:define name="content">
+	<h:form>
+		<p:dataTable var="salle" value="#{salleBean.allSalle}">
+			<p:column headerText="Numero">
+				<h:outputText value="#{salle.numero}" />
+			</p:column>
+
+			<p:column headerText="Type Salle">
+				<h:outputText value="#{salle.typeSalleDto.nom}" />
+			</p:column>
+
+			<p:column headerText="Capacite">
+				<h:outputText value="#{salle.capacite}" />
+			</p:column>
+			<p:column style="width:4%">
+					<p:commandButton id="modifButton" title="editer" 
+							icon="ui-icon-pencil" />
+				</p:column>
+				<p:column style="width:4%">
+						<p:commandButton id="deleteButton" title="supprimer"
+							icon="ui-icon-trash"  />
+				</p:column>
+		</p:dataTable>
+
+	</h:form>
+</ui:define>
+</ui:composition>

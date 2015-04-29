@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14298111169290" configfile="/time-table-management-web/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="204" y="120" id="pf14301283946965" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14301283946966 pf14301283946967" inlinks="pf14301283946966" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="timemanager/index.xhtml" x="564" y="120" id="pf14301283946968" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14301283946967" path="/timemanager/index.xhtml"/>
+  <links id="pf14301283946966" target="pf14301283946965" source="pf14301283946965" outcome="incorrect" fromaction="#{authentificationBean.login}">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf14301283946967" target="pf14301283946968" source="pf14301283946965" outcome="/timemanager/index" fromaction="#{authentificationBean.login}"/>
+</pageflow:Pageflow>

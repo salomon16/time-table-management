@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.ejb.Local;
 
 import edu.ipsas.edt.dto.CreneauDto;
+import edu.ipsas.edt.dto.CursusDto;
 import edu.ipsas.edt.dto.DepartementDto;
 import edu.ipsas.edt.dto.DisponibiliteDto;
 import edu.ipsas.edt.dto.EnseignantDto;
@@ -12,8 +13,8 @@ import edu.ipsas.edt.dto.GradeDto;
 import edu.ipsas.edt.dto.ParcoursDto;
 import edu.ipsas.edt.dto.PersonnelAdministratifDto;
 import edu.ipsas.edt.dto.RoleDto;
-import edu.ipsas.edt.dto.CursusDto;
 import edu.ipsas.edt.dto.StatutDto;
+import edu.ipsas.edt.dto.VoeuxMatiereDto;
 @Local
 public interface EnseignantService {
 
@@ -32,6 +33,16 @@ public interface EnseignantService {
 	public void deleteDisponibilite(DisponibiliteDto disponibiliteDto);
 
 	public Collection<DisponibiliteDto> getAllDisponibilite();
+	
+	public long ajouterVoeuxMatiere(VoeuxMatiereDto voeuxDto);
+
+	public void modifierVoeuxMatiere(VoeuxMatiereDto voeuxDto);
+
+	public void supprimerVoeuxMatiere(VoeuxMatiereDto voeuxDto);
+
+	public Collection<VoeuxMatiereDto> obtenirToutLesVoeuxMatiere();
+	
+	public Collection<VoeuxMatiereDto> obtenirLesVoeuxMatiereParEnseignant(long enseignantId);
 
 	public Collection<DisponibiliteDto> getAllDisponibiliteByEnseignant(
 			long idEnseignant);
@@ -133,5 +144,7 @@ public interface EnseignantService {
 	public CursusDto getCursusByName(String cursus);
 
 	public CursusDto getCursusById(long cursus);
+
+	public Collection<ParcoursDto> getAllParcoursByDepartement(long departementID);
 	
 }

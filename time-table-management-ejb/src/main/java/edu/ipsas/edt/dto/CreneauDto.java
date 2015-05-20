@@ -1,9 +1,18 @@
 package edu.ipsas.edt.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class CreneauDto {
+import edu.ipsas.edt.model.Seance;
+
+public class CreneauDto implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private long CreneauID;
 
 	private int heureDebut;
@@ -12,15 +21,20 @@ public class CreneauDto {
 
 	private Collection<DisponibiliteDto> disponibilites;
 
+	private Collection<Seance> seances;
+
 	public CreneauDto() {
 		super();
 		disponibilites = new ArrayList<DisponibiliteDto>();
+		seances = new ArrayList<Seance>();
 	}
 
 	public CreneauDto(int heureDebut, int heureFin) {
 		super();
 		this.heureDebut = heureDebut;
 		this.heureFin = heureFin;
+		disponibilites = new ArrayList<DisponibiliteDto>();
+		seances = new ArrayList<Seance>();
 	}
 
 	public long getCreneauID() {
@@ -53,6 +67,14 @@ public class CreneauDto {
 
 	public void setDisponibilites(Collection<DisponibiliteDto> disponibilites) {
 		this.disponibilites = disponibilites;
+	}
+
+	public Collection<Seance> getSeances() {
+		return seances;
+	}
+
+	public void setSeances(Collection<Seance> seances) {
+		this.seances = seances;
 	}
 
 }

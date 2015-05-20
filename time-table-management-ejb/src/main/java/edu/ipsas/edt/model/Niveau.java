@@ -1,5 +1,6 @@
 package edu.ipsas.edt.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -8,12 +9,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="NIVEAU")
-public class Niveau {
+public class Niveau implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -26,19 +34,23 @@ public class Niveau {
 	@Column(name="ABBREVIATION", unique=true , nullable=true)
 	private String abbreviation;
 	
+	@ManyToOne
+	@JoinColumn(name="PARCOURS_ID")
+	private Parcours parcours;
+	
 	@OneToMany
-	private Collection<Parcours> parcours;
+	private Collection<Groupe> groupes;
 
 	public Niveau() {
 		super();
-		parcours = new ArrayList<Parcours>();
+		groupes = new ArrayList<Groupe>();
 	}
 
 	public Niveau(String nom, String abbreviation) {
 		super();
 		this.nom = nom;
 		this.abbreviation = abbreviation;
-		parcours = new ArrayList<Parcours>();
+		groupes = new ArrayList<Groupe>();
 	}
 
 	public long getNiveauId() {
@@ -65,11 +77,19 @@ public class Niveau {
 		this.abbreviation = abbreviation;
 	}
 
-	public Collection<Parcours> getParcours() {
+	public Collection<Groupe> getGroupes() {
+		return groupes;
+	}
+
+	public void setGroupes(Collection<Groupe> groupes) {
+		this.groupes = groupes;
+	}
+
+	public Parcours getParcours() {
 		return parcours;
 	}
 
-	public void setParcours(Collection<Parcours> parcours) {
+	public void setParcours(Parcours parcours) {
 		this.parcours = parcours;
 	}
 	

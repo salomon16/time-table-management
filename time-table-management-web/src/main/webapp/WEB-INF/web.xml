@@ -9,39 +9,30 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
-  
-    <!-- Declare Spring configuration file location -->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
-            /WEB-INF/security.xml
-        </param-value>
-    </context-param>
-
-    <!-- Spring -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class> org.springframework.web.context.request.RequestContextListener </listener-class>
-    </listener>
-    <listener>
-    	<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-    </listener>
- 	
-    <!-- Spring Security -->
-    <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+  	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/security.xml
+		</param-value>
+	</context-param>
+<!--   	<filter> -->
+<!--   		<filter-name>springSecurityFilterChain</filter-name> -->
+<!--   		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
+<!-- 	</filter> -->
+<!-- 	<listener> -->
+<!-- 			<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> -->
+<!-- 	</listener> -->
+	
+<!-- 	<filter-mapping> -->
+<!-- 	  <filter-name>springSecurityFilterChain</filter-name> -->
+<!-- 	  <url-pattern>/*</url-pattern> -->
+<!-- 	  <dispatcher>FORWARD</dispatcher> -->
+<!-- 	  <dispatcher>REQUEST</dispatcher> -->
+<!-- 	</filter-mapping> -->
 
     <!-- Welcome page -->
     <welcome-file-list>
-        <welcome-file>/login.xhtml</welcome-file>
+        <welcome-file>/timemanager/index.xhtml</welcome-file>
     </welcome-file-list>
 
     <!-- JSF mapping -->
@@ -52,22 +43,11 @@
     </servlet>
  
     <!--Map these files with JSF-->
-<!--     <servlet-mapping> -->
-<!--         <servlet-name>Faces Servlet</servlet-name> -->
-<!--         <url-pattern>/faces/*</url-pattern> -->
-<!--     </servlet-mapping> -->
-<!--     <servlet-mapping> -->
-<!--         <servlet-name>Faces Servlet</servlet-name> -->
-<!--         <url-pattern>*.jsf</url-pattern> -->
-<!--     </servlet-mapping> -->
-<!--     <servlet-mapping> -->
-<!--         <servlet-name>Faces Servlet</servlet-name> -->
-<!--         <url-pattern>*.faces</url-pattern> -->
-<!--     </servlet-mapping> -->
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+    
     <!-- theme primefaces: afternoon, bootstrap, sunny, ui-lightness -->
 	<context-param>
 		<param-name>primefaces.THEME</param-name>

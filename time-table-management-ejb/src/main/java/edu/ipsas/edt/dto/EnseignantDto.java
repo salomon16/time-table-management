@@ -17,6 +17,8 @@ public class EnseignantDto extends PersonneDto {
 	private GradeDto gradeDto;
 	
 	private StatutDto statutDto;
+	
+	private Collection<VoeuxMatiereDto> voeuxMatiereDto;
 
 	public EnseignantDto() {
 		super();
@@ -24,7 +26,7 @@ public class EnseignantDto extends PersonneDto {
 		disponibilites = new ArrayList<DisponibiliteDto>();
 		gradeDto = new GradeDto();
 		statutDto = new StatutDto();
-		
+		voeuxMatiereDto = new ArrayList<VoeuxMatiereDto>();
 	}
 
 	public EnseignantDto(String nom, String prenom, String cin, String adresse,
@@ -32,7 +34,7 @@ public class EnseignantDto extends PersonneDto {
 		super(nom, prenom, cin, adresse, telephoneMobile, email);
 		departements = new ArrayList<DepartementDto>();
 		disponibilites = new ArrayList<DisponibiliteDto>();
-		
+		voeuxMatiereDto = new ArrayList<VoeuxMatiereDto>();
 	}
 
 	public EnseignantDto(String nom, String prenom, String cin, String adresse,
@@ -41,7 +43,8 @@ public class EnseignantDto extends PersonneDto {
 		this.statutDto = statutDto;
 		departements = new ArrayList<DepartementDto>();
 		disponibilites = new ArrayList<DisponibiliteDto>();
-			}
+		voeuxMatiereDto = new ArrayList<VoeuxMatiereDto>();
+	}
 
 	public long getEnseignantID() {
 		return enseignantId;
@@ -91,6 +94,20 @@ public class EnseignantDto extends PersonneDto {
 		this.statutDto = statutDto;
 	}
 
-	
+	public long getEnseignantId() {
+		return enseignantId;
+	}
+
+	public void setEnseignantId(long enseignantId) {
+		this.enseignantId = enseignantId;
+	}
+
+	public Collection<VoeuxMatiereDto> getVoeuxMatiereDto() {
+		return voeuxMatiereDto;
+	}
+
+	public void setVoeuxMatiereDto(Collection<VoeuxMatiereDto> voeuxMatiereDto) {
+		this.voeuxMatiereDto = voeuxMatiereDto;
+	}
 
 }

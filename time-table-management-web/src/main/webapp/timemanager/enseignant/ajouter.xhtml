@@ -1,72 +1,103 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3c.org/1999/xhtml"
+<ui:composition  xmlns="http://www.w3c.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
-	
-<ui:composition template="/timemanager/index.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
 	<ui:define name="content">
+		
 		<h:form id="enseignant">
-			<p:panel id="panel" header="Nouvel Enseignant">
-
-				<h:panelGrid columns="3" cellpadding="5">
-
-					<h:outputLabel value="Nom: " for="nom" />
-					<p:inputText id="nom" value="#{enseignantBean.nom}"
-						required="true" placeholder="Nom" />
-					<p:message for="nom" display="text" />
-
-					<h:outputLabel value="Prenom: " for="prenom" />
-					<p:inputText id="prenom" value="#{enseignantBean.prenom}" required="true" placeholder="Prenom" />
-					<p:message for="prenom" display="text" />
-
-					<h:outputLabel value="Cin: " for="cin" />
-					<p:inputText id="cin" value="#{enseignantBean.cin}" required="true" placeholder="Cin" />
-					<p:message for="cin" display="text" />
-
-					<h:outputLabel value="Tel" for="tel" />
-					<p:inputText id="tel" value="#{enseignantBean.telephoneMobile}" required="true" placeholder="9999-9999" />
-					<p:message for="tel" display="text" />
-
-					<h:outputLabel value="Email" for="email" />
-					<p:inputText id="email" value="#{enseignantBean.email}" required="true" placeholder="timemanager@edt.edu">
-						<!-- 							 <f:validateRegex pattern="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$" /> -->
-					</p:inputText>
-					<p:message for="email" display="text" />
-
-					<p:outputLabel value="Statut : " for="statut" />
-					<p:selectOneMenu id="statut" value="#{enseignantBean.statut}" effect="fold">
-						<f:selectItem itemLabel="Select One" itemValue=""
-							noSelectionOption="true" />
-						<f:selectItems value="#{enseignantBean.allStatuts}" var="statutDto"
-							itemLabel="#{statutDto.nom}" itemValue="#{statutDto.nom}"></f:selectItems>
-					</p:selectOneMenu>
-<!-- 					<p:message for="statut" display="icon" /> -->
-
-					<p:outputLabel value="Grade : " for="grade" />
-					<p:selectOneMenu id="grade" value="#{enseignantBean.grade}"  effect="fold">
-						<f:selectItem itemLabel="Select One" itemValue=""
-							noSelectionOption="true" />
-						<f:selectItems value="#{enseignantBean.allGrades}" var="gradeDto"
-							itemLabel="#{gradeDto.nom}" itemValue="#{gradeDto.nom}"></f:selectItems>
-					</p:selectOneMenu>
-<!-- 					<p:message for="grade" display="icon" /> -->
-
-					<h:outputLabel value="Specialite : " for="specialite" />
-					<p:inputTextarea id="specialite" value="#{enseignantBean.specialite}" feedback="true" required="true" />
-					<p:message for="specialite" display="text" />
-
-					<h:outputLabel value="Adresse : " for="adresse" />
-					<p:inputTextarea id="adresse" value="#{enseignantBean.adresse}" feedback="true" />
-					<p:message for="adresse" display="text" />
-				</h:panelGrid>
-					<p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset"></p:commandButton>
-					<p:commandButton value="Enregistrer" icon="ui-icon-check" styleClass="btn btn-default" action="#{enseignantBean.save()}" update="panel" />
+			<p:growl id="growl" />
+			<b:panel id="panel" look="primary">
+				<p:messages id="messages"></p:messages>
+					<f:facet name="heading">Nouvel Enseignant</f:facet> 
+					<b:row>
+    					<b:column span="4"><h:outputLabel value="Nom : " for="nom" /></b:column>
+  					    <b:column span="4"><b:inputText id="nom" value="#{enseignantBean.nom}" required="true" placeholder="Nom" /></b:column>
+						<b:column span="4"><p:message for="nom" /></b:column>
+					</b:row>
+					
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Prenom : " for="prenom" /></b:column>
+						<b:column span="4"><b:inputText id="prenom" value="#{enseignantBean.prenom}" required="true" placeholder="Prenom" /></b:column>
+						<b:column span="4"><p:message for="prenom" /></b:column>
+					</b:row>
+					
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Cin : " for="cin" /></b:column>
+						<b:column span="4"><b:inputText id="cin" value="#{enseignantBean.cin}" required="true" placeholder="Cin" /></b:column>
+						<b:column span="4"><p:message for="cin" /></b:column>
+					</b:row>
+					
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Telephone :" for="tel" /></b:column>
+						<b:column span="4"><b:inputText id="tel" value="#{enseignantBean.telephoneMobile}" required="true" placeholder="9999-9999" /></b:column>
+						<b:column span="4"><p:message for="tel" /></b:column>
+					</b:row>
+		
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Email :" for="email" /></b:column>
+						<b:column span="4"><b:inputText id="email" value="#{enseignantBean.email}" required="true" placeholder="timemanager@edt.edu" /></b:column>
+						<b:column span="4"><p:message for="email" /></b:column>
+					</b:row>
+					
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Statut : " for="statut" /></b:column>
+						<b:column span="4">
+							<b:selectOneMenu id="statut" value="#{enseignantBean.statut}" effect="fold">
+								<f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+								<f:selectItems value="#{enseignantBean.allStatuts}" var="statutDto" itemLabel="#{statutDto.nom}" itemValue="#{statutDto.nom}"></f:selectItems>
+							</b:selectOneMenu>
+						</b:column>
+						<b:column span="4"></b:column>
+					</b:row>
+					
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Grade : " for="grade" /></b:column>
+						<b:column span="4">
+							<b:selectOneMenu id="grade" value="#{enseignantBean.grade}"  effect="fold">
+								<f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+								<f:selectItems value="#{enseignantBean.allGrades}" var="gradeDto" itemLabel="#{gradeDto.nom}" itemValue="#{gradeDto.nom}"></f:selectItems>
+							</b:selectOneMenu>
+						</b:column>
+							<b:column span="4"></b:column>
+					</b:row>
+					
+					<b:row>	
+						<b:column span="4"><h:outputLabel value="Specialites : " for="specialite" /></b:column>
+						<b:column span="4"><p:inputTextarea id="specialite" value="#{enseignantBean.specialite}" feedback="true" required="true" style="width:300px" /></b:column>
+						<b:column span="4"><p:message for="specialite"/></b:column>
+					</b:row>
+					
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Adresse : " for="adresse" /></b:column>
+						<b:column span="4"><p:inputTextarea id="adresse" value="#{enseignantBean.adresse}" feedback="true" style="width:300px" /></b:column>
+						<b:column span="4"><p:message for="adresse" /></b:column>
+					</b:row>
+					<p:separator />
+					<b:row>
+						<b:column span="2"></b:column>
+						<b:column span="4">
+							<p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default">
+								 <p:ajax update="panel" resetValues="true" />
+							</p:commandButton>
+						</b:column>
+						<b:column span="4"><p:commandButton id="register" value="Enregistrer" update="growl" icon="ui-icon-check" styleClass="btn btn-default" action="#{enseignantBean.save()}" /></b:column>
+						<b:column span="2"></b:column>
+					</b:row>
+					
 				
-			</p:panel>
-
+			</b:panel>
+			<p:blockUI block="panel" trigger="register">  
+	    		<h:panelGrid columns="2">  
+			        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
+			        <h:outputText value="Adding message..." style="white-space: nowrap;"/>  
+	    		</h:panelGrid>  
+			</p:blockUI> 
+			
 		</h:form>
 	</ui:define>
 	</ui:composition>
-	</html>

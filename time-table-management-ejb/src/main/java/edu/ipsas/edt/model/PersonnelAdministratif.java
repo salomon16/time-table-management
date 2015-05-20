@@ -32,7 +32,7 @@ public class PersonnelAdministratif extends Personne implements Serializable {
 	private String telFixe;
 	
 	@ManyToMany
-	@JoinTable(name="PERSONNEL_ROLES",joinColumns = @JoinColumn( name="PERSONNEL_ADMINISTRATIF_ID", referencedColumnName="PERSONNEL_ADMINISTRATIF_ID"), inverseJoinColumns = @JoinColumn( name="ROLE_ID", referencedColumnName="ROLE_ID"))
+	@JoinTable(name="PERSONNELS_ROLES",joinColumns = @JoinColumn( name="PERSONNEL_ADMINISTRATIF_ID", referencedColumnName="PERSONNEL_ADMINISTRATIF_ID"), inverseJoinColumns = @JoinColumn( name="ROLE_ID", referencedColumnName="ROLE_ID"))
 	private Collection<Role> roles;
 
 	@ManyToOne

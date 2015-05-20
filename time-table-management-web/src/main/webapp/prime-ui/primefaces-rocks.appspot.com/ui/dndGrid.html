@@ -1,0 +1,491 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Mirrored from primefaces-rocks.appspot.com/ui/dndGrid.jsf by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 May 2015 10:24:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/theme.css.jsf?ln=primefaces-aristo" />
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/ui/jquery-ui.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/jquery.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/ui/jquery-ui.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/core/core.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/button/button.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/wijmo/wijmo.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/wijmo/wijmo.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/menu/menu.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/fieldset/fieldset.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/fieldset/fieldset.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/paginator/paginator.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/datagrid/datagrid.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/yui/utilities/utilities.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/paginator/paginator.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/datagrid/datagrid.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/panel/panel.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/panel/panel.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/dnd/dragdrop.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/datatable/datatable.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/datatable/datatable.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/dialog/dialog.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/tabview/tabview.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/ajaxstatus/ajaxstatus.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+		<title>PrimeFaces - ShowCase</title>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<link type="text/css" rel="stylesheet" href="../css/default.css" />
+		<link type="text/css" rel="stylesheet" href="../syntaxhighlighter/styles/syntaxhighlighter.css" />
+        <script type="text/javascript">
+			function handleDrop(event, ui) {
+                var droppedCar = ui.draggable;
+
+                droppedCar.fadeOut('fast');
+			}
+		</script></head><body>
+
+		<div class="ui-widget ui-widget-header">
+			<div id="logo">
+				<h1>PRIMEFACES</h1>
+			</div>
+		</div>
+
+		<div id="menu" class="ui-widget ui-widget-content ui-corner-all">
+			<ul id="main">
+				<li class="current_page_item"><a href="home.html" style="background:url('../design/ui.png') no-repeat center left;">UI Components</a></li>
+				<li><a href="http://primefaces-rocks.appspot.com/mobile/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;color:#FF9900;">Mobile</a></li>
+				<li><a href="http://primefaces-rocks.appspot.com/facestrace/createBook.jsf" style="background:url('../design/facestrace.png') no-repeat center left;">FacesTrace</a></li>
+			</ul>
+		</div>
+
+		<div id="wrapper">
+
+			<div id="page">
+				<div id="sidebar1" class="ui-widget-content ui-corner-all ui-helper-clearfix sidebar">
+					<ul>
+						<li>
+							<table>
+								<tr>
+									<td colspan="2" align="left" style="padding:8px;">
+<form id="j_idt8" name="j_idt8" method="post" action="http://primefaces-rocks.appspot.com/ui/dndGrid.jsf" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt8" value="j_idt8" />
+<button id="j_idt8:themeButton" name="j_idt8:themeButton" style="width:100%" type="button">Change Theme: aristo</button><script type="text/javascript">widget_j_idt8_themeButton = new PrimeFaces.widget.CommandButton('j_idt8:themeButton', {});</script><span id="j_idt8:j_idt9"><ul id="j_idt8:j_idt9_menu"><li><h3>Themes</h3></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt11','j_idt8:j_idt11').submit('j_idt8');"><span class="wijmo-wijmenu-text">Aristo</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt12','j_idt8:j_idt12').submit('j_idt8');"><span class="wijmo-wijmenu-text">Black-Tie</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt13','j_idt8:j_idt13').submit('j_idt8');"><span class="wijmo-wijmenu-text">Blitzer</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt14','j_idt8:j_idt14').submit('j_idt8');"><span class="wijmo-wijmenu-text">BlueSky (RichFaces)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt15','j_idt8:j_idt15').submit('j_idt8');"><span class="wijmo-wijmenu-text">Casablanca (Trinidad)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt16','j_idt8:j_idt16').submit('j_idt8');"><span class="wijmo-wijmenu-text">Cupertino</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt17','j_idt8:j_idt17').submit('j_idt8');"><span class="wijmo-wijmenu-text">Dark-Hive</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt18','j_idt8:j_idt18').submit('j_idt8');"><span class="wijmo-wijmenu-text">Dot-Luv</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt19','j_idt8:j_idt19').submit('j_idt8');"><span class="wijmo-wijmenu-text">Eggplant</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt20','j_idt8:j_idt20').submit('j_idt8');"><span class="wijmo-wijmenu-text">Excite-Bike</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt21','j_idt8:j_idt21').submit('j_idt8');"><span class="wijmo-wijmenu-text">Flick</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt22','j_idt8:j_idt22').submit('j_idt8');"><span class="wijmo-wijmenu-text">Glass-X (RichFaces)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt23','j_idt8:j_idt23').submit('j_idt8');"><span class="wijmo-wijmenu-text">Hot-Sneaks</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt24','j_idt8:j_idt24').submit('j_idt8');"><span class="wijmo-wijmenu-text">Humanity</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt25','j_idt8:j_idt25').submit('j_idt8');"><span class="wijmo-wijmenu-text">Le-Frog</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt26','j_idt8:j_idt26').submit('j_idt8');"><span class="wijmo-wijmenu-text">Midnight (Wijmo)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt27','j_idt8:j_idt27').submit('j_idt8');"><span class="wijmo-wijmenu-text">Mint-Choc</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt28','j_idt8:j_idt28').submit('j_idt8');"><span class="wijmo-wijmenu-text">Overcast</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt29','j_idt8:j_idt29').submit('j_idt8');"><span class="wijmo-wijmenu-text">Pepper-Grinder</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt30','j_idt8:j_idt30').submit('j_idt8');"><span class="wijmo-wijmenu-text">Redmond</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt31','j_idt8:j_idt31').submit('j_idt8');"><span class="wijmo-wijmenu-text">Rocket (Wijmo)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt32','j_idt8:j_idt32').submit('j_idt8');"><span class="wijmo-wijmenu-text">Sam</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt33','j_idt8:j_idt33').submit('j_idt8');"><span class="wijmo-wijmenu-text">Smoothness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt34','j_idt8:j_idt34').submit('j_idt8');"><span class="wijmo-wijmenu-text">South-Street</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt35','j_idt8:j_idt35').submit('j_idt8');"><span class="wijmo-wijmenu-text">Start</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt36','j_idt8:j_idt36').submit('j_idt8');"><span class="wijmo-wijmenu-text">Sunny</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt37','j_idt8:j_idt37').submit('j_idt8');"><span class="wijmo-wijmenu-text">Swanky-Purse</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt38','j_idt8:j_idt38').submit('j_idt8');"><span class="wijmo-wijmenu-text">Trontastic</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt39','j_idt8:j_idt39').submit('j_idt8');"><span class="wijmo-wijmenu-text">UI-Lightness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt40','j_idt8:j_idt40').submit('j_idt8');"><span class="wijmo-wijmenu-text">UI-Darkness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt41','j_idt8:j_idt41').submit('j_idt8');"><span class="wijmo-wijmenu-text">Vader</span></a></li></ul></span><script type="text/javascript">themeMenu = new PrimeFaces.widget.Menu('j_idt8:j_idt9',{position:'dynamic',zindex:1,animation:{animated:'fade',duration:400},my:'left top',at:'left bottom',trigger:'j_idt8:themeButton',triggerEvent:'click',styleClass:'themeMenu'});</script><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="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" autocomplete="off" />
+</form>
+									</td>
+								</tr>
+                                <tr>
+									<td colspan="2" align="center">
+										<a href="macosx.html">MOCK OS X</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<ul>
+											<li><a href="ajaxHome.html">Ajax Engine</a></li>
+											<li><a href="ajaxPollHome.html">Ajax Poll</a></li>
+                                            <li><a href="ajaxStatusHome.html">Ajax Status</a></li>
+											<li><a href="accordionPanelHome.html">Accordion</a></li>
+											<li><a href="autocompleteHome.html">AutoComplete</a></li>
+											<li><a href="breadCrumb.html">BreadCrumb</a></li>
+                                            <li><a href="button.html">Button</a></li>
+											<li><a href="calendarHome.html" class="new">Calendar</a></li>
+											<li><a href="captchaHome.html">Captcha</a></li>
+											<li><a href="carouselHome.html">Carousel</a></li>
+											<li><a href="chartsHome.html">Charts</a></li>
+											<li><a href="commandButton.html">CommandButton</a></li>
+											<li><a href="commandLink.html">CommandLink</a></li>
+											<li><a href="contextMenuHome.html">ContextMenu</a></li>
+											<li><a href="collector.html">Collector</a></li>
+											<li><a href="colorPicker.html">Color Picker</a></li>
+											<li><a href="confirmDialog.html">ConfirmDialog</a></li>
+											<li><a href="dashboard.html">Dashboard</a></li>
+											<li><a href="exporterHome.html">Data Exporter</a></li>
+											<li><a href="datagrid.html">DataGrid</a></li>
+											<li><a href="dataListHome.html">DataList</a></li>
+											<li><a href="datatableHome.html">DataTable</a></li>
+											<li><a href="dialogHome.html">Dialog</a></li>
+											<li><a href="dock.html">Dock</a></li>
+                                            <li><a href="dragdropHome.html">DragDrop</a></li>
+											<li><a href="dynamicImage.html">Dyna Image</a></li>
+											<li><a href="editor.html">Editor</a></li>
+											<li><a href="effectsHome.html">Effects</a></li>
+											<li><a href="fileUploadHome.html" class="new">FileUpload</a></li>
+											<li><a href="fileDownload.html">FileDownload</a></li>
+                                            <li><a href="fieldset.html">Fieldset</a></li>
+											<li><a href="focus.html">Focus</a></li>
+                                            <li><a href="galleria.html">Galleria</a></li>
+											<li><a href="gmapHome.html">Google Maps</a></li>
+											<li><a href="graphicText.html">Graphic Text</a></li>
+											<li><a href="growl.html">Growl</a></li>
+                                            <li><a href="hotkey.html">HotKey</a></li>
+                                            <li><a href="idlemonitorHome.html">IdleMonitor</a></li>
+                                            <li><a href="imageCompare.html">ImageCompare</a></li>
+                                            <li><a href="imageCropper.html">ImageCropper</a></li>
+                                            <li><a href="imageSwitch.html">ImageSwitch</a></li>
+                                            <li><a href="inplace.html">Inplace</a></li>
+                                            <li><a href="inputText.html">InputText</a></li>
+                                            <li><a href="inputTextarea.html">InputTextarea</a></li>
+										</ul>
+									</td>
+									<td>
+										<ul>
+											<li><a href="keyboard.html">Keyboard</a></li>
+											<li><a href="layoutHome.html">Layout</a></li>
+											<li><a href="lightboxHome.html">LightBox</a></li>
+											<li><a href="inputMask.html">Masked Input</a></li>
+											<li><a href="media.html">Media</a></li>
+											<li><a href="menu.html">Menu</a></li>
+											<li><a href="menubar.html">Menubar</a></li>
+											<li><a href="menubutton.html">MenuButton</a></li>
+											<li><a href="messages.html">Messages</a></li>
+											<li><a href="notificationBar.html">NotificationBar</a></li>
+											<li><a href="outputPanel.html">OutputPanel</a></li>
+											<li><a href="panel.html">Panel</a></li>
+											<li><a href="password.html">Password</a></li>
+											<li><a href="picklist.html">PickList</a></li>
+											<li><a href="printer.html">Printer</a></li>
+											<li><a href="progressBar.html">ProgressBar</a></li>
+											<li><a href="callbackParams.html">RequestContext</a></li>
+											<li><a href="resizableHome.html">Resizable</a></li>
+											<li><a href="remoteCommand.html">RemoteCommand</a></li>
+                                            <li><a href="ring.html" class="new">Ring</a></li>
+											<li><a href="scheduleHome.html">Schedule</a></li>
+                                            <li><a href="scrollPanel.html" class="new">ScrollPanel</a></li>
+                                            <li><a href="selectBooleanCheckbox.html" class="new">SelectBoolCheckbox</a></li>
+                                            <li><a href="selectManyCheckbox.html" class="new">SelectManyCheckbox</a></li>
+                                            <li><a href="selectOneListbox.html" class="new">SelectOneListbox</a></li>
+                                            <li><a href="selectOneMenu.html" class="new">SelectOneMenu</a></li>
+                                            <li><a href="selectOneRadio.html" class="new">SelectOneRadio</a></li>
+                                            <li><a href="selectManyMenu.html" class="new">SelectManyMenu</a></li>
+											<li><a href="separator.html">Separator</a></li>
+											<li><a href="slider.html">Slider</a></li>
+                                            <li><a href="spacer.html">Spacer</a></li>
+											<li><a href="spinner.html">Spinner</a></li>
+											<li><a href="stack.html">Stack</a></li>
+											<li><a href="rating.html">Star Rating</a></li>
+											<li><a href="tabviewHome.html">TabView</a></li>
+                                            <li><a href="tagCloud.html" class="new">TagCloud</a></li>
+											<li><a href="terminalHome.html">Terminal</a></li>
+											<li><a href="themeswitcher.html">Themeswitcher</a></li>
+                                            <li><a href="toolbar.html">Toolbar</a></li>
+											<li><a href="tooltipHome.html">Tooltip</a></li>
+											<li><a href="treeHome.html" class="new">Tree</a></li>
+											<li><a href="treeTableHome.html">TreeTable</a></li>
+											<li><a href="watermark.html">Watermark</a></li>
+											<li><a href="wizard.html">Wizard</a></li>
+										</ul>
+									</td>
+								</tr>
+							</table>
+
+						</li>
+					</ul>
+				</div>
+
+				<div id="content" class="ui-widget">
+					<div class="post">
+		<h1 class="title ui-widget-header ui-corner-all">DataGrid - Drag and Drop</h1>
+		<div class="entry">
+		<p>Drag and Drop components have special integration with data components, this example demonstrates dataGrid integration.
+        Drag cars using headers to the drop area.</p>
+<form id="carForm" name="carForm" method="post" action="http://primefaces-rocks.appspot.com/ui/dndGrid.jsf" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="carForm" value="carForm" />
+<fieldset id="carForm:j_idt44" class="ui-fieldset ui-widget ui-widget-content ui-corner-all"><legend class="ui-fieldset-legend ui-corner-all ui-state-default">AvailableCars</legend><div class="ui-fieldset-content"><div id="carForm:availableCars" class="ui-datagrid ui-widget"><div id="carForm:availableCars_content" class="ui-datagrid-content"><table class="ui-datagrid-data"><tbody><tr class="ui-datagrid-row"><td class="ui-datagrid-column"><div id="carForm:availableCars:0:pnl" class="ui-panel ui-widget ui-widget-content ui-corner-all" style="text-align:center"><div id="carForm:availableCars:0:pnl_header" class="ui-panel-titlebar ui-widget-header ui-corner-all"><span class="ui-panel-title">68007255</span></div><div id="carForm:availableCars:0:pnl_content" class="ui-panel-content ui-widget-content"><table style="width:100%">
+<tbody>
+<tr>
+<td><img id="carForm:availableCars:0:j_idt47" src="../images/cars/Ferrari.jpg" alt="" /></td>
+</tr>
+</tbody>
+</table>
+</div></div><script type="text/javascript">widget_carForm_availableCars_0_pnl = new PrimeFaces.widget.Panel('carForm:availableCars:0:pnl', {visible:true});</script><script type="text/javascript">$(function() {widget_carForm_availableCars_0_j_idt48 = new PrimeFaces.widget.Draggable('carForm:availableCars:0:j_idt48',{target:'carForm:availableCars:0:pnl',cursor:'crosshair',revert:'invalid',handle:'.ui-panel-titlebar',stack:'.ui-panel'});});</script></td><td class="ui-datagrid-column"><div id="carForm:availableCars:1:pnl" class="ui-panel ui-widget ui-widget-content ui-corner-all" style="text-align:center"><div id="carForm:availableCars:1:pnl_header" class="ui-panel-titlebar ui-widget-header ui-corner-all"><span class="ui-panel-title">b8330e2a</span></div><div id="carForm:availableCars:1:pnl_content" class="ui-panel-content ui-widget-content"><table style="width:100%">
+<tbody>
+<tr>
+<td><img id="carForm:availableCars:1:j_idt47" src="../images/cars/Ferrari.jpg" alt="" /></td>
+</tr>
+</tbody>
+</table>
+</div></div><script type="text/javascript">widget_carForm_availableCars_1_pnl = new PrimeFaces.widget.Panel('carForm:availableCars:1:pnl', {visible:true});</script><script type="text/javascript">$(function() {widget_carForm_availableCars_1_j_idt48 = new PrimeFaces.widget.Draggable('carForm:availableCars:1:j_idt48',{target:'carForm:availableCars:1:pnl',cursor:'crosshair',revert:'invalid',handle:'.ui-panel-titlebar',stack:'.ui-panel'});});</script></td><td class="ui-datagrid-column"><div id="carForm:availableCars:2:pnl" class="ui-panel ui-widget ui-widget-content ui-corner-all" style="text-align:center"><div id="carForm:availableCars:2:pnl_header" class="ui-panel-titlebar ui-widget-header ui-corner-all"><span class="ui-panel-title">772c8772</span></div><div id="carForm:availableCars:2:pnl_content" class="ui-panel-content ui-widget-content"><table style="width:100%">
+<tbody>
+<tr>
+<td><img id="carForm:availableCars:2:j_idt47" src="../images/cars/Renault.jpg" alt="" /></td>
+</tr>
+</tbody>
+</table>
+</div></div><script type="text/javascript">widget_carForm_availableCars_2_pnl = new PrimeFaces.widget.Panel('carForm:availableCars:2:pnl', {visible:true});</script><script type="text/javascript">$(function() {widget_carForm_availableCars_2_j_idt48 = new PrimeFaces.widget.Draggable('carForm:availableCars:2:j_idt48',{target:'carForm:availableCars:2:pnl',cursor:'crosshair',revert:'invalid',handle:'.ui-panel-titlebar',stack:'.ui-panel'});});</script></td></tr><tr class="ui-datagrid-row"><td class="ui-datagrid-column"><div id="carForm:availableCars:3:pnl" class="ui-panel ui-widget ui-widget-content ui-corner-all" style="text-align:center"><div id="carForm:availableCars:3:pnl_header" class="ui-panel-titlebar ui-widget-header ui-corner-all"><span class="ui-panel-title">8107aa93</span></div><div id="carForm:availableCars:3:pnl_content" class="ui-panel-content ui-widget-content"><table style="width:100%">
+<tbody>
+<tr>
+<td><img id="carForm:availableCars:3:j_idt47" src="../images/cars/Opel.jpg" alt="" /></td>
+</tr>
+</tbody>
+</table>
+</div></div><script type="text/javascript">widget_carForm_availableCars_3_pnl = new PrimeFaces.widget.Panel('carForm:availableCars:3:pnl', {visible:true});</script><script type="text/javascript">$(function() {widget_carForm_availableCars_3_j_idt48 = new PrimeFaces.widget.Draggable('carForm:availableCars:3:j_idt48',{target:'carForm:availableCars:3:pnl',cursor:'crosshair',revert:'invalid',handle:'.ui-panel-titlebar',stack:'.ui-panel'});});</script></td><td class="ui-datagrid-column"><div id="carForm:availableCars:4:pnl" class="ui-panel ui-widget ui-widget-content ui-corner-all" style="text-align:center"><div id="carForm:availableCars:4:pnl_header" class="ui-panel-titlebar ui-widget-header ui-corner-all"><span class="ui-panel-title">5ddb1667</span></div><div id="carForm:availableCars:4:pnl_content" class="ui-panel-content ui-widget-content"><table style="width:100%">
+<tbody>
+<tr>
+<td><img id="carForm:availableCars:4:j_idt47" src="../images/cars/BMW.jpg" alt="" /></td>
+</tr>
+</tbody>
+</table>
+</div></div><script type="text/javascript">widget_carForm_availableCars_4_pnl = new PrimeFaces.widget.Panel('carForm:availableCars:4:pnl', {visible:true});</script><script type="text/javascript">$(function() {widget_carForm_availableCars_4_j_idt48 = new PrimeFaces.widget.Draggable('carForm:availableCars:4:j_idt48',{target:'carForm:availableCars:4:pnl',cursor:'crosshair',revert:'invalid',handle:'.ui-panel-titlebar',stack:'.ui-panel'});});</script></td><td class="ui-datagrid-column"><div id="carForm:availableCars:5:pnl" class="ui-panel ui-widget ui-widget-content ui-corner-all" style="text-align:center"><div id="carForm:availableCars:5:pnl_header" class="ui-panel-titlebar ui-widget-header ui-corner-all"><span class="ui-panel-title">515c2021</span></div><div id="carForm:availableCars:5:pnl_content" class="ui-panel-content ui-widget-content"><table style="width:100%">
+<tbody>
+<tr>
+<td><img id="carForm:availableCars:5:j_idt47" src="../images/cars/Ferrari.jpg" alt="" /></td>
+</tr>
+</tbody>
+</table>
+</div></div><script type="text/javascript">widget_carForm_availableCars_5_pnl = new PrimeFaces.widget.Panel('carForm:availableCars:5:pnl', {visible:true});</script><script type="text/javascript">$(function() {widget_carForm_availableCars_5_j_idt48 = new PrimeFaces.widget.Draggable('carForm:availableCars:5:j_idt48',{target:'carForm:availableCars:5:pnl',cursor:'crosshair',revert:'invalid',handle:'.ui-panel-titlebar',stack:'.ui-panel'});});</script></td></tr><tr class="ui-datagrid-row"><td class="ui-datagrid-column"><div id="carForm:availableCars:6:pnl" class="ui-panel ui-widget ui-widget-content ui-corner-all" style="text-align:center"><div id="carForm:availableCars:6:pnl_header" class="ui-panel-titlebar ui-widget-header ui-corner-all"><span class="ui-panel-title">2749b06c</span></div><div id="carForm:availableCars:6:pnl_content" class="ui-panel-content ui-widget-content"><table style="width:100%">
+<tbody>
+<tr>
+<td><img id="carForm:availableCars:6:j_idt47" src="../images/cars/Mercedes.jpg" alt="" /></td>
+</tr>
+</tbody>
+</table>
+</div></div><script type="text/javascript">widget_carForm_availableCars_6_pnl = new PrimeFaces.widget.Panel('carForm:availableCars:6:pnl', {visible:true});</script><script type="text/javascript">$(function() {widget_carForm_availableCars_6_j_idt48 = new PrimeFaces.widget.Draggable('carForm:availableCars:6:j_idt48',{target:'carForm:availableCars:6:pnl',cursor:'crosshair',revert:'invalid',handle:'.ui-panel-titlebar',stack:'.ui-panel'});});</script></td><td class="ui-datagrid-column"><div id="carForm:availableCars:7:pnl" class="ui-panel ui-widget ui-widget-content ui-corner-all" style="text-align:center"><div id="carForm:availableCars:7:pnl_header" class="ui-panel-titlebar ui-widget-header ui-corner-all"><span class="ui-panel-title">b46758fb</span></div><div id="carForm:availableCars:7:pnl_content" class="ui-panel-content ui-widget-content"><table style="width:100%">
+<tbody>
+<tr>
+<td><img id="carForm:availableCars:7:j_idt47" src="../images/cars/Renault.jpg" alt="" /></td>
+</tr>
+</tbody>
+</table>
+</div></div><script type="text/javascript">widget_carForm_availableCars_7_pnl = new PrimeFaces.widget.Panel('carForm:availableCars:7:pnl', {visible:true});</script><script type="text/javascript">$(function() {widget_carForm_availableCars_7_j_idt48 = new PrimeFaces.widget.Draggable('carForm:availableCars:7:j_idt48',{target:'carForm:availableCars:7:pnl',cursor:'crosshair',revert:'invalid',handle:'.ui-panel-titlebar',stack:'.ui-panel'});});</script></td><td class="ui-datagrid-column"><div id="carForm:availableCars:8:pnl" class="ui-panel ui-widget ui-widget-content ui-corner-all" style="text-align:center"><div id="carForm:availableCars:8:pnl_header" class="ui-panel-titlebar ui-widget-header ui-corner-all"><span class="ui-panel-title">4c605ad7</span></div><div id="carForm:availableCars:8:pnl_content" class="ui-panel-content ui-widget-content"><table style="width:100%">
+<tbody>
+<tr>
+<td><img id="carForm:availableCars:8:j_idt47" src="../images/cars/Opel.jpg" alt="" /></td>
+</tr>
+</tbody>
+</table>
+</div></div><script type="text/javascript">widget_carForm_availableCars_8_pnl = new PrimeFaces.widget.Panel('carForm:availableCars:8:pnl', {visible:true});</script><script type="text/javascript">$(function() {widget_carForm_availableCars_8_j_idt48 = new PrimeFaces.widget.Draggable('carForm:availableCars:8:j_idt48',{target:'carForm:availableCars:8:pnl',cursor:'crosshair',revert:'invalid',handle:'.ui-panel-titlebar',stack:'.ui-panel'});});</script></td></tr></tbody></table></div></div><script type="text/javascript">$(functio() { widget_carForm_availableCars = new PrimeFaces.widget.DataGrid('carForm:availableCars',{paginator:false});});</script></div></fieldset><script type="text/javascript">widget_carForm_j_idt44 = new PrimeFaces.widget.Fieldset('carForm:j_idt44', {});</script><fieldset id="carForm:selectedCars" class="ui-fieldset ui-widget ui-widget-content ui-corner-all" style="margin-top:20px"><legend class="ui-fieldset-legend ui-corner-all ui-state-default">Selected Cars</legend><div class="ui-fieldset-content"><span id="carForm:dropArea"><span style="font-size:24px;">!!!Drop here!!!</span></span></div></fieldset><script type="text/javascript">widget_carForm_selectedCars = new PrimeFaces.widget.Fieldset('carForm:selectedCars', {});</script><script type="text/javascript">$(function() {widget_carForm_j_idt61 = new PrimeFaces.widget.Droppable('carForm:j_idt61', {target:'carForm:selectedCars',activeClass:'ui-state-highlight',onDrop:handleDrop,tolerance:'touch',ajaxDrop:true,onDropUpdate:'carForm:dropArea carForm:availableCars'});});</script><div id="carForm:j_idt62" style="display:none" title="Car Detail"><table id="carForm:display" cellpadding="4">
+<thead>
+<tr><th colspan="2" scope="colgroup"><img id="carForm:j_idt63" src="../images/cars/.html" alt="" /></th></tr>
+</thead>
+<tbody>
+<tr>
+<td>Model:</td>
+<td><span style="font-weight:bold"></span></td>
+</tr>
+<tr>
+<td>Year:</td>
+<td><span style="font-weight:bold"></span></td>
+</tr>
+<tr>
+<td>Manufacturer:</td>
+<td><span style="font-weight:bold"></span></td>
+</tr>
+<tr>
+<td>Color:</td>
+<td><span style="font-weight:bold"></span></td>
+</tr>
+</tbody>
+</table>
+</div><script type="text/javascript">$(function() {carDialog = new PrimeFaces.widget.Dialog('carForm:j_idt62',{autoOpen:false,minHeight:0,width:200,draggable: false,modal: true,resizable:false,show:'fade',hide:'fade'});});</script><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="H4sIAAAAAAAAAMU8abAcxXmjp6cTAUJgwIAgh4whMW+ne6bnQDnQgYziJ6PiKWABKdzTh7Ri3+4yO096D6coXKlKquIfweXkBxUcx5Xg4pAsCQQCySVAWFxCCiAOmSRVJP/iquRHMJVK/pCve3d6t2dmjUjW9Z5gZnbm2/7uq7tn9/67s6jdSZ2LdtHddGImqzcmbqGdnVtoe9GSD196+dJvvr3QGdvkLG+0KN9EWdZKNzvLsp2p6OxsNfhs+/dvctSfu2cpHNX11Zmzatc9dZ5FN2Y7xbRYP5NlreZM6lx816TG0aDNHRO3JrsEy9Y+dPobP1jZub4x5jizbfjyojb8zdznPOAsVJ8eSJ0J9Z3ZCUmZ6Eyw1nS71RTNbOIPN2/Ir9dsTVttkWZzXxNzHaf3twoGTJ0L+ghvbs5MDz5sZ85ymmVpPZnJRAcEcHFfAOvSlM5N1jvZ7LffWf3wq/T7C50Fm53xTv1+oalcuGdcHeFL11ZTN5XRTNwC8hHpFN0t0u1vPP2733vk1JYxZ2zSWcYatNP5Op0WICktkpqisDYFxDR3rJ10lnfgO1yPkTmXdiHqrdqUSOu0Ub+fJg2xdrbd3q3E5HTUcQVwczWgn+jMNHvEqGNDZJ2JdVu3Tm6+eWMPDmgmQwDr0+3GxEYh6Uwj29S9uWZdu92Y29a6VzQ/eewr2x+5addNK5Ts9qxxrqhlAr4ANHZqWs9bRHNmYnZnNt1wnAVb7rj8yIWzs6A/8vn0tzWt74YxBzWlCF+SOZf0tbVtJ83WpWIKqFYPlwPgmFbJWI9LLZrlvQ/quErpe7EyS+Qa8xozV4sts1vygLpanDkrUtEEFYp021wbVHHNICvgAK2ZlAnQ9VwDnEGITH1rqaFokaZo0QARK42uljTqSUrTOXNjeTutTws9srk33gQTMZ++IOuiwTsiq+UXE6zT0cK5zODMDbOP88qB698euP7yrPF57R7rW62GoM1Tv5Y++N4j//MfY86CO51Fu2ljRlm8+sJqI0DvswWoLn5dHX7zXGWiaRq4vr6CbhACpxndkdZ5Lb/4fwpBHT118A17/jmylzlXVtsDS+vtc7aFc+P7irmZek2FpnpWB38zVxO7RsL8BsM8+hy6/epoebykbOCj4W7KcIfnz3Iva9Md9SaF9FkzV6Oy3cQwGM4fgxe2aVM0avo4KsbuM4xF82eXFwwyNhqLfNDwReaPr0urLHI0/P2F4S+Yx3hSzhWj4e5vDHfx/HF3IW8CYyndwaF4GhFj+1SGZTTd1Eqnb4TUVm+oUnMDTTv9itzibiHUd9cPq+82gtSHluZqBKjplqatPZuhxCoUI5ubmdgh0lX/+rd//1/f/rNoTFXfvWIkdVb24b4+M52I9E/3/tXq8/7yo+/oHuJT+Mv1k1VZX6HDsLVSFtugVlblNbQ6XbJntXPxQA08U7eK3ytmCxqxC9SiRqA+BarP7/VN+hSPkmR1/MLnpagnRjyPRcGlynczZYY1czUia/9Hw985dASGv1GXBVX8jSh7/hzGX6QYnM/kuae+a7pV08cR6e2/jd4+Tzk3Yr5WcmjFWztq3dNoOFuwNFfYPOaVFdPQxtfUYURMXWbU9Xn6xhFztQoca3dd7Kn1ziPi7VrD27k2jb8C3i6nu+hsB2LHTKfWvxwRhyQ3yXlk8NJd982IdA4ybK17dQPk2tGwtzFnbx7r8BWslYqaOoyIKdPvZlUeN6Ji4tT/obzRkp7HjmBloqeia93TiKQ9nTM2n733YJYdTfWw4I9zvqqqv3IbcMOwNuB2CLe3tVrDZ+nVKNAKLG7QTraZa2KOw6PL2z26oDW47jMHVxdbqK7+1R90DJMgT2j7ROZcq2fQZ2v66zXabjfqjGZ1MAQgSa1CTCm4tZoQp7ecsUIvZ6yE/xdkzjJdlq0XtKlm/Fvpjon+bO2EmKXQAsCFzivbcsg/+u6nrRf+gP7emHPRpDMOTVUH7K87la9m72pqdWGtWguAJ5M03SGUzB/u3Ziapo1G78Zy1mrMTDfVcoEi8PxJZ0n3TqcHMM71OsHg4NB6CRj8PNUbtgVXHVwP+Dw+16TTdTZwa1mD3j+3pcVFI3PWTAJ3tT53tWl1vzYJEKqd01Br73IunqbNGQDIZlKR3tpWsgT2rrnLEnT3q1OiARLeDH3SWqUR2hCGlI5+pMmrwJzLtcZb07TerAEUYF4x8CVA+aW7zuVrkwNfEw1g88pqNtVDwHH+IDAguaqEZAB8EsDVwonYYCllkV4S0QqbbRtHxNoRbwQr+o1hVtQlewLIvm7bgafcG+69ecxZBN0vwDKx2RmfEzSF4cEEWmnPHlYMaqN3b5EmsYe/62tLngEnm6o3doMTOstvbzXu7ewBu29CF87dwGVR6Gnq/64H/gb4/3rozwFgySaRpjStA2jCQur5KLRAX1MfHgV4GHV3Sw0YJUGEsT3gTwH/rSn07WCtSzfsTOc6DUXKUg97OOICW8AvAPAWmrZaTXX3IIAFkvshpzbYKUD61VQoLpbcJppq6QpAqcACE55YoMdhxO2gstaefETuCuzHJLbAnu/xMr5uhiuGw5ByLwp8C+gAoL1jZ1353fitbeU5S33mc18mkQV3Un04qg5PAEhEECaeJy2Qx9WHA+pwXFFOqQeM2pQ/rT4cVod9ACJIInzs2og+0KMANZtaKVfCij2P+F5gAYEBjK9vzOhQ8yMFhKLE48Qe6RX14VBOT8SlYFLYJB/oIVu6RaRMcAE+sjSOiUAossf6iSFcjRVT38WYcQvkhPqgZXBMWxcC6yJhScfrG5Tdm0MRFhNf+rbeDqoPH6rDcwAikcRScmSBvGtwKe27TAhPuMQC2W9GUYgiP0SuF7sWyBPaQHKmMApI5HNmgRw1OlVqD1GcCDe2ZXjWWMZJNQoF8/GlPcpT6sNLOQiTbsxpLMrkPp7TQjg0WaTgmz9WH04bJ2JRQPzYlstbFkcilIEXFUzwSaNJJV0vRiHoklogb2bOwtsEz800xj7lRb/5seF6n/ZoP+Dcq8B0KDdRjxJKZCLL4UYL5oxyPOUzGNuIfqY+fGy8ivBA4ESUDcZowAt8z+PUtt8jZhSlR1cSLqT0y9ZwNCc3ihmKsRuUPfw0SGf9ljsABsUuBj3ZXD9jeZ0IwiiCAGqBHDYgSgVhHIY+wnGZmMdzwQguKRXEpvcNA6K4dhFniRfzsnt/mLMUJzHYFLM18IGxGIVIJpgy+DdE1QqERNL1cYTKqja+7yKMEiFsjp61PEm4SYKZsA38jLEGJZeIBVHo+zZHzxlyddjzI4+xQMyavPyazsuvlYdV4h4bV8MGgeeF3NbIceMUWtwxxwFObBYfs1zLJyyMObEF9bxhUWkkiCLMmUzKGjmaC4onrgijQuA6boH4Cfg4oays+sO5LGUcC+TLqGxjH+bkBqAP8Bqb3Bds58OgWEztRH/W6FV5ORc+pxShsgsbRAhj7hIky6J7KR+FQfSTPA7LBmRyZ0IRliQIyi58KA9/cexSScOKUR7NDSiWEPu4sGP+Twy5immPeK7rBTbTew0inerBVgKGUdmYjejcmDCECrHiuBXQvVD6fhAmZTUeykfBPk9YRGzRvZnHfG272JOQx6Jho3QroSRBwFNFJWR0RBlzJbJN6qdWwAmTOIoTYnPUz8sndepmCQ0K7vmsGUW5JxDLMCvQ0vcARS6JI+rJyGb6lA3iSgG1lm27rxgQTYtwXZ+LCoc1ouNB4vpRbDvJq8bqlGF64GkyoXZuecYgUiYVCOF7LqqQrqmNJHFDHhYQ6XD+sdF0QlyIDjZH+y0ncQkWwuVxtTFopiMKJuV7pOzTxgOCIPR8hnGZFqOjKJABmDcpS/d0Tgv1YyZA2RbIS9YoFMybksA2hn6aO6MR0ST04oryyqiRAsseojai120PQDGKoZQtm5QpETwSYhYUQtBpI10dmgl2XVEIqicNyDGtIxxyUogvrxoP0PEFYQrx0C/L5dF8lFjIxMfStpdD+SiaIz/2ocMqZOVXLQ+IIrCnYl30nBUxfepjVQUP0bSODEhSgpOK6sqM4gUC0diVZY4OG9ElLJFQpZVdzaSsEMovLEPbpI5YrqaE4hNp28tTVtzloRe6SWD79HuWpkMBwUWICsM8kNPChI9IHNiafsuMoruHKEl8iSqilKEFGjlolguB7JhBpFuDCBECxFgg/2BFTJrEDDxJltVoXC2J3cQPE1suL1qhmUBLjHBoK6Dfg2i5eCHoObBped8gUiAuDULXRRU1w+lcdMj3BMeFlqnv9vt0gJex6ws7TZwyTKvIwDhV7bRtdQctJwFCklAWAvwbFiJBY8JjYcvlZUvTEHMTF0rcsquZ0i+IuYtJoUs+asxbR0wpqYgkHmIvuowm0DFxnwxhWhsDhpyFgnCIk+j2DeMkRr5tmHttb4R8JXGhY3rRiO6gRgRhQSJbLu8YWnQHwnDEwuIEjtH0SV20ycgNC+S+YmjRPSs0Xl7g2pXHCSMXLboIApDLbE2/aaSr1EiwhLhbsLqXc7loHSWEBK7rVjjJSyZiulDthoVaaq8Vmj3EYxpzm5YjtpNICN7Fia0TuXS7NYMnGZQWSVl0B4x5Q/+Bo4iXrc4ogLmBoFGhgDxiQHSa8FFIgkKr0LcX7fZQ4bickLJhGhAspWBQtpX9yNQvcZCoQjUsRwYTyHiIwFpCW0f9CQzd38kkDgNic7TfINKahu5a4iAui84UBNzlEYN/Q/L0Ph3gY6gHkqDM0YHcA1jsQa1U4KjfH+nKg9CY8sJ83rNW3HWVnmnV/JmZb/GYjDAMNKSb0N4Y+24UFxRw3Dis7tV84ZLYqyiUTInj+9Dpx4UJr+ctWqCAR1FUiJgfWIEMkj1KiqM8YXljiITHWWFmsa8j3ab7hITQhg8plLQHMGjDoqiiIDDZHqTiQfTAQ8jV+SjmUKwSO2W9bkSnfRpaXBITW7pHLbdHKJGxVyhm+5lEgbDAx17RYd8xHOlJEIEDWRzlTUsuEN8ZeGNF82MyLIHsKmihODlhnESJLgliGsSFiHnSYhpa2BB6JFt0TxsQRW6CIxyjAi1njVx0Ba8kR7lX1pEpToKQIRAMK+vIpAkMyd4NkopY93EO4hEK0ivMH50xxqDV6EFdgQtMn8hp0R4gEswx8ipygIl1zBfMDwvd50GjIxWlJBKU8tgvO6wRXeiBlkRcYbsmqyGXRYIwtywXY1JAa4K9Qrl1yJj3E7qzgSYAI1oGOW2sjovEhdxngTxpySXygwTaf69s3ia+gOyh3JKy7EcmfUJpDhG+MOf+lhXIImhzpShMaPQnYjUi7IZhcY7vRQOiC+sAKClWHv2yQheQPIJxCnXdfguE0sgPg0Jr+bblaoErJJWejehxQ4ueffYkgs7SDmQvm1F0bvRcXxJe0QcYHUU0QYSFYggiPbkSRxEKWYWODue0BL6ANqsQgszsltYRxZSICNuIjuWINAjzIw/yo52y3jNq7C56CCFwXKEjIzofikxIxGHZMI3DSojwrk/jslxMJlHVOTi1DfKOMUwtF4+wUlP4rmW7oXBjERWSzbuGXAUSx5ypSZohVbOeipCxZLIw63fckosncUxZAeRFw5HSdMBgkMCzaXk696NuvetDcylRxTpZP33KgENHYculv06m6zqo/Wgg7Tz9ghlFK0AGOOZRRYljZv0Q9ShCBQ84ZekoiLhfinV7DUeKljiMkkgid4g3dlciYs8LPZvp5ywQwhLo3Kk9yrMWCAp5nERhRR9g6roIELlQkpUziQmHroRqtphJtI5MGcq9iHrFWb/+dNGZbvcJQaqQsvrtnDZvHnJXuqKs6QPGG0MCOaDQKpy1bBd7YA2Y2Wrspyw91akWF6FwHlJjqgzLue/6UVKRp800WkAi4vqFxPe2cTXtAZgxJgrhsO8BOhwmbshwaNvu65boODRhAZUVAd5MIkAOQNBmVawq9MmFEQJSWK87ZYWgACPsF1uowwZET9EgGIQXNj7sM+TqCY2AMkloRWQwPYlwEXFxWDFb0V/HFAiaf1ERgvpzZDSW4EkVUzSHcpPySYhoWJgNfd1ye+Qhn5GCq71v1KhowTFBxCf2KKctD2DQSnBUWKp/zApBLnJ9PyhY3Ss5R92KjNGIBHxgoW2ZXmhbXo4Dxt6DyHVDXOhYTSmiQZLI81xRWH1+zJJCCL4ZhYXpLhMHujsbkBtSGg9Z8tD0E84TFBS6xGcsWkCSDLsFGztmxUcwDPCKwmTiYQOiyE186GKiQoLqO5ZOuSxwCYSUgd1E3W19yzUeTbLWnnqV5oL+q+xqK9jOXd9e8LXt2RcX6le3l3bfUHlqa18tTnekkp5m0t4Oq8/YqrT26ge/9SdHNlz4nfw1/oUWJ08ZDWtvIcJPKLNFZqJrr5klIPnCVEG/MtincxdKEi9gahPiwhMllK8Z4em6X1X1fhRU+0131gYMijMXlc3ZeF/iY+xxQoagfMF4UHc1mLnwnyh7szEvBBUU8grrCf2Ut09X3QRJP/KHoOz31Lr6IJKHUF2UO1BTxbNuIqBl2ZtJUxB9wHiMh6C0YzkM5nMeVkw2mhwnEhbEqDCV+6yFEoqZIBAuHYLySct8fC+hKCiMt9/SJYQcRsPCBPPbxiK0Lt0E8jeNhqB8z9Ilh3qYkjCotrAuShfjCCUVC8sGJUOSREkwTLBnbIslBOpeagdgs8LZtdgEgSxQxcLjxznKSAoUQV4fgvJnFkrpIuqzqGLngdElSQIZ+knFLg5T9fgslhyLWIWh685tq+waFP71zy94hr23W2/bXZztrHfWuJlz3dC9nfpVDvP9tbPl/ZR6++OEtW/1P89+8tG9p/YcH3PGNztL23SHmKrfLzbrdxA3tGaa2eb+64jdXbVUMfVwd//kok/+xdHvFqp7P4TAmO92nRhEOLDb9bvb3x/71kNXvZ6HxPNAIFf9sm+s+K1f/PO/hTsvG3MW3wnarXcUf/xOZ7HoMNoWdzoXNVtd6Hqr2d10q/bzwlP1ewN1vVFSb/1s0KS39XOy99ak/TsjvZ9eAaoWOOpVge6gWfenRMbPU3fznLLgjHVPp5ixcRtOl0v77Hs6Ax6z7+k8/5x9T9dRx+17P9IH+54upg7a9/S05BP2PR0QT5o0trxXbqRO7TOS2JaBLbRTtCE+fej2f7rhh9e9qTffXqC2pm8XNN2atmQd7GRFfkOBwnNlsdbz/IZ6XrVBV1tE4DhiP5x/x3FWP9YX9pVw61Znwe0Mzt9wnD8/25e5erTBccg34fwVx7nn7r7o1aNtjvODOThf4zgPXN3XgHq01XE2vQrnmuMc/n5fEerRRsf59A04w6D+ZX199Mi4azWcsbNg2d19tVypbzn+L+C83XGm7uxrp/fo0bfgvMVxPp7sK0k9utpZMH01nK91nLt1Kj85q94kMAobMwrD5xg7utuutYOzj7706fMfXvw9/SM7i3cKys126KXt3ssHPelnzqLejvfuRmlN4JczZ8WgHWS24mbb6uds1gy68MC7BBOD7xI4vb+B1xuWw3M+o323917FfP4YRdUbVaN5b2Qcwfhf1EK6RwvpnkarK6F7brl53cZfyunu1Bnf3apzp/8327Y5/9W9oGQYuKmnn3l8XXFlTz/d02heVBqfbM/+L5a/awvsSwAA" autocomplete="off" />
+</form>
+
+		<h3>Source</h3><div id="j_idt73"><ul><li><a href="#j_idt74"><em>datagrid.xhtml</em></a></li><li><a href="#j_idt76"><em>TableBean.java</em></a></li></ul><div id="j_idt74">
+		<pre name="code" class="xml">
+&lt;h:form id=&quot;carForm&quot;&gt;
+
+    &lt;p:fieldset legend=&quot;AvailableCars&quot;&gt;
+
+        &lt;p:dataGrid id=&quot;availableCars&quot; var=&quot;car&quot;
+                    value=&quot;#{tableBean.carsSmall}&quot; columns=&quot;3&quot;&gt;
+
+            &lt;p:column&gt;
+
+                &lt;p:panel id=&quot;pnl&quot; header=&quot;#{car.model}&quot; style=&quot;text-align:center&quot;&gt;
+                    &lt;h:panelGrid columns=&quot;1&quot; style=&quot;width:100%&quot;&gt;
+                        &lt;p:graphicImage value=&quot;/images/cars/#{car.manufacturer}.jpg&quot;/&gt;
+                    &lt;/h:panelGrid&gt;
+                &lt;/p:panel&gt;
+
+                &lt;p:draggable for=&quot;pnl&quot; revert=&quot;true&quot;
+                        handle=&quot;.ui-panel-titlebar&quot; stack=&quot;.ui-panel&quot;/&gt;
+
+            &lt;/p:column&gt;
+
+        &lt;/p:dataGrid&gt;
+
+    &lt;/p:fieldset&gt;
+
+    &lt;p:fieldset id=&quot;selectedCars&quot; legend=&quot;Selected Cars&quot; style=&quot;margin-top:20px&quot;&gt;
+
+        &lt;p:outputPanel id=&quot;dropArea&quot;&gt;
+
+            &lt;h:outputText value=&quot;!!!Drop here!!!&quot;
+                    rendered=&quot;#{empty tableBean.droppedCars}&quot;
+                    style=&quot;font-size:24px;&quot; /&gt;
+
+            &lt;p:dataTable var=&quot;car&quot; value=&quot;#{tableBean.droppedCars}&quot;
+                    rendered=&quot;#{not empty tableBean.droppedCars}&quot;&gt;
+
+                &lt;p:column headerText=&quot;Model&quot;&gt;
+                    &lt;h:outputText value=&quot;#{car.model}&quot; /&gt;
+                &lt;/p:column&gt;
+
+                &lt;p:column headerText=&quot;Year&quot;&gt;
+                    &lt;h:outputText value=&quot;#{car.year}&quot; /&gt;
+                &lt;/p:column&gt;
+
+                &lt;p:column headerText=&quot;Manufacturer&quot;&gt;
+                    &lt;h:outputText value=&quot;#{car.manufacturer}&quot; /&gt;
+                &lt;/p:column&gt;
+
+                &lt;p:column headerText=&quot;Color&quot;&gt;
+                    &lt;h:outputText value=&quot;#{car.color}&quot; /&gt;
+                &lt;/p:column&gt;
+
+                 &lt;p:column style=&quot;width:32px&quot;&gt;
+                    &lt;p:commandButton update=&quot;carForm:display&quot;
+                        oncomplete=&quot;carDialog.show()&quot;
+                        image=&quot;ui-icon ui-icon-search&quot;&gt;
+                        &lt;f:setPropertyActionListener value=&quot;#{car}&quot;
+                                    target=&quot;#{tableBean.selectedCar}&quot; /&gt;
+                    &lt;/p:commandButton&gt;
+                &lt;/p:column&gt;
+            &lt;/p:dataTable&gt;
+
+        &lt;/p:outputPanel&gt;
+
+    &lt;/p:fieldset&gt;
+
+    &lt;p:droppable for=&quot;selectedCars&quot; tolerance=&quot;touch&quot;
+                activeStyleClass=&quot;ui-state-highlight&quot;
+                datasource=&quot;availableCars&quot;
+                dropListener=&quot;#{tableBean.onCarDrop}&quot; 
+                onDropUpdate=&quot;dropArea availableCars&quot;
+                onDrop=&quot;handleDrop&quot;/&gt;
+
+    &lt;p:dialog header=&quot;Car Detail&quot; widgetVar=&quot;carDialog&quot; resizable=&quot;false&quot; draggable=&quot;false&quot;
+              width=&quot;200&quot; showEffect=&quot;fade&quot; hideEffect=&quot;fade&quot; modal=&quot;true&quot;&gt;
+
+        &lt;h:panelGrid id=&quot;display&quot; columns=&quot;2&quot; cellpadding=&quot;4&quot;&gt;
+
+            &lt;f:facet name=&quot;header&quot;&gt;
+                &lt;p:graphicImage value=&quot;/images/cars/#{tableBean.selectedCar.manufacturer}.jpg&quot;/&gt;
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value=&quot;Model:&quot; /&gt;
+            &lt;h:outputText value=&quot;#{tableBean.selectedCar.model}&quot;/&gt;
+
+            &lt;h:outputText value=&quot;Year:&quot; /&gt;
+            &lt;h:outputText value=&quot;#{tableBean.selectedCar.year}&quot;/&gt;
+
+            &lt;h:outputText value=&quot;Manufacturer:&quot; /&gt;
+            &lt;h:outputText value=&quot;#{tableBean.selectedCar.manufacturer}&quot;/&gt;
+
+            &lt;h:outputText value=&quot;Color:&quot; /&gt;
+            &lt;h:outputText value=&quot;#{tableBean.selectedCar.color}&quot;/&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+
+&lt;/h:form&gt;
+		</pre></div><div id="j_idt76">
+		<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean implements Serializable {
+
+	static {
+		colors = new String[10];
+		colors[0] = &quot;Black&quot;;
+		colors[1] = &quot;White&quot;;
+		colors[2] = &quot;Green&quot;;
+		colors[3] = &quot;Red&quot;;
+		colors[4] = &quot;Blue&quot;;
+		colors[5] = &quot;Orange&quot;;
+		colors[6] = &quot;Silver&quot;;
+		colors[7] = &quot;Yellow&quot;;
+		colors[8] = &quot;Brown&quot;;
+		colors[9] = &quot;Maroon&quot;;
+
+		manufacturers = new String[10];
+		manufacturers[0] = &quot;Mercedes&quot;;
+		manufacturers[1] = &quot;BMW&quot;;
+		manufacturers[2] = &quot;Volvo&quot;;
+		manufacturers[3] = &quot;Audi&quot;;
+		manufacturers[4] = &quot;Renault&quot;;
+		manufacturers[5] = &quot;Opel&quot;;
+		manufacturers[6] = &quot;Volkswagen&quot;;
+		manufacturers[7] = &quot;Chrysler&quot;;
+		manufacturers[8] = &quot;Ferrari&quot;;
+		manufacturers[9] = &quot;Ford&quot;;
+	}
+
+    private final static String[] colors;
+
+	private final static String[] manufacturers;
+
+	private List&lt;Car&gt; carsSmall;
+
+    private List&lt;Car&gt; droppedCars;
+
+	public TableBean() {
+		carsSmall = new ArrayList&lt;Car&gt;();
+        droppedCars = new ArrayList&lt;Car&gt;();
+
+		populateRandomCars(carsSmall, 9);
+	}
+
+	private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+
+	public List&lt;Car&gt; getCarsSmall() {
+		return carsSmall;
+	}
+
+	private int getRandomYear() {
+		return (int) (Math.random() * 50 + 1960);
+	}
+
+	private String getRandomColor() {
+		return colors[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomManufacturer() {
+		return manufacturers[(int) (Math.random() * 10)];
+	}
+
+	private String getRandomModel() {
+		return UUID.randomUUID().toString().substring(0, 8);
+	}
+
+    public void onCarDrop(DragDropEvent ddEvent) {
+        Car car = ((Car) ddEvent.getData());
+
+        droppedCars.add(car);
+        carsSmall.remove(car);
+    }
+
+    public List&lt;Car&gt; getDroppedCars() {
+        return droppedCars;
+    }
+}
+		</pre></div><input type="hidden" id="j_idt73_activeIndex" name="j_idt73_activeIndex" value="0" /></div><script type="text/javascript">widget_j_idt73 = new PrimeFaces.widget.TabView('j_idt73', {selected:0,dynamic:false,cache:true});</script>
+
+		</div>
+					</div>
+				</div>
+
+				<div style="clear: both;"> </div>
+			</div>
+		</div>
+
+		<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
+			<p class="copyright">©  2009-2010  •  <a href="http://www.prime.com.tr/">Prime Technology</a>.</p>
+			<p style="float:right">Running PrimeFaces-3.0-SNAPSHOT on Mojarra-2.0.4</p>
+		</div><div id="j_idt80" style="width:32px;height:32px;display:block;position:fixed;right:0;top:0;"><div id="j_idt80_start" style="display:none"><img id="j_idt81" src="../images/loading.gif" alt="" /></div><div id="j_idt80_complete" style="display:none"></div></div><script type="text/javascript">widget_j_idt80 = new PrimeFaces.widget.AjaxStatus('j_idt80');widget_j_idt80.bindFacet('ajaxStart', 'start');widget_j_idt80.bindFacet('ajaxComplete', 'complete');</script></body>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shCore.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushXml.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushJava.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushCss.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+		<script language="javascript">
+			dp.SyntaxHighlighter.ClipboardSwf = 'http://primefaces-rocks.appspot.com/syntaxhighlighter/scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code');
+		</script>
+
+<!-- Mirrored from primefaces-rocks.appspot.com/ui/dndGrid.jsf by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 May 2015 10:24:20 GMT -->
+</html>

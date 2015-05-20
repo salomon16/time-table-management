@@ -1,0 +1,368 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Mirrored from primefaces-rocks.appspot.com/ui/datatableComplex.jsf by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 May 2015 10:24:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/theme.css.jsf?ln=primefaces-aristo" />
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/ui/jquery-ui.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/jquery.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/ui/jquery-ui.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/core/core.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/button/button.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/wijmo/wijmo.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/wijmo/wijmo.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/menu/menu.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/paginator/paginator.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/datatable/datatable.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/yui/utilities/utilities.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/paginator/paginator.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/datatable/datatable.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/dialog/dialog.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/tabview/tabview.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/ajaxstatus/ajaxstatus.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+		<title>PrimeFaces - ShowCase</title>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<link type="text/css" rel="stylesheet" href="../css/default.css" />
+		<link type="text/css" rel="stylesheet" href="../syntaxhighlighter/styles/syntaxhighlighter.css" />
+		<style type="text/css">
+			.ui-paginator {
+				text-align: center;
+			}
+		</style></head><body>
+
+		<div class="ui-widget ui-widget-header">
+			<div id="logo">
+				<h1>PRIMEFACES</h1>
+			</div>
+		</div>
+
+		<div id="menu" class="ui-widget ui-widget-content ui-corner-all">
+			<ul id="main">
+				<li class="current_page_item"><a href="home.html" style="background:url('../design/ui.png') no-repeat center left;">UI Components</a></li>
+				<li><a href="http://primefaces-rocks.appspot.com/mobile/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;color:#FF9900;">Mobile</a></li>
+				<li><a href="http://primefaces-rocks.appspot.com/facestrace/createBook.jsf" style="background:url('../design/facestrace.png') no-repeat center left;">FacesTrace</a></li>
+			</ul>
+		</div>
+
+		<div id="wrapper">
+
+			<div id="page">
+				<div id="sidebar1" class="ui-widget-content ui-corner-all ui-helper-clearfix sidebar">
+					<ul>
+						<li>
+							<table>
+								<tr>
+									<td colspan="2" align="left" style="padding:8px;">
+<form id="j_idt8" name="j_idt8" method="post" action="http://primefaces-rocks.appspot.com/ui/datatableComplex.jsf" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt8" value="j_idt8" />
+<button id="j_idt8:themeButton" name="j_idt8:themeButton" style="width:100%" type="button">Change Theme: aristo</button><script type="text/javascript">widget_j_idt8_themeButton = new PrimeFaces.widget.CommandButton('j_idt8:themeButton', {});</script><span id="j_idt8:j_idt9"><ul id="j_idt8:j_idt9_menu"><li><h3>Themes</h3></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt11','j_idt8:j_idt11').submit('j_idt8');"><span class="wijmo-wijmenu-text">Aristo</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt12','j_idt8:j_idt12').submit('j_idt8');"><span class="wijmo-wijmenu-text">Black-Tie</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt13','j_idt8:j_idt13').submit('j_idt8');"><span class="wijmo-wijmenu-text">Blitzer</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt14','j_idt8:j_idt14').submit('j_idt8');"><span class="wijmo-wijmenu-text">BlueSky (RichFaces)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt15','j_idt8:j_idt15').submit('j_idt8');"><span class="wijmo-wijmenu-text">Casablanca (Trinidad)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt16','j_idt8:j_idt16').submit('j_idt8');"><span class="wijmo-wijmenu-text">Cupertino</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt17','j_idt8:j_idt17').submit('j_idt8');"><span class="wijmo-wijmenu-text">Dark-Hive</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt18','j_idt8:j_idt18').submit('j_idt8');"><span class="wijmo-wijmenu-text">Dot-Luv</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt19','j_idt8:j_idt19').submit('j_idt8');"><span class="wijmo-wijmenu-text">Eggplant</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt20','j_idt8:j_idt20').submit('j_idt8');"><span class="wijmo-wijmenu-text">Excite-Bike</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt21','j_idt8:j_idt21').submit('j_idt8');"><span class="wijmo-wijmenu-text">Flick</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt22','j_idt8:j_idt22').submit('j_idt8');"><span class="wijmo-wijmenu-text">Glass-X (RichFaces)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt23','j_idt8:j_idt23').submit('j_idt8');"><span class="wijmo-wijmenu-text">Hot-Sneaks</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt24','j_idt8:j_idt24').submit('j_idt8');"><span class="wijmo-wijmenu-text">Humanity</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt25','j_idt8:j_idt25').submit('j_idt8');"><span class="wijmo-wijmenu-text">Le-Frog</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt26','j_idt8:j_idt26').submit('j_idt8');"><span class="wijmo-wijmenu-text">Midnight (Wijmo)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt27','j_idt8:j_idt27').submit('j_idt8');"><span class="wijmo-wijmenu-text">Mint-Choc</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt28','j_idt8:j_idt28').submit('j_idt8');"><span class="wijmo-wijmenu-text">Overcast</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt29','j_idt8:j_idt29').submit('j_idt8');"><span class="wijmo-wijmenu-text">Pepper-Grinder</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt30','j_idt8:j_idt30').submit('j_idt8');"><span class="wijmo-wijmenu-text">Redmond</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt31','j_idt8:j_idt31').submit('j_idt8');"><span class="wijmo-wijmenu-text">Rocket (Wijmo)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt32','j_idt8:j_idt32').submit('j_idt8');"><span class="wijmo-wijmenu-text">Sam</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt33','j_idt8:j_idt33').submit('j_idt8');"><span class="wijmo-wijmenu-text">Smoothness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt34','j_idt8:j_idt34').submit('j_idt8');"><span class="wijmo-wijmenu-text">South-Street</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt35','j_idt8:j_idt35').submit('j_idt8');"><span class="wijmo-wijmenu-text">Start</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt36','j_idt8:j_idt36').submit('j_idt8');"><span class="wijmo-wijmenu-text">Sunny</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt37','j_idt8:j_idt37').submit('j_idt8');"><span class="wijmo-wijmenu-text">Swanky-Purse</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt38','j_idt8:j_idt38').submit('j_idt8');"><span class="wijmo-wijmenu-text">Trontastic</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt39','j_idt8:j_idt39').submit('j_idt8');"><span class="wijmo-wijmenu-text">UI-Lightness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt40','j_idt8:j_idt40').submit('j_idt8');"><span class="wijmo-wijmenu-text">UI-Darkness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt41','j_idt8:j_idt41').submit('j_idt8');"><span class="wijmo-wijmenu-text">Vader</span></a></li></ul></span><script type="text/javascript">themeMenu = new PrimeFaces.widget.Menu('j_idt8:j_idt9',{position:'dynamic',zindex:1,animation:{animated:'fade',duration:400},my:'left top',at:'left bottom',trigger:'j_idt8:themeButton',triggerEvent:'click',styleClass:'themeMenu'});</script><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="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" autocomplete="off" />
+</form>
+									</td>
+								</tr>
+                                <tr>
+									<td colspan="2" align="center">
+										<a href="macosx.html">MOCK OS X</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<ul>
+											<li><a href="ajaxHome.html">Ajax Engine</a></li>
+											<li><a href="ajaxPollHome.html">Ajax Poll</a></li>
+                                            <li><a href="ajaxStatusHome.html">Ajax Status</a></li>
+											<li><a href="accordionPanelHome.html">Accordion</a></li>
+											<li><a href="autocompleteHome.html">AutoComplete</a></li>
+											<li><a href="breadCrumb.html">BreadCrumb</a></li>
+                                            <li><a href="button.html">Button</a></li>
+											<li><a href="calendarHome.html" class="new">Calendar</a></li>
+											<li><a href="captchaHome.html">Captcha</a></li>
+											<li><a href="carouselHome.html">Carousel</a></li>
+											<li><a href="chartsHome.html">Charts</a></li>
+											<li><a href="commandButton.html">CommandButton</a></li>
+											<li><a href="commandLink.html">CommandLink</a></li>
+											<li><a href="contextMenuHome.html">ContextMenu</a></li>
+											<li><a href="collector.html">Collector</a></li>
+											<li><a href="colorPicker.html">Color Picker</a></li>
+											<li><a href="confirmDialog.html">ConfirmDialog</a></li>
+											<li><a href="dashboard.html">Dashboard</a></li>
+											<li><a href="exporterHome.html">Data Exporter</a></li>
+											<li><a href="datagrid.html">DataGrid</a></li>
+											<li><a href="dataListHome.html">DataList</a></li>
+											<li><a href="datatableHome.html">DataTable</a></li>
+											<li><a href="dialogHome.html">Dialog</a></li>
+											<li><a href="dock.html">Dock</a></li>
+                                            <li><a href="dragdropHome.html">DragDrop</a></li>
+											<li><a href="dynamicImage.html">Dyna Image</a></li>
+											<li><a href="editor.html">Editor</a></li>
+											<li><a href="effectsHome.html">Effects</a></li>
+											<li><a href="fileUploadHome.html" class="new">FileUpload</a></li>
+											<li><a href="fileDownload.html">FileDownload</a></li>
+                                            <li><a href="fieldset.html">Fieldset</a></li>
+											<li><a href="focus.html">Focus</a></li>
+                                            <li><a href="galleria.html">Galleria</a></li>
+											<li><a href="gmapHome.html">Google Maps</a></li>
+											<li><a href="graphicText.html">Graphic Text</a></li>
+											<li><a href="growl.html">Growl</a></li>
+                                            <li><a href="hotkey.html">HotKey</a></li>
+                                            <li><a href="idlemonitorHome.html">IdleMonitor</a></li>
+                                            <li><a href="imageCompare.html">ImageCompare</a></li>
+                                            <li><a href="imageCropper.html">ImageCropper</a></li>
+                                            <li><a href="imageSwitch.html">ImageSwitch</a></li>
+                                            <li><a href="inplace.html">Inplace</a></li>
+                                            <li><a href="inputText.html">InputText</a></li>
+                                            <li><a href="inputTextarea.html">InputTextarea</a></li>
+										</ul>
+									</td>
+									<td>
+										<ul>
+											<li><a href="keyboard.html">Keyboard</a></li>
+											<li><a href="layoutHome.html">Layout</a></li>
+											<li><a href="lightboxHome.html">LightBox</a></li>
+											<li><a href="inputMask.html">Masked Input</a></li>
+											<li><a href="media.html">Media</a></li>
+											<li><a href="menu.html">Menu</a></li>
+											<li><a href="menubar.html">Menubar</a></li>
+											<li><a href="menubutton.html">MenuButton</a></li>
+											<li><a href="messages.html">Messages</a></li>
+											<li><a href="notificationBar.html">NotificationBar</a></li>
+											<li><a href="outputPanel.html">OutputPanel</a></li>
+											<li><a href="panel.html">Panel</a></li>
+											<li><a href="password.html">Password</a></li>
+											<li><a href="picklist.html">PickList</a></li>
+											<li><a href="printer.html">Printer</a></li>
+											<li><a href="progressBar.html">ProgressBar</a></li>
+											<li><a href="callbackParams.html">RequestContext</a></li>
+											<li><a href="resizableHome.html">Resizable</a></li>
+											<li><a href="remoteCommand.html">RemoteCommand</a></li>
+                                            <li><a href="ring.html" class="new">Ring</a></li>
+											<li><a href="scheduleHome.html">Schedule</a></li>
+                                            <li><a href="scrollPanel.html" class="new">ScrollPanel</a></li>
+                                            <li><a href="selectBooleanCheckbox.html" class="new">SelectBoolCheckbox</a></li>
+                                            <li><a href="selectManyCheckbox.html" class="new">SelectManyCheckbox</a></li>
+                                            <li><a href="selectOneListbox.html" class="new">SelectOneListbox</a></li>
+                                            <li><a href="selectOneMenu.html" class="new">SelectOneMenu</a></li>
+                                            <li><a href="selectOneRadio.html" class="new">SelectOneRadio</a></li>
+                                            <li><a href="selectManyMenu.html" class="new">SelectManyMenu</a></li>
+											<li><a href="separator.html">Separator</a></li>
+											<li><a href="slider.html">Slider</a></li>
+                                            <li><a href="spacer.html">Spacer</a></li>
+											<li><a href="spinner.html">Spinner</a></li>
+											<li><a href="stack.html">Stack</a></li>
+											<li><a href="rating.html">Star Rating</a></li>
+											<li><a href="tabviewHome.html">TabView</a></li>
+                                            <li><a href="tagCloud.html" class="new">TagCloud</a></li>
+											<li><a href="terminalHome.html">Terminal</a></li>
+											<li><a href="themeswitcher.html">Themeswitcher</a></li>
+                                            <li><a href="toolbar.html">Toolbar</a></li>
+											<li><a href="tooltipHome.html">Tooltip</a></li>
+											<li><a href="treeHome.html" class="new">Tree</a></li>
+											<li><a href="treeTableHome.html">TreeTable</a></li>
+											<li><a href="watermark.html">Watermark</a></li>
+											<li><a href="wizard.html">Wizard</a></li>
+										</ul>
+									</td>
+								</tr>
+							</table>
+
+						</li>
+					</ul>
+				</div>
+
+				<div id="content" class="ui-widget">
+					<div class="post">
+	<h1 class="title ui-widget-header ui-corner-all">DataTable - Complex</h1>
+	
+		<div class="entry"> 
+            <p>This example demonstrates various features such as paging, sorting, filtering and selection.</p>
+<form id="j_idt44" name="j_idt44" method="post" action="http://primefaces-rocks.appspot.com/ui/datatableComplex.jsf" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt44" value="j_idt44" />
+<div id="j_idt44:j_idt45" class="ui-datatable ui-widget"><div class="ui-datatable-header ui-widget-header ui-corner-tl ui-corner-tr">
+                        List of Cars
+                    </div><div id="j_idt44:j_idt45_paginatortop" class="ui-paginator ui-paginator-top ui-widget-header"></div><table><thead><tr><th id="j_idt44:j_idt45:j_idt47" class="ui-state-default ui-sortable-column"><span class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>Model<input id="j_idt44:j_idt45:j_idt47_filter" name="j_idt44:j_idt45:j_idt47_filter" class="ui-column-filter" value="" onkeyup="widget_j_idt44_j_idt45.filter()" /></th><th id="j_idt44:j_idt45:j_idt50" class="ui-state-default ui-sortable-column"><span class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>Year<input id="j_idt44:j_idt45:j_idt50_filter" name="j_idt44:j_idt45:j_idt50_filter" class="ui-column-filter" value="" onkeyup="widget_j_idt44_j_idt45.filter()" /></th><th id="j_idt44:j_idt45:j_idt53" class="ui-state-default ui-sortable-column"><span class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>Manufacturer<input id="j_idt44:j_idt45:j_idt53_filter" name="j_idt44:j_idt45:j_idt53_filter" class="ui-column-filter" value="" onkeyup="widget_j_idt44_j_idt45.filter()" /></th><th id="j_idt44:j_idt45:j_idt56" class="ui-state-default ui-sortable-column"><span class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span>Color<input id="j_idt44:j_idt45:j_idt56_filter" name="j_idt44:j_idt45:j_idt56_filter" class="ui-column-filter" value="" onkeyup="widget_j_idt44_j_idt45.filter()" /></th></tr></thead><tbody id="j_idt44:j_idt45_data" class="ui-datatable-data"><tr id="j_idt44:j_idt45_row_0" class="ui-widget-content ui-datatable-even"><td>a7c563bb</td><td>1989</td><td>Volvo</td><td>Black</td></tr><tr id="j_idt44:j_idt45_row_1" class="ui-widget-content ui-datatable-odd"><td>764be0ee</td><td>1989</td><td>Mercedes</td><td>Orange</td></tr><tr id="j_idt44:j_idt45_row_2" class="ui-widget-content ui-datatable-even"><td>18a0804b</td><td>1993</td><td>Opel</td><td>Yellow</td></tr><tr id="j_idt44:j_idt45_row_3" class="ui-widget-content ui-datatable-odd"><td>536c1823</td><td>1975</td><td>Opel</td><td>Blue</td></tr><tr id="j_idt44:j_idt45_row_4" class="ui-widget-content ui-datatable-even"><td>6f7f5f58</td><td>1999</td><td>Chrysler</td><td>Maroon</td></tr><tr id="j_idt44:j_idt45_row_5" class="ui-widget-content ui-datatable-odd"><td>94a7a5b8</td><td>2001</td><td>Volkswagen</td><td>Orange</td></tr><tr id="j_idt44:j_idt45_row_6" class="ui-widget-content ui-datatable-even"><td>c1013295</td><td>1975</td><td>Opel</td><td>Red</td></tr><tr id="j_idt44:j_idt45_row_7" class="ui-widget-content ui-datatable-odd"><td>0efeb316</td><td>1983</td><td>Renault</td><td>Brown</td></tr><tr id="j_idt44:j_idt45_row_8" class="ui-widget-content ui-datatable-even"><td>1d8168f3</td><td>1962</td><td>Volkswagen</td><td>Red</td></tr><tr id="j_idt44:j_idt45_row_9" class="ui-widget-content ui-datatable-odd"><td>e8346cd2</td><td>1995</td><td>Volkswagen</td><td>Green</td></tr></tbody></table><div id="j_idt44:j_idt45_paginatorbottom" class="ui-paginator ui-paginator-bottom ui-widget-header ui-corner-bl ui-corner-br"></div><input type="hidden" id="j_idt44:j_idt45_selection" name="j_idt44:j_idt45_selection" value="" /></div><script type="text/javascript">widget_j_idt44_j_idt45 = new PrimeFaces.widget.DataTable('j_idt44:j_idt45',{formId:'j_idt44',paginator:new YAHOO.widget.Paginator({rowsPerPage:10,totalRecords:50,initialPage:1,containers:['j_idt44:j_idt45_paginatortop','j_idt44:j_idt45_paginatorbottom']}),selectionMode:'single',instantSelect:true,onRowSelectUpdate:'j_idt44:display',onRowSelectComplete:function(xhr, status, args) {carDialog.show()}});</script><div id="j_idt44:j_idt59" style="display:none" title="Car Detail"><table id="j_idt44:display" cellpadding="4">
+<thead>
+<tr><th colspan="2" scope="colgroup"><img id="j_idt44:j_idt60" src="../images/cars/.html" alt="" /></th></tr>
+</thead>
+<tbody>
+<tr>
+<td>Model:</td>
+<td><span style="font-weight:bold"></span></td>
+</tr>
+<tr>
+<td>Year:</td>
+<td><span style="font-weight:bold"></span></td>
+</tr>
+<tr>
+<td>Manufacturer:</td>
+<td><span style="font-weight:bold"></span></td>
+</tr>
+<tr>
+<td>Color:</td>
+<td><span style="font-weight:bold"></span></td>
+</tr>
+</tbody>
+</table>
+</div><script type="text/javascript">$(function() {carDialog = new PrimeFaces.widget.Dialog('j_idt44:j_idt59',{autoOpen:false,minHeight:0,width:200,resizable:false,show:'explode',hide:'explode'});});</script><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="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" autocomplete="off" />
+</form>
+			
+			<h3>Source</h3><div id="j_idt70"><ul><li><a href="#j_idt71"><em>datatableComplex.xhtml</em></a></li><li><a href="#j_idt73"><em>TableBean.java</em></a></li></ul><div id="j_idt71">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+
+    &lt;p:dataTable var=&quot;car&quot; value=&quot;#{tableBean.cars}&quot; paginator=&quot;true&quot; rows=&quot;10&quot;
+                selection=&quot;#{tableBean.selectedCar}&quot; selectionMode=&quot;single&quot;
+                onRowSelectUpdate=&quot;display&quot; onRowSelectComplete=&quot;carDialog.show()&quot;&gt;
+
+        &lt;f:facet name=&quot;header&quot;&gt;
+            List of Cars
+        &lt;/f:facet&gt;
+
+        &lt;p:column sortBy=&quot;#{car.model}&quot; filterBy=&quot;#{car.model}&quot;&gt;
+            &lt;f:facet name=&quot;header&quot;&gt;
+                &lt;h:outputText value=&quot;Model&quot; /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value=&quot;#{car.model}&quot; /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column sortBy=&quot;#{car.year}&quot; filterBy=&quot;#{car.year}&quot;&gt;
+            &lt;f:facet name=&quot;header&quot;&gt;
+                &lt;h:outputText value=&quot;Year&quot; /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value=&quot;#{car.year}&quot; /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column sortBy=&quot;#{car.manufacturer}&quot; filterBy=&quot;#{car.manufacturer}&quot;&gt;
+            &lt;f:facet name=&quot;header&quot;&gt;
+                &lt;h:outputText value=&quot;Manufacturer&quot; /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value=&quot;#{car.manufacturer}&quot; /&gt;
+        &lt;/p:column&gt;
+
+        &lt;p:column sortBy=&quot;#{car.color}&quot; filterBy=&quot;#{car.color}&quot;&gt;
+            &lt;f:facet name=&quot;header&quot;&gt;
+                &lt;h:outputText value=&quot;Color&quot; /&gt;
+            &lt;/f:facet&gt;
+            &lt;h:outputText value=&quot;#{car.color}&quot; /&gt;
+        &lt;/p:column&gt;
+
+    &lt;/p:dataTable&gt;
+
+    &lt;p:dialog header=&quot;Car Detail&quot; widgetVar=&quot;carDialog&quot; resizable=&quot;false&quot;
+              width=&quot;200&quot; showEffect=&quot;explode&quot; hideEffect=&quot;explode&quot;&gt;
+
+        &lt;h:panelGrid id=&quot;display&quot; columns=&quot;2&quot; cellpadding=&quot;4&quot;&gt;
+
+            &lt;f:facet name=&quot;header&quot;&gt;
+                &lt;p:graphicImage value=&quot;/images/cars/#{tableBean.selectedCar.manufacturer}.jpg&quot;/&gt;
+            &lt;/f:facet&gt;
+
+            &lt;h:outputText value=&quot;Model:&quot; /&gt;
+            &lt;h:outputText value=&quot;#{tableBean.selectedCar.model}&quot; /&gt;
+
+            &lt;h:outputText value=&quot;Year:&quot; /&gt;
+            &lt;h:outputText value=&quot;#{tableBean.selectedCar.year}&quot; /&gt;
+
+            &lt;h:outputText value=&quot;Manufacturer:&quot; /&gt;
+            &lt;h:outputText value=&quot;#{tableBean.selectedCar.manufacturer}&quot; /&gt;
+
+            &lt;h:outputText value=&quot;Color:&quot; /&gt;
+            &lt;h:outputText value=&quot;#{tableBean.selectedCar.color}&quot; /&gt;
+        &lt;/h:panelGrid&gt;
+    &lt;/p:dialog&gt;
+
+&lt;/h:form&gt;
+                    </pre></div><div id="j_idt73">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import org.primefaces.examples.domain.Car;
+
+public class TableBean {
+
+    static {
+		colors = new String[10];
+		colors[0] = &quot;Black&quot;;
+		colors[1] = &quot;White&quot;;
+		colors[2] = &quot;Green&quot;;
+		colors[3] = &quot;Red&quot;;
+		colors[4] = &quot;Blue&quot;;
+		colors[5] = &quot;Orange&quot;;
+		colors[6] = &quot;Silver&quot;;
+		colors[7] = &quot;Yellow&quot;;
+		colors[8] = &quot;Brown&quot;;
+		colors[9] = &quot;Maroon&quot;;
+
+		manufacturers = new String[10];
+		manufacturers[0] = &quot;Mercedes&quot;;
+		manufacturers[1] = &quot;BMW&quot;;
+		manufacturers[2] = &quot;Volvo&quot;;
+		manufacturers[3] = &quot;Audi&quot;;
+		manufacturers[4] = &quot;Renault&quot;;
+		manufacturers[5] = &quot;Opel&quot;;
+		manufacturers[6] = &quot;Volkswagen&quot;;
+		manufacturers[7] = &quot;Chrysler&quot;;
+		manufacturers[8] = &quot;Ferrari&quot;;
+		manufacturers[9] = &quot;Ford&quot;;
+	}
+
+    private final static String[] colors;
+
+	private final static String[] manufacturers;
+
+	private List&lt;Car&gt; cars;
+
+	private Car selectedCar;
+
+	public TableBean() {
+		cars = new ArrayList&lt;Car&gt;();
+
+		populateRandomCars(carsSmall, 50);
+	}
+
+    private void populateRandomCars(List&lt;Car&gt; list, int size) {
+		for(int i = 0 ; i &lt; size ; i++)
+			list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+	}
+
+	public Car getSelectedCar() {
+		return selectedCar;
+	}
+	public void setSelectedCar(Car selectedCar) {
+		this.selectedCar = selectedCar;
+	}
+
+	public List&lt;Car&gt; getCars() {
+		return cars;
+	}
+}
+	
+					</pre></div><input type="hidden" id="j_idt70_activeIndex" name="j_idt70_activeIndex" value="0" /></div><script type="text/javascript">widget_j_idt70 = new PrimeFaces.widget.TabView('j_idt70', {selected:0,dynamic:false,cache:true});</script>
+</div>
+					</div>
+				</div>
+
+				<div style="clear: both;"> </div>
+			</div>
+		</div>
+
+		<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
+			<p class="copyright">©  2009-2010  •  <a href="http://www.prime.com.tr/">Prime Technology</a>.</p>
+			<p style="float:right">Running PrimeFaces-3.0-SNAPSHOT on Mojarra-2.0.4</p>
+		</div><div id="j_idt77" style="width:32px;height:32px;display:block;position:fixed;right:0;top:0;"><div id="j_idt77_start" style="display:none"><img id="j_idt78" src="../images/loading.gif" alt="" /></div><div id="j_idt77_complete" style="display:none"></div></div><script type="text/javascript">widget_j_idt77 = new PrimeFaces.widget.AjaxStatus('j_idt77');widget_j_idt77.bindFacet('ajaxStart', 'start');widget_j_idt77.bindFacet('ajaxComplete', 'complete');</script></body>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shCore.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushXml.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushJava.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushCss.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+		<script language="javascript">
+			dp.SyntaxHighlighter.ClipboardSwf = 'http://primefaces-rocks.appspot.com/syntaxhighlighter/scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code');
+		</script>
+
+<!-- Mirrored from primefaces-rocks.appspot.com/ui/datatableComplex.jsf by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 May 2015 10:24:18 GMT -->
+</html>

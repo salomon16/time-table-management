@@ -20,6 +20,7 @@ public class DepartementHelper {
 				.getEnseignants()));
 		departement.setCursus(CursusHelper.dtoToModels(departementDto
 				.getSpecialites()));
+		departement.setSalles(SalleHelper.dtoToModels(departementDto.getSalleDto()));
 		departement.setPersonnels(PersonnelAdministratifHelper.dtoToModels(departementDto.getPersonnels()));
 
 		return departement;
@@ -40,6 +41,7 @@ public class DepartementHelper {
 				.getEnseignants()));
 		departementDto.setSpecialites(CursusHelper.modelsToDto(departement
 				.getCursus()));
+		departementDto.setSalleDto(SalleHelper.modelsToDto(departement.getSalles()));
 		departementDto.setPersonnels(PersonnelAdministratifHelper.modelsToDto(departement.getPersonnels()));
 		return departementDto;
 

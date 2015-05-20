@@ -1,0 +1,63 @@
+<ui:composition  xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+template="/templates/template.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<p:growl id="growl"/>
+			<b:panel id="panel" look="primary">
+				<p:messages id="msg"/>
+					<f:facet name="heading">Nouveau Niveau</f:facet> 
+				<b:row>
+					<b:column span="4"><h:outputLabel value="Nom: " for="nom" /></b:column>
+					<b:column span="4"><b:inputText id="nom" value="#{niveauBean.niveauDto.nom}" required="true" /></b:column>
+					<b:column span="4"><p:message for="nom" /></b:column>
+				</b:row>
+				<b:row>
+					<b:column span="4"><h:outputLabel value="Abbreviation: " for="abbreviation" /></b:column>
+					<b:column span="4"><b:inputText id="abbreviation" value="#{niveauBean.niveauDto.abbreviation}" required="true" /></b:column>
+					<b:column span="4"><p:message for="abbreviation" /></b:column>
+				</b:row>
+				<b:row>
+						<b:column span="4"><h:outputLabel for="departement" value="Departement: " /></b:column>
+						<b:column span="4">
+							<p:selectOneMenu id="departement" value="#{planEtudeBean.selectedDepartement}" style="width:350px">
+								<p:ajax update="parcours" listener="#{planEtudeBean.onDepartementChange}" />
+								<f:selectItem itemLabel="Select Departement" itemValue="" noSelectionOption="true" />
+								<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.nom}" />
+							</p:selectOneMenu>
+						</b:column>
+						<b:column span="4"><p:message for="departement" /></b:column>
+				</b:row>	
+						<b:row>
+							<b:column span="4"><h:outputLabel for="parcours" value="Parcours " /></b:column>
+							<b:column span="4">
+								<p:selectOneMenu id="parcours" value="#{niveauBean.selectedParcours}" style="width:350px">
+									<f:selectItem itemLabel="Select Parcours" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{planEtudeBean.listeParcours}" var="parcours" itemLabel="#{parcours.nom}" itemValue="#{parcours.parcoursID}"/>
+								</p:selectOneMenu>
+							</b:column>
+							<b:column span="4"><p:message for="parcours" /></b:column>
+						</b:row>
+		<p:separator></p:separator>
+		<b:row>
+			<b:column span="2"></b:column>
+			<b:column span="4"><p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" ajax="false" /></b:column>
+			<b:column span="4"><p:commandButton id="niveau" type="submit" update="growl" value="Enregistrer" icon="ui-icon-check" action="#{niveauBean.save()}" ajax="true" /></b:column>
+			<b:column span="2"></b:column>
+		</b:row>
+
+			</b:panel>
+			<p:blockUI block="panel" trigger="niveau">  
+				<h:panelGrid columns="2">  
+			        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
+			        <h:outputText value="Ajout niveau..." style="white-space: nowrap;"/>  
+	    		</h:panelGrid>  
+			</p:blockUI> 
+
+		</h:form>
+	</ui:define>
+</ui:composition>

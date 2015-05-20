@@ -7,10 +7,9 @@ import java.util.Collection;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
-
-import org.primefaces.context.RequestContext;
 
 import edu.ipsas.edt.dto.CursusDto;
 import edu.ipsas.edt.dto.DepartementDto;
@@ -18,7 +17,7 @@ import edu.ipsas.edt.dto.ParcoursDto;
 import edu.ipsas.edt.service.EnseignantService;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class ParcoursBean implements Serializable{
 
 	/**
@@ -44,8 +43,8 @@ public class ParcoursBean implements Serializable{
 		long id = getEnseignantService().addParcours(parcoursDto);
 		
 		if(id > 0){
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,"Enregistrement","Succes");
-			RequestContext.getCurrentInstance().showMessageInDialog(message);
+			 FacesContext fc = FacesContext.getCurrentInstance();  
+		        fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Nouveau parcours ajouté avec succes", null));  
 		}
 	}
 	

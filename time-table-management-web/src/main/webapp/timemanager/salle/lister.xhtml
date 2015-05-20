@@ -7,12 +7,13 @@
 <ui:define name="content">
 	<h:form>
 		<p:dataTable var="salle" value="#{salleBean.allSalle}">
+			<f:facet name="header">Liste des salles</f:facet>
 			<p:column headerText="Numero">
 				<h:outputText value="#{salle.numero}" />
 			</p:column>
 
 			<p:column headerText="Type Salle">
-				<h:outputText value="#{salle.typeSalleDto.nom}" />
+				<h:outputText value="#{salle.typeSalle}" />
 			</p:column>
 
 			<p:column headerText="Capacite">

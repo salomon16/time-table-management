@@ -1,57 +1,58 @@
-<!DOCTYPE html>
 <ui:composition xmlns="http://www.w3c.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/timemanager/index.xhtml">
-	<!-- 	<ui:include src="/resources/css/style.css" /> -->
-
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui" 
+template="/templates/template.xhtml">
 	<ui:define name="content">
-		<p:breadCrumb>
-			<p:menuitem value="timemanage/parcours/ajouter"
-				url="/timemanager/parcours/ajouter.xhtml" />
-		</p:breadCrumb>
+		
 		<h:form id="formajout">
-			<p:panel id="panel" header="Nouveau Parcours">
-
-				<h:panelGrid columns="3" cellpadding="5" styleClass="panelGrid">
-
-					<h:outputLabel value="Nom: " for="nom" />
-					<p:inputText id="nom" value="#{parcoursBean.nom}" required="true"
-						placeholder="Parcours" />
-					<p:message for="nom" display="icon" />
-					
-						<p:outputLabel for="departement" value="Departement: " />
-						<p:selectOneMenu id="departement" value="#{parcoursBean.selectedDepartement}"
-							style="width:150px">
-							<p:ajax listener="#{parcoursBean.onDepartementChange}" update="cursus" />
-							<f:selectItem itemLabel="Select Departement" itemValue=""
-								noSelectionOption="true" />
-							<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.nom}" />
-						</p:selectOneMenu>
-							<p:message for="departement" display="icon" />
-						<p:outputLabel for="cursus" value="Cursus: " />
-						<p:selectOneMenu id="cursus" value="#{parcoursBean.cursus}"
-							style="width:150px">
-							<f:selectItem itemLabel="Select Cursus" itemValue=""
-								noSelectionOption="true" />
-							<f:selectItems value="#{parcoursBean.cursusListe}" var="cursus" itemLabel="#{cursus.nom}" itemValue="#{cursus.cursusId}"/>
-						</p:selectOneMenu>
-							<p:message for="cursus" display="icon" />
-					
+			<p:growl id="growl" />
+			<b:panel id="panel" look="primary">
+				 <p:messages id="messages" />
+					<f:facet name="heading">Nouveau Parcours</f:facet> 
+				<b:row>
+					<b:column span="4"><h:outputLabel value="Nom: " for="nom" /></b:column>
+					<b:column span="4"><b:inputText id="nom" value="#{parcoursBean.nom}" required="true" placeholder="nom de parcours" /></b:column>
+					<b:column span="4"><p:message for="nom"/></b:column>
+				</b:row>
+				<b:row>
+						<b:column span="4"><h:outputLabel for="departement" value="Departement: " /></b:column>
+						<b:column span="4">
+							<p:selectOneMenu id="departement" value="#{parcoursBean.selectedDepartement}" style="width:350px">
+								<p:ajax update="cursus" listener="#{parcoursBean.onDepartementChange}" />
+								<f:selectItem itemLabel="Select Departement" itemValue="" noSelectionOption="true" />
+								<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.nom}" />
+							</p:selectOneMenu>
+						</b:column>
+						<b:column span="4"><p:message for="departement" display="icon" /></b:column>
+				</b:row>	
+						<b:row>
+							<b:column span="4"><h:outputLabel for="cursus" value="Cursus: " /></b:column>
+							<b:column span="4">
+								<p:selectOneMenu id="cursus" value="#{parcoursBean.cursus}" style="width:350px" required="true">
+									<f:selectItem itemLabel="Select Cursus" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{parcoursBean.cursusListe}" var="cursus" itemLabel="#{cursus.nom}" itemValue="#{cursus.cursusId}"/>
+								</p:selectOneMenu>
+							</b:column>
+							<b:column span="4"><p:message for="cursus" /></b:column>
+						</b:row>
 					<p:separator />
-					<p:column></p:column>
-					<p:column></p:column>
-					
-					<p:commandButton value="Reinitialiser" icon="ui-icon-refresh"
-						styleClass="btn btn-default" type="reset"></p:commandButton>
-					<p:commandButton value="Enregistrer" icon="ui-icon-check"
-						styleClass="btn btn-default" action="#{parcoursBean.save()}"
-						update="panel"></p:commandButton>
-				
-				</h:panelGrid>
-			</p:panel>
+					<b:row>
+						<b:column span="2"></b:column>
+						<b:column span="4"><p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset"/></b:column>
+						<b:column span="4"><p:commandButton id="addParcours" value="Enregistrer" action="#{parcoursBean.save()}" update="growl" styleClass="btn btn-default" icon="ui-icon-plusthick" /></b:column>
+						<b:column span="2"></b:column>
+					</b:row>
 
+			</b:panel>
+			<p:blockUI block="panel" trigger="addParcours">  
+				<h:panelGrid columns="2">  
+			        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
+			        <h:outputText value="Ajout parcours..." style="white-space: nowrap;"/>  
+	    		</h:panelGrid>  
+			</p:blockUI>  
 		</h:form>
 	</ui:define>
 </ui:composition>

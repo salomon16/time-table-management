@@ -41,4 +41,5 @@ public interface SalleService {
 	
 	public TypeSalleDto getTypeSalleByName(String name);
 
+
 }

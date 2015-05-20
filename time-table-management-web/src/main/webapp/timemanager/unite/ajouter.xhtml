@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+ template="/templates/template.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<p:growl id="growl"></p:growl>
+		<b:panel id="panel" look="primary">
+			<p:messages id="msg"/>
+					<f:facet name="heading">Nouvelle unite d'enseignement</f:facet> 
+				<b:row>
+					<b:column span="4"><h:outputLabel value="Nom: " for="nom" /></b:column>
+					<b:column span="4"><b:inputText id="nom" value="#{uniteBean.uniteDto.nom}" required="true" /></b:column>
+					<b:column span="4"><p:message for="nom" /></b:column>
+				</b:row>
+				<p:separator/>
+				<b:row>
+					<b:column span="2"></b:column>
+					<b:column span="4"><p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" ajax="false" /></b:column>
+					<b:column span="4"><p:commandButton id="unite" value="Enregistrer" update="growl" icon="ui-icon-check" action="#{uniteBean.save()}" styleClass="btn btn-default" ajax="true" />
+					</b:column>
+					<b:column  span="2"/>
+				</b:row>
+			</b:panel>
+			<p:blockUI block="panel" target="unite">  
+	    		<h:panelGrid columns="2">  
+			        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
+			        <h:outputText value="Ajout unite..." style="white-space: nowrap;"/>  
+	    		</h:panelGrid>  
+			</p:blockUI>  
+		</h:form>
+	</ui:define>
+</ui:composition>

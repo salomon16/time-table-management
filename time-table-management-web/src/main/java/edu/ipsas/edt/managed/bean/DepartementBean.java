@@ -7,8 +7,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
-import org.primefaces.context.RequestContext;
+import javax.faces.context.FacesContext;
 
 import edu.ipsas.edt.dto.CursusDto;
 import edu.ipsas.edt.dto.DepartementDto;
@@ -29,7 +28,7 @@ public class DepartementBean implements Serializable{
 	private DepartementDto selectedDepartement;
 	private Collection<CursusDto> cursus;
 	
-	public void save() {
+	public String save() {
 
 		DepartementDto departement = new DepartementDto();
 		departement.setNom(getNom());
@@ -37,10 +36,11 @@ public class DepartementBean implements Serializable{
 		long id = getEnseignantService().addDepartement(departement);
 
 		if (id > 0) {
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
-					"Enregistrement", "Succes");
-			RequestContext.getCurrentInstance().showMessageInDialog(message);
+			FacesContext fc = FacesContext.getCurrentInstance();  
+	        fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Departement ajouté avec succes", null));  
 		}
+		
+		return null;
 	}
 
 	//methode pour recuperer le departement selectionné

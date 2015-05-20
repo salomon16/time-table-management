@@ -31,22 +31,40 @@ public class Salle implements Serializable {
 	@Column(name = "CAPACITE", unique = false, nullable = true)
 	private int capacite;
 
-	@ManyToOne
-	@JoinColumn(name = "ETABLISSEMENT_ID")
-	private Etablissement etablissement;
-
+	@Column(name = "DISPONIBLE", unique = false, nullable = true)
+	private boolean disponible=true;
+	
 	@OneToMany
 	@JoinTable(name = "SALLE_RESSOURCES", joinColumns = { @JoinColumn(name = "SALLE_ID", referencedColumnName = "SALLE_ID") }, inverseJoinColumns = { @JoinColumn(name = "RESSOURCE_ID", referencedColumnName = "RESSOURCE_ID", unique = true) })
 	private Collection<Ressource> ressources;
 
+	@Column(name = "TYPE_SALLE", unique = false, nullable = true)
+	private String typeSalle;
+	
 	@ManyToOne
-	@JoinColumn(name = "TYPE_SALLE_ID")
-	private TypeSalle typeSalle;
+	@JoinColumn(name="DEPARTEMENT_ID")
+	private Departement departement;
+	
+	@OneToMany
+	private Collection<Seance> seances;
 
 	public Salle() {
 		super();
 		ressources = new ArrayList<Ressource>();
+		seances = new ArrayList<Seance>();
 	}
+
+	
+	public Salle(String numero, int capacite, String typeSalle,
+			Departement departement) {
+		super();
+		this.numero = numero;
+		this.capacite = capacite;
+		this.typeSalle = typeSalle;
+		this.departement = departement;
+		this.departement.getSalles().add(this);
+	}
+
 
 	public Salle(String numero, int capacite) {
 		super();
@@ -54,12 +72,10 @@ public class Salle implements Serializable {
 		this.capacite = capacite;
 	}
 
-	public Salle(String numero, Etablissement etablissement, TypeSalle typeSalle) {
+	public Salle(String numero, String typeSalle) {
 		super();
 		this.numero = numero;
-		this.etablissement = etablissement;
 		this.typeSalle = typeSalle;
-		typeSalle.getSalles().add(this);
 		ressources = new ArrayList<Ressource>();
 	}
 
@@ -87,14 +103,6 @@ public class Salle implements Serializable {
 		this.numero = numero;
 	}
 
-	public Etablissement getEtablissement() {
-		return etablissement;
-	}
-
-	public void setEtablissement(Etablissement etablissement) {
-		this.etablissement = etablissement;
-	}
-
 	public Collection<Ressource> getRessources() {
 		return ressources;
 	}
@@ -103,12 +111,39 @@ public class Salle implements Serializable {
 		this.ressources = ressources;
 	}
 
-	public TypeSalle getTypeSalle() {
+	public String getTypeSalle() {
 		return typeSalle;
 	}
 
-	public void setTypeSalle(TypeSalle typeSalle) {
+	public void setTypeSalle(String typeSalle) {
 		this.typeSalle = typeSalle;
 	}
 
+	public Collection<Seance> getSeances() {
+		return seances;
+	}
+
+	public void setSeances(Collection<Seance> seances) {
+		this.seances = seances;
+	}
+
+	public Departement getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
+	}
+
+
+	public boolean isDisponible() {
+		return disponible;
+	}
+
+
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
+	}
+
+	
 }

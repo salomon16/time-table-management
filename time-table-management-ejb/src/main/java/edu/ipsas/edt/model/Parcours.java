@@ -1,6 +1,8 @@
 package edu.ipsas.edt.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -28,15 +31,25 @@ public class Parcours implements Serializable {
 	@JoinColumn(name = "CURSUS_ID")
 	private Cursus cursus;
 
+	@OneToMany
+	private Collection<Niveau> niveaux;
+	
+	@OneToMany
+	private Collection<PlanEtude> plansEtude;
+	
 	public Parcours() {
 		super();
+		niveaux = new ArrayList<Niveau>();
+		plansEtude = new ArrayList<PlanEtude>();
 	}
 
 	public Parcours(String nom, String abbreviation, Cursus cursus) {
 		super();
 		this.nom = nom;
 		this.cursus = cursus;
+		niveaux = new ArrayList<Niveau>();
 		cursus.getParcours().add(this);
+		plansEtude = new ArrayList<PlanEtude>();
 	}
 
 	public long getParcoursID() {
@@ -63,4 +76,29 @@ public class Parcours implements Serializable {
 		this.cursus = cursus;
 	}
 
+	public long getParcoursId() {
+		return parcoursId;
+	}
+
+	public void setParcoursId(long parcoursId) {
+		this.parcoursId = parcoursId;
+	}
+
+	public Collection<Niveau> getNiveaux() {
+		return niveaux;
+	}
+
+	public void setNiveaux(Collection<Niveau> niveaux) {
+		this.niveaux = niveaux;
+	}
+
+	public Collection<PlanEtude> getPlansEtude() {
+		return plansEtude;
+	}
+
+	public void setPlansEtude(Collection<PlanEtude> plansEtude) {
+		this.plansEtude = plansEtude;
+	}
+
+	
 }

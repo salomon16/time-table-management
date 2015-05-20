@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui" >
+<h:head>
+	<meta content="text/html" charset="UTF-8" />
+	<title>EDT</title> 
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	
+	<link rel="stylesheet" href="../resources/styles.css" />
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</h:head>
+<ui:composition template="/timemanager/index.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<b:panel id="panel" look="primary">
+					<f:facet name="heading">Nouveau Type de Salle</f:facet> 
+				<b:row>
+					<b:column span="4"><h:outputLabel value="Nom: " for="nom"/></b:column>
+					<b:column span="4"><b:inputText  id="nom" value="#{typeSalleBean.nom}" placeholder="type de salle" /></b:column>
+					<b:column span="4"><p:message for="nom" display="text" /></b:column>
+				</b:row>
+				<p:separator />
+				<b:row>
+					<b:column span="2"></b:column>
+					<b:column span="4"><b:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset"/></b:column>
+					<b:column span="4"><b:commandButton value="Enregistrer" icon="ui-icon-check" styleClass="btn btn-default" action="#{typeSalleBean.save()}" /></b:column>
+					<b:column span="2"></b:column>
+				</b:row>
+			</b:panel>
+	</h:form>
+	</ui:define>
+</ui:composition>
+</html>

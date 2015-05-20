@@ -10,4 +10,6 @@ import edu.ipsas.edt.model.Parcours;
 public interface ParcoursDao extends GenericDao<Parcours> {
 
 	Collection<Parcours> getParcoursBySpecialite(long idSpecialite);
+
+	Collection<Parcours> findAllParcoursByDepartement(long departementId);
 }

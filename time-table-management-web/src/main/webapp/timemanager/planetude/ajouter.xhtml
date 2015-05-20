@@ -1,0 +1,79 @@
+<ui:composition  xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui" 
+template="/timemanager/index.xhtml">
+	<ui:define name="content">
+		
+		<h:form id="formajout">
+			<p:growl id="growl"/>
+			<b:panel id="panel" look="primary">
+					<p:messages id="msg"/>
+					<f:facet name="heading">Nouveau Plan d'Etude</f:facet> 
+				<b:row>
+						<b:column span="4"><h:outputLabel for="semestre" value="Semestre " /></b:column>
+						<b:column span="4">
+							<b:selectOneMenu id="semestre" value="#{planEtudeBean.selectedSemestre}" style="width:150px">
+								<f:selectItem itemLabel="Select Semestre" itemValue="" noSelectionOption="true" />
+								<f:selectItems value="#{semestreBean.allSemestre}" var="semestre" itemLabel="Semestre #{semestre.numero}" itemValue="#{semestre.semestreId}" />
+							</b:selectOneMenu>
+						</b:column>
+						<b:column span="4"><p:message for="semestre"/></b:column>
+				</b:row>
+				<b:row>
+						<b:column span="4"><h:outputLabel for="departement" value="Departement: " /></b:column>
+						<b:column span="4">
+							<p:selectOneMenu id="departement" value="#{planEtudeBean.selectedDepartement}" style="width:350px">
+								<p:ajax update="parcours" listener="#{planEtudeBean.onDepartementChange}" />
+								<f:selectItem itemLabel="Select Departement" itemValue="" noSelectionOption="true" />
+								<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.nom}" />
+							</p:selectOneMenu>
+						</b:column>
+						<b:column span="4"><p:message for="departement" /></b:column>
+				</b:row>	
+						<b:row>
+							<b:column span="4"><h:outputLabel for="parcours" value="Parcours " /></b:column>
+							<b:column span="4">
+								<p:selectOneMenu id="parcours" value="#{planEtudeBean.selectedParcours}" style="width:350px">
+									<f:selectItem itemLabel="Select Parcours" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{planEtudeBean.listeParcours}" var="parcours" itemLabel="#{parcours.nom}" itemValue="#{parcours.parcoursID}"/>
+								</p:selectOneMenu>
+							</b:column>
+							<b:column span="4"><p:message for="parcours" /></b:column>
+						</b:row>
+						<b:row>
+							<b:column span="4"><p:outputLabel for="matiereList" value="Matieres:"  /></b:column>
+							<b:column span="6">
+							<p:selectManyMenu id="matiereList" value="#{planEtudeBean.selectedMatiere}" filter="true" filterMatchMode="contains" showCheckbox="true" styleClass="width:350px;">
+            					<f:selectItems value="#{planEtudeBean.matieres}" var="matiere" itemLabel="#{matiere.nom}" itemValue="#{matiere.matiereId}"/>
+ 
+        					</p:selectManyMenu>
+<!--        							<p:pickList id="matiereList" value="#{planEtudeBean.matieres}" var="matieres"  itemValue="#{matieres}" itemLabel="#{matieres}"> -->
+
+<!-- 								 </p:pickList> -->
+							</b:column>
+							<b:column span="2"></b:column>
+						</b:row>
+					
+					<p:separator />
+					
+					<b:row>
+						<b:column span="2"></b:column>
+						<b:column span="4"><p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset"/></b:column>
+						<b:column span="4"><p:commandButton id="addPlanEtude" value="Enregistrer" icon="ui-icon-check" styleClass="btn btn-default" action="#{planEtudeBean.save()}" update="growl"/></b:column>
+						<b:column span="2"></b:column>
+					</b:row>
+
+			</b:panel>
+			<p:blockUI block="panel" trigger="addPlanEtude">  
+				<h:panelGrid columns="2">  
+			        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
+			        <h:outputText value="Ajout plan d'etude..." style="white-space: nowrap;"/>  
+	    		</h:panelGrid>  
+			</p:blockUI>  
+
+		</h:form>
+	</ui:define>
+</ui:composition>

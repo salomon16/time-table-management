@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Mirrored from primefaces-rocks.appspot.com/ui/chartModel.jsf by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 May 2015 10:24:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/theme.css.jsf?ln=primefaces-aristo" />
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/ui/jquery-ui.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/jquery.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/ui/jquery-ui.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/core/core.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/button/button.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/wijmo/wijmo.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/wijmo/wijmo.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/menu/menu.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/yui/utilities/utilities.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/yui/datasource/datasource-min.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/yui/swf/swf-min.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/yui/charts/charts-min.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/charts/charts.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/tabview/tabview.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/ajaxstatus/ajaxstatus.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+		<title>PrimeFaces - ShowCase</title>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<link type="text/css" rel="stylesheet" href="../css/default.css" />
+		<link type="text/css" rel="stylesheet" href="../syntaxhighlighter/styles/syntaxhighlighter.css" />
+		<script type="text/javascript">
+			var chartStyle = {
+				padding:20,
+				legend: {
+					display:"right",
+					spacing:10
+				}
+			};
+		</script></head><body>
+
+		<div class="ui-widget ui-widget-header">
+			<div id="logo">
+				<h1>PRIMEFACES</h1>
+			</div>
+		</div>
+
+		<div id="menu" class="ui-widget ui-widget-content ui-corner-all">
+			<ul id="main">
+				<li class="current_page_item"><a href="home.html" style="background:url('../design/ui.png') no-repeat center left;">UI Components</a></li>
+				<li><a href="http://primefaces-rocks.appspot.com/mobile/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;color:#FF9900;">Mobile</a></li>
+				<li><a href="http://primefaces-rocks.appspot.com/facestrace/createBook.jsf" style="background:url('../design/facestrace.png') no-repeat center left;">FacesTrace</a></li>
+			</ul>
+		</div>
+
+		<div id="wrapper">
+
+			<div id="page">
+				<div id="sidebar1" class="ui-widget-content ui-corner-all ui-helper-clearfix sidebar">
+					<ul>
+						<li>
+							<table>
+								<tr>
+									<td colspan="2" align="left" style="padding:8px;">
+<form id="j_idt8" name="j_idt8" method="post" action="http://primefaces-rocks.appspot.com/ui/chartModel.jsf" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt8" value="j_idt8" />
+<button id="j_idt8:themeButton" name="j_idt8:themeButton" style="width:100%" type="button">Change Theme: aristo</button><script type="text/javascript">widget_j_idt8_themeButton = new PrimeFaces.widget.CommandButton('j_idt8:themeButton', {});</script><span id="j_idt8:j_idt9"><ul id="j_idt8:j_idt9_menu"><li><h3>Themes</h3></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt11','j_idt8:j_idt11').submit('j_idt8');"><span class="wijmo-wijmenu-text">Aristo</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt12','j_idt8:j_idt12').submit('j_idt8');"><span class="wijmo-wijmenu-text">Black-Tie</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt13','j_idt8:j_idt13').submit('j_idt8');"><span class="wijmo-wijmenu-text">Blitzer</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt14','j_idt8:j_idt14').submit('j_idt8');"><span class="wijmo-wijmenu-text">BlueSky (RichFaces)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt15','j_idt8:j_idt15').submit('j_idt8');"><span class="wijmo-wijmenu-text">Casablanca (Trinidad)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt16','j_idt8:j_idt16').submit('j_idt8');"><span class="wijmo-wijmenu-text">Cupertino</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt17','j_idt8:j_idt17').submit('j_idt8');"><span class="wijmo-wijmenu-text">Dark-Hive</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt18','j_idt8:j_idt18').submit('j_idt8');"><span class="wijmo-wijmenu-text">Dot-Luv</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt19','j_idt8:j_idt19').submit('j_idt8');"><span class="wijmo-wijmenu-text">Eggplant</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt20','j_idt8:j_idt20').submit('j_idt8');"><span class="wijmo-wijmenu-text">Excite-Bike</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt21','j_idt8:j_idt21').submit('j_idt8');"><span class="wijmo-wijmenu-text">Flick</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt22','j_idt8:j_idt22').submit('j_idt8');"><span class="wijmo-wijmenu-text">Glass-X (RichFaces)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt23','j_idt8:j_idt23').submit('j_idt8');"><span class="wijmo-wijmenu-text">Hot-Sneaks</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt24','j_idt8:j_idt24').submit('j_idt8');"><span class="wijmo-wijmenu-text">Humanity</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt25','j_idt8:j_idt25').submit('j_idt8');"><span class="wijmo-wijmenu-text">Le-Frog</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt26','j_idt8:j_idt26').submit('j_idt8');"><span class="wijmo-wijmenu-text">Midnight (Wijmo)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt27','j_idt8:j_idt27').submit('j_idt8');"><span class="wijmo-wijmenu-text">Mint-Choc</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt28','j_idt8:j_idt28').submit('j_idt8');"><span class="wijmo-wijmenu-text">Overcast</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt29','j_idt8:j_idt29').submit('j_idt8');"><span class="wijmo-wijmenu-text">Pepper-Grinder</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt30','j_idt8:j_idt30').submit('j_idt8');"><span class="wijmo-wijmenu-text">Redmond</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt31','j_idt8:j_idt31').submit('j_idt8');"><span class="wijmo-wijmenu-text">Rocket (Wijmo)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt32','j_idt8:j_idt32').submit('j_idt8');"><span class="wijmo-wijmenu-text">Sam</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt33','j_idt8:j_idt33').submit('j_idt8');"><span class="wijmo-wijmenu-text">Smoothness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt34','j_idt8:j_idt34').submit('j_idt8');"><span class="wijmo-wijmenu-text">South-Street</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt35','j_idt8:j_idt35').submit('j_idt8');"><span class="wijmo-wijmenu-text">Start</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt36','j_idt8:j_idt36').submit('j_idt8');"><span class="wijmo-wijmenu-text">Sunny</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt37','j_idt8:j_idt37').submit('j_idt8');"><span class="wijmo-wijmenu-text">Swanky-Purse</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt38','j_idt8:j_idt38').submit('j_idt8');"><span class="wijmo-wijmenu-text">Trontastic</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt39','j_idt8:j_idt39').submit('j_idt8');"><span class="wijmo-wijmenu-text">UI-Lightness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt40','j_idt8:j_idt40').submit('j_idt8');"><span class="wijmo-wijmenu-text">UI-Darkness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt41','j_idt8:j_idt41').submit('j_idt8');"><span class="wijmo-wijmenu-text">Vader</span></a></li></ul></span><script type="text/javascript">themeMenu = new PrimeFaces.widget.Menu('j_idt8:j_idt9',{position:'dynamic',zindex:1,animation:{animated:'fade',duration:400},my:'left top',at:'left bottom',trigger:'j_idt8:themeButton',triggerEvent:'click',styleClass:'themeMenu'});</script><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="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" autocomplete="off" />
+</form>
+									</td>
+								</tr>
+                                <tr>
+									<td colspan="2" align="center">
+										<a href="macosx.html">MOCK OS X</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<ul>
+											<li><a href="ajaxHome.html">Ajax Engine</a></li>
+											<li><a href="ajaxPollHome.html">Ajax Poll</a></li>
+                                            <li><a href="ajaxStatusHome.html">Ajax Status</a></li>
+											<li><a href="accordionPanelHome.html">Accordion</a></li>
+											<li><a href="autocompleteHome.html">AutoComplete</a></li>
+											<li><a href="breadCrumb.html">BreadCrumb</a></li>
+                                            <li><a href="button.html">Button</a></li>
+											<li><a href="calendarHome.html" class="new">Calendar</a></li>
+											<li><a href="captchaHome.html">Captcha</a></li>
+											<li><a href="carouselHome.html">Carousel</a></li>
+											<li><a href="chartsHome.html">Charts</a></li>
+											<li><a href="commandButton.html">CommandButton</a></li>
+											<li><a href="commandLink.html">CommandLink</a></li>
+											<li><a href="contextMenuHome.html">ContextMenu</a></li>
+											<li><a href="collector.html">Collector</a></li>
+											<li><a href="colorPicker.html">Color Picker</a></li>
+											<li><a href="confirmDialog.html">ConfirmDialog</a></li>
+											<li><a href="dashboard.html">Dashboard</a></li>
+											<li><a href="exporterHome.html">Data Exporter</a></li>
+											<li><a href="datagrid.html">DataGrid</a></li>
+											<li><a href="dataListHome.html">DataList</a></li>
+											<li><a href="datatableHome.html">DataTable</a></li>
+											<li><a href="dialogHome.html">Dialog</a></li>
+											<li><a href="dock.html">Dock</a></li>
+                                            <li><a href="dragdropHome.html">DragDrop</a></li>
+											<li><a href="dynamicImage.html">Dyna Image</a></li>
+											<li><a href="editor.html">Editor</a></li>
+											<li><a href="effectsHome.html">Effects</a></li>
+											<li><a href="fileUploadHome.html" class="new">FileUpload</a></li>
+											<li><a href="fileDownload.html">FileDownload</a></li>
+                                            <li><a href="fieldset.html">Fieldset</a></li>
+											<li><a href="focus.html">Focus</a></li>
+                                            <li><a href="galleria.html">Galleria</a></li>
+											<li><a href="gmapHome.html">Google Maps</a></li>
+											<li><a href="graphicText.html">Graphic Text</a></li>
+											<li><a href="growl.html">Growl</a></li>
+                                            <li><a href="hotkey.html">HotKey</a></li>
+                                            <li><a href="idlemonitorHome.html">IdleMonitor</a></li>
+                                            <li><a href="imageCompare.html">ImageCompare</a></li>
+                                            <li><a href="imageCropper.html">ImageCropper</a></li>
+                                            <li><a href="imageSwitch.html">ImageSwitch</a></li>
+                                            <li><a href="inplace.html">Inplace</a></li>
+                                            <li><a href="inputText.html">InputText</a></li>
+                                            <li><a href="inputTextarea.html">InputTextarea</a></li>
+										</ul>
+									</td>
+									<td>
+										<ul>
+											<li><a href="keyboard.html">Keyboard</a></li>
+											<li><a href="layoutHome.html">Layout</a></li>
+											<li><a href="lightboxHome.html">LightBox</a></li>
+											<li><a href="inputMask.html">Masked Input</a></li>
+											<li><a href="media.html">Media</a></li>
+											<li><a href="menu.html">Menu</a></li>
+											<li><a href="menubar.html">Menubar</a></li>
+											<li><a href="menubutton.html">MenuButton</a></li>
+											<li><a href="messages.html">Messages</a></li>
+											<li><a href="notificationBar.html">NotificationBar</a></li>
+											<li><a href="outputPanel.html">OutputPanel</a></li>
+											<li><a href="panel.html">Panel</a></li>
+											<li><a href="password.html">Password</a></li>
+											<li><a href="picklist.html">PickList</a></li>
+											<li><a href="printer.html">Printer</a></li>
+											<li><a href="progressBar.html">ProgressBar</a></li>
+											<li><a href="callbackParams.html">RequestContext</a></li>
+											<li><a href="resizableHome.html">Resizable</a></li>
+											<li><a href="remoteCommand.html">RemoteCommand</a></li>
+                                            <li><a href="ring.html" class="new">Ring</a></li>
+											<li><a href="scheduleHome.html">Schedule</a></li>
+                                            <li><a href="scrollPanel.html" class="new">ScrollPanel</a></li>
+                                            <li><a href="selectBooleanCheckbox.html" class="new">SelectBoolCheckbox</a></li>
+                                            <li><a href="selectManyCheckbox.html" class="new">SelectManyCheckbox</a></li>
+                                            <li><a href="selectOneListbox.html" class="new">SelectOneListbox</a></li>
+                                            <li><a href="selectOneMenu.html" class="new">SelectOneMenu</a></li>
+                                            <li><a href="selectOneRadio.html" class="new">SelectOneRadio</a></li>
+                                            <li><a href="selectManyMenu.html" class="new">SelectManyMenu</a></li>
+											<li><a href="separator.html">Separator</a></li>
+											<li><a href="slider.html">Slider</a></li>
+                                            <li><a href="spacer.html">Spacer</a></li>
+											<li><a href="spinner.html">Spinner</a></li>
+											<li><a href="stack.html">Stack</a></li>
+											<li><a href="rating.html">Star Rating</a></li>
+											<li><a href="tabviewHome.html">TabView</a></li>
+                                            <li><a href="tagCloud.html" class="new">TagCloud</a></li>
+											<li><a href="terminalHome.html">Terminal</a></li>
+											<li><a href="themeswitcher.html">Themeswitcher</a></li>
+                                            <li><a href="toolbar.html">Toolbar</a></li>
+											<li><a href="tooltipHome.html">Tooltip</a></li>
+											<li><a href="treeHome.html" class="new">Tree</a></li>
+											<li><a href="treeTableHome.html">TreeTable</a></li>
+											<li><a href="watermark.html">Watermark</a></li>
+											<li><a href="wizard.html">Wizard</a></li>
+										</ul>
+									</td>
+								</tr>
+							</table>
+
+						</li>
+					</ul>
+				</div>
+
+				<div id="content" class="ui-widget">
+					<div class="post">
+        <h1 class="title ui-widget-header ui-corner-all">Charts - Model</h1>
+		<div class="entry">
+            <p>Chart model is used to create chart series programmatically.</p>
+
+            <h3>Pie Chart</h3><script type="text/javascript">YAHOO.widget.Chart.SWFURL = '/javax.faces.resource/yui/charts/assets/charts.swf.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT'</script><div id="j_idt44" style="width:500px;height:350px"></div><script type="text/javascript">$(function(){widget_j_idt44 = new PrimeFaces.widget.PieChart('j_idt44', {expressInstall:'/javax.faces.resource/yui/assets/expressinstall.swf.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT',categoryField:'category',dataField:'data',"data":[{"category":"Brand 2","data":325},{"category":"Brand 1","data":540},{"category":"Brand 4","data":421},{"category":"Brand 3","data":702}]});});</script>
+
+            <h3>Line Chart</h3><script type="text/javascript">YAHOO.widget.Chart.SWFURL = '/javax.faces.resource/yui/charts/assets/charts.swf.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT'</script><div id="j_idt46" style="width:500px;height:350px"></div><script type="text/javascript">$(function(){widget_j_idt46 = new PrimeFaces.widget.LineChart('j_idt46', {expressInstall:'/javax.faces.resource/yui/assets/expressinstall.swf.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT',"data": [{"category":"2004","series_01":"120","series_11":"52"},{"category":"2005","series_01":"100","series_11":"60"},{"category":"2006","series_01":"44","series_11":"110"},{"category":"2007","series_01":"150","series_11":"135"},{"category":"2008","series_01":"25","series_11":"120"}],series:[{displayName:'Boys',yField:'series_01'},{displayName:'Girls',yField:'series_11'}],fields:['category','series_01','series_11'],xField:'category'});});</script>
+
+            <h3>Bar Chart</h3><script type="text/javascript">YAHOO.widget.Chart.SWFURL = '/javax.faces.resource/yui/charts/assets/charts.swf.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT'</script><div id="j_idt48" style="width:500px;height:350px"></div><script type="text/javascript">$(function(){widget_j_idt48 = new PrimeFaces.widget.BarChart('j_idt48', {expressInstall:'/javax.faces.resource/yui/assets/expressinstall.swf.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT',"data": [{"category":"2004","series_01":"120","series_11":"52"},{"category":"2005","series_01":"100","series_11":"60"},{"category":"2006","series_01":"44","series_11":"110"},{"category":"2007","series_01":"150","series_11":"135"},{"category":"2008","series_01":"25","series_11":"120"}],series:[{displayName:'Boys',xField:'series_01'},{displayName:'Girls',xField:'series_11'}],fields:['category','series_01','series_11'],yField:'category'});});</script>
+
+            <h3>Source</h3><div id="j_idt50"><ul><li><a href="#j_idt51"><em>chartModel.xhtml</em></a></li><li><a href="#j_idt53"><em>ChartBean.java</em></a></li></ul><div id="j_idt51">
+                    <pre name="code" class="xml">
+&lt;h3&gt;Pie Chart&lt;/h3&gt;
+&lt;p:pieChart model=&quot;#{chartBean.pieModel}&quot; /&gt;
+
+&lt;h3&gt;Line Chart&lt;/h3&gt;
+&lt;p:lineChart model=&quot;#{chartBean.cartesianModel}&quot; /&gt;
+
+&lt;h3&gt;Bar Chart&lt;/h3&gt;
+&lt;p:barChart model=&quot;#{chartBean.cartesianModel}&quot; /&gt;
+                    </pre></div><div id="j_idt53">
+                    <pre name="code" class="java">
+public class ChartBean implements Serializable {
+
+    private CartesianChartModel cartesianModel;
+
+    private PieChartModel pieModel;
+
+	public ChartBean() {
+        createCartesianModel();
+        createPieModel();
+	}
+
+    public CartesianChartModel getCartesianModel() {
+        return cartesianModel;
+    }
+
+    public PieChartModel getPieModel() {
+        return pieModel;
+    }
+
+    private void createCartesianModel() {
+        cartesianModel = new CartesianChartModel();
+
+        ChartSeries boys = new ChartSeries();
+        boys.setLabel(&quot;Boys&quot;);
+
+        boys.set(&quot;2004&quot;, 120);
+        boys.set(&quot;2005&quot;, 100);
+        boys.set(&quot;2006&quot;, 44);
+        boys.set(&quot;2007&quot;, 150);
+        boys.set(&quot;2008&quot;, 25);
+
+        ChartSeries girls = new ChartSeries();
+        girls.setLabel(&quot;Girls&quot;);
+
+        girls.set(&quot;2004&quot;, 52);
+        girls.set(&quot;2005&quot;, 60);
+        girls.set(&quot;2006&quot;, 110);
+        girls.set(&quot;2007&quot;, 135);
+        girls.set(&quot;2008&quot;, 120);
+
+        cartesianModel.addSeries(boys);
+        cartesianModel.addSeries(girls);
+    }
+
+    private void createPieModel() {
+        pieModel = new PieChartModel();
+
+        pieModel.set(&quot;Brand 1&quot;, 540);
+        pieModel.set(&quot;Brand 2&quot;, 325);
+        pieModel.set(&quot;Brand 3&quot;, 702);
+        pieModel.set(&quot;Brand 4&quot;, 421);
+    }
+}
+                    </pre></div><input type="hidden" id="j_idt50_activeIndex" name="j_idt50_activeIndex" value="0" /></div><script type="text/javascript">widget_j_idt50 = new PrimeFaces.widget.TabView('j_idt50', {selected:0,dynamic:false,cache:true});</script>
+
+        </div>
+					</div>
+				</div>
+
+				<div style="clear: both;"> </div>
+			</div>
+		</div>
+
+		<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
+			<p class="copyright">©  2009-2010  •  <a href="http://www.prime.com.tr/">Prime Technology</a>.</p>
+			<p style="float:right">Running PrimeFaces-3.0-SNAPSHOT on Mojarra-2.0.4</p>
+		</div><div id="j_idt57" style="width:32px;height:32px;display:block;position:fixed;right:0;top:0;"><div id="j_idt57_start" style="display:none"><img id="j_idt58" src="../images/loading.gif" alt="" /></div><div id="j_idt57_complete" style="display:none"></div></div><script type="text/javascript">widget_j_idt57 = new PrimeFaces.widget.AjaxStatus('j_idt57');widget_j_idt57.bindFacet('ajaxStart', 'start');widget_j_idt57.bindFacet('ajaxComplete', 'complete');</script></body>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shCore.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushXml.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushJava.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushCss.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+		<script language="javascript">
+			dp.SyntaxHighlighter.ClipboardSwf = 'http://primefaces-rocks.appspot.com/syntaxhighlighter/scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code');
+		</script>
+
+<!-- Mirrored from primefaces-rocks.appspot.com/ui/chartModel.jsf by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 May 2015 10:24:11 GMT -->
+</html>

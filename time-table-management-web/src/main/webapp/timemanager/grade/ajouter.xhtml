@@ -1,30 +1,29 @@
-<!DOCTYPE html>
-<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
+<ui:composition  xmlns="http://www.w3c.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/timemanager/index.xhtml">
-	<ui:include src="/resources/css/style.css" />
-	
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+template="/templates/template.xhtml">
 	<ui:define name="content">
 		<h:form>
-			<p:panel header="Nouveau Grade">
-				<h:panelGrid id="grid" columns="2" cellpadding="5"
-					styleClass="panelGrid">
+			<b:panel id="panel" look="primary">
+					<f:facet name="heading">Nouveau Grade</f:facet> 
+				<b:row>
+					<b:column span="4"><h:outputLabel value="Nom: " for="nom" /></b:column>
+					<b:column span="4"><b:inputText id="nom" value="#{gradeBean.gradeDto.nom}" required="true" /></b:column>
+					<b:column span="4"><p:message for="nom" display="icon" /></b:column>
+				</b:row>
+		<p:separator></p:separator>
+		<b:row>
+			<b:column span="2"></b:column>
+			<b:column span="4"><b:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" ajax="false" /></b:column>
+			<b:column span="4"><b:commandButton type="submit" value="Enregistrer" icon="ui-icon-check" action="#{gradeBean.save()}" ajax="true" /></b:column>
+			<b:column span="2"></b:column>
+		</b:row>
 
-					<h:outputLabel value="Nom: " for="nom" />
-					<p:inputText id="nom" value="#{gradeBean.gradeDto.nom}"
-						required="true" />
-					<p:message for="nom" display="icon" />
-				</h:panelGrid>
-
-				<p:commandButton value="Reinitialiser" icon="ui-icon-refresh"
-					styleClass="btn btn-default" type="reset" ajax="false" />
-				<p:commandButton type="submit" value="Enregistrer"
-					icon="ui-icon-check" action="#{gradeBean.save()}" ajax="true" />
-
-			</p:panel>
+			</b:panel>
 
 		</h:form>
 	</ui:define>
-	</ui:composition>
+</ui:composition>

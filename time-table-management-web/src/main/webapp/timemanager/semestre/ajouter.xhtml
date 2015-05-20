@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+ template="/templates/template.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+		<p:growl id="growl"/>
+		<b:panel id="panel" look="primary">
+				 <p:messages id="messages" />
+					<f:facet name="heading">Nouveau Semestre</f:facet> 
+				<b:row>
+					<b:column span="4"><h:outputLabel value="Numero: " for="numero" /></b:column>
+					<b:column span="4"><p:spinner id="numero" min="0" required="true" value="#{semestreBean.semestreDto.numero}"/></b:column>
+					<b:column span="4"><p:message for="numero" /></b:column>
+				</b:row>
+				<p:separator/>
+				<b:row>
+					<b:column span="2"></b:column>
+					<b:column span="4"><p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" /></b:column>
+					<b:column span="4"><p:commandButton id="addSemester" update="growl" value="Enregistrer" icon="ui-icon-plusthick" action="#{semestreBean.save()}"  styleClass="btn btn-default" />
+					</b:column>
+					<b:column  span="2"/>
+				</b:row>
+			</b:panel>
+			<p:blockUI block="panel" trigger="addSemester">  
+	    		<h:panelGrid columns="2">  
+			        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
+			        <h:outputText value="Ajout semestre..." style="white-space: nowrap;"/>  
+	    		</h:panelGrid>  
+			</p:blockUI> 
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -6,18 +6,16 @@ import java.util.Collection;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
-import org.primefaces.context.RequestContext;
 
 import edu.ipsas.edt.dto.EnseignantDto;
 import edu.ipsas.edt.dto.GradeDto;
 import edu.ipsas.edt.dto.StatutDto;
 import edu.ipsas.edt.service.EnseignantService;
 
-@ManagedBean
-@ViewScoped
+@ManagedBean(name="enseignantBean")
+@SessionScoped
 public class EnseignantBean implements Serializable {
 
 	/**
@@ -68,10 +66,14 @@ public class EnseignantBean implements Serializable {
 		enseignant.setGradeDto(enseignantService.getGradeByName(grade));
 
 		long id = getEnseignantService().addEnseignant(enseignant);
-		if (id > 0) {
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
-					"Enregistrement", "Succes");
-			RequestContext.getCurrentInstance().showMessageInDialog(message);
+		
+		if(id > 0){
+			 FacesContext fc = FacesContext.getCurrentInstance();  
+		        fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Nouvel enseignant ajouté avec succes", null));  
+		}
+		else{
+			 FacesContext fc = FacesContext.getCurrentInstance();  
+		        fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Echec de creation", null));  
 		}
 	}
 	

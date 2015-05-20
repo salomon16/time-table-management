@@ -1,30 +1,38 @@
 package edu.ipsas.edt.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class DepartementDto {
+public class DepartementDto implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private long departementId;
 	private String nom;
 	private EtablissementDto etablissementDto;
 	private Collection<EnseignantDto> enseignants;
-	private Collection<CursusDto> specialites;
+	private Collection<CursusDto> cursus;
+	private Collection<SalleDto> salleDto;
 	private Collection<PersonnelAdministratifDto> personnels;
 
 	public DepartementDto() {
 		super();
 		enseignants = new ArrayList<EnseignantDto>();
-		specialites = new ArrayList<CursusDto>();
+		cursus = new ArrayList<CursusDto>();
 		personnels = new ArrayList<PersonnelAdministratifDto>();
+		salleDto = new ArrayList<SalleDto>();
 	}
 
 	public DepartementDto(String nom) {
 		super();
 		this.nom = nom;
 		enseignants = new ArrayList<EnseignantDto>();
-		specialites = new ArrayList<CursusDto>();
+		cursus = new ArrayList<CursusDto>();
 		personnels = new ArrayList<PersonnelAdministratifDto>();
+		salleDto = new ArrayList<SalleDto>();
 	}
 
 	public DepartementDto(String nom, EtablissementDto etablissementDto) {
@@ -32,8 +40,9 @@ public class DepartementDto {
 		this.nom = nom;
 		this.etablissementDto = etablissementDto;
 		enseignants = new ArrayList<EnseignantDto>();
-		specialites = new ArrayList<CursusDto>();
+		cursus = new ArrayList<CursusDto>();
 		personnels = new ArrayList<PersonnelAdministratifDto>();
+		salleDto = new ArrayList<SalleDto>();
 	}
 
 	public long getDepartementID() {
@@ -69,11 +78,11 @@ public class DepartementDto {
 	}
 
 	public Collection<CursusDto> getSpecialites() {
-		return specialites;
+		return cursus;
 	}
 
 	public void setSpecialites(Collection<CursusDto> specialites) {
-		this.specialites = specialites;
+		this.cursus = specialites;
 	}
 
 	public Collection<PersonnelAdministratifDto> getPersonnels() {
@@ -82,6 +91,30 @@ public class DepartementDto {
 
 	public void setPersonnels(Collection<PersonnelAdministratifDto> personnels) {
 		this.personnels = personnels;
+	}
+
+	public long getDepartementId() {
+		return departementId;
+	}
+
+	public void setDepartementId(long departementId) {
+		this.departementId = departementId;
+	}
+
+	public Collection<CursusDto> getCursus() {
+		return cursus;
+	}
+
+	public void setCursus(Collection<CursusDto> cursus) {
+		this.cursus = cursus;
+	}
+
+	public Collection<SalleDto> getSalleDto() {
+		return salleDto;
+	}
+
+	public void setSalleDto(Collection<SalleDto> salleDto) {
+		this.salleDto = salleDto;
 	}
 
 	

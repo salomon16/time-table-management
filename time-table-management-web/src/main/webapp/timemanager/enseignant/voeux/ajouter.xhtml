@@ -1,0 +1,44 @@
+<ui:composition  xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+template="/templates/template.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<b:panel id="panel" look="primary">
+					<f:facet name="heading">Nouveau Voeux</f:facet> 
+				<b:row>
+						<b:column span="4"><h:outputLabel for="annee" value="Annee Academique: " /></b:column>
+						<b:column span="4">
+							<b:selectOneMenu id="niveau" value="#{groupeBean.niveau}" style="width:150px">
+								<f:selectItem itemLabel="Select Niveau" itemValue="" noSelectionOption="true" />
+								<f:selectItems value="#{niveauBean.allNiveau}" var="niveau" itemLabel="#{niveau.nom}" itemValue="#{niveau.nom}" />
+							</b:selectOneMenu>
+						</b:column> 
+						<b:column span="4"><p:message for="niveau" display="icon" /></b:column>
+				</b:row>
+				<b:row>
+						<b:column span="4"><h:outputLabel for="niveau" value="Niveau: " /></b:column>
+						<b:column span="4">
+							<b:selectOneMenu id="niveau" value="#{groupeBean.niveau}" style="width:150px">
+								<f:selectItem itemLabel="Select Niveau" itemValue="" noSelectionOption="true" />
+								<f:selectItems value="#{niveauBean.allNiveau}" var="niveau" itemLabel="#{niveau.nom}" itemValue="#{niveau.nom}" />
+							</b:selectOneMenu>
+						</b:column> 
+						<b:column span="4"><p:message for="niveau" display="icon" /></b:column>
+				</b:row>
+		<p:separator></p:separator>
+		<b:row>
+			<b:column span="2"></b:column>
+			<b:column span="4"><b:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" ajax="false" /></b:column>
+			<b:column span="4"><b:commandButton type="submit" value="Enregistrer" icon="ui-icon-check" action="#{groupeBean.save()}" ajax="true" /></b:column>
+			<b:column span="2"></b:column>
+		</b:row>
+
+			</b:panel>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

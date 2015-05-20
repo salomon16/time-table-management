@@ -5,20 +5,18 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-	<!-- <http auto-config="true"> <intercept-url pattern="/protected.jsf" access="ROLE_ADMIN" 
-		/> Custom login page <form-login login-page='/login.jsf' /> <access-denied-handler 
-		error-page='/403page.jsf' /> Custom logout page <logout /> </http> -->
-
-	<http use-expressions="true">
-		<intercept-url pattern="/timemanager/**" access="isAuthenticated()" /> 
-		<intercept-url pattern="/timemanager/**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/**" access="permitAll()" />
+	
+	<http auto-config="true">
 		
-		<!-- Custom login page -->
-		<form-login login-page="/login.xhtml" />
+		<intercept-url pattern="/timemanager/**" access="ROLE_ADMIN, ROLE_USER" />
+<!-- 		<intercept-url pattern="/**" access="permitAll()" /> -->
 		
-		<!-- Custom logout page -->
-	 	<logout logout-success-url="/login.xhtml" />
+<!-- 		Custom login page -->
+		<form-login login-page="/login.xhtml" login-processing-url="/j_spring_security_check"/>
+		
+<!-- 		Custom logout page -->
+	 	<logout logout-success-url="/login.xhtml"/>
+	 	
 	</http>
 
 
@@ -40,7 +38,7 @@
 	</authentication-manager>
 	
 	 <!-- Inject authentication Manager to our LoginBean -->
-    <beans:bean name="authenticationBean" class="edu.ipsas.edt.managed.bean.AuthenticationBean">
-        <beans:property name="authenticationManager" ref="authenticationManager"></beans:property>
-    </beans:bean>
+<!--     <beans:bean name="authenticationBean" class="edu.ipsas.edt.managed.bean.AuthenticationBean"> -->
+<!--         <beans:property name="authenticationManager" ref="authenticationManager"></beans:property> -->
+<!--     </beans:bean> -->
 </beans:beans>

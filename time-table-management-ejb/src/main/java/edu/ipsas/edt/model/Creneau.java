@@ -31,6 +31,9 @@ public class Creneau implements Serializable {
 	private int heureFin;
 
 	@OneToMany
+	private Collection<Seance> seances;
+	
+	@OneToMany
 	 @JoinTable
 	  (
 	      name="CRENEAU_DISPONIBILITES",
@@ -42,6 +45,7 @@ public class Creneau implements Serializable {
 	public Creneau() {
 		super();
 		disponibilites = new ArrayList<Disponibilite>();
+		seances = new ArrayList<Seance>();
 	}
 
 	public Creneau(int heureDebut, int heureFin) {
@@ -82,4 +86,21 @@ public class Creneau implements Serializable {
 		this.disponibilites = disponibilites;
 	}
 
+	public long getCreneauId() {
+		return creneauId;
+	}
+
+	public void setCreneauId(long creneauId) {
+		this.creneauId = creneauId;
+	}
+
+	public Collection<Seance> getSeances() {
+		return seances;
+	}
+
+	public void setSeances(Collection<Seance> seances) {
+		this.seances = seances;
+	}
+
+	
 }

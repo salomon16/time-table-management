@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Mirrored from primefaces-rocks.appspot.com/ui/gmapInfoWindow.jsf by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 May 2015 10:24:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/theme.css.jsf?ln=primefaces-aristo" />
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/ui/jquery-ui.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/jquery.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/ui/jquery-ui.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/core/core.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/button/button.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/wijmo/wijmo.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/wijmo/wijmo.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/menu/menu.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/gmap/gmap.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/tabview/tabview.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/ajaxstatus/ajaxstatus.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+		<title>PrimeFaces - ShowCase</title>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<link type="text/css" rel="stylesheet" href="../css/default.css" />
+		<link type="text/css" rel="stylesheet" href="../syntaxhighlighter/styles/syntaxhighlighter.css" />
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script></head><body>
+
+		<div class="ui-widget ui-widget-header">
+			<div id="logo">
+				<h1>PRIMEFACES</h1>
+			</div>
+		</div>
+
+		<div id="menu" class="ui-widget ui-widget-content ui-corner-all">
+			<ul id="main">
+				<li class="current_page_item"><a href="home.html" style="background:url('../design/ui.png') no-repeat center left;">UI Components</a></li>
+				<li><a href="http://primefaces-rocks.appspot.com/mobile/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;color:#FF9900;">Mobile</a></li>
+				<li><a href="http://primefaces-rocks.appspot.com/facestrace/createBook.jsf" style="background:url('../design/facestrace.png') no-repeat center left;">FacesTrace</a></li>
+			</ul>
+		</div>
+
+		<div id="wrapper">
+
+			<div id="page">
+				<div id="sidebar1" class="ui-widget-content ui-corner-all ui-helper-clearfix sidebar">
+					<ul>
+						<li>
+							<table>
+								<tr>
+									<td colspan="2" align="left" style="padding:8px;">
+<form id="j_idt8" name="j_idt8" method="post" action="http://primefaces-rocks.appspot.com/ui/gmapInfoWindow.jsf" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt8" value="j_idt8" />
+<button id="j_idt8:themeButton" name="j_idt8:themeButton" style="width:100%" type="button">Change Theme: aristo</button><script type="text/javascript">widget_j_idt8_themeButton = new PrimeFaces.widget.CommandButton('j_idt8:themeButton', {});</script><span id="j_idt8:j_idt9"><ul id="j_idt8:j_idt9_menu"><li><h3>Themes</h3></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt11','j_idt8:j_idt11').submit('j_idt8');"><span class="wijmo-wijmenu-text">Aristo</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt12','j_idt8:j_idt12').submit('j_idt8');"><span class="wijmo-wijmenu-text">Black-Tie</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt13','j_idt8:j_idt13').submit('j_idt8');"><span class="wijmo-wijmenu-text">Blitzer</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt14','j_idt8:j_idt14').submit('j_idt8');"><span class="wijmo-wijmenu-text">BlueSky (RichFaces)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt15','j_idt8:j_idt15').submit('j_idt8');"><span class="wijmo-wijmenu-text">Casablanca (Trinidad)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt16','j_idt8:j_idt16').submit('j_idt8');"><span class="wijmo-wijmenu-text">Cupertino</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt17','j_idt8:j_idt17').submit('j_idt8');"><span class="wijmo-wijmenu-text">Dark-Hive</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt18','j_idt8:j_idt18').submit('j_idt8');"><span class="wijmo-wijmenu-text">Dot-Luv</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt19','j_idt8:j_idt19').submit('j_idt8');"><span class="wijmo-wijmenu-text">Eggplant</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt20','j_idt8:j_idt20').submit('j_idt8');"><span class="wijmo-wijmenu-text">Excite-Bike</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt21','j_idt8:j_idt21').submit('j_idt8');"><span class="wijmo-wijmenu-text">Flick</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt22','j_idt8:j_idt22').submit('j_idt8');"><span class="wijmo-wijmenu-text">Glass-X (RichFaces)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt23','j_idt8:j_idt23').submit('j_idt8');"><span class="wijmo-wijmenu-text">Hot-Sneaks</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt24','j_idt8:j_idt24').submit('j_idt8');"><span class="wijmo-wijmenu-text">Humanity</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt25','j_idt8:j_idt25').submit('j_idt8');"><span class="wijmo-wijmenu-text">Le-Frog</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt26','j_idt8:j_idt26').submit('j_idt8');"><span class="wijmo-wijmenu-text">Midnight (Wijmo)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt27','j_idt8:j_idt27').submit('j_idt8');"><span class="wijmo-wijmenu-text">Mint-Choc</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt28','j_idt8:j_idt28').submit('j_idt8');"><span class="wijmo-wijmenu-text">Overcast</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt29','j_idt8:j_idt29').submit('j_idt8');"><span class="wijmo-wijmenu-text">Pepper-Grinder</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt30','j_idt8:j_idt30').submit('j_idt8');"><span class="wijmo-wijmenu-text">Redmond</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt31','j_idt8:j_idt31').submit('j_idt8');"><span class="wijmo-wijmenu-text">Rocket (Wijmo)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt32','j_idt8:j_idt32').submit('j_idt8');"><span class="wijmo-wijmenu-text">Sam</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt33','j_idt8:j_idt33').submit('j_idt8');"><span class="wijmo-wijmenu-text">Smoothness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt34','j_idt8:j_idt34').submit('j_idt8');"><span class="wijmo-wijmenu-text">South-Street</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt35','j_idt8:j_idt35').submit('j_idt8');"><span class="wijmo-wijmenu-text">Start</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt36','j_idt8:j_idt36').submit('j_idt8');"><span class="wijmo-wijmenu-text">Sunny</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt37','j_idt8:j_idt37').submit('j_idt8');"><span class="wijmo-wijmenu-text">Swanky-Purse</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt38','j_idt8:j_idt38').submit('j_idt8');"><span class="wijmo-wijmenu-text">Trontastic</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt39','j_idt8:j_idt39').submit('j_idt8');"><span class="wijmo-wijmenu-text">UI-Lightness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt40','j_idt8:j_idt40').submit('j_idt8');"><span class="wijmo-wijmenu-text">UI-Darkness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt41','j_idt8:j_idt41').submit('j_idt8');"><span class="wijmo-wijmenu-text">Vader</span></a></li></ul></span><script type="text/javascript">themeMenu = new PrimeFaces.widget.Menu('j_idt8:j_idt9',{position:'dynamic',zindex:1,animation:{animated:'fade',duration:400},my:'left top',at:'left bottom',trigger:'j_idt8:themeButton',triggerEvent:'click',styleClass:'themeMenu'});</script><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="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" autocomplete="off" />
+</form>
+									</td>
+								</tr>
+                                <tr>
+									<td colspan="2" align="center">
+										<a href="macosx.html">MOCK OS X</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<ul>
+											<li><a href="ajaxHome.html">Ajax Engine</a></li>
+											<li><a href="ajaxPollHome.html">Ajax Poll</a></li>
+                                            <li><a href="ajaxStatusHome.html">Ajax Status</a></li>
+											<li><a href="accordionPanelHome.html">Accordion</a></li>
+											<li><a href="autocompleteHome.html">AutoComplete</a></li>
+											<li><a href="breadCrumb.html">BreadCrumb</a></li>
+                                            <li><a href="button.html">Button</a></li>
+											<li><a href="calendarHome.html" class="new">Calendar</a></li>
+											<li><a href="captchaHome.html">Captcha</a></li>
+											<li><a href="carouselHome.html">Carousel</a></li>
+											<li><a href="chartsHome.html">Charts</a></li>
+											<li><a href="commandButton.html">CommandButton</a></li>
+											<li><a href="commandLink.html">CommandLink</a></li>
+											<li><a href="contextMenuHome.html">ContextMenu</a></li>
+											<li><a href="collector.html">Collector</a></li>
+											<li><a href="colorPicker.html">Color Picker</a></li>
+											<li><a href="confirmDialog.html">ConfirmDialog</a></li>
+											<li><a href="dashboard.html">Dashboard</a></li>
+											<li><a href="exporterHome.html">Data Exporter</a></li>
+											<li><a href="datagrid.html">DataGrid</a></li>
+											<li><a href="dataListHome.html">DataList</a></li>
+											<li><a href="datatableHome.html">DataTable</a></li>
+											<li><a href="dialogHome.html">Dialog</a></li>
+											<li><a href="dock.html">Dock</a></li>
+                                            <li><a href="dragdropHome.html">DragDrop</a></li>
+											<li><a href="dynamicImage.html">Dyna Image</a></li>
+											<li><a href="editor.html">Editor</a></li>
+											<li><a href="effectsHome.html">Effects</a></li>
+											<li><a href="fileUploadHome.html" class="new">FileUpload</a></li>
+											<li><a href="fileDownload.html">FileDownload</a></li>
+                                            <li><a href="fieldset.html">Fieldset</a></li>
+											<li><a href="focus.html">Focus</a></li>
+                                            <li><a href="galleria.html">Galleria</a></li>
+											<li><a href="gmapHome.html">Google Maps</a></li>
+											<li><a href="graphicText.html">Graphic Text</a></li>
+											<li><a href="growl.html">Growl</a></li>
+                                            <li><a href="hotkey.html">HotKey</a></li>
+                                            <li><a href="idlemonitorHome.html">IdleMonitor</a></li>
+                                            <li><a href="imageCompare.html">ImageCompare</a></li>
+                                            <li><a href="imageCropper.html">ImageCropper</a></li>
+                                            <li><a href="imageSwitch.html">ImageSwitch</a></li>
+                                            <li><a href="inplace.html">Inplace</a></li>
+                                            <li><a href="inputText.html">InputText</a></li>
+                                            <li><a href="inputTextarea.html">InputTextarea</a></li>
+										</ul>
+									</td>
+									<td>
+										<ul>
+											<li><a href="keyboard.html">Keyboard</a></li>
+											<li><a href="layoutHome.html">Layout</a></li>
+											<li><a href="lightboxHome.html">LightBox</a></li>
+											<li><a href="inputMask.html">Masked Input</a></li>
+											<li><a href="media.html">Media</a></li>
+											<li><a href="menu.html">Menu</a></li>
+											<li><a href="menubar.html">Menubar</a></li>
+											<li><a href="menubutton.html">MenuButton</a></li>
+											<li><a href="messages.html">Messages</a></li>
+											<li><a href="notificationBar.html">NotificationBar</a></li>
+											<li><a href="outputPanel.html">OutputPanel</a></li>
+											<li><a href="panel.html">Panel</a></li>
+											<li><a href="password.html">Password</a></li>
+											<li><a href="picklist.html">PickList</a></li>
+											<li><a href="printer.html">Printer</a></li>
+											<li><a href="progressBar.html">ProgressBar</a></li>
+											<li><a href="callbackParams.html">RequestContext</a></li>
+											<li><a href="resizableHome.html">Resizable</a></li>
+											<li><a href="remoteCommand.html">RemoteCommand</a></li>
+                                            <li><a href="ring.html" class="new">Ring</a></li>
+											<li><a href="scheduleHome.html">Schedule</a></li>
+                                            <li><a href="scrollPanel.html" class="new">ScrollPanel</a></li>
+                                            <li><a href="selectBooleanCheckbox.html" class="new">SelectBoolCheckbox</a></li>
+                                            <li><a href="selectManyCheckbox.html" class="new">SelectManyCheckbox</a></li>
+                                            <li><a href="selectOneListbox.html" class="new">SelectOneListbox</a></li>
+                                            <li><a href="selectOneMenu.html" class="new">SelectOneMenu</a></li>
+                                            <li><a href="selectOneRadio.html" class="new">SelectOneRadio</a></li>
+                                            <li><a href="selectManyMenu.html" class="new">SelectManyMenu</a></li>
+											<li><a href="separator.html">Separator</a></li>
+											<li><a href="slider.html">Slider</a></li>
+                                            <li><a href="spacer.html">Spacer</a></li>
+											<li><a href="spinner.html">Spinner</a></li>
+											<li><a href="stack.html">Stack</a></li>
+											<li><a href="rating.html">Star Rating</a></li>
+											<li><a href="tabviewHome.html">TabView</a></li>
+                                            <li><a href="tagCloud.html" class="new">TagCloud</a></li>
+											<li><a href="terminalHome.html">Terminal</a></li>
+											<li><a href="themeswitcher.html">Themeswitcher</a></li>
+                                            <li><a href="toolbar.html">Toolbar</a></li>
+											<li><a href="tooltipHome.html">Tooltip</a></li>
+											<li><a href="treeHome.html" class="new">Tree</a></li>
+											<li><a href="treeTableHome.html">TreeTable</a></li>
+											<li><a href="watermark.html">Watermark</a></li>
+											<li><a href="wizard.html">Wizard</a></li>
+										</ul>
+									</td>
+								</tr>
+							</table>
+
+						</li>
+					</ul>
+				</div>
+
+				<div id="content" class="ui-widget">
+					<div class="post">
+
+		<h1 class="title ui-widget-header ui-corner-all">GMap - Info Window</h1>
+		<div class="entry">
+			<p>When a marker is selected, an info window can be displayed to provide more information about the marker
+			using ajax..</p>
+<form id="j_idt44" name="j_idt44" method="post" action="http://primefaces-rocks.appspot.com/ui/gmapInfoWindow.jsf" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt44" value="j_idt44" />
+<div id="j_idt44:j_idt45" style="width:600px;height:400px"></div><script type="text/javascript">$(function() {widget_j_idt44_j_idt45 = new PrimeFaces.widget.GMap('j_idt44:j_idt45',{mapTypeId:google.maps.MapTypeId.HYBRID,center:new google.maps.LatLng(36.890257,30.707417),zoom:13,markers:[new google.maps.Marker({position:new google.maps.LatLng(36.879466, 30.667648),id:'marker37eae472-4258-4b00-87cd-4ef994177d0f',title:'Konyaalti',icon:'http://maps.google.com/mapfiles/ms/micons/blue-dot.png',flat: true}),new google.maps.Marker({position:new google.maps.LatLng(36.883707, 30.689216),id:'marker4134e1d7-a627-4c15-b1ad-2bee060d6d28',title:'Ataturk Parki',flat: true}),new google.maps.Marker({position:new google.maps.LatLng(36.885233, 30.702323),id:'marker5f5807ce-d772-4304-810c-09f997cbef7b',title:'Kaleici',icon:'http://maps.google.com/mapfiles/ms/micons/pink-dot.png',flat: true}),new google.maps.Marker({position:new google.maps.LatLng(36.879703, 30.706707),id:'markerc2682a51-9b8d-4760-982a-700446efd1b7',title:'Karaalioglu Parki',icon:'http://maps.google.com/mapfiles/ms/micons/yellow-dot.png',flat: true})],hasOverlaySelectListener:true,infoWindow: new google.maps.InfoWindow({id:'j_idt44:j_idt46'})});});</script>
+
+				<!-- Preload for demo --><span id="j_idt44:j_idt52" style="display:none"><img id="j_idt44:j_idt53" src="../images/antalya/konyaalti.png" alt="" /><img id="j_idt44:j_idt54" src="../images/antalya/ataturkparki.png" alt="" /><img id="j_idt44:j_idt55" src="../images/antalya/kaleici.png" alt="" /><img id="j_idt44:j_idt56" src="../images/antalya/karaalioglu.png" alt="" /></span><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="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" autocomplete="off" />
+</form>
+			
+			<h3>Source</h3><div id="j_idt58"><ul><li><a href="#j_idt59"><em>gmapInfoWindow.xhtml</em></a></li><li><a href="#j_idt61"><em>MapBean.java</em></a></li></ul><div id="j_idt59">
+					<pre name="code" class="xml">
+&lt;h:form&gt;
+			
+	&lt;p:gmap center=&quot;36.890257,30.707417&quot; zoom=&quot;13&quot; type=&quot;HYBRID&quot; 
+		style=&quot;width:600px;height:400px&quot;
+		model=&quot;#{mapBean.advancedModel}&quot; 
+		overlaySelectListener=&quot;#{mapBean.onMarkerSelect}&quot;&gt;
+		
+		&lt;p:gmapInfoWindow&gt;
+			&lt;p:outputPanel style=&quot;text-align:center;display:block;margin:auto:&quot;&gt;
+				
+				&lt;p:graphicImage value=&quot;/images/antalya/#{mapBean.marker.data}&quot;/&gt;
+				&lt;br /&gt;
+				&lt;h:outputText value=&quot;#{mapBean.marker.title}&quot; /&gt;
+					
+			&lt;/p:outputPanel&gt;
+			
+		&lt;/p:gmapInfoWindow&gt;
+	&lt;/p:gmap&gt;
+	
+&lt;/h:form&gt;
+					</pre></div><div id="j_idt61">
+					<pre name="code" class="java">
+package org.primefaces.examples.view;
+
+import java.io.Serializable;
+
+import org.primefaces.event.map.OverlaySelectEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
+
+public class MapBean implements Serializable {
+	
+	private MapModel advancedModel;
+
+	private Marker marker;
+
+	public MapBean() {
+		advancedModel = new DefaultMapModel();
+		
+		//Shared coordinates
+		LatLng coord1 = new LatLng(36.879466, 30.667648);
+		LatLng coord2 = new LatLng(36.883707, 30.689216);
+		LatLng coord3 = new LatLng(36.879703, 30.706707);
+		LatLng coord4 = new LatLng(36.885233, 30.702323);
+		
+		//Icons and Data
+		advancedModel.addOverlay(new Marker(coord1, &quot;Konyaalti&quot;, &quot;konyaalti.png&quot;, &quot;http://maps.google.com/mapfiles/ms/micons/blue-dot.png&quot;));
+		advancedModel.addOverlay(new Marker(coord2, &quot;Ataturk Parki&quot;, &quot;ataturkparki.png&quot;));
+		advancedModel.addOverlay(new Marker(coord4, &quot;Kaleici&quot;, &quot;kaleici.png&quot;, &quot;http://maps.google.com/mapfiles/ms/micons/pink-dot.png&quot;));
+		advancedModel.addOverlay(new Marker(coord3, &quot;Karaalioglu Parki&quot;, &quot;karaalioglu.png&quot;, &quot;http://maps.google.com/mapfiles/ms/micons/yellow-dot.png&quot;));
+	}
+
+	public MapModel getAdvancedModel() {
+		return advancedModel;
+	}
+	
+	public void onMarkerSelect(OverlaySelectEvent event) {
+		marker = (Marker) event.getMarker();
+	}
+	
+	public Marker getMarker() {
+		return marker;
+	}
+}
+					</pre></div><input type="hidden" id="j_idt58_activeIndex" name="j_idt58_activeIndex" value="0" /></div><script type="text/javascript">widget_j_idt58 = new PrimeFaces.widget.TabView('j_idt58', {selected:0,dynamic:false,cache:true});</script>									
+		</div>
+					</div>
+				</div>
+
+				<div style="clear: both;"> </div>
+			</div>
+		</div>
+
+		<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
+			<p class="copyright">©  2009-2010  •  <a href="http://www.prime.com.tr/">Prime Technology</a>.</p>
+			<p style="float:right">Running PrimeFaces-3.0-SNAPSHOT on Mojarra-2.0.4</p>
+		</div><div id="j_idt65" style="width:32px;height:32px;display:block;position:fixed;right:0;top:0;"><div id="j_idt65_start" style="display:none"><img id="j_idt66" src="../images/loading.gif" alt="" /></div><div id="j_idt65_complete" style="display:none"></div></div><script type="text/javascript">widget_j_idt65 = new PrimeFaces.widget.AjaxStatus('j_idt65');widget_j_idt65.bindFacet('ajaxStart', 'start');widget_j_idt65.bindFacet('ajaxComplete', 'complete');</script></body>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shCore.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushXml.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushJava.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushCss.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+		<script language="javascript">
+			dp.SyntaxHighlighter.ClipboardSwf = 'http://primefaces-rocks.appspot.com/syntaxhighlighter/scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code');
+		</script>
+
+<!-- Mirrored from primefaces-rocks.appspot.com/ui/gmapInfoWindow.jsf by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 May 2015 10:24:28 GMT -->
+</html>

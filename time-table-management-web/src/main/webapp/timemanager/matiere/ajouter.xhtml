@@ -1,0 +1,89 @@
+<ui:composition  xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<h:form id="matiere">
+			<p:growl id="growl" />
+			<b:panel id="panel" look="primary">
+					 <p:messages id="messages" />
+					<f:facet name="heading">Nouvelle Matiere</f:facet> 
+					<b:row>
+    					<b:column span="4"><h:outputLabel value="Nom : " for="nom" /></b:column>
+  					    <b:column span="4"><b:inputText id="nom" value="#{matiereBean.nom}" required="true" placeholder="Nom" /></b:column>
+						<b:column span="4"><p:message for="nom" /></b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Type : " for="type" /></b:column>
+						<b:column span="4">
+							<b:selectOneMenu id="type" value="#{matiereBean.type}" effect="fold" required="true" styleClass="border-radius:1px; width:700px;">
+								<f:selectItem itemLabel="Select type matiere" itemValue="" noSelectionOption="true" />
+								<f:selectItem itemLabel="Cours" itemValue="Cours"/>
+								<f:selectItem itemLabel="Travaux Pratique" itemValue="TP"/>
+							</b:selectOneMenu>
+						</b:column>
+						<b:column span="4"><p:message for="type" /></b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Unite : " for="unite" /></b:column>
+						<b:column span="4">
+							<b:selectOneMenu id="unite"  effect="fold" value="#{matiereBean.unite}" required="true">
+								<f:selectItem itemLabel="Select unite" itemValue="" noSelectionOption="true" />
+								<f:selectItems value="#{uniteBean.allUnite}" var="unite" itemLabel="#{unite.nom}" itemValue="#{unite.uniteId}"/>
+							</b:selectOneMenu>
+						</b:column>
+						<b:column span="4"><p:message for="unite" /></b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Volume Cours : " for="volumeC" /></b:column>
+						<b:column span="4"><b:inputText id="volumeC" value="#{matiereBean.volumeC}" required="true"  /></b:column>
+						<b:column span="4"><p:message for="volumeC" /></b:column>
+					</b:row>
+					
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Volume TP : " for="volumeTp" /></b:column>
+						<b:column span="4"><b:inputText id="volumeTp" value="#{matiereBean.volumeTP}" required="true" /></b:column>
+						<b:column span="4"><p:message for="volumeTp"/></b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Volume TD : " for="volumeTd" /></b:column>
+						<b:column span="4"><b:inputText id="volumeTd" value="#{matiereBean.volumeTD}" required="true" /></b:column>
+						<b:column span="4"><p:message for="volumeTd" display="text" /></b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Credit: " for="credit" /></b:column>
+						<b:column span="4"><b:inputText id="credit" value="#{matiereBean.credit}" required="true"  /></b:column>
+						<b:column span="4"><p:message for="credit" /></b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4"><h:outputLabel value="Coefficient :" for="coefficient" /></b:column>
+						<b:column span="4"><p:spinner id="coefficient" min="0" required="true" value="#{matiereBean.coefficient}"/></b:column>
+						<b:column span="4"><p:message for="coefficient"/></b:column>
+					</b:row>
+					
+					<p:separator />
+					<b:row>
+						<b:column span="2"></b:column>
+						<b:column span="4">
+							<p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" />
+						</b:column>
+						<b:column span="4"> <p:commandButton id="addMsgButton" value="Enregistrer" action="#{matiereBean.save()}" update="growl" styleClass="btn btn-default" icon="ui-icon-plusthick" /> </b:column>
+                         <b:column span="4"></b:column>
+						 
+					</b:row> 
+			</b:panel>
+			<p:blockUI block="panel" trigger="addMsgButton">  
+	    		<h:panelGrid columns="2">  
+			        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
+			        <h:outputText value="Ajout matiere..." style="white-space: nowrap;"/>  
+	    		</h:panelGrid>  
+			</p:blockUI> 
+			
+		</h:form>
+	</ui:define>
+	</ui:composition>

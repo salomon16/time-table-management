@@ -16,8 +16,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ENSEIGNANT")
-@SuppressWarnings("serial")
 public class Enseignant extends Personne implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="ENSEIGNANT_ID", unique = true, nullable = false)
@@ -40,11 +44,15 @@ public class Enseignant extends Personne implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "STATUT_ID")
 	private Statut statut;
+	
+	@OneToMany
+	private Collection<VoeuxMatiere> voeuxMatieres;
 
 	public Enseignant() {
 		super();
 		departements = new ArrayList<Departement>();
 		disponibilites = new ArrayList<Disponibilite>();
+		voeuxMatieres = new ArrayList<VoeuxMatiere>();
 		
 	}
 
@@ -53,6 +61,7 @@ public class Enseignant extends Personne implements Serializable {
 		super(nom, prenom, cin, adresse, telephoneMobile, email);
 		departements = new ArrayList<Departement>();
 		disponibilites = new ArrayList<Disponibilite>();
+		voeuxMatieres = new ArrayList<VoeuxMatiere>();
 		
 	}
 
@@ -114,5 +123,22 @@ public class Enseignant extends Personne implements Serializable {
 	public void setStatut(Statut statut) {
 		this.statut = statut;
 	}
+
+	public long getEnseignantId() {
+		return enseignantId;
+	}
+
+	public void setEnseignantId(long enseignantId) {
+		this.enseignantId = enseignantId;
+	}
+
+	public Collection<VoeuxMatiere> getVoeuxMatieres() {
+		return voeuxMatieres;
+	}
+
+	public void setVoeuxMatieres(Collection<VoeuxMatiere> voeuxMatieres) {
+		this.voeuxMatieres = voeuxMatieres;
+	}
+	
 
 }

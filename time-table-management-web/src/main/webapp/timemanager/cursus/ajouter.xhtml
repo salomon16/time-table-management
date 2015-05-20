@@ -1,46 +1,53 @@
-<!DOCTYPE html>
 <ui:composition xmlns="http://www.w3c.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/timemanager/index.xhtml">
-
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui" 
+ template="/templates/template.xhtml">
 	<ui:define name="content">
-		<h:form>
-			<p:panel header="Nouvel Enregistrement">
-				<h:panelGrid columns="2" cellpadding="5" styleClass="panelGrid">
-
-					<h:outputLabel value="Specialite: " for="specialite" />
-					<p:selectOneMenu id="specialite"
-						value="#{cursusBean.nom}">
-						<f:selectItem itemLabel="Select one" itemValue=""
-							noSelectionOption="true" />
-						<f:selectItem itemLabel="Licence Appliquee" itemValue="Licence Appliquee"
-							noSelectionOption="false" />
-							<f:selectItem itemLabel="Licence Co-construite" itemValue="Licence Co-construite"
-							noSelectionOption="false" />
-							<f:selectItem itemLabel="Master Professionnel" itemValue="Master Professionnel"
-							noSelectionOption="false" />
-							
-					</p:selectOneMenu>
+		<h:form id="cursus">
+			<p:growl id="growl"/>
+			<b:panel id="panel" look="primary">
+					<p:messages id="messages"/>
+					<f:facet name="heading">Nouveau Cursus</f:facet> 
+				<b:row>
+					<b:column span="4"><h:outputLabel value="Cursus: " for="specialite" /></b:column>
+					<b:column span="4">
+						<b:selectOneMenu id="specialite" value="#{cursusBean.nom}">
+							<f:selectItem itemLabel="Select one" itemValue="" noSelectionOption="true" />
+							<f:selectItem itemLabel="Licence Appliquee" itemValue="Licence Appliquee" noSelectionOption="false" />
+							<f:selectItem itemLabel="Licence Co-construite" itemValue="Licence Co-construite" noSelectionOption="false" />
+							<f:selectItem itemLabel="Master Professionnel" itemValue="Master Professionnel" noSelectionOption="false" />	
+						</b:selectOneMenu>
+					</b:column>
+					<b:column span="4"></b:column>
+				</b:row>	
+				<b:row>
+					<b:column span="4"><h:outputText value="Departement: " /></b:column>
+					<b:column span="4">
+						<b:selectOneMenu id="departement" value="#{cursusBean.departement}">
+							<f:selectItem itemLabel="Select one" itemValue="" noSelectionOption="true" />
+							<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.nom}" />
+						</b:selectOneMenu>
+					</b:column>
+					<b:column span="4"></b:column>
+				</b:row>
 					
+				<b:row>
+					<b:column span="2"></b:column>
+					<b:column span="4"><p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" /></b:column>
+					<b:column span="4"><p:commandButton id="addCursus" value="Enregistrer" update="growl" icon="ui-icon-check" styleClass="btn btn-default" action="#{cursusBean.save()}" /></b:column>
+					<b:column span="2"></b:column>
+				</b:row>
 
-					<h:outputText value="Departement: " />
-					<p:selectOneMenu id="departement"
-						value="#{cursusBean.departement}">
-						<f:selectItem itemLabel="Select one" itemValue=""
-							noSelectionOption="true" />
-						<f:selectItems value="#{departementBean.allDepartement}" var="departement"
-							itemLabel="#{departement.nom}" itemValue="#{departement.nom}" />
-					</p:selectOneMenu>
-
-					<p:commandButton value="Reinitialiser" icon="ui-icon-refresh"
-						styleClass="btn btn-default" type="reset"></p:commandButton>
-					<p:commandButton value="Enregistrer" icon="ui-icon-check"
-						styleClass="btn btn-default" action="#{cursusBean.save()}"></p:commandButton>
-
-				</h:panelGrid>
-			</p:panel>
+			</b:panel>
+				<p:blockUI block="panel" target="addCursus">  
+					<h:panelGrid columns="2">  
+			        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
+			        <h:outputText value="Adding message..." style="white-space: nowrap;"/>  
+	    		</h:panelGrid>  
+				</p:blockUI>  
 
 		</h:form>
 	</ui:define>

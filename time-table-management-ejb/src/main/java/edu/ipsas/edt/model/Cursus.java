@@ -32,7 +32,6 @@ public class Cursus implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "DEPARTEMENT_ID")
 	private Departement departement;
-
 	
 	public Cursus() {
 		super();
@@ -78,7 +77,6 @@ public class Cursus implements Serializable{
 
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
-	}	
-	
+	}
 
 }

@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Mirrored from primefaces-rocks.appspot.com/ui/dialogLogin.jsf by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 May 2015 10:24:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/theme.css.jsf?ln=primefaces-aristo" />
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/ui/jquery-ui.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/jquery.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/jquery/ui/jquery-ui.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/core/core.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/button/button.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/wijmo/wijmo.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/wijmo/wijmo.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/menu/menu.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/growl/assets/growl.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/growl/growl.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/dialog/dialog.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/forms/forms.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/forms/forms.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<link type="text/css" rel="stylesheet" href="http://primefaces-rocks.appspot.com/javax.faces.resource/password/password.css.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT" />
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/password/password.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/tabview/tabview.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+<script type="text/javascript" src="http://primefaces-rocks.appspot.com/javax.faces.resource/ajaxstatus/ajaxstatus.js.jsf?ln=primefaces&amp;v=3.0-SNAPSHOT"></script>
+		<title>PrimeFaces - ShowCase</title>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<link type="text/css" rel="stylesheet" href="../css/default.css" />
+		<link type="text/css" rel="stylesheet" href="../syntaxhighlighter/styles/syntaxhighlighter.css" />
+		<script type="text/javascript">
+			function handleLoginRequest(xhr, status, args) {
+				if(args.validationFailed || !args.loggedIn) {
+					jQuery('#dialog').parent().effect("shake", { times:5 }, 100);
+				} else {
+					dlg.hide();
+					jQuery('#loginLink').fadeOut();
+				}
+			}
+		</script></head><body>
+
+		<div class="ui-widget ui-widget-header">
+			<div id="logo">
+				<h1>PRIMEFACES</h1>
+			</div>
+		</div>
+
+		<div id="menu" class="ui-widget ui-widget-content ui-corner-all">
+			<ul id="main">
+				<li class="current_page_item"><a href="home.html" style="background:url('../design/ui.png') no-repeat center left;">UI Components</a></li>
+				<li><a href="http://primefaces-rocks.appspot.com/mobile/index.jsf" style="background:url('../design/iphone.png') no-repeat center left;color:#FF9900;">Mobile</a></li>
+				<li><a href="http://primefaces-rocks.appspot.com/facestrace/createBook.jsf" style="background:url('../design/facestrace.png') no-repeat center left;">FacesTrace</a></li>
+			</ul>
+		</div>
+
+		<div id="wrapper">
+
+			<div id="page">
+				<div id="sidebar1" class="ui-widget-content ui-corner-all ui-helper-clearfix sidebar">
+					<ul>
+						<li>
+							<table>
+								<tr>
+									<td colspan="2" align="left" style="padding:8px;">
+<form id="j_idt8" name="j_idt8" method="post" action="http://primefaces-rocks.appspot.com/ui/dialogLogin.jsf" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt8" value="j_idt8" />
+<button id="j_idt8:themeButton" name="j_idt8:themeButton" style="width:100%" type="button">Change Theme: aristo</button><script type="text/javascript">widget_j_idt8_themeButton = new PrimeFaces.widget.CommandButton('j_idt8:themeButton', {});</script><span id="j_idt8:j_idt9"><ul id="j_idt8:j_idt9_menu"><li><h3>Themes</h3></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt11','j_idt8:j_idt11').submit('j_idt8');"><span class="wijmo-wijmenu-text">Aristo</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt12','j_idt8:j_idt12').submit('j_idt8');"><span class="wijmo-wijmenu-text">Black-Tie</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt13','j_idt8:j_idt13').submit('j_idt8');"><span class="wijmo-wijmenu-text">Blitzer</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt14','j_idt8:j_idt14').submit('j_idt8');"><span class="wijmo-wijmenu-text">BlueSky (RichFaces)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt15','j_idt8:j_idt15').submit('j_idt8');"><span class="wijmo-wijmenu-text">Casablanca (Trinidad)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt16','j_idt8:j_idt16').submit('j_idt8');"><span class="wijmo-wijmenu-text">Cupertino</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt17','j_idt8:j_idt17').submit('j_idt8');"><span class="wijmo-wijmenu-text">Dark-Hive</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt18','j_idt8:j_idt18').submit('j_idt8');"><span class="wijmo-wijmenu-text">Dot-Luv</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt19','j_idt8:j_idt19').submit('j_idt8');"><span class="wijmo-wijmenu-text">Eggplant</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt20','j_idt8:j_idt20').submit('j_idt8');"><span class="wijmo-wijmenu-text">Excite-Bike</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt21','j_idt8:j_idt21').submit('j_idt8');"><span class="wijmo-wijmenu-text">Flick</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt22','j_idt8:j_idt22').submit('j_idt8');"><span class="wijmo-wijmenu-text">Glass-X (RichFaces)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt23','j_idt8:j_idt23').submit('j_idt8');"><span class="wijmo-wijmenu-text">Hot-Sneaks</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt24','j_idt8:j_idt24').submit('j_idt8');"><span class="wijmo-wijmenu-text">Humanity</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt25','j_idt8:j_idt25').submit('j_idt8');"><span class="wijmo-wijmenu-text">Le-Frog</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt26','j_idt8:j_idt26').submit('j_idt8');"><span class="wijmo-wijmenu-text">Midnight (Wijmo)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt27','j_idt8:j_idt27').submit('j_idt8');"><span class="wijmo-wijmenu-text">Mint-Choc</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt28','j_idt8:j_idt28').submit('j_idt8');"><span class="wijmo-wijmenu-text">Overcast</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt29','j_idt8:j_idt29').submit('j_idt8');"><span class="wijmo-wijmenu-text">Pepper-Grinder</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt30','j_idt8:j_idt30').submit('j_idt8');"><span class="wijmo-wijmenu-text">Redmond</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt31','j_idt8:j_idt31').submit('j_idt8');"><span class="wijmo-wijmenu-text">Rocket (Wijmo)</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt32','j_idt8:j_idt32').submit('j_idt8');"><span class="wijmo-wijmenu-text">Sam</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt33','j_idt8:j_idt33').submit('j_idt8');"><span class="wijmo-wijmenu-text">Smoothness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt34','j_idt8:j_idt34').submit('j_idt8');"><span class="wijmo-wijmenu-text">South-Street</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt35','j_idt8:j_idt35').submit('j_idt8');"><span class="wijmo-wijmenu-text">Start</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt36','j_idt8:j_idt36').submit('j_idt8');"><span class="wijmo-wijmenu-text">Sunny</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt37','j_idt8:j_idt37').submit('j_idt8');"><span class="wijmo-wijmenu-text">Swanky-Purse</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt38','j_idt8:j_idt38').submit('j_idt8');"><span class="wijmo-wijmenu-text">Trontastic</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt39','j_idt8:j_idt39').submit('j_idt8');"><span class="wijmo-wijmenu-text">UI-Lightness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt40','j_idt8:j_idt40').submit('j_idt8');"><span class="wijmo-wijmenu-text">UI-Darkness</span></a></li><li><a href="javascript:void(0)" onclick="PrimeFaces.addSubmitParam('j_idt8','j_idt8:j_idt41','j_idt8:j_idt41').submit('j_idt8');"><span class="wijmo-wijmenu-text">Vader</span></a></li></ul></span><script type="text/javascript">themeMenu = new PrimeFaces.widget.Menu('j_idt8:j_idt9',{position:'dynamic',zindex:1,animation:{animated:'fade',duration:400},my:'left top',at:'left bottom',trigger:'j_idt8:themeButton',triggerEvent:'click',styleClass:'themeMenu'});</script><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="H4sIAAAAAAAAAMVYz28bRRQeO3HTpmkITus2rULTNqoESnbTkoT8UEWSJiEWSYmSEAgc0rE9idesdzazs/a6FVF7gQMHkAoHpAA9cODQHhD8AwgJJKQiUcEFCQnBAXEALiAkTryZ9a43iQMxLHgPs2/t2Znve9+bt2/mzk8oZloMPZjDBazYXNOVGWxl57AZa/r6o48TV79oQNFp1KxTnJnGaU5ZEh3iWUasLNUzjvn4GBJXX/EgtMI+ydEDuVUtw/sHRtz7sM1Q+/OzcgIdG+vKU6kcSfPR1z5/9p0262E9ipBjwpsxewNtogawIr4VBWi9aZpXLNtQ1nCaWLLVCbcUoitLeH2O8CzNTDkmQLI0aiD3irTAqAx1iFkd0XWvflHZr93vV72HcNFpD0eV0ZJ5U/9mYXOoZeXWL2Jmgf9gMYHi567rdF0zJgg2FGm9iNBOfyxyphnro3fvL//wY+f1Jzx/RDjqdGG5xEmBGFwZT3OYb0rYpukUJ9CYamtqRsMw+qyYQHGyPK93jfUP9gwPdWHZfVazODEIu3R2N56zjiXQHi52V0XbWsG5TLWMVOaI8AvMbsLFUVzKPDTCsyRPJmzOqeHrFxNdKk+bDClBSuBRkxqC1tPJy57dPc+oSRgvPUlKVlkEFJcyBcBMGXY++CcAacYcPJmyOWhSltSN6HHGcEn4wLl5v/PNT/FbDSiSRI2Wdo1ITzcUG0ULL52vjm6RY05mIOAJW8QFwlY+++DSra17c1EUnUWH0jq2rCs4T8AXUlZVIFTLss6iZgveycgxOEq4PTSqLhIGqmnXcEono+DLgnATkmKcAjYP7RH24/Pzs8mpyXI/wDywR0cNYlKZJGvY1vm0+2P3uGnqpSX6AjF+e69nZWssNyai1QTtT6qcwAuA0VKlknPEsN1YglCce+bE7fcdB/QbqE2/eaYVYMygUgJ4gqOjFbWWspiPM7IIqMWfHWLhS0miZZbSNR3lB9GeEXofEIF3oa+SLHzrwLawa9oU1jGOWhgxQELClkomSHE6SAUWMrVZmoDWJR2yGyFcvHXcRxSTiGIBEKd9rZp0LcUwK/k/NJtMyxM5sv9bowEh4j8l1hkt6ipEDrBW5YOStizpnfP+pF5kViZ9JGCPBOxBx8/icn1MUKrDMr7XxW58tfXHz1EUeQ7FCli3RciLF3p8Dz769x4URp9oLu7XKRJTwB6qghs+FWuU5S1Vtv+SvmgnRHPZJ9a/T2IcnaoeCmmmmfsOg/0xbg0yzoVCeMEnfKEGJZdD5uXGsxvI4fBK+bwu1o9Xm/tpLX9hQ2K24TN7rH7M4hynChopquV7SNxu+NyG6sftBM5hx4Ivrm2pFTMkhq/6DAfqlzmPmfDpKFKWUT0jrPz5tk9vsH4CHt1NLxzx7oo17W1QbIsw8VX2+TS6Ja2kz6vR31HQbie9G1CQ9BmvZBO3c8VO1B4ouWxtW631obOD6/Z6aCdXKIcA9ZFyIS5vw2FCFm13rYg4igkkdcwCrUUtl6eqbEMKny89WsP1o9WSh9JcFU1IpL4Prglvve1cE5L1fiuq/4B1IrdhE1YSu13X6oU1Ew7/Xz16teTzsEVNU0ZU0YRDKtLgkapjFm9LyeMA1b2FRCzuJ+hqG5eQst0n/yD/Sm/XUtCFvZkKprtwioFIj8er2tZiu68bNhnq3et0YBkKzAVK9z7cEaMkQFgdWzyZ2b6XTRqcrBMW/+72u7/ffHkoKk5vyntZBonL73fFzqcIe+nOG52HX//2Fe8cLe5rU8s2ImRtjlfLXiFpNAXjuwedq9LxqzpNY3HstzozNT75l0wLDDUWqJZBlcsx/6814xNYKutTy0FE2JmqrI97CylTXTWdPwFK4tGdYBcAAA==" autocomplete="off" />
+</form>
+									</td>
+								</tr>
+                                <tr>
+									<td colspan="2" align="center">
+										<a href="macosx.html">MOCK OS X</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<ul>
+											<li><a href="ajaxHome.html">Ajax Engine</a></li>
+											<li><a href="ajaxPollHome.html">Ajax Poll</a></li>
+                                            <li><a href="ajaxStatusHome.html">Ajax Status</a></li>
+											<li><a href="accordionPanelHome.html">Accordion</a></li>
+											<li><a href="autocompleteHome.html">AutoComplete</a></li>
+											<li><a href="breadCrumb.html">BreadCrumb</a></li>
+                                            <li><a href="button.html">Button</a></li>
+											<li><a href="calendarHome.html" class="new">Calendar</a></li>
+											<li><a href="captchaHome.html">Captcha</a></li>
+											<li><a href="carouselHome.html">Carousel</a></li>
+											<li><a href="chartsHome.html">Charts</a></li>
+											<li><a href="commandButton.html">CommandButton</a></li>
+											<li><a href="commandLink.html">CommandLink</a></li>
+											<li><a href="contextMenuHome.html">ContextMenu</a></li>
+											<li><a href="collector.html">Collector</a></li>
+											<li><a href="colorPicker.html">Color Picker</a></li>
+											<li><a href="confirmDialog.html">ConfirmDialog</a></li>
+											<li><a href="dashboard.html">Dashboard</a></li>
+											<li><a href="exporterHome.html">Data Exporter</a></li>
+											<li><a href="datagrid.html">DataGrid</a></li>
+											<li><a href="dataListHome.html">DataList</a></li>
+											<li><a href="datatableHome.html">DataTable</a></li>
+											<li><a href="dialogHome.html">Dialog</a></li>
+											<li><a href="dock.html">Dock</a></li>
+                                            <li><a href="dragdropHome.html">DragDrop</a></li>
+											<li><a href="dynamicImage.html">Dyna Image</a></li>
+											<li><a href="editor.html">Editor</a></li>
+											<li><a href="effectsHome.html">Effects</a></li>
+											<li><a href="fileUploadHome.html" class="new">FileUpload</a></li>
+											<li><a href="fileDownload.html">FileDownload</a></li>
+                                            <li><a href="fieldset.html">Fieldset</a></li>
+											<li><a href="focus.html">Focus</a></li>
+                                            <li><a href="galleria.html">Galleria</a></li>
+											<li><a href="gmapHome.html">Google Maps</a></li>
+											<li><a href="graphicText.html">Graphic Text</a></li>
+											<li><a href="growl.html">Growl</a></li>
+                                            <li><a href="hotkey.html">HotKey</a></li>
+                                            <li><a href="idlemonitorHome.html">IdleMonitor</a></li>
+                                            <li><a href="imageCompare.html">ImageCompare</a></li>
+                                            <li><a href="imageCropper.html">ImageCropper</a></li>
+                                            <li><a href="imageSwitch.html">ImageSwitch</a></li>
+                                            <li><a href="inplace.html">Inplace</a></li>
+                                            <li><a href="inputText.html">InputText</a></li>
+                                            <li><a href="inputTextarea.html">InputTextarea</a></li>
+										</ul>
+									</td>
+									<td>
+										<ul>
+											<li><a href="keyboard.html">Keyboard</a></li>
+											<li><a href="layoutHome.html">Layout</a></li>
+											<li><a href="lightboxHome.html">LightBox</a></li>
+											<li><a href="inputMask.html">Masked Input</a></li>
+											<li><a href="media.html">Media</a></li>
+											<li><a href="menu.html">Menu</a></li>
+											<li><a href="menubar.html">Menubar</a></li>
+											<li><a href="menubutton.html">MenuButton</a></li>
+											<li><a href="messages.html">Messages</a></li>
+											<li><a href="notificationBar.html">NotificationBar</a></li>
+											<li><a href="outputPanel.html">OutputPanel</a></li>
+											<li><a href="panel.html">Panel</a></li>
+											<li><a href="password.html">Password</a></li>
+											<li><a href="picklist.html">PickList</a></li>
+											<li><a href="printer.html">Printer</a></li>
+											<li><a href="progressBar.html">ProgressBar</a></li>
+											<li><a href="callbackParams.html">RequestContext</a></li>
+											<li><a href="resizableHome.html">Resizable</a></li>
+											<li><a href="remoteCommand.html">RemoteCommand</a></li>
+                                            <li><a href="ring.html" class="new">Ring</a></li>
+											<li><a href="scheduleHome.html">Schedule</a></li>
+                                            <li><a href="scrollPanel.html" class="new">ScrollPanel</a></li>
+                                            <li><a href="selectBooleanCheckbox.html" class="new">SelectBoolCheckbox</a></li>
+                                            <li><a href="selectManyCheckbox.html" class="new">SelectManyCheckbox</a></li>
+                                            <li><a href="selectOneListbox.html" class="new">SelectOneListbox</a></li>
+                                            <li><a href="selectOneMenu.html" class="new">SelectOneMenu</a></li>
+                                            <li><a href="selectOneRadio.html" class="new">SelectOneRadio</a></li>
+                                            <li><a href="selectManyMenu.html" class="new">SelectManyMenu</a></li>
+											<li><a href="separator.html">Separator</a></li>
+											<li><a href="slider.html">Slider</a></li>
+                                            <li><a href="spacer.html">Spacer</a></li>
+											<li><a href="spinner.html">Spinner</a></li>
+											<li><a href="stack.html">Stack</a></li>
+											<li><a href="rating.html">Star Rating</a></li>
+											<li><a href="tabviewHome.html">TabView</a></li>
+                                            <li><a href="tagCloud.html" class="new">TagCloud</a></li>
+											<li><a href="terminalHome.html">Terminal</a></li>
+											<li><a href="themeswitcher.html">Themeswitcher</a></li>
+                                            <li><a href="toolbar.html">Toolbar</a></li>
+											<li><a href="tooltipHome.html">Tooltip</a></li>
+											<li><a href="treeHome.html" class="new">Tree</a></li>
+											<li><a href="treeTableHome.html">TreeTable</a></li>
+											<li><a href="watermark.html">Watermark</a></li>
+											<li><a href="wizard.html">Wizard</a></li>
+										</ul>
+									</td>
+								</tr>
+							</table>
+
+						</li>
+					</ul>
+				</div>
+
+				<div id="content" class="ui-widget">
+					<div class="post">
+	
+		<h1 class="title ui-widget-header ui-corner-all">Dialog - Login Demo</h1>
+		<div class="entry">
+			<p>This example demonstrates how to create a login dialog. Correct combination is (admin-admin)</p><a id="loginLink" name="loginLink" href="javascript:void(0)" onclick="dlg.show()" title="login"><img id="j_idt44" src="../images/login.png" alt="" /></a><span id="growl"></span><script type="text/javascript">jQuery(function(){});</script><div id="dialog" style="display:none" title="Login">
+<form id="j_idt45" name="j_idt45" method="post" action="http://primefaces-rocks.appspot.com/ui/dialogLogin.jsf" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt45" value="j_idt45" />
+<table cellpadding="5">
+<tfoot>
+<tr><td colspan="2"><button id="j_idt45:j_idt49" name="j_idt45:j_idt49" onclick="PrimeFaces.ab({formId:'j_idt45',source:'j_idt45:j_idt49',process:'@all',update:'growl',oncomplete:function(xhr, status, args){handleLoginRequest(xhr, status, args);}});return false;" type="submit">Login</button><script type="text/javascript">widget_j_idt45_j_idt49 = new PrimeFaces.widget.CommandButton('j_idt45:j_idt49', {});</script></td></tr>
+</tfoot>
+<tbody>
+<tr>
+<td><label for="j_idt45:username">
+Username: *</label></td>
+<td><input id="j_idt45:username" name="j_idt45:username" type="text" value="" class="ui-inputfield ui-widget ui-state-default ui-corner-all" /><script type="text/javascript">widget_j_idt45_username = new PrimeFaces.widget.InputText({id:'j_idt45:username'});</script></td>
+</tr>
+<tr>
+<td><label for="j_idt45:password">
+Password: * </label></td>
+<td><input id="j_idt45:password" name="j_idt45:password" type="password" value="" class="ui-inputfield ui-widget ui-state-default ui-corner-all" /><script type="text/javascript">jQuery(function(){widget_j_idt45_password = new PrimeFaces.widget.Password('j_idt45:password', {feedback:false});});</script></td>
+</tr>
+</tbody>
+</table>
+<input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="H4sIAAAAAAAAAMVYz28bRRQeO3HTpmkITus2rULTNqoESnbTkoT8UEWSJiEWSYmSEAgc0rE9idesdzazs/a6FVF7gQMHkAoHpAA9cODQHhD8AwgJJKQiUcEFCQnBAXEALiAkTryZ9a43iQMxLHgPs2/t2Znve9+bt2/mzk8oZloMPZjDBazYXNOVGWxl57AZa/r6o48TV79oQNFp1KxTnJnGaU5ZEh3iWUasLNUzjvn4GBJXX/EgtMI+ydEDuVUtw/sHRtz7sM1Q+/OzcgIdG+vKU6kcSfPR1z5/9p0262E9ipBjwpsxewNtogawIr4VBWi9aZpXLNtQ1nCaWLLVCbcUoitLeH2O8CzNTDkmQLI0aiD3irTAqAx1iFkd0XWvflHZr93vV72HcNFpD0eV0ZJ5U/9mYXOoZeXWL2Jmgf9gMYHi567rdF0zJgg2FGm9iNBOfyxyphnro3fvL//wY+f1Jzx/RDjqdGG5xEmBGFwZT3OYb0rYpukUJ9CYamtqRsMw+qyYQHGyPK93jfUP9gwPdWHZfVazODEIu3R2N56zjiXQHi52V0XbWsG5TLWMVOaI8AvMbsLFUVzKPDTCsyRPJmzOqeHrFxNdKk+bDClBSuBRkxqC1tPJy57dPc+oSRgvPUlKVlkEFJcyBcBMGXY++CcAacYcPJmyOWhSltSN6HHGcEn4wLl5v/PNT/FbDSiSRI2Wdo1ITzcUG0ULL52vjm6RY05mIOAJW8QFwlY+++DSra17c1EUnUWH0jq2rCs4T8AXUlZVIFTLss6iZgveycgxOEq4PTSqLhIGqmnXcEono+DLgnATkmKcAjYP7RH24/Pzs8mpyXI/wDywR0cNYlKZJGvY1vm0+2P3uGnqpSX6AjF+e69nZWssNyai1QTtT6qcwAuA0VKlknPEsN1YglCce+bE7fcdB/QbqE2/eaYVYMygUgJ4gqOjFbWWspiPM7IIqMWfHWLhS0miZZbSNR3lB9GeEXofEIF3oa+SLHzrwLawa9oU1jGOWhgxQELClkomSHE6SAUWMrVZmoDWJR2yGyFcvHXcRxSTiGIBEKd9rZp0LcUwK/k/NJtMyxM5sv9bowEh4j8l1hkt6ipEDrBW5YOStizpnfP+pF5kViZ9JGCPBOxBx8/icn1MUKrDMr7XxW58tfXHz1EUeQ7FCli3RciLF3p8Dz769x4URp9oLu7XKRJTwB6qghs+FWuU5S1Vtv+SvmgnRHPZJ9a/T2IcnaoeCmmmmfsOg/0xbg0yzoVCeMEnfKEGJZdD5uXGsxvI4fBK+bwu1o9Xm/tpLX9hQ2K24TN7rH7M4hynChopquV7SNxu+NyG6sftBM5hx4Ivrm2pFTMkhq/6DAfqlzmPmfDpKFKWUT0jrPz5tk9vsH4CHt1NLxzx7oo17W1QbIsw8VX2+TS6Ja2kz6vR31HQbie9G1CQ9BmvZBO3c8VO1B4ouWxtW631obOD6/Z6aCdXKIcA9ZFyIS5vw2FCFm13rYg4igkkdcwCrUUtl6eqbEMKny89WsP1o9WSh9JcFU1IpL4Prglvve1cE5L1fiuq/4B1IrdhE1YSu13X6oU1Ew7/Xz16teTzsEVNU0ZU0YRDKtLgkapjFm9LyeMA1b2FRCzuJ+hqG5eQst0n/yD/Sm/XUtCFvZkKprtwioFIj8er2tZiu68bNhnq3et0YBkKzAVK9z7cEaMkQFgdWzyZ2b6XTRqcrBMW/+72u7/ffHkoKk5vyntZBonL73fFzqcIe+nOG52HX//2Fe8cLe5rU8s2ImRtjlfLXiFpNAXjuwedq9LxqzpNY3HstzozNT75l0wLDDUWqJZBlcsx/6814xNYKutTy0FE2JmqrI97CylTXTWdPwFK4tGdYBcAAA==" autocomplete="off" />
+</form></div><script type="text/javascript">$(function() {dlg = new PrimeFaces.widget.Dialog('dialog',{autoOpen:false,minHeight:0});});</script>
+				
+				<h3>Source</h3><div id="j_idt51"><ul><li><a href="#j_idt52"><em>dialogLogin.xhtml</em></a></li><li><a href="#j_idt54"><em>LoginBean.java</em></a></li></ul><div id="j_idt52">
+				<pre name="code" class="xml">
+&lt;h:outputLink id=&quot;loginLink&quot; value=&quot;javascript:void(0)&quot; onclick=&quot;dlg.show()&quot; title=&quot;login&quot;&gt;	
+	&lt;p:graphicImage value=&quot;/images/login.png&quot; /&gt;
+&lt;/h:outputLink&gt;
+
+&lt;p:growl id=&quot;growl&quot; showDetail=&quot;true&quot; life=&quot;3000&quot; /&gt;
+
+&lt;p:dialog id=&quot;dialog&quot; header=&quot;Login&quot; widgetVar=&quot;dlg&quot;&gt;
+	&lt;h:form&gt;
+
+		&lt;h:panelGrid columns=&quot;2&quot; cellpadding=&quot;5&quot;&gt;
+			&lt;h:outputLabel for=&quot;username&quot; value=&quot;Username: *&quot; /&gt;
+			&lt;p:inputText value=&quot;#{loginBean.username}&quot; 
+					id=&quot;username&quot; required=&quot;true&quot; label=&quot;username&quot; /&gt;
+			
+			&lt;h:outputLabel for=&quot;password&quot; value=&quot;Password: * &quot; /&gt;
+			&lt;h:inputSecret value=&quot;#{loginBean.password}&quot; 
+					id=&quot;password&quot; required=&quot;true&quot; label=&quot;password&quot; /&gt;
+			
+			&lt;f:facet name=&quot;footer&quot;&gt;
+				&lt;p:commandButton value=&quot;Login&quot; update=&quot;growl&quot; 
+					actionListener=&quot;#{loginBean.login}&quot; 
+					oncomplete=&quot;handleLoginRequest(xhr, status, args)&quot;/&gt;
+			&lt;/f:facet&gt;
+		&lt;/h:panelGrid&gt;
+		
+	&lt;/h:form&gt;
+&lt;/p:dialog&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+	function handleLoginRequest(xhr, status, args) {
+		if(args.validationFailed || !args.loggedIn) {
+			jQuery('#dialog').parent().effect(&quot;shake&quot;, { times:3 }, 100);
+		} else {
+			dlg.hide();
+			jQuery('#loginLink').fadeOut();
+		}
+	}
+&lt;/script&gt;
+				</pre></div><div id="j_idt54">
+						<pre name="code" class="java">
+public class LoginBean {
+
+	private String username;
+	
+	private String password;
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void login(ActionEvent actionEvent) {
+		RequestContext context = RequestContext.getCurrentInstance();
+		FacesMessage msg = null;
+		boolean loggedIn = false;
+		
+		if(username != null  &amp;&amp;&amp;&amp; username.equals(&quot;admin&quot;) &amp;&amp; password != null  &amp;&amp; password.equals(&quot;admin&quot;)) {
+			loggedIn = true;
+			msg = new FacesMessage(FacesMessage.SEVERITY_INFO, &quot;Welcome&quot;, username);
+		} else {
+			loggedIn = false;
+			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, &quot;Login Error&quot;, &quot;Invalid credentials&quot;);
+		}
+		
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		context.addCallbackParam(&quot;loggedIn&quot;, loggedIn);
+	}
+}
+						</pre></div><input type="hidden" id="j_idt51_activeIndex" name="j_idt51_activeIndex" value="0" /></div><script type="text/javascript">widget_j_idt51 = new PrimeFaces.widget.TabView('j_idt51', {selected:0,dynamic:false,cache:true});</script>
+		</div>
+					</div>
+				</div>
+
+				<div style="clear: both;"> </div>
+			</div>
+		</div>
+
+		<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
+			<p class="copyright">©  2009-2010  •  <a href="http://www.prime.com.tr/">Prime Technology</a>.</p>
+			<p style="float:right">Running PrimeFaces-3.0-SNAPSHOT on Mojarra-2.0.4</p>
+		</div><div id="j_idt58" style="width:32px;height:32px;display:block;position:fixed;right:0;top:0;"><div id="j_idt58_start" style="display:none"><img id="j_idt59" src="../images/loading.gif" alt="" /></div><div id="j_idt58_complete" style="display:none"></div></div><script type="text/javascript">widget_j_idt58 = new PrimeFaces.widget.AjaxStatus('j_idt58');widget_j_idt58.bindFacet('ajaxStart', 'start');widget_j_idt58.bindFacet('ajaxComplete', 'complete');</script></body>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shCore.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushXml.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushJava.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushCss.js"></script>
+		<script language="javascript" src="../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+		<script language="javascript">
+			dp.SyntaxHighlighter.ClipboardSwf = 'http://primefaces-rocks.appspot.com/syntaxhighlighter/scripts/clipboard.swf';
+			dp.SyntaxHighlighter.HighlightAll('code');
+		</script>
+
+<!-- Mirrored from primefaces-rocks.appspot.com/ui/dialogLogin.jsf by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 May 2015 10:24:20 GMT -->
+</html>

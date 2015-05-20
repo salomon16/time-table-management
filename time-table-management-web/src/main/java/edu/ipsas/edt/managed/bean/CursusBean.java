@@ -6,11 +6,10 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
-import org.primefaces.context.RequestContext;
-
-import edu.ipsas.edt.dto.DepartementDto;
 import edu.ipsas.edt.dto.CursusDto;
+import edu.ipsas.edt.dto.DepartementDto;
 import edu.ipsas.edt.service.EnseignantService;
 
 @ManagedBean
@@ -32,8 +31,8 @@ public class CursusBean {
 			long id = getEnseignantService().addCursus(cursus);
 			
 			if(id > 0){
-				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,"Enregistrement","Succes");
-				RequestContext.getCurrentInstance().showMessageInDialog(message);
+				FacesContext fc = FacesContext.getCurrentInstance();  
+		        fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cursus ajouté avec succes", null));  
 			}
 		}
 		

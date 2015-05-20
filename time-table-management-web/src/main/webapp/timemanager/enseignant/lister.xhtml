@@ -1,10 +1,12 @@
-<!DOCTYPE html>
 <ui:composition xmlns="http://www.w3c.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/timemanager/index.xhtml">
-
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
 	<ui:define name="content">
 		<h:form id="form">
 		
@@ -145,18 +147,17 @@
 				</p:column>
 
 				<p:column style="width:4%">
-					<p:commandButton id="modifButton" title="editer" action="#{enseignantBean.selectEnseignant(enseignant.enseignantID)}"
-							icon="ui-icon-pencil"   update=":form2:displayModif" oncomplete="PF('enseignantModif').show()" />
+					<p:commandButton id="modifButton" ajax="true" title="editer" action="#{enseignantBean.selectEnseignant(enseignant.enseignantID)}"
+							icon="ui-icon-pencil" oncomplete="PF('enseignantModif').show()" update=":form2:displayModif" />
 				</p:column>
 				<p:column style="width:4%">
-						<p:commandButton id="deleteButton" title="supprimer"
-							icon="ui-icon-trash"  update=":form3:displayDelete" action="#{enseignantBean.selectEnseignant(enseignant.enseignantID)}" oncomplete="PF('enseignantDelete').show()" />
+						<p:commandButton id="deleteButton" ajax="true" title="supprimer"  icon="ui-icon-trash"  action="#{enseignantBean.selectEnseignant(enseignant.enseignantID)}" update=":form3:displayDelete" oncomplete="PF('enseignantDelete').show()" />
 				</p:column>
 			</p:dataTable>
 		</h:form>
 
 		<p:dialog header="Modifier enseignant" widgetVar="enseignantModif"
-			resizable="true" id="enseignantModif" showEffect="clip" hideEffect="clip">
+			resizable="true" id="enseignantModif">
 			<h:form id="form2">
 				<h:panelGrid id="displayModif" columns="2" cellpadding="4"
 					style="margin:0 auto;">

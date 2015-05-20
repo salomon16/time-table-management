@@ -7,11 +7,11 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
-import org.primefaces.context.RequestContext;
+import javax.faces.context.FacesContext;
 
 import edu.ipsas.edt.dto.SalleDto;
 import edu.ipsas.edt.dto.TypeSalleDto;
+import edu.ipsas.edt.service.EnseignantService;
 import edu.ipsas.edt.service.SalleService;
 
 @ManagedBean
@@ -24,10 +24,14 @@ public class SalleBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@EJB 
 	private SalleService salleService;
+	@EJB 
+	private EnseignantService enseignantService;
+	
 	private String numero;
-	private String capacite;
+	private int capacite;
 	private String nomTypeSalle;
-	private TypeSalleDto typeSalleDto;
+	private String typeSalle;
+	private String departement;
 	
 	
 	public Collection<SalleDto> getAllSalle(){
@@ -47,19 +51,17 @@ public class SalleBean implements Serializable{
 		
 		SalleDto salle = new SalleDto();
 		salle.setNumero(getNumero());
-		try {
-			salle.setCapacite(Integer.parseInt(getCapacite()));
-		} catch (NumberFormatException number) {
-			System.out.println("Erreur de conversion");
-		}
-
-		salle.setTypeSalleDto(salleService.getTypeSalleByName(getNomTypeSalle()));
+		salle.setCapacite(getCapacite());
+		
+		salle.setTypeSalle(nomTypeSalle);
+		
+		salle.setDepartementDto(enseignantService.getDepartementByName(departement));
 		
 		long id = getSalleService().addSalle(salle);
 		
 		if(id > 0){
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,"Enregistrement","Succes");
-			RequestContext.getCurrentInstance().showMessageInDialog(message);
+			 FacesContext fc = FacesContext.getCurrentInstance();  
+		        fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Nouvelle salle ajouté avec succes", null));
 		}
 	}
 	
@@ -86,21 +88,39 @@ public class SalleBean implements Serializable{
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	
-	public TypeSalleDto getTypeSalleDto() {
-		return typeSalleDto;
-	}
-	public void setTypeSalleDto(TypeSalleDto typeSalleDto) {
-		this.typeSalleDto = typeSalleDto;
+
+	public String getTypeSalle() {
+		return typeSalle;
 	}
 
-	public String getCapacite() {
+	public void setTypeSalle(String typeSalle) {
+		this.typeSalle = typeSalle;
+	}
+
+	public int getCapacite() {
 		return capacite;
 	}
 
-	public void setCapacite(String capacite) {
+	public void setCapacite(int capacite) {
 		this.capacite = capacite;
 	}
+
+	public String getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(String departement) {
+		this.departement = departement;
+	}
+
+	public EnseignantService getEnseignantService() {
+		return enseignantService;
+	}
+
+	public void setEnseignantService(EnseignantService enseignantService) {
+		this.enseignantService = enseignantService;
+	}
+	
 	
 	
 } 

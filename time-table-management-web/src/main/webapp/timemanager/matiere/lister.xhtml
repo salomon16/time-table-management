@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/timemanager/index.xhtml">
+
+<ui:define name="content">
+	<h:form>
+		
+		<p:dataTable value="#{matiereBean.allMatiere}" var="matiere" >
+			<f:facet name="header">Liste des matieres</f:facet>
+			<p:column headerText="Matiere">
+				<h:outputText value="#{matiere.nom}" />
+			</p:column>
+			<p:column headerText="Type">
+				<h:outputText value="#{matiere.type}" />
+			</p:column>
+			<p:column headerText="Unite">
+				<h:outputText value="#{matiere.uniteDto.nom}" />
+			</p:column>
+		</p:dataTable>
+
+	</h:form>
+</ui:define>
+</ui:composition>

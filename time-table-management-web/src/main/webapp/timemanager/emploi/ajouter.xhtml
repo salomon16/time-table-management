@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+	  template="/templates/template.xhtml">
+		<ui:define name="content">
+				<h:form id="emploi">
+					<p:wizard flowListener="#{emploiBean.onFlowProcess}">
+					        <p:tab id="info" title="Information">
+									<b:panel look="primary">
+									<f:facet name="heading">Parametrage de l'emploi</f:facet>
+									<b:row>
+										<b:column span="4"><h:outputLabel value="Annee :" /></b:column>
+										<b:column span="4"><p:spinner min="2010" required="true"/></b:column>
+										<b:column span="4"></b:column>
+									</b:row>
+									<b:row></b:row>
+									<b:row>
+										<b:column span="4"><h:outputLabel value="Date Debut :" /></b:column>
+										<b:column span="4"><b:datepicker mode="popup-icon" placeholder="Choisir la date de debut" /></b:column>
+										<b:column span="4"></b:column>
+									</b:row>
+									<b:row>
+										<b:column span="4"><h:outputLabel value="Date Fin :" /></b:column>
+										<b:column span="4"><b:datepicker mode="popup-icon" placeholder="Choisir la date de fin" /></b:column>
+										<b:column span="4"></b:column>
+									</b:row>
+							
+								</b:panel>
+							
+						</p:tab>
+						 <p:tab id="parametre" title="Parametres Grille">
+			           		 <b:panel look="default">
+			           		 		<f:facet name="heading">Parametrage de la grille</f:facet>
+			              		  <p:messages />
+			              		<b:row>
+			              			<b:column span="6"><p:pickList value="#{emploiBean.jours}"  var="jour"  itemLabel="#{jour}"  itemValue="#{jour}" /></b:column> 
+			               		  <b:column span="6">
+				               		  <p:fieldset legend="Horaire">
+				               		  		<h:form>
+				               		  			<b:row>
+				               		  				<b:column span="6"><p:outputLabel for="horaireDebut" value="Horaire Debut:" /></b:column>
+				               		  				<b:column span="6"><p:calendar id="horaireDebut" value="#{emploiBean.horaireDebut}" pattern="HH:mm a" timeOnly="true" showOn="button"  /></b:column>
+				               		  			</b:row>
+				               		  			<b:row>
+				               		  				<b:column span="6"><p:outputLabel for="horaireFin" value="Horaire Fin:" /></b:column>
+				               		  				<b:column span="6"><p:calendar id="horaireFin" value="#{emploiBean.horaireFin}" pattern="HH:mm a" timeOnly="true" showOn="button" /></b:column>
+				               		  			</b:row>
+				               		  		</h:form>
+				               		  </p:fieldset>
+			               		  </b:column>
+			              		</b:row>
+			           		 </b:panel>
+       					 </p:tab>
+       					 <p:tab id="grille" title="Grille">
+       					 	<h:form>
+       					 		 <p:dataTable rows="">
+								        <p:dataTable ></p:dataTable>
+							  	 </p:dataTable>
+       					 		<p:dataGrid  var="jour" value="#{emploiBean.target}" columns="#{emploiBean.target.size()}">
+       					 			
+       					 			<p:panel header="#{jour}" style="text-align:center">
+							        </p:panel>
+       					 			<p:dataGrid rows="#{emploiBean.target.size()}" >
+       					 				
+       					 			</p:dataGrid>
+       					 		</p:dataGrid>
+       					 	</h:form>
+       					 </p:tab>
+				</p:wizard>
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>

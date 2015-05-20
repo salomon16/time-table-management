@@ -40,6 +40,9 @@ public class Departement implements Serializable {
 	private Collection<Cursus> cursus;
 	
 	@OneToMany
+	private Collection<Salle> salles;
+	
+	@OneToMany
 	private Collection<PersonnelAdministratif> personnels;
 
 	public Departement() {
@@ -47,6 +50,7 @@ public class Departement implements Serializable {
 		enseignants = new ArrayList<Enseignant>();
 		cursus = new ArrayList<Cursus>();
 		personnels = new ArrayList<PersonnelAdministratif>();
+		salles = new ArrayList<Salle>();
 	}
 
 	public Departement(String nom) {
@@ -55,6 +59,7 @@ public class Departement implements Serializable {
 		enseignants = new ArrayList<Enseignant>();
 		cursus = new ArrayList<Cursus>();
 		personnels = new ArrayList<PersonnelAdministratif>();
+		salles = new ArrayList<Salle>();
 	}
 
 	public Departement(String nom, Etablissement etablissement) {
@@ -120,6 +125,14 @@ public class Departement implements Serializable {
 
 	public void setPersonnels(Collection<PersonnelAdministratif> personnels) {
 		this.personnels = personnels;
+	}
+
+	public Collection<Salle> getSalles() {
+		return salles;
+	}
+
+	public void setSalles(Collection<Salle> salles) {
+		this.salles = salles;
 	}
 
 	

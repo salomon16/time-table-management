@@ -1,31 +1,30 @@
-<!DOCTYPE html>
 <ui:composition xmlns="http://www.w3c.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/timemanager/index.xhtml">
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
 
 	<ui:define name="content">
 		<h:form>
 			
-			<p:dataTable var="departement"
-				value="#{departementBean.allDepartement}">
+			<p:dataTable var="departement" value="#{departementBean.allDepartement}">
+				<f:facet name="header">Liste des departements</f:facet>
 				<p:column headerText="Departement">
 					<h:outputText value="#{departement.nom}" />
 				</p:column>
 				<p:column headerText="">
-					<p:commandButton value="Display Cursus"
-						oncomplete="PF('cursusView').show()" icon="ui-icon-extlink"
+					<p:commandButton value="Cursus"
+						oncomplete="PF('cursusView').show()" icon="ui-icon-extlink" update=":cursusView:cursusDataTable"
 						actionListener="#{departementBean.selectedDepartement(departement.departementID)}">
 
 					</p:commandButton>
 
-					<p:commandButton value="display Enseignant"
+					<p:commandButton value="Enseignants"
 						oncomplete="PF('enseignantView').show()" icon="ui-icon-extlink"
 						actionListener="#{departementBean.selectedDepartement(departement.departementID)}">
 
 					</p:commandButton>
-					<p:commandButton value="display Parcours"
+					<p:commandButton value="Parcours" 
 						oncomplete="PF('parcoursView').show()" icon="ui-icon-extlink"
 						actionListener="#{departementBean.selectedDepartement(departement.departementID)}">
 

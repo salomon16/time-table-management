@@ -1,28 +1,29 @@
-
 <ui:composition xmlns="http://www.w3c.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/timemanager/index.xhtml">
-	<ui:include src="/resources/css/style.css" />
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+ template="/templates/template.xhtml">
 
 	<ui:define name="content">
 		<h:form>
-			<p:panel header="Nouvel Enregistrement">
-				<h:panelGrid id="grid" columns="3" cellpadding="5" styleClass="panelGrid">
-
-					<h:outputLabel value="Nom: " for="nom" />
-					<p:inputText id="nom" value="#{statutBean.statutDto.nom}" required="true" />
-					<p:message for="nom" display="text" />
-
-				</h:panelGrid>
-				<p:commandButton value="Reinitialiser" icon="ui-icon-refresh"
-					styleClass="btn btn-default" type="reset" ajax="false" />
-				<p:commandButton type="submit" value="Enregistrer"
-					icon="ui-icon-check" action="#{statutBean.save()}" ajax="true" />
-
-			</p:panel>
+		<b:panel id="panel" look="primary">
+					<f:facet name="heading">Nouveau Statut</f:facet> 
+				<b:row>
+					<b:column span="4"><h:outputLabel value="Nom: " for="nom" /></b:column>
+					<b:column span="4"><b:inputText id="nom" value="#{statutBean.statutDto.nom}" required="true" /></b:column>
+					<b:column span="4"><p:message for="nom" display="text" /></b:column>
+				</b:row>
+				<p:separator/>
+				<b:row>
+					<b:column span="2"></b:column>
+					<b:column span="4"><b:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" ajax="false" /></b:column>
+					<b:column span="4"><b:commandButton  value="Enregistrer" icon="ui-icon-check" action="#{statutBean.save()}" styleClass="btn btn-default" ajax="true" />
+					</b:column>
+					<b:column  span="2"/>
+				</b:row>
+			</b:panel>
 		</h:form>
 	</ui:define>
 </ui:composition>
-

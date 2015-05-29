@@ -14,6 +14,8 @@ public class MatiereDto implements Serializable {
 	private long matiereId;
 
 	private String nom;
+	
+	private int nombreHeure;
 
 	private String description;
 
@@ -54,10 +56,11 @@ public class MatiereDto implements Serializable {
 		plansEtudeDto = new ArrayList<PlanEtudeDto>();
 	}
 
-	public MatiereDto(String nom, String type, float volumeC, float volumeTp,
+	public MatiereDto(String nom, int nombreHeure, String type, float volumeC, float volumeTp,
 			float volumeTd, float credit, int coefficient) {
 		super();
 		this.nom = nom;
+		this.nombreHeure = nombreHeure;
 		this.type = type;
 		this.volumeC = volumeC;
 		this.volumeTp = volumeTp;
@@ -153,6 +156,14 @@ public class MatiereDto implements Serializable {
 
 	public void setPlansEtudeDto(Collection<PlanEtudeDto> plansEtudeDto) {
 		this.plansEtudeDto = plansEtudeDto;
+	}
+
+	public int getNombreHeure() {
+		return nombreHeure;
+	}
+
+	public void setNombreHeure(int nombreHeure) {
+		this.nombreHeure = nombreHeure;
 	}
 	
 }

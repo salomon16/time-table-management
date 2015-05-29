@@ -10,30 +10,64 @@ template="/templates/template.xhtml">
 			<b:panel id="panel" look="primary">
 					<f:facet name="heading">Nouveau Voeux</f:facet> 
 				<b:row>
-						<b:column span="4"><h:outputLabel for="annee" value="Annee Academique: " /></b:column>
+						<b:column span="4"><h:outputLabel for="departement" value="Departement: " /></b:column>
 						<b:column span="4">
-							<b:selectOneMenu id="niveau" value="#{groupeBean.niveau}" style="width:150px">
-								<f:selectItem itemLabel="Select Niveau" itemValue="" noSelectionOption="true" />
-								<f:selectItems value="#{niveauBean.allNiveau}" var="niveau" itemLabel="#{niveau.nom}" itemValue="#{niveau.nom}" />
-							</b:selectOneMenu>
-						</b:column> 
-						<b:column span="4"><p:message for="niveau" display="icon" /></b:column>
-				</b:row>
-				<b:row>
-						<b:column span="4"><h:outputLabel for="niveau" value="Niveau: " /></b:column>
-						<b:column span="4">
-							<b:selectOneMenu id="niveau" value="#{groupeBean.niveau}" style="width:150px">
-								<f:selectItem itemLabel="Select Niveau" itemValue="" noSelectionOption="true" />
-								<f:selectItems value="#{niveauBean.allNiveau}" var="niveau" itemLabel="#{niveau.nom}" itemValue="#{niveau.nom}" />
-							</b:selectOneMenu>
-						</b:column> 
-						<b:column span="4"><p:message for="niveau" display="icon" /></b:column>
-				</b:row>
+							<p:selectOneMenu id="departement" value="#{parcoursBean.selectedDepartement}" style="width:350px">
+								<p:ajax update="cursus" listener="#{voeuxBean.onDepartementChange}" />
+								<f:selectItem itemLabel="Select Departement" itemValue="" noSelectionOption="true" />
+								<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.departementID}" />
+							</p:selectOneMenu>
+						</b:column>
+						<b:column span="4"><p:message for="departement" display="icon" /></b:column>
+				</b:row>	
+						<b:row>
+							<b:column span="4"><h:outputLabel for="enseignant" value="Enseignants: " /></b:column>
+							<b:column span="4">
+								<p:selectOneMenu id="enseignant" value="#{voeuxBean.enseignant}" required="true"  effect="fade"  style="width:350px" filter="true" filterMatchMode="startsWith">
+									<f:selectItem itemLabel="Select Enseignant" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{voeuxBean.enseignantListe}" var="enseignant" itemLabel="#{enseignant.prenom}" itemValue="#{enseignant.enseignantId}"/>
+								</p:selectOneMenu>
+							</b:column>
+							<b:column span="4"><p:message for="enseignant" /></b:column>
+						</b:row>
+						<b:row>
+							<b:column span="4"><h:outputLabel for="cursus" value="Cursus: " /></b:column>
+							<b:column span="4">
+								<p:selectOneMenu id="cursus" value="#{voeuxBean.cursus}" style="width:350px" required="true">
+								   <p:ajax update="parcours" listener="#{voeuxBean.onCursusChange}" />
+									<f:selectItem itemLabel="Select Cursus" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{voeuxBean.cursusListe}" var="cursus" itemLabel="#{cursus.nom}" itemValue="#{cursus.cursusId}"/>
+								</p:selectOneMenu>
+							</b:column>
+							<b:column span="4"><p:message for="cursus" /></b:column>
+						</b:row>
+						<b:row>
+							<b:column span="4"><h:outputLabel for="parcours" value="Parcours: " /></b:column>
+							<b:column span="4">
+								<p:selectOneMenu id="parcours" value="#{voeuxBean.parcours}" style="width:350px" required="true">
+								   <p:ajax  listener="#{voeuxBean.onParcoursChange}" />
+									<f:selectItem itemLabel="Select Parcours" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{voeuxBean.parcoursListe}" var="parcours" itemLabel="#{parcours.nom}" itemValue="#{parcours.parcoursId}"/>
+								</p:selectOneMenu>
+							</b:column>
+							<b:column span="4"><p:message for="parcours" /></b:column>
+						</b:row>
+						<b:row>
+							<b:column span="4"><h:outputLabel for="planEtude" value="Plan d'etude: " /></b:column>
+							<b:column span="4">
+								<p:selectOneMenu id="planEtude" value="#{voeuxBean.planEtude}" style="width:350px" required="true">
+								   <p:ajax  listener="#{voeuxBean.onPlanEtudeChange}" />
+									<f:selectItem itemLabel="Select PlanEtude" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{voeuxBean.planEtudeListe}" var="planEtude" itemLabel="Plan Etude Semestre #{planEtude.semestreDto.numero}" itemValue="#{planEtude.planEtudeId}"/>
+								</p:selectOneMenu>
+							</b:column>
+							<b:column span="4"><p:message for="parcours" /></b:column>
+						</b:row>
 		<p:separator></p:separator>
 		<b:row>
 			<b:column span="2"></b:column>
 			<b:column span="4"><b:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" ajax="false" /></b:column>
-			<b:column span="4"><b:commandButton type="submit" value="Enregistrer" icon="ui-icon-check" action="#{groupeBean.save()}" ajax="true" /></b:column>
+			<b:column span="4"><b:commandButton type="submit" value="Enregistrer" icon="ui-icon-check" action="#{voeuxBean.save()}" ajax="true" /></b:column>
 			<b:column span="2"></b:column>
 		</b:row>
 

@@ -29,7 +29,10 @@
 <!-- 	  <dispatcher>FORWARD</dispatcher> -->
 <!-- 	  <dispatcher>REQUEST</dispatcher> -->
 <!-- 	</filter-mapping> -->
-
+	<context-param>
+	   <param-name>net.bootsfaces.get_fontawesome_from_cdn</param-name>
+	   <param-value>false</param-value>
+	</context-param>
     <!-- Welcome page -->
     <welcome-file-list>
         <welcome-file>/timemanager/index.xhtml</welcome-file>

@@ -38,7 +38,7 @@ template="/timemanager/index.xhtml">
 							<b:column span="4">
 								<p:selectOneMenu id="parcours" value="#{planEtudeBean.selectedParcours}" style="width:350px">
 									<f:selectItem itemLabel="Select Parcours" itemValue="" noSelectionOption="true" />
-									<f:selectItems value="#{planEtudeBean.listeParcours}" var="parcours" itemLabel="#{parcours.nom}" itemValue="#{parcours.parcoursID}"/>
+									<f:selectItems value="#{planEtudeBean.listeParcours}" var="parcours" itemLabel="#{parcours.nom}" itemValue="#{parcours.parcoursId}"/>
 								</p:selectOneMenu>
 							</b:column>
 							<b:column span="4"><p:message for="parcours" /></b:column>
@@ -48,11 +48,7 @@ template="/timemanager/index.xhtml">
 							<b:column span="6">
 							<p:selectManyMenu id="matiereList" value="#{planEtudeBean.selectedMatiere}" filter="true" filterMatchMode="contains" showCheckbox="true" styleClass="width:350px;">
             					<f:selectItems value="#{planEtudeBean.matieres}" var="matiere" itemLabel="#{matiere.nom}" itemValue="#{matiere.matiereId}"/>
- 
         					</p:selectManyMenu>
-<!--        							<p:pickList id="matiereList" value="#{planEtudeBean.matieres}" var="matieres"  itemValue="#{matieres}" itemLabel="#{matieres}"> -->
-
-<!-- 								 </p:pickList> -->
 							</b:column>
 							<b:column span="2"></b:column>
 						</b:row>

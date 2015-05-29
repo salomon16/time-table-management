@@ -259,7 +259,7 @@ public class EnseignantServiceImpl implements EnseignantService {
 
 	
 	public void deleteParcours(ParcoursDto parcoursDto) {
-		parcoursDao.delete(parcoursDto.getParcoursID());
+		parcoursDao.delete(parcoursDto.getParcoursId());
 	}
 
 	
@@ -540,6 +540,12 @@ public class EnseignantServiceImpl implements EnseignantService {
 			long departementId) {
 		
 		return ParcoursHelper.modelsToDto(parcoursDao.findAllParcoursByDepartement(departementId));
+	}
+
+	
+	public Collection<ParcoursDto> getAllParcoursByCursus(long cursusById) {
+		
+		return ParcoursHelper.modelsToDto(parcoursDao.findAllParcoursByCursus(cursusById));
 	}
 
 	

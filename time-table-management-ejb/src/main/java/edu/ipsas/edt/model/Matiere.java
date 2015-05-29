@@ -36,9 +36,12 @@ public class Matiere implements Serializable{
 	@Column(name="DESCRIPTION", nullable=true, unique=false)
 	private String description;
 	
-	@Column(name="TYPE", nullable=false, unique=true)
+	@Column(name="TYPE", nullable=false, unique=false)
 	private String type;
-
+	
+	@Column(name="NOMBRE_HEURE", nullable=false, unique=false)
+	private int nombreHeure;
+	
 	@Column(name="VOLUME_C", nullable=true, unique=false)
 	private float volumeC;
 	
@@ -66,10 +69,11 @@ public class Matiere implements Serializable{
 		plansEtude = new ArrayList<PlanEtude>();
 	}
 
-	public Matiere(String nom, String description, String type, float volumeC,
+	public Matiere(String nom, int nombreHeure, String description, String type, float volumeC,
 			float volumeTp, float volumeTd, float credit, int coefficient, Unite unite) {
 		super();
 		this.nom = nom;
+		this.nombreHeure = nombreHeure;
 		this.description = description;
 		this.type = type;
 		this.volumeC = volumeC;
@@ -169,6 +173,13 @@ public class Matiere implements Serializable{
 	public void setPlansEtude(Collection<PlanEtude> plansEtude) {
 		this.plansEtude = plansEtude;
 	}
-	
+
+	public int getNombreHeure() {
+		return nombreHeure;
+	}
+
+	public void setNombreHeure(int nombreHeure) {
+		this.nombreHeure = nombreHeure;
+	}
 	
 }

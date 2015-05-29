@@ -12,4 +12,6 @@ public interface ParcoursDao extends GenericDao<Parcours> {
 	Collection<Parcours> getParcoursBySpecialite(long idSpecialite);
 
 	Collection<Parcours> findAllParcoursByDepartement(long departementId);
+
+	Collection<Parcours> findAllParcoursByCursus(long cursusById);
 }

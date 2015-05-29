@@ -1,0 +1,100 @@
+<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<h:form id="form">
+		
+			<!-- table d'affichage des plans d'etude -->
+			<p:fieldset legend="">
+						<b:row>
+							 <b:column span="4"><p:selectOneMenu id="departement" value="#{planEtudeBean.selectedDepartement}" style="width:350px">
+								<p:ajax update="parcours" listener="#{planEtudeBean.onDepartementChange}" />
+								<f:selectItem itemLabel="Select Departement" itemValue="" noSelectionOption="true" />
+								<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.nom}" />
+							</p:selectOneMenu></b:column>
+
+							<b:column span="4"><p:selectOneMenu id="parcours" value="#{planEtudeBean.selectedParcours}" style="width:350px">
+									<f:selectItem itemLabel="Select Parcours" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{planEtudeBean.listeParcours}" var="parcours" itemLabel="#{parcours.nom}" itemValue="#{parcours.parcoursId}"/>
+								</p:selectOneMenu></b:column>
+							<b:column span="4">	
+						<b:selectOneMenu id="semestre" value="#{planEtudeBean.selectedSemestre}" style="width:350px">
+								<f:selectItem itemLabel="Select Semestre" itemValue="" noSelectionOption="true" />
+								<f:selectItems value="#{semestreBean.allSemestre}" var="semestre" itemLabel="Semestre #{semestre.numero}" itemValue="#{semestre.semestreId}" />
+						</b:selectOneMenu>
+							</b:column>
+							<p:commandButton value="afficher" actionListener="#{planEtudeBean.findPlanEtude}" onclick="PF('planEtude').show()" update=":plan:planEtude"/>
+						</b:row>
+				
+			</p:fieldset>
+			</h:form>
+		<p:dialog header="Plan d'etude" widgetVar="planEtude" resizable="true">
+				<h:form id="plan">
+			<p:dataTable id="planEtude" var="unite" value="#{planEtudeBean.allUnite}" rendered="not empty">
+    
+        <p:columnGroup type="header">
+            <p:row>
+                <p:column colspan="3" headerText="Direction Generale des Etudes Technologiques" />
+                <p:column colspan="2" headerText="Etablissement :" />
+                 <p:column colspan="3" headerText="" />
+            </p:row>
+            <p:row>
+                <p:column colspan="2" headerText="Departement:#{planEtudeBean.planEtudeDto.parcoursDto.cursusDto.departementDto.nom}" />
+                <p:column colspan="2" headerText="Parcours:#{planEtudeBean.planEtudeDto.parcoursDto.nom}" />
+            </p:row>
+            <p:row>
+                <p:column  headerText="Semestre:" />
+            </p:row>
+        </p:columnGroup>
+        <p:columnGroup>
+        	<p:row>
+        		 <p:column rowspan="2" headerText="Unites d'Enseignantement"/>
+       			 <p:column rowspan="2" headerText="Elements Constitutifs de l'Unite d'Enseignement" />
+        	</p:row>
+        	<p:row>
+        		<p:column colspan="4" headerText="VolumeHoraire"/>
+        		<p:column colspan="2" headerText="Credit"/>
+        		<p:column colspan="2" headerText="Coefficient"/>
+        	</p:row>
+        	<p:row>
+        		 <p:column headerText="Total" width="4%"/>
+        		  <p:column headerText="Cours" width="4%" />
+        		   <p:column headerText="TP" width="4%"/>
+        		   <p:column headerText="TD" width="4%"/>
+        		 <p:column headerText="Par ECUE" width="4%" />
+        		  <p:column headerText="TOTAl UE" width="4%" />
+        		 <p:column colspan="2" headerText="Par ECUE" width="4%"/>
+        		  <p:column colspan="2" headerText="TOTAl UE" width="4%" />
+        	</p:row>
+        </p:columnGroup>
+        
+ 		<p:column><h:outputText value="#{unite.nom}" /></p:column>
+ 		
+ 		<p:columns value="#{unite.matieresDto}" var="matiere">
+ 			<h:outputText value="#{matiere.nom}" />
+ 			<h:outputText value="#{matiere.volumeC}" />
+ 			<h:outputText value="#{matiere.volumeTd}" />
+ 			<h:outputText value="#{matiere.volumeTp}" />
+ 			<h:outputText value="#{matiere.credit}" />
+ 			<h:outputText value="#{matiere.coefficient}" />
+ 			
+ 		</p:columns>
+ 		
+ 		
+        <p:columnGroup type="footer">
+            <p:row>
+                <p:column colspan="3"  headerText="Totaux"/>
+            </p:row>
+        </p:columnGroup>
+    </p:dataTable>
+		
+			</h:form>
+	</p:dialog>
+	</ui:define>
+</ui:composition>

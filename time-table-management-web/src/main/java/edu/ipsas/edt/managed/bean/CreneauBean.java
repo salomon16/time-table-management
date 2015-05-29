@@ -1,7 +1,6 @@
 package edu.ipsas.edt.managed.bean;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.ejb.EJB;
@@ -10,11 +9,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.event.SelectEvent;
-
+import edu.ipsas.edt.dto.CreneauDto;
 import edu.ipsas.edt.service.EnseignantService;
 
-@ManagedBean
+@ManagedBean(name="creneauBean")
 @ViewScoped
 public class CreneauBean implements Serializable{
 
@@ -32,22 +30,24 @@ public class CreneauBean implements Serializable{
 	
 	public String save(){
 		
+		CreneauDto creneauDto = new CreneauDto();
+		creneauDto.setHeureDebut(horaireDebut);
+		creneauDto.setHeureFin(horaireFin);
+		
+		long id = enseignantService.addCreneau(creneauDto);
+		
+		if(id > 0){
+			 FacesContext fc = FacesContext.getCurrentInstance();  
+		        fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Nouvel horaire ajouté avec succes", null));  
+		}
+		else{
+			 FacesContext fc = FacesContext.getCurrentInstance();  
+		        fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Echec de creation", null));  
+		}
+		
 		return null;
 	}
 	
-	public void onDateSelect(SelectEvent event) {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        
-        if(horaireDebut.equals(horaireFin)){
-        	facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Veuillez changer l'horaire de fin", format.format(event.getObject())));
-        }
-        
-        if(horaireDebut.getHours() > horaireFin.getHours()){
-        	facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Veuillez changer l'horaire de debut", format.format(event.getObject())));
-        }
-        
-    }
 	public EnseignantService getEnseignantService() {
 		return enseignantService;
 	}

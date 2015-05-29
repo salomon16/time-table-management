@@ -46,7 +46,7 @@ public class GradeBean implements Serializable{
 		}
 	}
 	
-	// liste des statuts enregistr�s
+	// liste des statuts enregistres
 	
 	public Collection<GradeDto> getAllGrade(){
 		grades = getEnseignantService().getAllGrade();

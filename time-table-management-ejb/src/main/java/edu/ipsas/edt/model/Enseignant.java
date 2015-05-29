@@ -28,7 +28,7 @@ public class Enseignant extends Personne implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long enseignantId;
 	
-	@Column(name="SPECIALITE", unique = true, nullable = false)
+	@Column(name="SPECIALITE", unique = false, nullable = false)
 	private String specialite;
 	
 	@OneToMany

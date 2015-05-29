@@ -15,43 +15,44 @@
 		</f:metadata>
 		
 		<h:head>
-<!-- 			<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"  /> -->
+			<h:outputStylesheet library="css" name="font-awesome.css"></h:outputStylesheet>
+<!-- 			<f:facet name="no-fa">true</f:facet> -->
+			<style type="text/css">
+				.ui-layout-north {
+				        z-index: 20 !important;
+				        overflow: visible !important;;
+				}	
 
-			
-<!-- 			<p:dialog modal="true" widgetVar="statusDialog" showHeader="false"  -->
-<!-- 				draggable="false" closable="false" resizable="false"  -->
-<!-- 				visible="false" position="center" maximizable="false" minimizable="false" > -->
-<!-- 				<p:graphicImage value="#{resource['images/ajax-loader.gif']}" /> -->
-<!-- 			</p:dialog> -->
-			
-		
+					.ui-layout-north .ui-layout-unit-content {
+					        overflow: visible !important;
+					}
+			</style>
 		</h:head>
 
 	<h:body>
-		<p:layout fullPage="true" resizeTitle="resize" style="background-color:#FFFFFF;">
-
+		<p:layout fullPage="true">
+<!-- 			<div  id="header"> -->
 				<p:layoutUnit position="north" size="55" id="north" >
 					<ui:include src="header.xhtml" />
 				</p:layoutUnit>
-		
-				<p:layoutUnit position="west" id="west" resizable="false" header="#{msg['menu.title']}" style="height:580px;overflow:hidden;" size="230">
-					<ui:include src="menu.xhtml" />
-				</p:layoutUnit>
-				
-				<p:layoutUnit	styleClass="layoutUnitCenter" 	position="center">
-<!-- 					<h:form id="mainForm"> -->
-<!-- 						<p:messages autoUpdate="true" id="msgs" showDetail="true" showSummary="true" /> -->
+<!-- 			</div> -->
+<!-- 				<div  id="menu"> -->
+					<p:layoutUnit position="west" id="west" resizable="false" header="#{msg['menu.title']}" style="height:580px;overflow:hidden;" size="230" collapsible="true">
+						<ui:include src="menu.xhtml" />
+					</p:layoutUnit>
+<!-- 				</div> -->
+<!-- 				<div id="main"> -->
+				<p:layoutUnit position="center">
 						<ui:insert name="content" />
-<!-- 					</h:form> -->
 				</p:layoutUnit>
-				
+<!-- 				</div> -->
 				<p:layoutUnit position="east" size="0" style="width:0px; display:none;" id="east">
 				</p:layoutUnit>
-				
-				<p:layoutUnit position="south" resizable="true" id="south">
-					<ui:include src="footer.xhtml" />
-				</p:layoutUnit>
-
+<!-- 				<div id="footer"> -->
+					<p:layoutUnit position="south" resizable="true" id="south">
+						<ui:include src="footer.xhtml" />
+					</p:layoutUnit>
+<!-- 				</div> -->
 			</p:layout>
 			
 	</h:body>

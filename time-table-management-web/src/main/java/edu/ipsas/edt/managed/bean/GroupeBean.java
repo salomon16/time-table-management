@@ -40,9 +40,9 @@ public class GroupeBean implements Serializable {
 	}
 	
 	public String save(){
-		groupeDto.setNiveauDto(emploiService.obtenirNiveauParId(niveau));
+		groupeDto.setNiveauDto(emploiService.getAllNiveauById(niveau));
 		
-		long id = emploiService.ajouterGroupe(groupeDto);
+		long id = emploiService.addGroupe(groupeDto);
 		if(id > 0){
 			 FacesContext fc = FacesContext.getCurrentInstance();  
 		        fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Nouveau groupe ajouté avec succes", null));  
@@ -58,9 +58,9 @@ public class GroupeBean implements Serializable {
 	 public void onParcoursChange() {
 	        if(selectedParcours != 0){
 	        	System.out.println("Parcours Id: "+selectedParcours);
-	    		ParcoursDto parcours = emploiService.obtenirParcoursParId(selectedParcours);
+	    		ParcoursDto parcours = emploiService.getParcoursParId(selectedParcours);
 	    		System.out.println("Parcours Info: "+parcours.getNom());
-	    		listeNiveaux =  emploiService.obtenirLesNiveauxParParcours(parcours.getParcoursID());
+	    		listeNiveaux =  emploiService.getAllNiveauByParcours(parcours.getParcoursId());
 	    		System.out.println("Liste Niveaux size:"+listeNiveaux.size());
 	        }
 	        else{

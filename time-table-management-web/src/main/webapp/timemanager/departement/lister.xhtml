@@ -14,7 +14,7 @@
 				</p:column>
 				<p:column headerText="">
 					<p:commandButton value="Cursus"
-						oncomplete="PF('cursusView').show()" icon="ui-icon-extlink" update=":cursusView:cursusDataTable"
+						onclick="PF('cursusView').show()" icon="ui-icon-extlink" update=":cursusView:cursusDataTable"
 						actionListener="#{departementBean.selectedDepartement(departement.departementID)}">
 
 					</p:commandButton>

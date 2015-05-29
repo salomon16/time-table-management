@@ -15,10 +15,16 @@ public class PlanEtudeImpl extends GenericDaoImpl<PlanEtude> implements PlanEtud
 	    	return em.createQuery("select p from PlanEtude p").getResultList();
 	    }
 	
-	public PlanEtude findStudyPlanBySemesterAndParcours(long semestreId,
-			long parcoursId) {
+	public PlanEtude findStudyPlanBySemesterAndParcours(long semestreId,long parcoursId) {
 		
-		return (PlanEtude) em.createQuery("select p from PlanEtude where p.semestre.semestreId=:semestreId and p.parcours.parcoursId=:parcoursId").setParameter("semestreId", semestreId).setParameter("parcoursId", parcoursId).getSingleResult();
+		return (PlanEtude) em.createQuery("select p from PlanEtude p where p.semestre.semestreId=:semestreId and p.parcours.parcoursId=:parcoursId").setParameter("semestreId", semestreId).setParameter("parcoursId", parcoursId).getSingleResult();
+	}
+
+	
+	@SuppressWarnings("unchecked")
+	public Collection<PlanEtude> findAllPlanEtudeByParcours(long parcoursId) {
+		
+		return em.createQuery("select p from PlanEtude p where p.parcours.parcoursId=:parcoursId").setParameter("parcoursId", parcoursId).getResultList();
 	}
 
 }

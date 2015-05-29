@@ -67,26 +67,26 @@ public class EmploiDuTempsServiceImpl implements EmploiDuTempsService {
 	@EJB
 	private ParcoursDao parcoursDao;
 	
-	public long creerEmploi(EmploiDto emploiDto) {
+	public long addEmploi(EmploiDto emploiDto) {
 		return 0;
 	}
-	public void modifierEmploi(EmploiDto emploiDto) {
-
+	public void updateEmploi(EmploiDto emploiDto) {
+ 
 	}
-	public EmploiDto afficherEmploi(long emploiId) {
+	public EmploiDto getEmploiById(long emploiId) {
 		return null;
 	}
-	public EmploiDto afficherEmploiParSemestre(long semestreId) {
+	public EmploiDto getEmploiBySemestre(long semestreId) {
 		return null;
 	}
-	public Collection<EmploiDto> obtenirLesEmploisParGroupe(long groupeId) {
+	public Collection<EmploiDto> getAllEmploiByGroupe(long groupeId) {
 		return null;
 	}
-	public Collection<EmploiDto> obtenirLesEmploisParAnnee(long anneeId) {
+	public Collection<EmploiDto> getAllEmploiByAnnee(long anneeId) {
 		return null;
 	}
 	
-	public long ajouterMatiere(MatiereDto matiereDto) {
+	public long addMatiere(MatiereDto matiereDto) {
 		
 		Matiere matiere = MatiereHelper.dtoToModel(matiereDto);
 		matiereDao.create(matiere);
@@ -94,63 +94,63 @@ public class EmploiDuTempsServiceImpl implements EmploiDuTempsService {
 		return matiere.getMatiereId();
 	}
 	
-	public void modifierMatiere(MatiereDto matiereDto) {
+	public void updateMatiere(MatiereDto matiereDto) {
 		
 		matiereDao.update(MatiereHelper.dtoToModel(matiereDto));
 	}
 	
-	public void supprimerMatiere(MatiereDto matiereDto) {
+	public void deleteMatiere(MatiereDto matiereDto) {
 		matiereDao.delete(matiereDto.getMatiereId());
 	}
 	
-	public Collection<MatiereDto> obtenirLesMatieres() {
+	public Collection<MatiereDto> getAllMatiere() {
 		
 		return MatiereHelper.modelsToDto(matiereDao.findAll());
 	}
 	
-	public Collection<MatiereDto> afficherMatiereParPlanEtude(long planEtudeId) {
+	public Collection<MatiereDto> getAllMatiereByPlanEtude(long planEtudeId) {
 		
 		return null;
 	}
 	
-	public long ajouterSemestre(SemestreDto semestreDto) {
+	public long addSemestre(SemestreDto semestreDto) {
 		
 		Semestre semestre = SemestreHelper.dtoToModel(semestreDto);
 		semestreDao.create(semestre);
 		return semestre.getSemestreId();
 	}
 	
-	public Collection<SemestreDto> afficherLesSemestres() {
+	public Collection<SemestreDto> getAllSemestre() {
 		return SemestreHelper.modelsToDto(semestreDao.findAll());
 	}
 	
-	public long ajouterPlanEtude(PlanEtudeDto planEtudeDto) {
+	public long addPlanEtude(PlanEtudeDto planEtudeDto) {
 		PlanEtude planEtude = PlanEtudeHelper.dtoToModel(planEtudeDto);
 		planEtudeDao.create(planEtude);
 		return planEtude.getPlanEtudeId();
 	}
 	
-	public void modifierPlanEtude(PlanEtudeDto planEtudeDto) {
+	public void updatePlanEtude(PlanEtudeDto planEtudeDto) {
 		planEtudeDao.update(PlanEtudeHelper.dtoToModel(planEtudeDto));
 	}
 	
-	public PlanEtudeDto afficherPlanEtude(long planEtudeId) {
+	public PlanEtudeDto getPlanEtudeById(long planEtudeId) {
 		
 		return PlanEtudeHelper.modelToDto(planEtudeDao.find(planEtudeId));
 	}
 	
-	public PlanEtudeDto afficherPlanEtudeParSemestreEtParcours(long semestreId,
+	public PlanEtudeDto getPlanEtudeBySemestreAndParcours(long semestreId,
 			long parcoursId) {
 		
 		return PlanEtudeHelper.modelToDto(planEtudeDao.findStudyPlanBySemesterAndParcours(semestreId,parcoursId));
 	}
 	
-	public Collection<PlanEtudeDto> obtenirLesPlansEtude() {
+	public Collection<PlanEtudeDto> getAllPlanEtude() {
 		
 		return PlanEtudeHelper.modelsToDto(planEtudeDao.findAll());
 	}
 	
-	public long creerSeance(SeanceDto seanceDto) {
+	public long addSeance(SeanceDto seanceDto) {
 		
 		Seance seance = SeanceHelper.dtoToModel(seanceDto);
 		
@@ -176,103 +176,90 @@ public class EmploiDuTempsServiceImpl implements EmploiDuTempsService {
 	}
 	
 	
-	public void modifierSeance(SeanceDto seanceDto) {
+	public void updateSeance(SeanceDto seanceDto) {
 		seanceDao.update(SeanceHelper.dtoToModel(seanceDto));
 	}
 	
-	public void deplacerSeance(SeanceDto seanceDto) {
+	public void moveSeance(SeanceDto seanceDto) {
 	
 	}
-	
-	public void echangerSeances(SeanceDto seance1, SeanceDto seance2) {
+	public void exchangeSeance(SeanceDto seance1, SeanceDto seance2) {
 	
 	}
-	
-	public void supprimerSeance(SeanceDto seanceDto) {
+	public void deleteSeance(SeanceDto seanceDto) {
 		seanceDao.delete(seanceDto.getSeanceId());
 	}
-	
-	public long ajouterNiveau(NiveauDto niveauDto) {
+	public long addNiveau(NiveauDto niveauDto) {
 		Niveau niveau = NiveauHelper.dtoToModel(niveauDto);
 		niveauDao.create(niveau);
 		return niveau.getNiveauId();
 	}
-
-	public void modiferNiveau(NiveauDto niveauDto) {
+	public void updateNiveau(NiveauDto niveauDto) {
 		niveauDao.update(NiveauHelper.dtoToModel(niveauDto));
 	}
-	
-	public NiveauDto obtenirNiveauParId(long niveauId) {
+	public NiveauDto getAllNiveauById(long niveauId) {
 		
 		return NiveauHelper.modelToDto(niveauDao.find(niveauId));
 	}
-	
-	public Collection<NiveauDto> afficherLesNiveaux() {
+	public Collection<NiveauDto> getAllNiveau() {
 		
 		return NiveauHelper.modelsToDto(niveauDao.findAll());
 	}
-	
-	public long ajouterGroupe(GroupeDto groupeDto) {
+	public long addGroupe(GroupeDto groupeDto) {
 		Groupe groupe = GroupeHelper.dtoToModel(groupeDto);
 		groupeDao.create(groupe);
 		return groupe.getGroupeId();
 	}
-	
-	public void modifierGroupe(GroupeDto groupeDto) {
+	public void updateGroupe(GroupeDto groupeDto) {
 		groupeDao.update(GroupeHelper.dtoToModel(groupeDto));
 	}
-	
-	public void supprimerGroupe(GroupeDto groupeDto) {
+	public void deleteGroupe(GroupeDto groupeDto) {
 		groupeDao.delete(groupeDto.getGroupeId());
 	}
-	
-	public Collection<GroupeDto> afficherLesGroupes() {
+	public Collection<GroupeDto> getAllGroupes() {
 		
 		return GroupeHelper.modelsToDto(groupeDao.findAll());
 	}
 	
-	public Collection<GroupeDto> obtenirLesGroupesParNiveau(long niveauId) {
+	public Collection<GroupeDto> getAllGroupeByiveau(long niveauId) {
 		
 		return GroupeHelper.modelsToDto(groupeDao.findGroupByLevel(niveauId));
 	}
-	
-	public Collection<UniteDto> obtenirLesUnites() {
+	public Collection<UniteDto> getAllUnite() {
 		
 		return UniteHelper.modelsToDto(uniteDao.findAll());
 	}
-	
 	public long addUnite(UniteDto uniteDto) {
 		Unite unite = UniteHelper.dtoToModel(uniteDto);
 		uniteDao.create(unite);
 		return unite.getUniteId() ;
 	}
-	
-	public UniteDto obtenirUniteParId(long id) {
+	public UniteDto getUniteById(long id) {
 		
 		return UniteHelper.modelToDto(uniteDao.find(id));
 	}
-	
-	public UniteDto obtenirUniteParNom(String nom) {
+	public UniteDto getUniteByNom(String nom) {
 		
 		return UniteHelper.modelToDto(uniteDao.findUniteByName(nom));
 	}
-	
-	public MatiereDto obtenirMatiereParId(long matiereId) {
+	public MatiereDto getMatiereParId(long matiereId) {
 		
 		return MatiereHelper.modelToDto(matiereDao.find(matiereId));
 	}
-	public ParcoursDto obtenirParcoursParId(long parcoursId) {
+	public ParcoursDto getParcoursParId(long parcoursId) {
 		
 		return ParcoursHelper.modelToDto(parcoursDao.find(parcoursId));
 	}
-	public SemestreDto obtenirSemestreParId(long semestreId) {
+	public SemestreDto getSemestreParId(long semestreId) {
 		return SemestreHelper.modelToDto(semestreDao.find(semestreId));
 	}
-	
-	public Collection<NiveauDto> obtenirLesNiveauxParParcours(long parcoursId) {
+	public Collection<NiveauDto> getAllNiveauByParcours(long parcoursId) {
 		
 		return NiveauHelper.modelsToDto(niveauDao.findAllNiveauByParcours(parcoursId));
 	}
-
-
+	
+	public Collection<PlanEtudeDto> getAllPlanEtudeByParcours(long parcoursId) {
+		
+		return PlanEtudeHelper.modelsToDto(planEtudeDao.findAllPlanEtudeByParcours(parcoursId));
+	}
 }

@@ -146,5 +146,8 @@ public interface EnseignantService {
 	public CursusDto getCursusById(long cursus);
 
 	public Collection<ParcoursDto> getAllParcoursByDepartement(long departementID);
+
+	public Collection<ParcoursDto> getAllParcoursByCursus(long cursusById);
+
 	
 }

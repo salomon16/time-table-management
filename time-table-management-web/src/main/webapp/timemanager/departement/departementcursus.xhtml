@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+     
+    <h:head>
+        <title>Cars</title>
+                <style type="text/css">
+            .ui-widget {
+                font-size: 90%;
+            }
+        </style>
+    </h:head>
+     
+    <h:body>
+      <h:form id="cursusView">
+				<p:dataTable id="cursusDataTable" var="cursus"
+					value="#{departementBean.allCursus}" widgetVar="cursusView"
+					emptyMessage="Aucun aucun trouve" editable="true" style="margin:0 auto;">
+
+					<p:column headerText="Nom">
+								<h:outputText value="#{cursus.nom}" />
+					</p:column>
+
+					<p:column style="width:4%">
+						<p:commandButton id="editer" title="editer" icon="ui-icon-pencil" />
+					</p:column>
+					<p:column style="width:4%">
+						<p:commandButton id="delete" title="supprimer"
+							icon="ui-icon-trash" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+    </h:body>
+     
+</html>

@@ -31,4 +31,11 @@ public class ParcoursDaoImpl extends GenericDaoImpl<Parcours> implements Parcour
 		
 		return em.createQuery("select p from Parcours p where p.cursus.departement.departementId=:departementId").setParameter("departementId", departementId).getResultList();
 	}
+
+	
+	@SuppressWarnings("unchecked")
+	public Collection<Parcours> findAllParcoursByCursus(long cursusId) {
+		
+		return em.createQuery("select p from Parcours p where p.cursus.cursusId=:cursusId").setParameter("cursusId", cursusId).getResultList();
+	}
 }

@@ -1,7 +1,9 @@
+<!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui"
 	  template="/templates/template.xhtml">
@@ -27,6 +29,47 @@
 										<b:column span="4"><b:datepicker mode="popup-icon" placeholder="Choisir la date de fin" /></b:column>
 										<b:column span="4"></b:column>
 									</b:row>
+									<b:row>
+										<b:column span="4"><h:outputLabel for="departement" value="Departement: " /></b:column>
+										<b:column span="4">
+											<p:selectOneMenu id="departement" value="#{parcoursBean.selectedDepartement}" style="width:350px">
+												<p:ajax update="parcours" listener="#{parcoursBean.onDepartementChange}" />
+												<f:selectItem itemLabel="Select Departement" itemValue="" noSelectionOption="true" />
+												<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.nom}" />
+											</p:selectOneMenu>
+										</b:column>
+										<b:column span="4"><p:message for="departement" display="icon" /></b:column>
+									</b:row>
+									<b:row>
+										<b:column span="4"><h:outputLabel for="parcours" value="Parcours: " /></b:column>
+										<b:column span="4">
+											<p:selectOneMenu id="parcours" value="#{planEtudeBean.selectedParcours}" style="width:350px">
+												<f:selectItem itemLabel="Select Parcours" itemValue="" noSelectionOption="true" />
+												<f:selectItems value="#{planEtudeBean.listeParcours}" var="parcours" itemLabel="#{parcours.nom}" itemValue="#{parcours.parcoursId}"/>
+											</p:selectOneMenu>
+										</b:column>
+										<b:column span="4"><p:message for="parcours" /></b:column>
+									</b:row>
+									<b:row>
+										<b:column span="4"><h:outputLabel for="niveau" value="Niveau: " /></b:column>
+										<b:column span="4">
+											<p:selectOneMenu id="niveau" value="#{planEtudeBean.selectedParcours}" style="width:350px">
+												<f:selectItem itemLabel="Select Niveau" itemValue="" noSelectionOption="true" />
+												<f:selectItems value="#{planEtudeBean.listeParcours}" var="parcours" itemLabel="#{parcours.nom}" itemValue="#{parcours.parcoursId}"/>
+											</p:selectOneMenu>
+										</b:column>
+										<b:column span="4"><p:message for="niveau" /></b:column>
+									</b:row>
+									<b:row>
+										<b:column span="4"><h:outputLabel for="groupe" value="Groupe: " /></b:column>
+										<b:column span="4">
+											<p:selectOneMenu id="groupe" value="#{planEtudeBean.selectedParcours}" style="width:350px">
+												<f:selectItem itemLabel="Select Groupe" itemValue="" noSelectionOption="true" />
+												<f:selectItems value="#{planEtudeBean.listeParcours}" var="parcours" itemLabel="#{parcours.nom}" itemValue="#{parcours.parcoursId}"/>
+											</p:selectOneMenu>
+										</b:column>
+										<b:column span="4"><p:message for="groupe" /></b:column>
+									</b:row>
 							
 								</b:panel>
 							
@@ -36,9 +79,16 @@
 			           		 		<f:facet name="heading">Parametrage de la grille</f:facet>
 			              		  <p:messages />
 			              		<b:row>
-			              			<b:column span="6"><p:pickList value="#{emploiBean.jours}"  var="jour"  itemLabel="#{jour}"  itemValue="#{jour}" /></b:column> 
+				              			<b:column span="6">
+				              				<p:fieldset legend="Jours">
+					              				<p:selectManyMenu id="jours" value="#{emploiBean.target}" filter="false" showCheckbox="true" styleClass="width:350px;">
+		            								<f:selectItems value="#{emploiBean.source}" var="jour" itemLabel="#{jour}" itemValue="#{jour}"/>
+		        								</p:selectManyMenu>
+				              				</p:fieldset>
+				              			</b:column> 
+			              			
 			               		  <b:column span="6">
-				               		  <p:fieldset legend="Horaire">
+				               		  <p:fieldset legend="Horaires">
 				               		  		<h:form>
 				               		  			<b:row>
 				               		  				<b:column span="6"><p:outputLabel for="horaireDebut" value="Horaire Debut:" /></b:column>
@@ -56,18 +106,84 @@
        					 </p:tab>
        					 <p:tab id="grille" title="Grille">
        					 	<h:form>
-       					 		 <p:dataTable rows="">
-								        <p:dataTable ></p:dataTable>
-							  	 </p:dataTable>
-       					 		<p:dataGrid  var="jour" value="#{emploiBean.target}" columns="#{emploiBean.target.size()}">
-       					 			
-       					 			<p:panel header="#{jour}" style="text-align:center">
-							        </p:panel>
-       					 			<p:dataGrid rows="#{emploiBean.target.size()}" >
-       					 				
-       					 			</p:dataGrid>
-       					 		</p:dataGrid>
-       					 	</h:form>
+       					 	<b:panel>  
+	       					 	<b:row>
+		       					 		<b:column span="10">
+		       					 		<p:dataTable var="rowName" value="#{emploiBean.target}">
+											   <p:column headerText="" styleClass="ui-widget-header">
+											      <h:outputText value="#{rowName}"/>
+											   </p:column>
+												 <p:column headerText="" styleClass="ui-widget-header">
+												 <p:panel>
+												 	<b:row>
+												 		<b:column span="12"><h:outputText value="Module" /></b:column>
+												 	</b:row>
+											      	<b:row>
+												 		<b:column span="12"><h:outputText value="Enseignant" /></b:column>
+												 	</b:row>
+											      	<b:row>
+												 		<b:column span="12"><h:outputText value="Salle" /></b:column>
+												 	</b:row>
+										      	</p:panel>
+											   </p:column>
+										   <p:columns var="columnName" value="#{emploiBean.target}" headerText="#{columnName}" width="400px">
+<!-- 										      	<p:outputPanel> -->
+											      	<p:outputPanel id="module" styleClass="slot" style="background-color:#f5f5f5">
+											      		 <p:droppable dropListener="#{emploiBean.onDrop}" tolerance="fit" activeStyleClass="slotActive" scope="forward" onDrop="handleDrop" datasource="modules"/> 
+											      	</p:outputPanel>  
+											      	<p:outputPanel id="enseignant">
+											      		 <p:droppable dropListener="#{emploiBean.onDrop}" tolerance="fit" activeStyleClass="slotActive" scope="forward" onDrop="handleDrop" datasource="enseignants"/> 
+											      	</p:outputPanel> 
+											      	<p:outputPanel id="salle" styleClass="slot">
+											      		 <p:droppable dropListener="#{emploiBean.onDrop}" tolerance="fit" activeStyleClass="slotActive" scope="forward" onDrop="handleDrop" datasource="salles"/> 
+											      	</p:outputPanel>  
+<!-- 										      	</p:outputPanel> -->
+										   </p:columns>
+										</p:dataTable>
+										</b:column>
+											<b:column span="2">
+												<b:row>
+											        <p:panel header="Modules">  
+											            <p:dataGrid id="modules"  
+											                value="#{emploiBean.matieres}" var="matiere" columns="4">  
+											                <p:column>  
+											                    <p:panel id="matiere" />  
+											  
+											                    <p:draggable for="matiere" revert="true" />  
+											                </p:column>  
+											            </p:dataGrid>  
+											        </p:panel>  
+									        </b:row>
+									        <p:separator/>
+									        <b:row>
+										       <p:panel header="Enseignants">  
+										            <p:dataGrid id="enseignants"  
+										                value="#{emploiBean.enseignants}" var="enseignant" columns="4">  
+										                <p:column>  
+										                    <p:panel id="matiere" />    
+										  
+										                    <p:draggable for="matiere" revert="true"/>  
+										                </p:column>  
+										            </p:dataGrid>  
+										        </p:panel> 
+									        </b:row>
+									         <p:separator/>
+									        <b:row>
+										        <p:panel header="Salles">  
+										            <p:dataGrid id="salles"  
+										                value="#{emploiBean.salles}" var="salle" columns="4">  
+										                <p:column>  
+										                     <p:panel id="salle" />  
+										  
+										                    <p:draggable for="salle" revert="true" />  
+										                </p:column>  
+										            </p:dataGrid>  
+										        </p:panel> 
+									        </b:row>
+								        </b:column>
+							        </b:row>
+							      </b:panel>
+							</h:form>
        					 </p:tab>
 				</p:wizard>
 				

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +13,13 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import org.primefaces.event.DragDropEvent;
 import org.primefaces.event.FlowEvent;
 import org.primefaces.model.DualListModel;
 
+import edu.ipsas.edt.dto.EnseignantDto;
+import edu.ipsas.edt.dto.MatiereDto;
+import edu.ipsas.edt.dto.SalleDto;
 import edu.ipsas.edt.service.EmploiDuTempsService;
 
 @ManagedBean(name="emploiBean")
@@ -40,15 +45,21 @@ public class EmploiBean implements Serializable {
 	
 	private List<String> target;
 	
+	private List<String> source;
+	
 	private Date horaireDebut; 
 	
 	private Date horaireFin;
-    
-//	private String []jours = {"Lundi", "Mardi","Mercredi", "Jeudi", "Vendredi", "Samedi","Dimanche"};
+	
+	private Collection<EnseignantDto> enseignants;
+	
+	private Collection<MatiereDto> matieres;
+	
+	private Collection<SalleDto> salles;
 	
 	 	@PostConstruct
 	    public void init() {
-			List<String> source = new ArrayList<String>();
+	 		source = new ArrayList<String>();
 			target = new ArrayList<String>();
 			
 			source.add("Lundi");
@@ -61,6 +72,13 @@ public class EmploiBean implements Serializable {
 			
 			jours = new DualListModel<String>(source, target);  
 	}
+	 	 public void onDrop(DragDropEvent event) {  
+//	         Player player = (Player) event.getData();  
+//	   
+//	         selectedPlayers.add(player);  
+//	   
+//	         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(player.getName() + " added", "Position:" + event.getDropId()));  
+	     }  
 	 public String getFormattedHoraireDebut() {  
 	        return getFormattedTime(horaireDebut, "hh-mm a");  
 	    }  
@@ -93,39 +111,24 @@ public class EmploiBean implements Serializable {
 	public boolean isSkip() {
 		return skip;
 	}
-
 	public void setSkip(boolean skip) {
 		this.skip = skip;
 	}
-
-//	public String[] getJours() {
-//		return jours;
-//	}
-//
-//	public void setJours(String[] jours) {
-//		this.jours = jours;
-//	}
-
 	public EmploiDuTempsService getEmploiService() {
 		return emploiService;
 	}
-
 	public void setEmploiService(EmploiDuTempsService emploiService) {
 		this.emploiService = emploiService;
 	}
-
 	public Date getDateDebut() {
 		return dateDebut;
 	}
-
 	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
 	}
-
 	public Date getDateFin() {
 		return dateFin;
 	}
-
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
@@ -161,7 +164,29 @@ public class EmploiBean implements Serializable {
 	public void setHoraireFin(Date horaireFin) {
 		this.horaireFin = horaireFin;
 	}
-	
-	
-	
+	public List<String> getSource() {
+		return source;
+	}
+	public void setSource(List<String> source) {
+		this.source = source;
+	}
+	public Collection<EnseignantDto> getEnseignants() {
+		return enseignants;
+	}
+	public void setEnseignants(Collection<EnseignantDto> enseignants) {
+		this.enseignants = enseignants;
+	}
+	public Collection<MatiereDto> getMatieres() {
+		return matieres;
+	}
+	public void setMatieres(Collection<MatiereDto> matieres) {
+		this.matieres = matieres;
+	}
+	public Collection<SalleDto> getSalles() {
+		return salles;
+	}
+	public void setSalles(Collection<SalleDto> salles) {
+		this.salles = salles;
+	}
+
 }

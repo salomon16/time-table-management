@@ -18,6 +18,7 @@ public class MatiereHelper {
 		Matiere matiere = new Matiere();
 		matiere.setMatiereId(matiereDto.getMatiereId());
 		matiere.setNom(matiereDto.getNom());
+		matiere.setNombreHeure(matiereDto.getNombreHeure());
 		matiere.setDescription(matiereDto.getDescription());
 		matiere.setUnite(UniteHelper.dtoToModel(matiereDto.getUniteDto()));
 		matiere.setVolumeC(matiereDto.getVolumeC());
@@ -25,6 +26,7 @@ public class MatiereHelper {
 		matiere.setVolumeTp(matiereDto.getVolumeTp());
 		matiere.setCredit(matiereDto.getCredit());
 		matiere.setCoefficient(matiereDto.getCoefficient());
+		matiere.setType(matiereDto.getType());
 		matiere.setPlansEtude(PlanEtudeHelper.dtoToModels(matiereDto.getPlansEtudeDto()));
 		return matiere;
 	}
@@ -38,6 +40,7 @@ public class MatiereHelper {
 		MatiereDto matiereDto = new MatiereDto();
 		matiereDto.setMatiereId(matiere.getMatiereId());
 		matiereDto.setNom(matiere.getNom());
+		matiereDto.setNombreHeure(matiere.getNombreHeure());
 		matiereDto.setDescription(matiere.getDescription());
 		matiereDto.setType(matiere.getType());
 		matiereDto.setVolumeC(matiere.getVolumeC());

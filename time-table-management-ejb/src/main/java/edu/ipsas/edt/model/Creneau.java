@@ -3,6 +3,7 @@ package edu.ipsas.edt.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,10 +26,10 @@ public class Creneau implements Serializable {
 	private long creneauId;
 	
 	@Column(name = "HEURE_DEBUT", unique = true, nullable = false)
-	private int heureDebut;
+	private Date heureDebut;
 	
 	@Column(name = "HEURE_FIN", unique = true, nullable = false)
-	private int heureFin;
+	private Date heureFin;
 
 	@OneToMany
 	private Collection<Seance> seances;
@@ -48,7 +49,7 @@ public class Creneau implements Serializable {
 		seances = new ArrayList<Seance>();
 	}
 
-	public Creneau(int heureDebut, int heureFin) {
+	public Creneau(Date heureDebut, Date heureFin) {
 		super();
 		this.heureDebut = heureDebut;
 		this.heureFin = heureFin;
@@ -62,19 +63,19 @@ public class Creneau implements Serializable {
 		creneauId = creneauID;
 	}
 
-	public int getHeureDebut() {
+	public Date getHeureDebut() {
 		return heureDebut;
 	}
 
-	public void setHeureDebut(int heureDebut) {
+	public void setHeureDebut(Date heureDebut) {
 		this.heureDebut = heureDebut;
 	}
 
-	public int getHeureFin() {
+	public Date getHeureFin() {
 		return heureFin;
 	}
 
-	public void setHeureFin(int heureFin) {
+	public void setHeureFin(Date heureFin) {
 		this.heureFin = heureFin;
 	}
 

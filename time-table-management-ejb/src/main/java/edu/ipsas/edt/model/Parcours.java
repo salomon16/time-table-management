@@ -24,7 +24,7 @@ public class Parcours implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long parcoursId;
 	
-	@Column(name="NOM", unique = true, nullable = false)
+	@Column(name="NOM", unique = false, nullable = true)
 	private String nom;
 	
 	@ManyToOne

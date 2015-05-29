@@ -13,7 +13,7 @@ public class ParcoursHelper {
 			return null;
 		
 		Parcours parcours = new Parcours();
-		parcours.setParcoursID(parcoursDto.getParcoursID());
+		parcours.setParcoursID(parcoursDto.getParcoursId());
 		parcours.setNom(parcoursDto.getNom());
 		parcours.setCursus(CursusHelper.dtoToModel(parcoursDto.getCursusDto()));
 		return parcours;
@@ -24,7 +24,7 @@ public class ParcoursHelper {
 			return null;
 		
 		ParcoursDto parcoursDto = new ParcoursDto();
-		parcoursDto.setParcoursID(parcours.getParcoursID());
+		parcoursDto.setParcoursId(parcours.getParcoursID());
 		parcoursDto.setNom(parcours.getNom());
 		parcoursDto.setCursusDto(CursusHelper.modelToDto(parcours
 				.getCursus()));

@@ -31,7 +31,7 @@ public class SemestreBean implements Serializable {
 
 	public String save(){
 		
-		long id = emploiService.ajouterSemestre(semestreDto);
+		long id = emploiService.addSemestre(semestreDto);
 		
 		if(id > 0){
 			FacesContext fc = FacesContext.getCurrentInstance();  
@@ -41,11 +41,11 @@ public class SemestreBean implements Serializable {
 	}
 	
 	public Collection<SemestreDto> getAllSemestre(){
-		return emploiService.afficherLesSemestres();
+		return emploiService.getAllSemestre();
 	}
 	
 	public Collection<SemestreDto> getAllSemester(){
-		return emploiService.afficherLesSemestres();
+		return emploiService.getAllSemestre();
 	}
 	public EmploiDuTempsService getEmploiService() {
 		return emploiService;

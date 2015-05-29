@@ -5,42 +5,41 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui"
       template="/templates/template.xhtml">
-		<ui:define name="content">
-			<h:form>
-			<p:growl id="growl"/>
-			<b:panel id="panel" look="primary">
-				<p:messages id="msg"/>
-					<f:facet name="heading">Saisie Horaire</f:facet>
-				<b:row>
-					<b:column span="4"><p:outputLabel for="horaireDebut" value="Horaire Debut:" /></b:column>
-					<b:column span="4">	<p:calendar id="horaireDebut" value="#{creneauBean.horaireDebut}" pattern="HH:mm a" timeOnly="true" showOn="button"  /></b:column>
-					<b:column span="4"></b:column>
-				</b:row>
-				<b:row>
-					<b:column span="4"><p:outputLabel for="horaireFin" value="Horaire Fin:" /></b:column>
-					<b:column span="4">
-						<p:calendar id="horaireFin" value="#{emploiBean.horaireFin}" pattern="HH:mm a" timeOnly="true" showOn="button">
-							 <p:ajax event="dateSelect" listener="#{creneauBean.onDateSelect}" update="growl" />
-						</p:calendar>
-					</b:column>
-					<b:column span="4"></b:column>
-				</b:row>
-				<p:separator/>
-				<b:row>
-					<b:column span="2"></b:column>
-					<b:column span="4"><p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" ajax="false" /></b:column>
-					<b:column span="4"><p:commandButton id="horaire" type="submit" value="Enregistrer" styleClass="btn btn-default" icon="ui-icon-plusthick" action="#{gradeBean.save()}" ajax="true" /></b:column>
-					<b:column span="2"></b:column>
-				</b:row>
-
-			</b:panel>
-			<p:blockUI block="panel" trigger="horaire">  
-	    		<h:panelGrid columns="2">  
-			        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
-			        <h:outputText value="Ajout matiere..." style="white-space: nowrap;"/>  
-	    		</h:panelGrid>  
-			</p:blockUI> 
-		</h:form>
-			
+      
+			<ui:define name="content">
+				<h:form>
+					<p:growl id="growl"/>
+					<b:panel id="panel" look="primary">
+						<p:messages id="msg"/>
+						<f:facet name="heading">Saisie Horaire</f:facet>
+						<b:row>
+							<b:column span="4"><p:outputLabel for="horaireDebut" value="Horaire Debut:" /></b:column>
+							<b:column span="4">	<p:calendar id="horaireDebut" value="#{creneauBean.horaireDebut}" pattern="HH:mm" timeOnly="true" showOn="button"  required="true" /></b:column>
+							<b:column span="4"><p:message for="horaireDebut" /></b:column>
+						</b:row>
+						<b:row>
+							<b:column span="4"><p:outputLabel for="horaireFin" value="Horaire Fin:" /></b:column>
+							<b:column span="4">
+								<p:calendar id="horaireFin" value="#{creneauBean.horaireFin}" pattern="HH:mm" timeOnly="true" showOn="button" required="true">
+								</p:calendar>
+							</b:column>
+							<b:column span="4"><p:message for="horaireFin" /></b:column>
+						</b:row>
+						<p:separator/>
+						<b:row>
+							<b:column span="2"></b:column>
+							<b:column span="4"><p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" ajax="false" /></b:column>
+							<b:column span="4"><p:commandButton id="horaire" type="submit" value="Enregistrer" update="growl" styleClass="btn btn-default" icon="ui-icon-plusthick" action="#{creneauBean.save()}" ajax="true" /></b:column>
+							<b:column span="2"></b:column>
+						</b:row>
+		
+					</b:panel>
+					<p:blockUI block="panel" trigger="horaire">  
+			    		<h:panelGrid columns="2">  
+					        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
+					        <h:outputText value="Ajout horaire..." style="white-space: nowrap;"/>  
+			    		</h:panelGrid>  
+					</p:blockUI> 
+			</h:form>
 		</ui:define>
 	</ui:composition>

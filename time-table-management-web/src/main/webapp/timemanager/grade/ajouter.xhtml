@@ -7,23 +7,29 @@
 template="/templates/template.xhtml">
 	<ui:define name="content">
 		<h:form>
+			<p:growl id="growl"/>
 			<b:panel id="panel" look="primary">
+					<p:messages id="msg"/>
 					<f:facet name="heading">Nouveau Grade</f:facet> 
 				<b:row>
-					<b:column span="4"><h:outputLabel value="Nom: " for="nom" /></b:column>
+					<b:column span="4"><p:outputLabel value="Nom: " for="nom" /></b:column>
 					<b:column span="4"><b:inputText id="nom" value="#{gradeBean.gradeDto.nom}" required="true" /></b:column>
-					<b:column span="4"><p:message for="nom" display="icon" /></b:column>
+					<b:column span="4"><p:message for="nom"/></b:column>
 				</b:row>
-		<p:separator></p:separator>
-		<b:row>
-			<b:column span="2"></b:column>
-			<b:column span="4"><b:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" ajax="false" /></b:column>
-			<b:column span="4"><b:commandButton type="submit" value="Enregistrer" icon="ui-icon-check" action="#{gradeBean.save()}" ajax="true" /></b:column>
-			<b:column span="2"></b:column>
-		</b:row>
-
+				<p:separator></p:separator>
+				<b:row>
+					<b:column span="2"></b:column>
+					<b:column span="4"><p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" /></b:column>
+					<b:column span="4"><p:commandButton id="grade"  value="Enregistrer" update="growl" icon="ui-icon-check" action="#{gradeBean.save()}" /></b:column>
+					<b:column span="2"></b:column>
+				</b:row>
 			</b:panel>
-
+			<p:blockUI block="panel" trigger="grade">  
+	    		<h:panelGrid columns="2">  
+			        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
+			        <h:outputText value="Ajout grade..." style="white-space: nowrap;"/>  
+	    		</h:panelGrid>  
+			</p:blockUI> 
 		</h:form>
 	</ui:define>
 </ui:composition>

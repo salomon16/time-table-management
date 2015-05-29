@@ -3,6 +3,7 @@ package edu.ipsas.edt.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import edu.ipsas.edt.model.Seance;
 
@@ -15,9 +16,9 @@ public class CreneauDto implements Serializable {
 
 	private long CreneauID;
 
-	private int heureDebut;
+	private Date heureDebut;
 
-	private int heureFin;
+	private Date heureFin;
 
 	private Collection<DisponibiliteDto> disponibilites;
 
@@ -29,7 +30,7 @@ public class CreneauDto implements Serializable {
 		seances = new ArrayList<Seance>();
 	}
 
-	public CreneauDto(int heureDebut, int heureFin) {
+	public CreneauDto(Date heureDebut, Date heureFin) {
 		super();
 		this.heureDebut = heureDebut;
 		this.heureFin = heureFin;
@@ -45,19 +46,19 @@ public class CreneauDto implements Serializable {
 		CreneauID = creneauID;
 	}
 
-	public int getHeureDebut() {
+	public Date getHeureDebut() {
 		return heureDebut;
 	}
 
-	public void setHeureDebut(int heureDebut) {
+	public void setHeureDebut(Date heureDebut) {
 		this.heureDebut = heureDebut;
 	}
 
-	public int getHeureFin() {
+	public Date getHeureFin() {
 		return heureFin;
 	}
 
-	public void setHeureFin(int heureFin) {
+	public void setHeureFin(Date heureFin) {
 		this.heureFin = heureFin;
 	}
 

@@ -37,7 +37,7 @@ template="/templates/template.xhtml">
 							<b:column span="4">
 								<p:selectOneMenu id="parcours" value="#{niveauBean.selectedParcours}" style="width:350px">
 									<f:selectItem itemLabel="Select Parcours" itemValue="" noSelectionOption="true" />
-									<f:selectItems value="#{planEtudeBean.listeParcours}" var="parcours" itemLabel="#{parcours.nom}" itemValue="#{parcours.parcoursID}"/>
+									<f:selectItems value="#{planEtudeBean.listeParcours}" var="parcours" itemLabel="#{parcours.nom}" itemValue="#{parcours.parcoursId}"/>
 								</p:selectOneMenu>
 							</b:column>
 							<b:column span="4"><p:message for="parcours" /></b:column>

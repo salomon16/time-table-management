@@ -14,17 +14,12 @@ public class EnseignantDaoImpl extends GenericDaoImpl<Enseignant> implements Ens
 	@SuppressWarnings("unchecked")
 	public Collection<Enseignant> getAllEnseignant(long departementId) {
 
-		return em
-				
-				.createQuery(
-						" FROM Enseignant e where e.departements=(select OBJECT(m) from Departement where d.departementID=:departementId")
-				.setParameter("departementId", departementId).getResultList();
+		return em.createQuery(" select e from Enseignant e where e.departements=(select d from Departement d where d.departementId=:departementId").setParameter("departementId", departementId).getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	public Collection<Enseignant> getEnseignantByFirstNameAndLastName(
 			String nom, String prenom) {
-
 		return em
 				
 				.createQuery(

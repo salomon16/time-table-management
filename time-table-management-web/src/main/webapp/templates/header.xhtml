@@ -5,30 +5,48 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:b="http://bootsfaces.net/ui">
-	
-<!-- 	<center> -->
-		  <b:navBar brand="EDT-MANAGER" brandHref="/timemanager/index.xhtml" inverse="true" fixed="top" fluid="true">
-            
-          
-<!-- 		<ul class="nav navbar-nav navbar-right"> -->
+ 
+		  <b:navBar brand="EDT-MANAGER" brandHref="/index.xhtml" inverse="true" fixed="top" >
+				
+				<b:navbarLinks pull="right">
+				 
+			        <b:navLink value="Home" href="#"></b:navLink>
+			         <b:dropMenu value="Utilisateurs" >
+			            <b:navLink value="Ajouter un utilisateur" href="#"  icon="glyphicon glyphicon-user"></b:navLink>
+			           <b:navLink value="Liste des utilisateurs" href="#"></b:navLink>
+			        </b:dropMenu>
+			        <b:dropMenu value="Bienvenue, Admin" >
+			            <b:navLink value="Mon profil" href="#" icon="user" iconAlign="left"></b:navLink>
+			            <b:navLink></b:navLink>
+			            <b:navLink value="Deconnection" href="#"></b:navLink>
+			        </b:dropMenu>
+						<ul class="nav navbar-nav pull-right panel-menu">
+							
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle account" data-toggle="dropdown">
+									<i class="fa fa-angle-down pull-right"></i>
+									<div class="user-mini pull-right">
+										<span class="welcome">Welcome,</span>
+										<span>Admin</span>
+									</div>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="#">
+											<i class="fa fa-user"></i>
+											<span>Mon profile</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fa fa-power-off"></i>
+											<span>Logout</span>
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+			    </b:navbarLinks>
+   		</b:navBar>
 
-<!-- 			<li class="dropdown"><a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">  -->
-<!-- 				<i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a> -->
-<!-- 				<ul id="g-account-menu" class="dropdown-menu" role="menu"> -->
-<!-- 					<li><a href="#">My Profile</a></li> -->
-<!-- 					<li><a href="#"><i class="glyphicon glyphicon-lock"></i>Logout</a></li> -->
-<!-- 				</ul> -->
-<!-- 			</li> -->
-<!-- 		</ul> -->
-<!-- 		<b:dropMenu value="Option"> -->
-	
-<!-- 		</b:dropMenu> -->
-<!-- 		  <b:navbarLinks pull="right"> -->
-<!--                 <b:navLink value="Settings" href="#"></b:navLink> -->
-<!--                 <b:navLink value="Profile" href="#"></b:navLink> -->
-<!--                 <b:navLink value="Help" href="#"></b:navLink> -->
-<!--             </b:navbarLinks> -->
-	</b:navBar>
-<!-- 		<h:outputText value="#{msg['header.title']}" /> -->
-<!-- 	</center> -->
 </ui:composition>

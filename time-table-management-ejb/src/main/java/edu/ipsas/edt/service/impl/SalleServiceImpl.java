@@ -28,22 +28,16 @@ public class SalleServiceImpl implements SalleService {
 	
 	@EJB 
 	private EtablissementDao etablissementDao;
-	
 	@EJB 
 	private SalleDao salleDao;
-	
 	@EJB 
 	private TypeSalleDao typeSalleDao;
-	
 	@EJB 
 	private RessourceDao ressourceDao;
 
-	
 	public void updateEtablissement(EtablissementDto etablissementDto) {
 		etablissementDao.update(EtablissementHelper.dtoToModel(etablissementDto));
 	}
-
-	
 	public String addEtablissement(EtablissementDto etablissementDto) {
 		
 		Etablissement etablissement = new Etablissement();
@@ -51,8 +45,6 @@ public class SalleServiceImpl implements SalleService {
 		 etablissementDao.create(etablissement);
 		return etablissement.getEtablissementID();
 	}
-
-	
 	public long addSalle(SalleDto salleDto) {
 		
 		Salle salle = new Salle();
@@ -60,25 +52,17 @@ public class SalleServiceImpl implements SalleService {
 		salleDao.create(salle);
 		return salle.getSalleId();
 	}
-
-	
 	public void updateSalle(SalleDto salleDto) {
 		salleDao.update(SalleHelper.dtoToModel(salleDto));
 	}
-
-	
 	public void deleteSalle(SalleDto salleDto) {
 	salleDao.delete(salleDto.getSalleId());
 
 	}
-
-	
 	public Collection<SalleDto> getAllSalle() {
 	
 		return SalleHelper.modelsToDto(salleDao.findAll());
 	}
-
-	
 	public long addRessource(RessourceDto ressourceDto) {
 		
 		Ressource ressource = new Ressource();
@@ -86,97 +70,58 @@ public class SalleServiceImpl implements SalleService {
 		ressourceDao.create(ressource);
 		return ressource.getRessourceID();
 	}
-
-	
 	public void updateRessource(RessourceDto ressourceDto) {
 		ressourceDao.update(RessourceHelper.dtoToModel(ressourceDto));
 	}
-
-	
 	public void deleteRessource(RessourceDto ressourceDto) {
 		ressourceDao.delete(ressourceDto.getRessourceID());
 	}
-
-	
 	public Collection<RessourceDto> getAllRessource() {
 		
 		return RessourceHelper.modelsToDto(ressourceDao.findAll());
 	}
-
-	
 	public long addTypeSalle(TypeSalleDto typeSalleDto) {
 		
-		TypeSalle typeSalle = new TypeSalle();
-		typeSalle = TypeSalleHelper.dtoToModel(typeSalleDto);
+		TypeSalle typeSalle = TypeSalleHelper.dtoToModel(typeSalleDto);
 		typeSalleDao.create(typeSalle);
 		return typeSalle.getTypeSalleId();
 	}
-
-	
 	public void updateTypeSalle(TypeSalleDto typeSalleDto) {
 		typeSalleDao.update(TypeSalleHelper.dtoToModel(typeSalleDto));
 	}
-
-	
 	public void deleteTypeSalle(TypeSalleDto typeSalleDto) {
 
 		typeSalleDao.delete(typeSalleDto.getTypeSalleId());
 	}
-
-	
 	public Collection<TypeSalleDto> getAllTypeSalle() {
 		
 		return TypeSalleHelper.modelsToDto(typeSalleDao.findAll());
 	}
-
-
-	
 	public TypeSalleDto getTypeSalleByName(String name) {
-		
 		return TypeSalleHelper.modelToDto(typeSalleDao.findTypeSalleByName(name));
 	}
-
-
 	public EtablissementDao getEtablissementDao() {
 		return etablissementDao;
 	}
-
-
 	public void setEtablissementDao(EtablissementDao etablissementDao) {
 		this.etablissementDao = etablissementDao;
 	}
-
-
 	public SalleDao getSalleDao() {
 		return salleDao;
 	}
-
-
 	public void setSalleDao(SalleDao salleDao) {
 		this.salleDao = salleDao;
 	}
-
-
 	public TypeSalleDao getTypeSalleDao() {
 		return typeSalleDao;
 	}
-
-
 	public void setTypeSalleDao(TypeSalleDao typeSalleDao) {
 		this.typeSalleDao = typeSalleDao;
 	}
-
-
 	public RessourceDao getRessourceDao() {
 		return ressourceDao;
 	}
-
-
 	public void setRessourceDao(RessourceDao ressourceDao) {
 		this.ressourceDao = ressourceDao;
 	}
-
-	
-
-	
 }

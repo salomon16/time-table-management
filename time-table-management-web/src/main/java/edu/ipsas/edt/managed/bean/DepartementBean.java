@@ -9,11 +9,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
+
 import edu.ipsas.edt.dto.CursusDto;
 import edu.ipsas.edt.dto.DepartementDto;
 import edu.ipsas.edt.service.EnseignantService;
 
-@ManagedBean
+@ManagedBean(name="departementBean")
 @ViewScoped
 public class DepartementBean implements Serializable{
 
@@ -42,7 +45,16 @@ public class DepartementBean implements Serializable{
 		
 		return null;
 	}
-
+	   public void showCursus() {
+	        RequestContext.getCurrentInstance().openDialog("departementcursus");
+	    }
+	   
+	   public void onDepartementChosen(SelectEvent event) {
+	        selectedDepartement = (DepartementDto) event.getObject();
+//	        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Car Selected", "Id:" + car.getId());
+//	         
+//	        FacesContext.getCurrentInstance().addMessage(null, message);
+	    }
 	//methode pour recuperer le departement selectionné
 		public void selectedDepartement(long selectedDepartementId) {
 

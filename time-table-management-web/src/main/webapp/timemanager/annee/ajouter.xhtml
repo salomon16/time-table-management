@@ -1,0 +1,44 @@
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+      template="/templates/template.xhtml">
+		<ui:define name="content">
+			<h:form>
+			<p:growl id="growl"/>
+			<b:panel id="panel" look="primary">
+				<p:messages id="msg"/>
+					<f:facet name="heading">Nouvelle Annee</f:facet>
+				<b:row>
+					<b:column span="4"><p:outputLabel for="anneeDebut" value="Annee de Debut:" /></b:column>
+					<b:column span="4"><p:spinner min="2010" required="true" value="#{anneeBean.debutAnnee}"/></b:column>
+					<b:column span="4"></b:column>
+				</b:row>
+				<b:row>
+					<b:column span="4"><p:outputLabel for="anneeFin" value="Annee de Fin:" /></b:column>
+					<b:column span="4">
+						<p:spinner min="2010" required="true" value="#{anneeBean.finAnnee}"/>
+					</b:column>
+					<b:column span="4"></b:column>
+				</b:row>
+				<p:separator/>
+				<b:row>
+					<b:column span="2"></b:column>
+					<b:column span="4"><p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset" ajax="false" /></b:column>
+					<b:column span="4"><p:commandButton id="annee" type="submit" value="Enregistrer" styleClass="btn btn-default" icon="ui-icon-plusthick" action="#{anneeBean.save()}" ajax="true" /></b:column>
+					<b:column span="2"></b:column>
+				</b:row>
+
+			</b:panel>
+			<p:blockUI block="panel" trigger="annee">  
+	    		<h:panelGrid columns="2">  
+			        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
+			        <h:outputText value="Ajout matiere..." style="white-space: nowrap;"/>  
+	    		</h:panelGrid>  
+			</p:blockUI> 
+		</h:form>
+			
+		</ui:define>
+	</ui:composition>

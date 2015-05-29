@@ -1,97 +1,88 @@
-
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
-
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
 
 	<h:form>
-
-		<p:outputPanel id="menuPanel" layout="block" style="width:225px;" >
-				<p:panelMenu  autoSubmenuDisplay="true" style="width:225px; border:none;font-size:small;padding:0px;"
-					ajax="true" type="sliding" backLabel="#{msg['menu.back']}">
+		<p:outputPanel header="#{msg['menu.title']}">
+				<p:panelMenu autoSubmenuDisplay="true"  ajax="true" type="sliding" backLabel="#{msg['menu.back']}" >
 					<p:submenu label="Emplois du Temps" icon="ui-icon-person" styleClass="btn-info">
 						<p:menuitem value="Creer un emploi" icon="ui-icon-plusthick" url="/timemanager/emploi/ajouter.xhtml" ajax="true"></p:menuitem>
-						<p:submenu label="Horaires">
-						<p:menuitem value="Ajouter un horaire" icon="ui-icon-plusthick" url="/timemanager/creneau/ajouter.xhtml" />
-						<p:menuitem value="Lister les horaires" icon="ui-icon-note" url="/timemanager/creneau/lister.xhtml"/>
-					</p:submenu>
-					
+						<p:submenu label="Horaires" icon="ui-icon-person" styleClass="btn-info">
+							<p:menuitem value="Ajouter un horaire" icon="ui-icon-plusthick" url="/timemanager/creneau/ajouter.xhtml" />
+							<p:menuitem value="Lister les horaires" icon="ui-icon-note" url="/timemanager/creneau/lister.xhtml"/>
+						</p:submenu>
 					</p:submenu>
 					<p:submenu label="Enseignants" icon="ui-icon-person" styleClass="btn-info">
 						<p:menuitem value="Ajouter un enseignant" icon="ui-icon-plusthick" url="/timemanager/enseignant/ajouter.xhtml" ajax="true"></p:menuitem>
 						<p:menuitem value="Lister les enseignants" icon="ui-icon-note" url="/timemanager/enseignant/lister.xhtml" ajax="false" />
-							<p:submenu label="Statuts" styleClass="submenu">
+							<p:submenu label="Statuts" icon="ui-icon-person" styleClass="btn-info">
 								<p:menuitem value="Ajouter un statut " icon="ui-icon-plusthick" url="/timemanager/statut/ajouter.xhtml" ajax="false" />
 								<p:menuitem value="Lister les statuts" icon="ui-icon-note" url="/timemanager/statut/lister.xhtml" ajax="false"></p:menuitem>
 							</p:submenu>
-							<p:submenu label="Grades">
+							<p:submenu label="Grades" icon="ui-icon-person" styleClass="btn-info">
 								<p:menuitem value="Ajouter un grade" icon="ui-icon-plusthick" url="/timemanager/grade/ajouter.xhtml" ajax="false" />
 								<p:menuitem value="Lister les grades" icon="ui-icon-note" url="/timemanager/grade/lister.xhtml" ajax="false"></p:menuitem>
 							</p:submenu>
 							<p:submenu label="Voeux">
-								<p:submenu label="Disponibilites">
+								<p:submenu label="Disponibilites" icon="ui-icon-person" styleClass="btn-info">
 									<p:menuitem value="Ajouter une disponibilite" icon="ui-icon-plusthick" url="/timemanager/enseignant/disponibilite/ajouter.xhtml" />
 								<p:menuitem value="Lister les disponibilites" icon="ui-icon-note" url="/timemanager/enseignant/disponibilite/lister.xhtml"/>
 								</p:submenu >
-								<p:submenu label="Matieres">
-									<p:menuitem value="Ajouter une disponibilite" icon="ui-icon-plusthick" url="/timemanager/enseignant/disponibilite/ajouter.xhtml" />
-									<p:menuitem value="Lister les disponibilites" icon="ui-icon-note" url="/timemanager/enseignant/disponibilite/lister.xhtml"/>
+								<p:submenu label="Matieres" icon="ui-icon-person" styleClass="btn-info">
+									<p:menuitem value="Ajouter un souhait" icon="ui-icon-plusthick" url="/timemanager/enseignant/voeux/ajouter.xhtml" />
+									<p:menuitem value="Lister les souhaits" icon="ui-icon-note" url="/timemanager/enseignant/voeux/lister.xhtml"/>
 								</p:submenu>
 							</p:submenu>
 					</p:submenu>
-					
 					<p:submenu label="Departements" icon="ui-icon-person" styleClass="btn-info">
 						<p:menuitem value="Ajouter un departement" icon="ui-icon-plusthick" url="/timemanager/departement/ajouter.xhtml" />
 						<p:menuitem value="Lister les departements" icon="ui-icon-note" url="/timemanager/departement/lister.xhtml"/>
-						<p:submenu label="Gestion des Cursus" styleClass="submenu">
+						<p:submenu label="Gestion des Cursus" icon="ui-icon-person" styleClass="btn-info">
 							<p:menuitem value="Ajouter" icon="ui-icon-plusthick" url="/timemanager/cursus/ajouter.xhtml" />
 							<p:menuitem value="Lister" icon="ui-icon-note" url="/timemanager/cursus/lister.xhtml" />
 						</p:submenu>
 						<p:separator />
-						<p:submenu label="Unites de matiere">
+						<p:submenu label="Unites de matiere" icon="ui-icon-person" styleClass="btn-info">
 								<p:menuitem value="Ajouter une unite" icon="ui-icon-plusthick" url="/timemanager/unite/ajouter.xhtml" />
 						</p:submenu>
-						<p:submenu label=" Matieres">
+						<p:submenu label=" Matieres" icon="ui-icon-person" styleClass="btn-info">
 								<p:menuitem value="Ajouter une matiere" icon="ui-icon-plusthick" url="/timemanager/matiere/ajouter.xhtml" />
 								<p:menuitem value="Lister les matieres" icon="ui-icon-note" url="/timemanager/matiere/lister.xhtml"/>
 						</p:submenu>
-						<p:submenu label="Parcours" styleClass="submenu">
+						<p:submenu label="Parcours" icon="ui-icon-person" styleClass="btn-info">
 							<p:menuitem value="Ajouter" icon="ui-icon-plusthick" url="/timemanager/parcours/ajouter.xhtml" />
 							<p:menuitem value="Lister" icon="ui-icon-note" url="/timemanager/parcours/lister.xhtml"></p:menuitem>
 						</p:submenu>
-						<p:submenu label="Semestres" styleClass="submenu">
+						<p:submenu label="Semestres" icon="ui-icon-person" styleClass="btn-info">
 							<p:menuitem value="Ajouter" icon="ui-icon-plusthick" url="/timemanager/semestre/ajouter.xhtml" />
 							<p:menuitem value="Lister" icon="ui-icon-note" url="/timemanager/parcours/lister.xhtml"></p:menuitem>
 						</p:submenu>
 						<p:separator />
-						<p:submenu label="Niveaux" styleClass="submenu">
+						<p:submenu label="Niveaux" icon="ui-icon-person" styleClass="btn-info">
 							<p:menuitem value="Ajouter un niveau" icon="ui-icon-plusthick" url="/timemanager/niveau/ajouter.xhtml" />
 							<p:menuitem value="Lister les niveaux" icon="ui-icon-note" url="/timemanager/niveau/lister.xhtml"></p:menuitem>
 						</p:submenu>
-						<p:submenu label="Groupes">
+						<p:submenu label="Groupes" icon="ui-icon-person" styleClass="btn-info">
 							<p:menuitem value="Ajouter un groupe" icon="ui-icon-plusthick" url="/timemanager/groupe/ajouter.xhtml" />
 							<p:menuitem value="Lister les groupes" icon="ui-icon-note" url="/timemanager/groupe/lister.xhtml"/>
 						</p:submenu>
-						<p:submenu label="Plans d'Etudes" styleClass="submenu">
+						<p:submenu label="Plans d'Etudes" icon="ui-icon-person" styleClass="btn-info">
 							<p:menuitem value="Creer un plan d'etude" icon="ui-icon-plusthick" url="/timemanager/planetude/ajouter.xhtml" />
 							<p:menuitem value="Lister un plan d'etude" icon="ui-icon-note" url="/timemanager/planetude/lister.xhtml"></p:menuitem>
 						</p:submenu>
 					</p:submenu>
-					
 					<p:submenu label="Salles" icon="ui-icon-person" styleClass="btn-info">
-						<p:menuitem value="Ajouter" icon="ui-icon-plusthick" url="/timemanager/salle/ajouter.xhtml" />
-						<p:menuitem value="Lister" icon="ui-icon-note" url="/timemanager/salle/lister.xhtml" />
-						<p:submenu label="Gestion du Materiel" styleClass="submenu">
-							<p:menuitem value="Ajouter" icon="ui-icon-plusthick" url="/timemanager/ressources/ajouter.xhtml" />
-							<p:menuitem value="Lister" icon="ui-icon-note" url="/timemanager/ressources/lister.xhtml" />
+						<p:menuitem value="Ajouter une salle" icon="ui-icon-plusthick" url="/timemanager/salle/ajouter.xhtml" />
+						<p:menuitem value="Lister les salles" icon="ui-icon-note" url="/timemanager/salle/lister.xhtml" />
+						<p:submenu label="Materiel" icon="ui-icon-person" styleClass="btn-info">
+							<p:menuitem value="Ajouter un materiel" icon="ui-icon-plusthick" url="/timemanager/materiel/ajouter.xhtml" />
+							<p:menuitem value="Lister les materiaux" icon="ui-icon-note" url="/timemanager/materiel/lister.xhtml" />
 						</p:submenu>
 					</p:submenu>
-					
-				</p:panelMenu>
-				
+				</p:panelMenu>		
 		</p:outputPanel>
 
 	</h:form>

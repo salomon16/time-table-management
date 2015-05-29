@@ -11,23 +11,30 @@
 		<h:form id="form">
 		
 			<!-- table d'affichage des enseignants -->
+			
 			<p:dataTable  id="enseignantDataTable" var="enseignant" value="#{enseignantBean.allEnseignant}"
 				widgetVar="enseignantTable" 
 				emptyMessage="Aucun enseignant trouve"
-				editable="true"   selection="#{enseignantBean.selectedEnseignant}">
+				editable="true"   selection="#{enseignantBean.selectedEnseignant}"
+                 paginator="true" rows="10" style="margin-bottom:20px">
 				
-<!-- 					 <p:column selectionMode="single" style="width:2%" />  -->
 				<f:facet name="header">
 					<p:outputPanel>
 						<h:outputText value="Recherche generale :" />
-						<p:inputText id="globalFilter"
-							onkeyup="PF('enseignantTable').filter()" style="width:150px"
-							placeholder="mot cle" />
-					</p:outputPanel>
-				</f:facet>
-
+						<p:inputText id="globalFilter" onkeyup="PF('enseignantTable').filter()" style="width:100px" placeholder="mot cle" />
+							 <h:commandLink>
+	                <p:graphicImage library="images" name="excel.png" title="exporter en excel" width="24"/>
+	                <p:dataExporter type="xls" target="enseignantDataTable" fileName="enseignants" postProcessor="#{enseignantBean.postProcessXLS}"  />
+	            </h:commandLink>
+	 
+	            <h:commandLink>
+	                <p:graphicImage library="images" name="pdf.png" title="exporter en pdf" width="24"/>
+	                <p:dataExporter type="pdf" target="enseignantDataTable" fileName="enseignants" />
+	            </h:commandLink>
+           			</p:outputPanel>
+        		</f:facet>
 				<p:column headerText="Nom" filterBy="#{enseignant.nom}"
-					filterMatchMode="contains">
+					filterMatchMode="contains" width="150">
 					<p:cellEditor>
 						<f:facet name="output">
 							<h:outputText value="#{enseignant.nom}" />
@@ -40,7 +47,7 @@
 				</p:column>
 
 				<p:column headerText="Prenom" filterBy="#{enseignant.prenom}"
-					filterMatchMode="contains">
+					filterMatchMode="contains" width="150">
 
 					<p:cellEditor>
 						<f:facet name="output">
@@ -65,18 +72,18 @@
 					</p:cellEditor>
 				</p:column>
 
-				<p:column headerText="Adresse" filterBy="#{enseignant.adresse}"
-					filterMatchMode="contains">
+<!-- 				<p:column headerText="Adresse" filterBy="#{enseignant.adresse}" -->
+<!-- 					filterMatchMode="contains" width="150"> -->
 
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{enseignant.adresse}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{enseignant.adresse}"></p:inputText>
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
+<!-- 					<p:cellEditor> -->
+<!-- 						<f:facet name="output"> -->
+<!-- 							<h:outputText value="#{enseignant.adresse}" /> -->
+<!-- 						</f:facet> -->
+<!-- 						<f:facet name="input"> -->
+<!-- 							<p:inputText value="#{enseignant.adresse}"></p:inputText> -->
+<!-- 						</f:facet> -->
+<!-- 					</p:cellEditor> -->
+<!-- 				</p:column> -->
 
 				<p:column headerText="Tel" filterBy="#{enseignant.telephoneMobile}"
 					filterMatchMode="contains">
@@ -92,7 +99,7 @@
 				</p:column>
 
 				<p:column headerText="Statut" filterBy="#{enseignant.statutDto.nom}"
-					filterMatchMode="exact">
+					filterMatchMode="exact" width="150">
 					<f:facet name="filter">
 						<p:selectOneMenu onchange="PF('enseignantTable').filter()">
 							<f:selectItem itemLabel="Select One" itemValue="#{null}"
@@ -117,7 +124,7 @@
 				</p:column>
 
 				<p:column headerText="Grade" filterBy="#{enseignant.gradeDto.nom}"
-					filterMatchMode="contains">
+					filterMatchMode="contains" width="150">
 
 					<p:cellEditor>
 						<f:facet name="output">
@@ -134,7 +141,7 @@
 				</p:column>
 
 				<p:column headerText="Specialite"
-					filterBy="#{enseignant.specialite}" filterMatchMode="contains">
+					filterBy="#{enseignant.specialite}" filterMatchMode="contains" width="150">
 
 					<p:cellEditor>
 						<f:facet name="output">
@@ -146,11 +153,11 @@
 					</p:cellEditor>
 				</p:column>
 
-				<p:column style="width:4%">
+				<p:column style="width:4%" exportable="false" >
 					<p:commandButton id="modifButton" ajax="true" title="editer" action="#{enseignantBean.selectEnseignant(enseignant.enseignantID)}"
 							icon="ui-icon-pencil" oncomplete="PF('enseignantModif').show()" update=":form2:displayModif" />
 				</p:column>
-				<p:column style="width:4%">
+				<p:column style="width:4%" exportable="false">
 						<p:commandButton id="deleteButton" ajax="true" title="supprimer"  icon="ui-icon-trash"  action="#{enseignantBean.selectEnseignant(enseignant.enseignantID)}" update=":form3:displayDelete" oncomplete="PF('enseignantDelete').show()" />
 				</p:column>
 			</p:dataTable>
@@ -209,11 +216,14 @@
 		<p:dialog header="Supprimer enseignant" widgetVar="enseignantDelete"
 			resizable="false" id="enseignantDelete" showEffect="clip" hideEffect="clip" >
 			<h:form id="form3">
-				<h:panelGrid id="displayDelete" columns="1" cellpadding="5"	style="margin:0 auto;">
+				<h:panelGrid id="displayDelete" columns="2" cellpadding="5"	style="margin:0 auto;">
 
 					<h:outputText value="Voulez vous supprimer ce enseignant ?" />
+					<h:outputText />
 					<p:commandButton value="Supprimer"
 						action="#{enseignantBean.delete()}"
+						oncomplete="PF('enseignantDelete').hide();" update=":form:enseignantDataTable" />
+						<p:commandButton value="Annuler"
 						oncomplete="PF('enseignantDelete').hide();" update=":form:enseignantDataTable" />
 
 				</h:panelGrid>

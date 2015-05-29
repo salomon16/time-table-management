@@ -31,15 +31,7 @@ public class ParcoursDto implements Serializable {
 		this.cursusDto = specialiteDto;
 		plansEtudeDto = new ArrayList<PlanEtudeDto>();
 	}
-
-	public long getParcoursID() {
-		return parcoursId;
-	}
-
-	public void setParcoursID(long parcoursID) {
-		this.parcoursId = parcoursID;
-	}
-
+	
 	public String getNom() {
 		return nom;
 	}

@@ -5,8 +5,8 @@ import java.util.Collection;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import edu.ipsas.edt.dto.MatiereDto;
@@ -14,7 +14,7 @@ import edu.ipsas.edt.dto.UniteDto;
 import edu.ipsas.edt.service.EmploiDuTempsService;
 
 @ManagedBean(name="matiereBean")
-@ApplicationScoped
+@ViewScoped
 public class MatiereBean implements Serializable {
 
 	/**
@@ -27,6 +27,8 @@ public class MatiereBean implements Serializable {
 	
 	private String nom;
 
+	private int nombreHeure;
+	
 	private String description;
 
 	private String type;
@@ -43,18 +45,13 @@ public class MatiereBean implements Serializable {
 
 	private long unite;
 	
-//	public MatiereBean() {
-//		super();
-//		matiereDto = new MatiereDto();
-//	}
-
 	public void save(){
 		
-		MatiereDto matiereDto = new MatiereDto(nom, type, volumeC, volumeTP, volumeTD, credit, coefficient);
-		UniteDto uniteDto = emploiDuTempsService.obtenirUniteParId(unite);
+		MatiereDto matiereDto = new MatiereDto(nom, nombreHeure, type, volumeC, volumeTP, volumeTD, credit, coefficient);
+		UniteDto uniteDto = emploiDuTempsService.getUniteById(unite);
 		
 		matiereDto.setUniteDto(uniteDto);
-		long id = emploiDuTempsService.ajouterMatiere(matiereDto);
+		long id = emploiDuTempsService.addMatiere(matiereDto);
 		
 		if(id>0){
 			 FacesContext fc = FacesContext.getCurrentInstance();  
@@ -63,7 +60,7 @@ public class MatiereBean implements Serializable {
 	}
 	
 	public Collection<MatiereDto> getAllMatiere(){
-		return emploiDuTempsService.obtenirLesMatieres();
+		return emploiDuTempsService.getAllMatiere();
 	}
 	public EmploiDuTempsService getEmploiDuTempsService() {
 		return emploiDuTempsService;
@@ -143,6 +140,14 @@ public class MatiereBean implements Serializable {
 
 	public void setUnite(long unite) {
 		this.unite = unite;
+	}
+
+	public int getNombreHeure() {
+		return nombreHeure;
+	}
+
+	public void setNombreHeure(int nombreHeure) {
+		this.nombreHeure = nombreHeure;
 	}
 	
 }

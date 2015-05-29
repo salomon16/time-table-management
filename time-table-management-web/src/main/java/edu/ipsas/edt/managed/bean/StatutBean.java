@@ -9,8 +9,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.context.RequestContext;
-
 import edu.ipsas.edt.dto.StatutDto;
 import edu.ipsas.edt.service.EnseignantService;
 
@@ -70,11 +68,6 @@ public class StatutBean implements Serializable {
 
 		long id = enseignantService.addStatut(getStatutDto());
 		
-		
-		if(id > 0){
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,"Enregistrement","Succes");
-			RequestContext.getCurrentInstance().showMessageInDialog(message);
-		}
 		if(id > 0){
 			 FacesContext fc = FacesContext.getCurrentInstance();  
 		        fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Nouveau statut ajouté avec succes", null));  

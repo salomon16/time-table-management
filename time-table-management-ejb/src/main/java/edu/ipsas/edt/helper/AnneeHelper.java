@@ -13,7 +13,9 @@ public class AnneeHelper {
 		
 		AnneeAcademique annee = new AnneeAcademique();
 		annee.setAnneeId(anneeDto.getAnneeId());
-		annee.setAnneeCourante(anneeDto.getAnneeCourante());
+		annee.setDebutAnnee(anneeDto.getDebutAnnee());
+		annee.setFinAnnee(anneeDto.getFinAnnee());
+		annee.setEtat(anneeDto.getEtat());
 		annee.setEmploi(EmploiHelper.dtoToModels(anneeDto.getEmploisDto()));
 		
 		return annee;
@@ -24,11 +26,15 @@ public class AnneeHelper {
 		if(annee == null){
 			return null;
 		}
+		
 		AnneeAcademiqueDto anneeDto = new AnneeAcademiqueDto();
 		anneeDto.setAnneeId(annee.getAnneeId());
-		anneeDto.setAnneeCourante(annee.getAnneeCourante());
+		anneeDto.setDebutAnnee(annee.getDebutAnnee());
+		anneeDto.setFinAnnee(annee.getFinAnnee());
+		anneeDto.setEtat(annee.getEtat());
 		anneeDto.setEmploi(EmploiHelper.modelsToDto(annee.getEmploi()));
-		return null;
+		
+		return anneeDto;
 	}
 
 }

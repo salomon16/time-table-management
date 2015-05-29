@@ -3,7 +3,6 @@ package edu.ipsas.edt.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,8 +26,11 @@ public class AnneeAcademique implements Serializable{
 	@Column(name="ANNEE_ID", unique=true, nullable=false)
 	private long anneeId;
 	
-	@Column(name="ANNEE_COURANTE", unique=true, nullable=false)
-	private Date anneeCourante;
+	@Column(name="DEBUT_ANNEE", unique=true, nullable=false)
+	private int debutAnnee;
+	
+	@Column(name="FIN_ANNEE", unique=true, nullable=false)
+	private int finAnnee;
 	
 	@Column(name="ETAT", unique=false, nullable=true)
 	private String etat;
@@ -42,13 +44,13 @@ public class AnneeAcademique implements Serializable{
 		emploi = new ArrayList<Emploi>();
 	}
 
-	
-	public AnneeAcademique(Date currentYear, Collection<Emploi> emploi) {
+	public AnneeAcademique(int debutAnnee, int finAnnee, String etat) {
 		super();
-		this.anneeCourante = currentYear;
-		this.emploi = emploi;
+		this.debutAnnee = debutAnnee;
+		this.finAnnee = finAnnee;
+		this.etat = etat;
+		emploi = new ArrayList<Emploi>();
 	}
-
 
 	public long getAnneeId() {
 		return anneeId;
@@ -58,13 +60,35 @@ public class AnneeAcademique implements Serializable{
 		this.anneeId = anneeId;
 	}
 
-	public Date getAnneeCourante() {
-		return anneeCourante;
+	public int getDebutAnnee() {
+		return debutAnnee;
 	}
 
-	public void setAnneeCourante(Date currentYear) {
-		this.anneeCourante = currentYear;
+
+	public void setDebutAnnee(int debutAnnee) {
+		this.debutAnnee = debutAnnee;
 	}
+
+
+	public int getFinAnnee() {
+		return finAnnee;
+	}
+
+
+	public void setFinAnnee(int finAnnee) {
+		this.finAnnee = finAnnee;
+	}
+
+
+	public String getEtat() {
+		return etat;
+	}
+
+
+	public void setEtat(String etat) {
+		this.etat = etat;
+	}
+
 
 	public Collection<Emploi> getEmploi() {
 		return emploi;

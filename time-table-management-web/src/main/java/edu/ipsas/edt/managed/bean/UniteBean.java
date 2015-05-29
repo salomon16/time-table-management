@@ -30,7 +30,7 @@ public class UniteBean implements Serializable {
 
 	public Collection<UniteDto> getAllUnite() {
 		
-		return getEmploiService().obtenirLesUnites();
+		return getEmploiService().getAllUnite();
 
 	}
 	

@@ -34,9 +34,9 @@ public class NiveauBean implements Serializable {
 	
 	public String save(){
 		
-		niveauDto.setParcoursDto(emploiService.obtenirParcoursParId(selectedParcours));
+		niveauDto.setParcoursDto(emploiService.getParcoursParId(selectedParcours));
 		
-		long id = emploiService.ajouterNiveau(niveauDto);
+		long id = emploiService.addNiveau(niveauDto);
 		
 		if(id > 0){
 			 FacesContext fc = FacesContext.getCurrentInstance();  
@@ -51,7 +51,7 @@ public class NiveauBean implements Serializable {
 
 	public Collection<NiveauDto> getAllNiveau(){
 		
-		return emploiService.afficherLesNiveaux();
+		return emploiService.getAllNiveau();
 	}
 	public EmploiDuTempsService getEmploiService() {
 		return emploiService;

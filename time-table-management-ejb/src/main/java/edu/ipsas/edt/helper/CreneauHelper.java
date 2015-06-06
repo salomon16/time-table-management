@@ -14,8 +14,8 @@ public class CreneauHelper {
 
 		Creneau creneau = new Creneau();
 		creneau.setCreneauID(creneauDto.getCreneauID());
-		creneau.setHeureDebut(creneauDto.getHeureDebut());
-		creneau.setHeureFin(creneauDto.getHeureFin());
+		creneau.setOrdre(creneauDto.getOrdre());
+		creneau.setLibelle(creneauDto.getLibelle());
 		creneau.setDisponibilites(DisponibiliteHelper.dtoToModels(creneauDto
 				.getDisponibilites()));
 		return creneau;
@@ -27,8 +27,8 @@ public class CreneauHelper {
 
 		CreneauDto creneauDto = new CreneauDto();
 		creneauDto.setCreneauID(creneau.getCreneauID());
-		creneauDto.setHeureDebut(creneau.getHeureDebut());
-		creneauDto.setHeureFin(creneau.getHeureFin());
+		creneauDto.setOrdre(creneau.getOrdre());
+		creneauDto.setLibelle(creneau.getLibelle());
 		creneauDto.setDisponibilites(DisponibiliteHelper.modelsToDto(creneau
 				.getDisponibilites()));
 		return creneauDto;

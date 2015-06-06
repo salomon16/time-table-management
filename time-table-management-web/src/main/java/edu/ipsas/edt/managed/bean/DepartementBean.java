@@ -14,7 +14,7 @@ import org.primefaces.event.SelectEvent;
 
 import edu.ipsas.edt.dto.CursusDto;
 import edu.ipsas.edt.dto.DepartementDto;
-import edu.ipsas.edt.service.EnseignantService;
+import edu.ipsas.edt.service.DepartementService;
 
 @ManagedBean(name="departementBean")
 @ViewScoped
@@ -25,7 +25,7 @@ public class DepartementBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@EJB
-	private EnseignantService enseignantService;
+	private DepartementService departementService;
 	private String nom;
 	private DepartementDto departementDto = new DepartementDto();
 	private DepartementDto selectedDepartement;
@@ -36,7 +36,7 @@ public class DepartementBean implements Serializable{
 		DepartementDto departement = new DepartementDto();
 		departement.setNom(getNom());
 
-		long id = getEnseignantService().addDepartement(departement);
+		long id = departementService.addDepartement(departement);
 
 		if (id > 0) {
 			FacesContext fc = FacesContext.getCurrentInstance();  
@@ -51,14 +51,12 @@ public class DepartementBean implements Serializable{
 	   
 	   public void onDepartementChosen(SelectEvent event) {
 	        selectedDepartement = (DepartementDto) event.getObject();
-//	        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Car Selected", "Id:" + car.getId());
-//	         
-//	        FacesContext.getCurrentInstance().addMessage(null, message);
+
 	    }
 	//methode pour recuperer le departement selectionné
 		public void selectedDepartement(long selectedDepartementId) {
 
-			setSelectedDepartement(enseignantService
+			setSelectedDepartement(departementService
 					.getDepartementByCode(selectedDepartementId));
 			System.out.println("Selected Departement iD: "
 					+ selectedDepartement.getDepartementID());
@@ -93,22 +91,20 @@ public class DepartementBean implements Serializable{
 		if(selectedDepartement==null)
 			return null;
 		
-		return enseignantService.getAllCursusByDepartement(selectedDepartement.getDepartementID());
+		return departementService.getAllCursusByDepartement(selectedDepartement.getDepartementID());
 		
 	}
 	public Collection<DepartementDto> getAllDepartement() {
 
-		return getEnseignantService().getAllDepartement();
+		return departementService.getAllDepartement();
 	}
 
-	public EnseignantService getEnseignantService() {
-		return enseignantService;
+	public DepartementService getDepartementService() {
+		return departementService;
 	}
-
-	public void setEnseignantService(EnseignantService enseignantService) {
-		this.enseignantService = enseignantService;
+	public void setDepartementService(DepartementService departementService) {
+		this.departementService = departementService;
 	}
-
 	public String getNom() {
 		return nom;
 	}

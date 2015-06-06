@@ -15,31 +15,31 @@ template="/timemanager/index.xhtml">
 				<b:row>
 						<b:column span="4"><h:outputLabel for="semestre" value="Semestre " /></b:column>
 						<b:column span="4">
-							<b:selectOneMenu id="semestre" value="#{planEtudeBean.selectedSemestre}" style="width:150px">
+							<h:selectOneMenu id="semestre" value="#{planEtudeBean.selectedSemestre}" styleClass="form-control input-sm">
 								<f:selectItem itemLabel="Select Semestre" itemValue="" noSelectionOption="true" />
 								<f:selectItems value="#{semestreBean.allSemestre}" var="semestre" itemLabel="Semestre #{semestre.numero}" itemValue="#{semestre.semestreId}" />
-							</b:selectOneMenu>
+							</h:selectOneMenu>
 						</b:column>
 						<b:column span="4"><p:message for="semestre"/></b:column>
 				</b:row>
 				<b:row>
 						<b:column span="4"><h:outputLabel for="departement" value="Departement: " /></b:column>
 						<b:column span="4">
-							<p:selectOneMenu id="departement" value="#{planEtudeBean.selectedDepartement}" style="width:350px">
+							<h:selectOneMenu id="departement" value="#{planEtudeBean.selectedDepartement}" styleClass="form-control input-sm">
 								<p:ajax update="parcours" listener="#{planEtudeBean.onDepartementChange}" />
 								<f:selectItem itemLabel="Select Departement" itemValue="" noSelectionOption="true" />
 								<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.nom}" />
-							</p:selectOneMenu>
+							</h:selectOneMenu>
 						</b:column>
 						<b:column span="4"><p:message for="departement" /></b:column>
 				</b:row>	
 						<b:row>
 							<b:column span="4"><h:outputLabel for="parcours" value="Parcours " /></b:column>
 							<b:column span="4">
-								<p:selectOneMenu id="parcours" value="#{planEtudeBean.selectedParcours}" style="width:350px">
+								<h:selectOneMenu id="parcours" value="#{planEtudeBean.selectedParcours}" styleClass="form-control input-sm">
 									<f:selectItem itemLabel="Select Parcours" itemValue="" noSelectionOption="true" />
 									<f:selectItems value="#{planEtudeBean.listeParcours}" var="parcours" itemLabel="#{parcours.nom}" itemValue="#{parcours.parcoursId}"/>
-								</p:selectOneMenu>
+								</h:selectOneMenu>
 							</b:column>
 							<b:column span="4"><p:message for="parcours" /></b:column>
 						</b:row>

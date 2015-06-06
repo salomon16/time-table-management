@@ -10,14 +10,14 @@ import javax.faces.context.FacesContext;
 
 import edu.ipsas.edt.dto.CursusDto;
 import edu.ipsas.edt.dto.DepartementDto;
-import edu.ipsas.edt.service.EnseignantService;
+import edu.ipsas.edt.service.DepartementService;
 
 @ManagedBean
 @RequestScoped
 public class CursusBean {
 
 	@EJB 
-	private EnseignantService enseignantService;
+	private DepartementService departementService;
 	private String nom;
 	private String departement;
 		 
@@ -25,10 +25,10 @@ public class CursusBean {
 			
 			CursusDto cursus = new CursusDto();
 			cursus.setNom(getNom());
-			DepartementDto departementDto = getEnseignantService().getDepartementByName(departement);
+			DepartementDto departementDto = departementService.getDepartementByName(departement);
 			cursus.setDepartementDto(departementDto);
 			
-			long id = getEnseignantService().addCursus(cursus);
+			long id = getDepartementService().addCursus(cursus);
 			
 			if(id > 0){
 				FacesContext fc = FacesContext.getCurrentInstance();  
@@ -37,7 +37,7 @@ public class CursusBean {
 		}
 		
 		public Collection<CursusDto> getAllCursus(){
-			return getEnseignantService().getAllCursus();
+			return departementService.getAllCursus();
 		}
 		
 		public String getDepartement() {
@@ -53,15 +53,18 @@ public class CursusBean {
 //			return getEnseignantService().getAllDepartement();
 //		}
 		
-		public EnseignantService getEnseignantService() {
-			return enseignantService;
-		}
-		public void setEnseignantService(EnseignantService enseignantService) {
-			this.enseignantService = enseignantService;
-		}
+		
 		public String getNom() {
 			return nom;
 		}
+		public DepartementService getDepartementService() {
+			return departementService;
+		}
+
+		public void setDepartementService(DepartementService departementService) {
+			this.departementService = departementService;
+		}
+
 		public void setNom(String nom) {
 			this.nom = nom;
 		}

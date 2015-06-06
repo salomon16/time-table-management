@@ -16,18 +16,24 @@ public class ParcoursDto implements Serializable {
 
 	private String nom;
 	
+	private String abbreviation;
+	
 	private CursusDto cursusDto;
+	
+	private Collection<NiveauDto> niveauxDto;
 	
 	private Collection<PlanEtudeDto> plansEtudeDto;
 	
 	public ParcoursDto() {
 		super();
+		niveauxDto = new ArrayList<NiveauDto>();
 		plansEtudeDto = new ArrayList<PlanEtudeDto>();
 	}
 
-	public ParcoursDto(String nom, CursusDto specialiteDto) {
+	public ParcoursDto(String nom,String abbreviation, CursusDto specialiteDto) {
 		super();
 		this.nom = nom;
+		this.abbreviation = abbreviation;
 		this.cursusDto = specialiteDto;
 		plansEtudeDto = new ArrayList<PlanEtudeDto>();
 	}
@@ -63,6 +69,21 @@ public class ParcoursDto implements Serializable {
 	public void setPlansEtudeDto(Collection<PlanEtudeDto> plansEtudeDto) {
 		this.plansEtudeDto = plansEtudeDto;
 	}
-	
+
+	public String getAbbreviation() {
+		return abbreviation;
+	}
+
+	public void setAbbreviation(String abbreviation) {
+		this.abbreviation = abbreviation;
+	}
+
+	public Collection<NiveauDto> getNiveauxDto() {
+		return niveauxDto;
+	}
+
+	public void setNiveauxDto(Collection<NiveauDto> niveauxDto) {
+		this.niveauxDto = niveauxDto;
+	}
 	
 }

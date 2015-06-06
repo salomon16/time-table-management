@@ -11,16 +11,7 @@ template="/templates/template.xhtml">
 			<b:panel id="panel" look="primary">
 				<p:messages id="msg"/>
 					<f:facet name="heading">Nouvelle Salle</f:facet> 
-				<b:row>
-					<b:column span="4"><h:outputLabel for="departement" value="Departement: " /></b:column>
-					<b:column span="4">
-						<b:selectOneMenu id="departement" value="#{salleBean.departement}">
-							<f:selectItem itemLabel="Select departement" itemValue="" noSelectionOption="true" />
-							<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.nom}" />
-						</b:selectOneMenu>
-					</b:column>
-					<b:column span="4"></b:column>
-				</b:row>
+				
 				<b:row>
 					<b:column span="4"><h:outputLabel value="Numero: " for="nom" /></b:column>
 					<b:column span="4"><b:inputText  id="nom" value="#{salleBean.numero}" required="true" /></b:column>
@@ -44,6 +35,15 @@ template="/templates/template.xhtml">
 					<b:column span="4"><p:spinner id="capacite" value="#{salleBean.capacite}" min="0"/></b:column> 
 					<b:column span="4"></b:column>
 				</b:row>
+				<b:row>
+							<b:column span="4"><p:outputLabel for="departementListe" value="Departement:"  /></b:column>
+							<b:column span="6">
+							<p:selectManyMenu id="departementListe" value="#{salleBean.selectedDepartement}" filter="true" filterMatchMode="contains" showCheckbox="true" styleClass="width:350px;">
+            					<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.nom}"/>
+        					</p:selectManyMenu>
+							</b:column>
+							<b:column span="2"></b:column>
+						</b:row>
 				<p:separator />
 				<b:row>
 					<b:column span="2"></b:column>

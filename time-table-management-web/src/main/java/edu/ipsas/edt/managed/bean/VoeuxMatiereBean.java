@@ -13,7 +13,7 @@ import edu.ipsas.edt.dto.EnseignantDto;
 import edu.ipsas.edt.dto.MatiereDto;
 import edu.ipsas.edt.dto.ParcoursDto;
 import edu.ipsas.edt.dto.PlanEtudeDto;
-import edu.ipsas.edt.service.EmploiDuTempsService;
+import edu.ipsas.edt.service.DepartementService;
 import edu.ipsas.edt.service.EnseignantService;
 
 @ManagedBean(name="voeuxBean")
@@ -28,7 +28,7 @@ public class VoeuxMatiereBean implements Serializable {
 	@EJB
 	private EnseignantService enseignantService;
 	@EJB
-	private EmploiDuTempsService emploiService;
+	private DepartementService departementService;
 	private long selectedDepartement;
 	private Collection<EnseignantDto> enseignantListe;
 	private Collection<CursusDto> cursusListe;
@@ -47,7 +47,7 @@ public class VoeuxMatiereBean implements Serializable {
         if(selectedDepartement != 0){
     	
     		enseignantListe = enseignantService.getAllEnseignant(selectedDepartement);
-    		cursusListe = enseignantService.getAllCursusByDepartement(selectedDepartement);
+    		cursusListe = departementService.getAllCursusByDepartement(selectedDepartement);
         }
         else{
         	enseignantListe = new ArrayList<EnseignantDto>();
@@ -57,8 +57,8 @@ public class VoeuxMatiereBean implements Serializable {
 	
 	public void onCursusChange() {
         if(cursus != 0){
-    		CursusDto cursusDto = enseignantService.getCursusById(cursus);
-    		parcoursListe = enseignantService.getAllParcoursByCursus(cursusDto.getCursusId());
+    		CursusDto cursusDto = departementService.getCursusById(cursus);
+    		parcoursListe = departementService.getAllParcoursByCursus(cursusDto.getCursusId());
     		
         }
         else{
@@ -68,8 +68,8 @@ public class VoeuxMatiereBean implements Serializable {
 	
 	public void onParcoursChange() {
         if(cursus != 0){
-    		ParcoursDto parcoursDto = emploiService.getParcoursParId(parcours);
-    		planEtudeListe = emploiService.getAllPlanEtudeByParcours(parcoursDto.getParcoursId());
+    		ParcoursDto parcoursDto = departementService.getParcoursParId(parcours);
+    		planEtudeListe = departementService.getAllPlanEtudeByParcours(parcoursDto.getParcoursId());
     		
         }
         else{
@@ -79,7 +79,7 @@ public class VoeuxMatiereBean implements Serializable {
 	
 	public void onPlanEtudeChange() {
         if(planEtude != 0){
-    		matiereListe = emploiService.getAllMatiereByPlanEtude(planEtude);
+    		matiereListe = departementService.getAllMatiereByPlanEtude(planEtude);
     		
         }
         else{
@@ -151,12 +151,12 @@ public class VoeuxMatiereBean implements Serializable {
 		this.parcours = parcours;
 	}
 
-	public EmploiDuTempsService getEmploiService() {
-		return emploiService;
+	public DepartementService getDepartementService() {
+		return departementService;
 	}
 
-	public void setEmploiService(EmploiDuTempsService emploiService) {
-		this.emploiService = emploiService;
+	public void setDepartementService(DepartementService departementService) {
+		this.departementService = departementService;
 	}
 
 	public Collection<PlanEtudeDto> getPlanEtudeListe() {

@@ -1,8 +1,6 @@
 package edu.ipsas.edt.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -31,9 +27,12 @@ public class PersonnelAdministratif extends Personne implements Serializable {
 	@Column(name="TELEPHONE_FIXE", unique = false, nullable = true)
 	private String telFixe;
 	
-	@ManyToMany
-	@JoinTable(name="PERSONNELS_ROLES",joinColumns = @JoinColumn( name="PERSONNEL_ADMINISTRATIF_ID", referencedColumnName="PERSONNEL_ADMINISTRATIF_ID"), inverseJoinColumns = @JoinColumn( name="ROLE_ID", referencedColumnName="ROLE_ID"))
-	private Collection<Role> roles;
+	@ManyToOne
+	@JoinColumn(name="ROLE_ID")
+	private Role role;
+	
+	@Column(name = "enable", columnDefinition = "BOOLEAN")
+	private boolean enabled;
 
 	@ManyToOne
 	@JoinColumn(name="DEPARTEMENT_ID")
@@ -41,13 +40,13 @@ public class PersonnelAdministratif extends Personne implements Serializable {
 	
 	public PersonnelAdministratif() {
 		super();
-		roles = new ArrayList<Role>();
 	}
 
-	public PersonnelAdministratif(String fonction, String telFixe) {
+	public PersonnelAdministratif(String fonction, String telFixe,Role role) {
 		super();
 		this.fonction = fonction;
 		this.telFixe = telFixe;
+		this.role = role;
 	}
 	
 	
@@ -90,12 +89,12 @@ public class PersonnelAdministratif extends Personne implements Serializable {
 		this.telFixe = telFixe;
 	}
 
-	public Collection<Role> getRoles() {
-		return roles;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setRoles(Collection<Role> roles) {
-		this.roles = roles;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	public Departement getDepartement() {
@@ -105,7 +104,13 @@ public class PersonnelAdministratif extends Personne implements Serializable {
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
 	}
-	
-	
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
 }

@@ -14,9 +14,9 @@ import javax.faces.event.ValueChangeEvent;
 import edu.ipsas.edt.dto.CursusDto;
 import edu.ipsas.edt.dto.DepartementDto;
 import edu.ipsas.edt.dto.ParcoursDto;
-import edu.ipsas.edt.service.EnseignantService;
+import edu.ipsas.edt.service.DepartementService;
 
-@ManagedBean
+@ManagedBean(name="parcoursBean")
 @ViewScoped
 public class ParcoursBean implements Serializable{
 
@@ -25,9 +25,10 @@ public class ParcoursBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@EJB
-	private EnseignantService enseignantService;
+	private DepartementService departementService;
 	private String nom;
 	private long cursus;
+	private String abbreviation;
 	private Collection<CursusDto> cursusListe;
 	private String selectedDepartement;
 	
@@ -37,10 +38,11 @@ public class ParcoursBean implements Serializable{
 		
 		ParcoursDto parcoursDto = new ParcoursDto();
 			parcoursDto.setNom(getNom());
-		CursusDto cursusDto = getEnseignantService().getCursusById(cursus);
+			parcoursDto.setAbbreviation(getAbbreviation());
+		CursusDto cursusDto = departementService.getCursusById(cursus);
 		parcoursDto.setCursusDto(cursusDto);
 		
-		long id = getEnseignantService().addParcours(parcoursDto);
+		long id = departementService.addParcours(parcoursDto);
 		
 		if(id > 0){
 			 FacesContext fc = FacesContext.getCurrentInstance();  
@@ -53,14 +55,14 @@ public class ParcoursBean implements Serializable{
 		if(selectedDepartement==null)
 			return null;
 		
-		DepartementDto departement = enseignantService.getDepartementByName(selectedDepartement);
+		DepartementDto departement = departementService.getDepartementByName(selectedDepartement);
 		
 		
-		return enseignantService.getAllCursusByDepartement(departement.getDepartementID());
+		return departementService.getAllCursusByDepartement(departement.getDepartementID());
 	}
 	
 	public Collection<ParcoursDto> getAllParcours(){
-		return enseignantService.getAllParcours();
+		return departementService.getAllParcours();
 	}
 	
 	public void update(){
@@ -73,8 +75,8 @@ public class ParcoursBean implements Serializable{
 	
 	 public void onDepartementChange() {
 	        if(selectedDepartement !=null && !selectedDepartement.equals("")){
-	    		DepartementDto departement = enseignantService.getDepartementByName(selectedDepartement);
-	    		cursusListe = enseignantService.getAllCursusByDepartement(departement.getDepartementID());
+	    		DepartementDto departement = departementService.getDepartementByName(selectedDepartement);
+	    		cursusListe = departementService.getAllCursusByDepartement(departement.getDepartementID());
 	        }
 	        else
 	        	cursusListe = new ArrayList<CursusDto>();
@@ -84,14 +86,15 @@ public class ParcoursBean implements Serializable{
 	        	selectedDepartement = null;
 	        }
 	    }
-	 
-	public EnseignantService getEnseignantService() {
-		return enseignantService;
-	}
-	public void setEnseignantService(EnseignantService enseignantService) {
-		this.enseignantService = enseignantService;
-	}
 	
+	public DepartementService getDepartementService() {
+		return departementService;
+	}
+
+	public void setDepartementService(DepartementService departementService) {
+		this.departementService = departementService;
+	}
+
 	public String getNom() {
 		return nom;
 	}
@@ -120,6 +123,14 @@ public class ParcoursBean implements Serializable{
 
 	public void setCursusListe(Collection<CursusDto> cursusListe) {
 		this.cursusListe = cursusListe;
+	}
+
+	public String getAbbreviation() {
+		return abbreviation;
+	}
+
+	public void setAbbreviation(String abbreviation) {
+		this.abbreviation = abbreviation;
 	}
 	
 	

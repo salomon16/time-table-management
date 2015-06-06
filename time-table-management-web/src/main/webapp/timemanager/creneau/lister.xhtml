@@ -1,9 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
 
-	<ui:composition template="">
-	</ui:composition>
-</html>
+<ui:define name="content">
+	<h:form>
+		
+		<p:dataTable var="creneau" value="#{creneauBean.allCreneau}">
+			<f:facet name="header">Liste des Creneaux horaires</f:facet>
+			<p:column headerText="Ordre">
+				<h:outputText value="#{creneau.ordre}" />
+			</p:column>
+			<p:column headerText="Libelle">
+				<h:outputText value="#{creneau.libelle}" />
+			</p:column>
+		</p:dataTable>
+
+	</h:form>
+</ui:define>
+</ui:composition>

@@ -5,25 +5,25 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "ROLE")
 public class Role  {
 
+
 	@Id
 	@Column(name="ROLE_ID", unique = true, nullable = false)
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long roleId;
+	private String nom;
 	
-	@Column(name="TYPE", unique = true, nullable = false)
-	private String type;
-	
-	@ManyToMany(mappedBy = "roles")
+	@OneToMany
+	@JoinTable(name="ROLE_PERSONNELS_ADMINISTRATIF", 
+    joinColumns=@JoinColumn(name="ROLE_ID"),
+    inverseJoinColumns=@JoinColumn(name="PERSONNEL_ADMINISTRATIF_ID"))
 	private Collection<PersonnelAdministratif> personnelsAdministratif;
 	
 	public Role() {
@@ -33,24 +33,15 @@ public class Role  {
 
 	public Role(String type) {
 		super();
-		this.type = type;
-	}
-
-
-	public long getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(long roleId) {
-		this.roleId = roleId;
+		this.nom = type;
 	}
 
 	public String getType() {
-		return type;
+		return nom;
 	}
 
 	public void setType(String type) {
-		this.type = type;
+		this.nom = type;
 	}
 
 	public Collection<PersonnelAdministratif> getPersonnelsAdministratif() {

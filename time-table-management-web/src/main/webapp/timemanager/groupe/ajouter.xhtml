@@ -18,38 +18,38 @@ template="/templates/template.xhtml">
 				</b:row>
 				<b:row>
 					<b:column span="4"><h:outputLabel value="Abbreviation: " for="abbreviation" /></b:column>
-					<b:column span="4"><b:inputText id="abbreviation" value="#{groupeBean.groupeDto.abbreviation}" required="true" /></b:column>
+					<b:column span="4"><b:inputText id="abbreviation" value="#{groupeBean.abbreviation}" required="true" /></b:column>
 					<b:column span="4"><p:message for="nom" display="icon" /></b:column>
 				</b:row>
 				<b:row>
 						<b:column span="4"><h:outputLabel for="departement" value="Departement: " /></b:column>
 						<b:column span="4">
-							<p:selectOneMenu id="departement" value="#{planEtudeBean.selectedDepartement}" style="width:350px">
+							<h:selectOneMenu id="departement" value="#{planEtudeBean.selectedDepartement}" styleClass="form-control input-sm">
 								<p:ajax  listener="#{planEtudeBean.onDepartementChange}" update="parcours"/>
 								<f:selectItem itemLabel="Select Departement" itemValue="" noSelectionOption="true" />
 								<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.nom}" />
-							</p:selectOneMenu>
+							</h:selectOneMenu>
 						</b:column>
 						<b:column span="4"><p:message for="departement" /></b:column>
 				</b:row>	
 						<b:row>
 							<b:column span="4"><h:outputLabel for="parcours" value="Parcours: " /></b:column>
 							<b:column span="4">
-								<p:selectOneMenu id="parcours" value="#{groupeBean.selectedParcours}" style="width:350px">
+								<h:selectOneMenu id="parcours" value="#{groupeBean.selectedParcours}" styleClass="form-control input-sm">
 									<p:ajax  listener="#{groupeBean.onParcoursChange}" update="niveau" />
 									<f:selectItem itemLabel="Select Parcours" itemValue="" noSelectionOption="true" />
 									<f:selectItems value="#{planEtudeBean.listeParcours}" var="parcours" itemLabel="#{parcours.nom}" itemValue="#{parcours.parcoursId}"/>
-								</p:selectOneMenu>
+								</h:selectOneMenu>
 							</b:column>
 							<b:column span="4"><p:message for="parcours" /></b:column>
 						</b:row>
 				<b:row>
 						<b:column span="4"><h:outputLabel for="niveau" value="Niveau: " /></b:column>
 						<b:column span="4">
-							<p:selectOneMenu id="niveau" value="#{groupeBean.niveau}" style="width:350px">
+							<h:selectOneMenu id="niveau" value="#{groupeBean.niveau}" styleClass="form-control input-sm">
 								<f:selectItem itemLabel="Select Niveau" itemValue="" noSelectionOption="true" />
 								<f:selectItems value="#{groupeBean.listeNiveaux}" var="niveau" itemLabel="#{niveau.nom}" itemValue="#{niveau.niveauId}" />
-							</p:selectOneMenu>
+							</h:selectOneMenu>
 						</b:column> 
 						<b:column span="4"><p:message for="niveau" /></b:column>
 				</b:row>
@@ -65,7 +65,7 @@ template="/templates/template.xhtml">
 			<p:blockUI block="panel" trigger="addGroupe">  
 	    		<h:panelGrid columns="2">  
 			        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
-			        <h:outputText value="Ajout matiere..." style="white-space: nowrap;"/>  
+			        <h:outputText value="Ajout groupe..." style="white-space: nowrap;"/>  
 	    		</h:panelGrid>  
 			</p:blockUI> 
 

@@ -15,7 +15,6 @@ public class RoleHelper {
 			return null;
 		
 		Role role = new Role();
-		role.setRoleId(roleDto.getRoleId());
 		role.setType(roleDto.getType());
 		role.setPersonnelsAdministratif(PersonnelAdministratifHelper.dtoToModels(roleDto.getPersonnelsAdministratif()));
 		
@@ -28,7 +27,6 @@ public class RoleHelper {
 			return null;
 		
 		RoleDto roleDto = new RoleDto();
-		roleDto.setRoleId(role.getRoleId());
 		roleDto.setType(role.getType());
 		roleDto.setPersonnelsAdministratif(PersonnelAdministratifHelper.modelsToDto(role.getPersonnelsAdministratif()));
 		

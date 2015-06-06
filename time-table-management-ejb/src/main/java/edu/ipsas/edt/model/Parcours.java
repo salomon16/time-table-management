@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,14 +28,23 @@ public class Parcours implements Serializable {
 	@Column(name="NOM", unique = false, nullable = true)
 	private String nom;
 	
+	@Column(name="ABBREVIATION", unique = false, nullable = true)
+	private String abbreviation;
+	
 	@ManyToOne
 	@JoinColumn(name = "CURSUS_ID")
 	private Cursus cursus;
 
 	@OneToMany
+	@JoinTable(name="PARCOURS_NIVEAUX", 
+    joinColumns=@JoinColumn(name="PARCOURS_ID"),
+    inverseJoinColumns=@JoinColumn(name="NIVEAU_ID"))
 	private Collection<Niveau> niveaux;
 	
 	@OneToMany
+	@JoinTable(name="PARCOURS_PLANS_ETUDE", 
+    joinColumns=@JoinColumn(name="PARCOURS_ID"),
+    inverseJoinColumns=@JoinColumn(name="PLAN_ETUDE_ID"))
 	private Collection<PlanEtude> plansEtude;
 	
 	public Parcours() {
@@ -46,6 +56,7 @@ public class Parcours implements Serializable {
 	public Parcours(String nom, String abbreviation, Cursus cursus) {
 		super();
 		this.nom = nom;
+		this.abbreviation = abbreviation;
 		this.cursus = cursus;
 		niveaux = new ArrayList<Niveau>();
 		cursus.getParcours().add(this);
@@ -98,6 +109,14 @@ public class Parcours implements Serializable {
 
 	public void setPlansEtude(Collection<PlanEtude> plansEtude) {
 		this.plansEtude = plansEtude;
+	}
+
+	public String getAbbreviation() {
+		return abbreviation;
+	}
+
+	public void setAbbreviation(String abbreviation) {
+		this.abbreviation = abbreviation;
 	}
 
 	

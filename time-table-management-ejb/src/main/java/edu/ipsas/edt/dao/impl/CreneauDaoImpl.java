@@ -12,6 +12,6 @@ public class CreneauDaoImpl extends GenericDaoImpl<Creneau> implements CreneauDa
 	
 	 @SuppressWarnings("unchecked")
 		public Collection<Creneau> findAll(){
-	    	return em.createQuery("select c from Creneau c").getResultList();
+	    	return em.createQuery("select c from Creneau c order by c.ordre asc").getResultList();
 	    }
 }

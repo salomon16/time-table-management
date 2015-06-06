@@ -15,7 +15,7 @@ public class MatiereDto implements Serializable {
 
 	private String nom;
 	
-	private int nombreHeure;
+	private float nombreHeure;
 
 	private String description;
 
@@ -56,7 +56,7 @@ public class MatiereDto implements Serializable {
 		plansEtudeDto = new ArrayList<PlanEtudeDto>();
 	}
 
-	public MatiereDto(String nom, int nombreHeure, String type, float volumeC, float volumeTp,
+	public MatiereDto(String nom, float nombreHeure, String type, float volumeC, float volumeTp,
 			float volumeTd, float credit, int coefficient) {
 		super();
 		this.nom = nom;
@@ -158,11 +158,11 @@ public class MatiereDto implements Serializable {
 		this.plansEtudeDto = plansEtudeDto;
 	}
 
-	public int getNombreHeure() {
+	public float getNombreHeure() {
 		return nombreHeure;
 	}
 
-	public void setNombreHeure(int nombreHeure) {
+	public void setNombreHeure(float nombreHeure) {
 		this.nombreHeure = nombreHeure;
 	}
 	

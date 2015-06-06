@@ -41,4 +41,10 @@ public class EnseignantDaoImpl extends GenericDaoImpl<Enseignant> implements Ens
 	    	return em.createQuery("select e from Enseignant e").getResultList();
 	    }
 
+	@SuppressWarnings("unchecked")
+	public Collection<Enseignant> findAllEnseignantByDepartement(String departementName) {
+	
+		return em.createQuery("select e from Enseignant e where e.departements=(select d from Departement d where d.nom=:departementName)").setParameter("departementName", departementName).getResultList();
+	}
+
 }

@@ -1,51 +1,26 @@
 <!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:b="http://bootsfaces.net/ui">
- 
-		  <b:navBar brand="EDT-MANAGER" brandHref="/index.xhtml" inverse="true" fixed="top" >
+ <h:outputStylesheet library="css" name="font-awesome.css"></h:outputStylesheet>
+		  <b:navBar brand="EDT-MANAGER" brandHref="#{facesContext.externalContext.requestContextPath}/timemanager/index.xhtml" inverse="true" fixed="top" >
 				
 				<b:navbarLinks pull="right">
 				 
 			        <b:navLink value="Home" href="#"></b:navLink>
 			         <b:dropMenu value="Utilisateurs" >
-			            <b:navLink value="Ajouter un utilisateur" href="#"  icon="glyphicon glyphicon-user"></b:navLink>
-			           <b:navLink value="Liste des utilisateurs" href="#"></b:navLink>
+			            <b:navLink value="Ajouter un utilisateur" href="/timemanager/utilisateur/ajouter.xhtml"  icon=""></b:navLink>
+			           <b:navLink value="Liste des utilisateurs" href="#" icon="users"></b:navLink>
 			        </b:dropMenu>
-			        <b:dropMenu value="Bienvenue, Admin" >
-			            <b:navLink value="Mon profil" href="#" icon="user" iconAlign="left"></b:navLink>
+			        <b:dropMenu value="Bienvenue, User" >
+			            <b:navLink value="Mon profil" href="#" icon="user" iconAlign="left" ></b:navLink>
 			            <b:navLink></b:navLink>
-			            <b:navLink value="Deconnection" href="#"></b:navLink>
+			            <b:navLink value="Deconnection" href="#" icon="off"></b:navLink>
 			        </b:dropMenu>
-						<ul class="nav navbar-nav pull-right panel-menu">
-							
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle account" data-toggle="dropdown">
-									<i class="fa fa-angle-down pull-right"></i>
-									<div class="user-mini pull-right">
-										<span class="welcome">Welcome,</span>
-										<span>Admin</span>
-									</div>
-								</a>
-								<ul class="dropdown-menu">
-									<li>
-										<a href="#">
-											<i class="fa fa-user"></i>
-											<span>Mon profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-power-off"></i>
-											<span>Logout</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
 			    </b:navbarLinks>
    		</b:navBar>
 

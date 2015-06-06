@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -50,6 +51,9 @@ public class Emploi implements Serializable {
 //	private Semestre semestre;
 
 	@OneToMany
+	@JoinTable(name="EMPLOI_SEANCES", 
+    joinColumns=@JoinColumn(name="EMPLOI_ID"),
+    inverseJoinColumns=@JoinColumn(name="SEANCE_ID"))
 	private Collection<Seance> seance;
 	
 	@ManyToOne

@@ -1,7 +1,5 @@
 package edu.ipsas.edt.dto;
 
-import java.util.ArrayList;
-import java.util.Collection;
 
 public class PersonnelAdministratifDto extends PersonneDto {
 
@@ -12,35 +10,33 @@ public class PersonnelAdministratifDto extends PersonneDto {
 	
 	private String telFixe;
 	
-	private Collection<RoleDto> roles;
+	private RoleDto role;
+	
+	private boolean enabled;
 	
 	private DepartementDto departementDto;
 
 	public PersonnelAdministratifDto() {
 		super();
-		roles = new ArrayList<RoleDto>();
 	}
 
 	public PersonnelAdministratifDto(String nom, String prenom, String cin,
 			String adresse, String telephoneMobile, String email) {
 		super(nom, prenom, cin, adresse, telephoneMobile, email);
-		roles = new ArrayList<RoleDto>();
 	}
 
 	public PersonnelAdministratifDto(String fonction, String telFixe) {
 		super();
 		this.fonction = fonction;
 		this.telFixe = telFixe;
-		roles = new ArrayList<RoleDto>();
 	}
 
 	public PersonnelAdministratifDto(String fonction, String telFixe,
-			Collection<RoleDto> roles) {
+			RoleDto role) {
 		super();
 		this.fonction = fonction;
 		this.telFixe = telFixe;
-		this.roles = roles;
-		roles = new ArrayList<RoleDto>();
+		this.role = role;
 	}
 
 	public PersonnelAdministratifDto(String nom, String prenom, String cin,
@@ -49,7 +45,6 @@ public class PersonnelAdministratifDto extends PersonneDto {
 		super(nom, prenom, cin, adresse, telephoneMobile, email);
 		this.fonction = fonction;
 		this.telFixe = telFixe;
-		roles = new ArrayList<RoleDto>();
 	}
 
 	public long getPersonnelId() {
@@ -76,12 +71,12 @@ public class PersonnelAdministratifDto extends PersonneDto {
 		this.telFixe = telFixe;
 	}
 
-	public Collection<RoleDto> getRoles() {
-		return roles;
+	public RoleDto getRole() {
+		return role;
 	}
 
-	public void setRoles(Collection<RoleDto> roles) {
-		this.roles = roles;
+	public void setRole(RoleDto role) {
+		this.role = role;
 	}
 
 	public DepartementDto getDepartementDto() {
@@ -91,7 +86,14 @@ public class PersonnelAdministratifDto extends PersonneDto {
 	public void setDepartementDto(DepartementDto departementDto) {
 		this.departementDto = departementDto;
 	}
-	
-	
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 
 }

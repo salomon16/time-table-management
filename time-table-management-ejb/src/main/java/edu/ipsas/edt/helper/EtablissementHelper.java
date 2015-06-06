@@ -29,7 +29,6 @@ public class EtablissementHelper {
 		etablissementDto.setAbbreviation(etablissement.getAbbreviation());
 		etablissementDto.setAdresse(etablissement.getAdresse());
 		etablissementDto.setDepartements(DepartementHelper.modelsToDto(etablissement.getDepartements()));
-		etablissementDto.setSalles(SalleHelper.modelsToDto(etablissement.getSalles()));
 		return etablissementDto;
 	}
 }

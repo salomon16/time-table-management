@@ -25,7 +25,7 @@ public class GradeHelper {
 			return null;
 		
 		GradeDto gradeDto = new GradeDto();
-		gradeDto.setGradeID(grade.getGradeID());
+		gradeDto.setGradeID(grade.getGradeId());
 		gradeDto.setNom(grade.getNom());
 		gradeDto.setEnseignants(EnseignantHelper.modelsToDto(grade
 				.getEnseignants()));

@@ -30,6 +30,7 @@ import com.lowagie.text.PageSize;
 import edu.ipsas.edt.dto.EnseignantDto;
 import edu.ipsas.edt.dto.GradeDto;
 import edu.ipsas.edt.dto.StatutDto;
+import edu.ipsas.edt.service.DepartementService;
 import edu.ipsas.edt.service.EnseignantService;
 
 @ManagedBean(name="enseignantBean")
@@ -43,7 +44,10 @@ public class EnseignantBean implements Serializable {
 
 	@EJB
 	private EnseignantService enseignantService;
-
+	
+	@EJB
+	private DepartementService departementService;
+	
 	private Collection<StatutDto> statuts;
 
 	private Collection<GradeDto> grades;
@@ -92,7 +96,7 @@ public class EnseignantBean implements Serializable {
 		enseignant.setGradeDto(enseignantService.getGradeByName(grade));
 		
 		for(String departement : selectedDepartements){
-			enseignant.getDepartements().add(enseignantService.getDepartementByName(departement));
+			enseignant.getDepartements().add(departementService.getDepartementByName(departement));
 		}
 		
 		long id = getEnseignantService().addEnseignant(enseignant);
@@ -305,5 +309,13 @@ public class EnseignantBean implements Serializable {
 	public void setSelectedDepartements(Collection<String> selectedDepartements) {
 		this.selectedDepartements = selectedDepartements;
 	}
+	public DepartementService getDepartementService() {
+		return departementService;
+	}
+	public void setDepartementService(DepartementService departementService) {
+		this.departementService = departementService;
+	}
+	
+	
 
 }

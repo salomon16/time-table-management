@@ -17,7 +17,7 @@ public class GroupeHelper {
 		Groupe groupe = new Groupe();
 		groupe.setGroupeId(groupeDto.getGroupeId());
 		groupe.setNom(groupeDto.getNom());
-		groupe.setAbbreviation(groupe.getAbbreviation());
+		groupe.setAbbreviation(groupeDto.getAbbreviation());
 		groupe.setNiveau(NiveauHelper.dtoToModel(groupeDto.getNiveauDto()));
 		groupe.setEmploi(EmploiHelper.dtoToModels(groupeDto.getEmploiDto()));
 		

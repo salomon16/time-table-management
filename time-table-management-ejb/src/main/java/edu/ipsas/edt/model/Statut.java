@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @SuppressWarnings("serial")
@@ -25,6 +27,9 @@ public class Statut implements Serializable{
 	private String nom;
 	
 	@OneToMany
+	@JoinTable(name="STATUT_ENSEIGNANTS", 
+    joinColumns=@JoinColumn(name="STATUT_ID"),
+    inverseJoinColumns=@JoinColumn(name="ENSEIGNANT_ID"))
 	private Collection<Enseignant> enseignants;
 
 	public Statut() {

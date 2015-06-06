@@ -1,7 +1,7 @@
 package edu.ipsas.edt.managed.bean;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Collection;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -10,7 +10,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import edu.ipsas.edt.dto.CreneauDto;
-import edu.ipsas.edt.service.EnseignantService;
+import edu.ipsas.edt.service.EmploiDuTempsService;
 
 @ManagedBean(name="creneauBean")
 @ViewScoped
@@ -22,19 +22,19 @@ public class CreneauBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	EnseignantService enseignantService;
+	EmploiDuTempsService emploiService;
 	
-	private Date horaireDebut;
-	private Date horaireFin;
+	private int ordre;
+	private String libelle;
 	
 	
 	public String save(){
 		
 		CreneauDto creneauDto = new CreneauDto();
-		creneauDto.setHeureDebut(horaireDebut);
-		creneauDto.setHeureFin(horaireFin);
+		creneauDto.setLibelle(libelle);
+		creneauDto.setOrdre(ordre);
 		
-		long id = enseignantService.addCreneau(creneauDto);
+		long id = emploiService.addCreneau(creneauDto);
 		
 		if(id > 0){
 			 FacesContext fc = FacesContext.getCurrentInstance();  
@@ -48,24 +48,33 @@ public class CreneauBean implements Serializable{
 		return null;
 	}
 	
-	public EnseignantService getEnseignantService() {
-		return enseignantService;
+	public Collection<CreneauDto> getAllCreneau(){
+		return emploiService.getAllCreneau();
 	}
-	public void setEnseignantService(EnseignantService enseignantService) {
-		this.enseignantService = enseignantService;
+	public EmploiDuTempsService getEmploiService() {
+		return emploiService;
 	}
-	public Date getHoraireDebut() {
-		return horaireDebut;
+
+
+	public void setEmploiService(EmploiDuTempsService emploiService) {
+		this.emploiService = emploiService;
 	}
-	public void setHoraireDebut(Date horaireDebut) {
-		this.horaireDebut = horaireDebut;
+
+	public int getOrdre() {
+		return ordre;
 	}
-	public Date getHoraireFin() {
-		return horaireFin;
+
+	public void setOrdre(int ordre) {
+		this.ordre = ordre;
 	}
-	public void setHoraireFin(Date horaireFin) {
-		this.horaireFin = horaireFin;
+
+	public String getLibelle() {
+		return libelle;
 	}
-	
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
 	
 }

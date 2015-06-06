@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+	template="/templates/template.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		
+		<h:form styleClass="form-horizontal">
+			<p:growl id="growl" />
+			<b:panel id="panel" look="primary">
+				<p:messages id="messages"></p:messages>
+					<f:facet name="heading">Nouvel Utilisateur</f:facet> 
+					 <div class="form-group">
+    					<p:outputLabel value="Nom :" for="nom"  styleClass="col-sm-2 control-label" />
+    					<div class="col-sm-10">
+  						  	<p:inputText id="nom" value="#{personnelBean.user.nom}" required="true" placeholder="Nom" styleClass="form-control" />
+						</div>
+						<p:message for="nom" />
+					</div>
+					<div class="form-group">
+						<p:outputLabel value="Prenom :" for="prenom"  styleClass="col-sm-2 control-label"  />
+						<div class="col-sm-10">
+							<p:inputText id="prenom" value="#{personnelBean.user.prenom}" required="true" placeholder="Prenom" styleClass="form-control" />
+						</div>
+						<p:message for="prenom" />
+					</div>
+					
+					 <div class="form-group">
+						<h:outputLabel value="Cin : " for="cin"  styleClass="col-sm-2 control-label" />
+						<div class="col-sm-10">
+							<p:inputText id="cin" value="#{personnelBean.user.cin}" required="true" placeholder="Cin" styleClass="form-control" />
+						</div>
+						<p:message for="cin" />
+					</div>
+					
+					 <div class="form-group">
+						<p:outputLabel value="Telephone Mobile :" for="tel"  styleClass="col-sm-2 control-label" />
+						<div class="col-sm-10">
+							<p:inputMask id="tel" value="#{personnelBean.user.telephoneMobile}" required="true" styleClass="form-control"  mask="99-999-999">
+								 <f:validateLength minimum="7" />
+							</p:inputMask>
+						</div>
+						<p:message for="tel" />
+					</div>
+					 <div class="form-group">
+						<p:outputLabel value="Telephone du Bureau :" for="bureau"  styleClass="col-sm-2 control-label" />
+						<div class="col-sm-10">
+							<p:inputMask id="bureau" value="#{personnelBean.user.telFixe}" required="true" styleClass="form-control" mask="99-999-999">
+								 <f:validateLength minimum="7" />
+							</p:inputMask>
+						</div>
+						<p:message for="bureau" />
+					</div>
+					 <div class="form-group">
+						<p:outputLabel value="Fonction:" for="fonction" styleClass="col-sm-2 control-label" />
+						<div class="col-sm-10">
+							<p:inputText id="fonction" value="#{personnelBean.user.fonction}" required="true" styleClass="form-control" placeholder="Fonction" >
+								 
+							</p:inputText>
+						</div>
+						<p:message for="fonction" />
+					</div>
+		
+					 <div class="form-group">
+						<p:outputLabel value="Email :" for="email" styleClass="col-sm-2 control-label" />
+						<div class="col-sm-10">
+							<p:inputText id="email" value="#{personnelBean.user.email}" required="true" placeholder="timemanager@edt.edu" validatorMessage="Value does not match pattern." styleClass="form-control">
+								 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+							</p:inputText>
+						</div>
+						<p:message for="email" />
+					</div>
+					 <div class="form-group">
+						<p:outputLabel value="Adresse : " for="adresse"  styleClass="col-sm-2 control-label"  />
+						<div class="col-sm-10">
+							<p:inputTextarea id="adresse" value="#{personnelBean.user.adresse}" feedback="true" style="width:350px" styleClass="form-control" rows="3"/>
+						 </div>
+						 <p:message for="adresse" />
+					</div>
+					<div class="form-group">
+						<p:outputLabel for="departementListe" value="Departement:" styleClass="col-sm-2 control-label" />
+						 <div class="col-sm-10">
+							<p:selectManyMenu id="departementListe" value="#{salleBean.selectedDepartement}" filter="true" filterMatchMode="contains" showCheckbox="true">
+            					<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.nom}"/>
+        					</p:selectManyMenu>
+        				</div>
+					</div>
+					<p:separator />
+					 <div class="form-group">
+					 	<div class="col-sm-2">
+					 	</div>
+						<div class="col-sm-4">
+							<p:commandButton value="Reinitialiser" icon="ui-icon-refresh" styleClass="btn btn-default" type="reset"/>
+						</div>
+						<div class="col-sm-4">
+							<p:commandButton id="register" value="Enregistrer" update="growl" icon="ui-icon-check" styleClass="btn btn-default" action="#{personnelBean.save()}" />
+						</div>
+						<div class="col-sm-2">
+					 	</div>
+					</div>
+			</b:panel>
+			<p:blockUI block="panel" trigger="register">  
+	    		<h:panelGrid columns="2">  
+			        <h:graphicImage library="images" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;"/>  
+			        <h:outputText value="Ajout utilisateur..." style="white-space: nowrap;"/>  
+	    		</h:panelGrid>  
+			</p:blockUI> 
+			
+		</h:form>
+	</ui:define>
+	</ui:composition>

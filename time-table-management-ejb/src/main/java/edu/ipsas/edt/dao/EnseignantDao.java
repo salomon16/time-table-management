@@ -16,4 +16,6 @@ public interface EnseignantDao extends GenericDao<Enseignant> {
 
 	Collection<Enseignant> getAllEnseignantByGrade(long GradeId);
 
+	Collection<Enseignant> findAllEnseignantByDepartement(String departementName);
+
 }

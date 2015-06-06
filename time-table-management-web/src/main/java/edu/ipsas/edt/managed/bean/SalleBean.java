@@ -11,7 +11,7 @@ import javax.faces.context.FacesContext;
 
 import edu.ipsas.edt.dto.SalleDto;
 import edu.ipsas.edt.dto.TypeSalleDto;
-import edu.ipsas.edt.service.EnseignantService;
+import edu.ipsas.edt.service.DepartementService;
 import edu.ipsas.edt.service.SalleService;
 
 @ManagedBean
@@ -25,13 +25,14 @@ public class SalleBean implements Serializable{
 	@EJB 
 	private SalleService salleService;
 	@EJB 
-	private EnseignantService enseignantService;
+	private DepartementService departementService;
 	
 	private String numero;
 	private int capacite;
 	private String nomTypeSalle;
 	private String typeSalle;
 	private String departement;
+	private Collection<String> selectedDepartement;
 	
 	
 	public Collection<SalleDto> getAllSalle(){
@@ -55,7 +56,9 @@ public class SalleBean implements Serializable{
 		
 		salle.setTypeSalle(nomTypeSalle);
 		
-		salle.setDepartementDto(enseignantService.getDepartementByName(departement));
+		for(String departement : selectedDepartement){
+			salle.getDepartementDto().add(departementService.getDepartementByName(departement));
+		}
 		
 		long id = getSalleService().addSalle(salle);
 		
@@ -113,14 +116,21 @@ public class SalleBean implements Serializable{
 		this.departement = departement;
 	}
 
-	public EnseignantService getEnseignantService() {
-		return enseignantService;
+	public DepartementService getDepartementService() {
+		return departementService;
 	}
 
-	public void setEnseignantService(EnseignantService enseignantService) {
-		this.enseignantService = enseignantService;
+	public void setDepartementService(DepartementService departementService) {
+		this.departementService = departementService;
 	}
-	
-	
+
+	public Collection<String> getSelectedDepartement() {
+		return selectedDepartement;
+	}
+
+	public void setSelectedDepartement(Collection<String> selectedDepartement) {
+		this.selectedDepartement = selectedDepartement;
+	}
+
 	
 } 

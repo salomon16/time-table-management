@@ -16,8 +16,8 @@ import edu.ipsas.edt.dto.MatiereDto;
 import edu.ipsas.edt.dto.ParcoursDto;
 import edu.ipsas.edt.dto.PlanEtudeDto;
 import edu.ipsas.edt.dto.UniteDto;
+import edu.ipsas.edt.service.DepartementService;
 import edu.ipsas.edt.service.EmploiDuTempsService;
-import edu.ipsas.edt.service.EnseignantService;
 
 @ManagedBean(name="planEtudeBean")
 @ViewScoped
@@ -30,7 +30,7 @@ public class PlanEtudeBean implements Serializable {
 	@EJB
 	private EmploiDuTempsService emploiService;
 	@EJB
-	private EnseignantService enseignantService;
+	private DepartementService departementService;
 	
 	private String selectedParcours;
 	private String selectedSemestre;
@@ -42,7 +42,7 @@ public class PlanEtudeBean implements Serializable {
 	
 	@PostConstruct
 	public void init(){
-		matieres = emploiService.getAllMatiere();
+		matieres = departementService.getAllMatiere();
 	}
 	
 	public String save(){
@@ -51,14 +51,14 @@ public class PlanEtudeBean implements Serializable {
 		Collection<MatiereDto> matieres = new ArrayList<MatiereDto>();
 		
 		for(String matiere : selectedMatiere){
-			matieres.add(emploiService.getMatiereParId(Long.parseLong(matiere)));
+			matieres.add(departementService.getMatiereParId(Long.parseLong(matiere)));
 		}
 		
-		planEtude.setSemestreDto(emploiService.getSemestreParId(Long.parseLong(selectedSemestre)));
-		planEtude.setParcoursDto(emploiService.getParcoursParId(Long.parseLong(selectedParcours)));
+		planEtude.setSemestreDto(departementService.getSemestreParId(Long.parseLong(selectedSemestre)));
+		planEtude.setParcoursDto(departementService.getParcoursParId(Long.parseLong(selectedParcours)));
 		planEtude.setMatieresDto(matieres);
 		
-		long id = emploiService.addPlanEtude(planEtude);
+		long id = departementService.addPlanEtude(planEtude);
 		
 		if(id > 0){
 			 FacesContext fc = FacesContext.getCurrentInstance();  
@@ -68,7 +68,7 @@ public class PlanEtudeBean implements Serializable {
 	}
 	
 	public void findPlanEtude(){
-		planEtudeDto = emploiService.getPlanEtudeBySemestreAndParcours(emploiService.getSemestreParId(Long.parseLong(selectedSemestre)).getSemestreId(), emploiService.getParcoursParId(Long.parseLong(selectedParcours)).getParcoursId());
+		planEtudeDto = departementService.getPlanEtudeBySemestreAndParcours(departementService.getSemestreParId(Long.parseLong(selectedSemestre)).getSemestreId(), departementService.getParcoursParId(Long.parseLong(selectedParcours)).getParcoursId());
 	}
 	public Collection<UniteDto> getAllUnite(){
 		Collection<UniteDto> unites = new ArrayList<UniteDto>();
@@ -92,8 +92,8 @@ public class PlanEtudeBean implements Serializable {
 	
 	 public void onDepartementChange() {
 	        if(selectedDepartement !=null && !selectedDepartement.equals("")){
-	    		DepartementDto departement = enseignantService.getDepartementByName(selectedDepartement);
-	    		listeParcours = (Collection<ParcoursDto>) enseignantService.getAllParcoursByDepartement(departement.getDepartementID());
+	    		DepartementDto departement = departementService.getDepartementByName(selectedDepartement);
+	    		listeParcours = (Collection<ParcoursDto>) departementService.getAllParcoursByDepartement(departement.getDepartementID());
 	        }
 	        else
 	        	listeParcours = new ArrayList<ParcoursDto>();
@@ -137,12 +137,13 @@ public class PlanEtudeBean implements Serializable {
 		this.selectedDepartement = selectedDepartement;
 	}
 
-	public EnseignantService getEnseignantService() {
-		return enseignantService;
+	
+	public DepartementService getDepartementService() {
+		return departementService;
 	}
 
-	public void setEnseignantService(EnseignantService enseignantService) {
-		this.enseignantService = enseignantService;
+	public void setDepartementService(DepartementService departementService) {
+		this.departementService = departementService;
 	}
 
 	public Collection<ParcoursDto> getListeParcours() {

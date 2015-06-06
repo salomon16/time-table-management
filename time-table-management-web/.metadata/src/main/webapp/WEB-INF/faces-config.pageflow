@@ -1,6 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14298111169290" configfile="/time-table-management-web/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="204" y="120" id="pf14301283946965" referenceLink="//@navigationRule.1/@fromViewId|" path="/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="timemanager/test/datagrid.xhtml" x="360" y="84" id="pf14315104334960" path="/timemanager/test/datagrid.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="timemanager/index.xhtml" x="580" y="215" id="pf14315204418061" path="/timemanager/index.xhtml"/>
-</pageflow:Pageflow>
+<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14298111169290" configfile="/time-table-management-web/src/main/webapp/WEB-INF/faces-config.xml"/>

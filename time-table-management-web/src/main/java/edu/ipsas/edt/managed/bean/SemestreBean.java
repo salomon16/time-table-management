@@ -10,7 +10,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import edu.ipsas.edt.dto.SemestreDto;
-import edu.ipsas.edt.service.EmploiDuTempsService;
+import edu.ipsas.edt.service.DepartementService;
 
 @ManagedBean(name="semestreBean")
 @ViewScoped
@@ -22,7 +22,7 @@ public class SemestreBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private EmploiDuTempsService emploiService;
+	private DepartementService departementService;
 	SemestreDto semestreDto;
 	
 	public SemestreBean(){
@@ -31,7 +31,7 @@ public class SemestreBean implements Serializable {
 
 	public String save(){
 		
-		long id = emploiService.addSemestre(semestreDto);
+		long id = departementService.addSemestre(semestreDto);
 		
 		if(id > 0){
 			FacesContext fc = FacesContext.getCurrentInstance();  
@@ -41,18 +41,19 @@ public class SemestreBean implements Serializable {
 	}
 	
 	public Collection<SemestreDto> getAllSemestre(){
-		return emploiService.getAllSemestre();
+		return departementService.getAllSemestre();
 	}
 	
 	public Collection<SemestreDto> getAllSemester(){
-		return emploiService.getAllSemestre();
+		return departementService.getAllSemestre();
 	}
-	public EmploiDuTempsService getEmploiService() {
-		return emploiService;
+	
+	public DepartementService getDepartementService() {
+		return departementService;
 	}
 
-	public void setEmploiService(EmploiDuTempsService emploiService) {
-		this.emploiService = emploiService;
+	public void setDepartementService(DepartementService departementService) {
+		this.departementService = departementService;
 	}
 
 	public SemestreDto getSemestreDto() {

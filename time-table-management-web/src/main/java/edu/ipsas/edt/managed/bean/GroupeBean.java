@@ -13,8 +13,7 @@ import javax.faces.context.FacesContext;
 import edu.ipsas.edt.dto.GroupeDto;
 import edu.ipsas.edt.dto.NiveauDto;
 import edu.ipsas.edt.dto.ParcoursDto;
-import edu.ipsas.edt.service.EmploiDuTempsService;
-import edu.ipsas.edt.service.EnseignantService;
+import edu.ipsas.edt.service.DepartementService;
 
 @ManagedBean(name="groupeBean")
 @ViewScoped
@@ -26,10 +25,9 @@ public class GroupeBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private EmploiDuTempsService emploiService;
-	@EJB
-	private EnseignantService enseignantService;
+	private DepartementService departementService;
 	private GroupeDto groupeDto;
+	private String abbreviation;
 	private long niveau;
 	private long selectedParcours;
 	private Collection<NiveauDto> listeNiveaux;
@@ -40,9 +38,10 @@ public class GroupeBean implements Serializable {
 	}
 	
 	public String save(){
-		groupeDto.setNiveauDto(emploiService.getAllNiveauById(niveau));
+		groupeDto.setAbbreviation(abbreviation);
+		groupeDto.setNiveauDto(departementService.getAllNiveauById(niveau));
 		
-		long id = emploiService.addGroupe(groupeDto);
+		long id = departementService.addGroupe(groupeDto);
 		if(id > 0){
 			 FacesContext fc = FacesContext.getCurrentInstance();  
 		        fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Nouveau groupe ajouté avec succes", null));  
@@ -58,9 +57,9 @@ public class GroupeBean implements Serializable {
 	 public void onParcoursChange() {
 	        if(selectedParcours != 0){
 	        	System.out.println("Parcours Id: "+selectedParcours);
-	    		ParcoursDto parcours = emploiService.getParcoursParId(selectedParcours);
+	    		ParcoursDto parcours = departementService.getParcoursParId(selectedParcours);
 	    		System.out.println("Parcours Info: "+parcours.getNom());
-	    		listeNiveaux =  emploiService.getAllNiveauByParcours(parcours.getParcoursId());
+	    		listeNiveaux =  departementService.getAllNiveauByParcours(parcours.getParcoursId());
 	    		System.out.println("Liste Niveaux size:"+listeNiveaux.size());
 	        }
 	        else{
@@ -68,12 +67,14 @@ public class GroupeBean implements Serializable {
 	        }
 	    }
 	 
-	public EmploiDuTempsService getEmploiService() {
-		return emploiService;
+	public DepartementService getDepartementService() {
+		return departementService;
 	}
-	public void setEmploiService(EmploiDuTempsService emploiService) {
-		this.emploiService = emploiService;
+
+	public void setDepartementService(DepartementService departementService) {
+		this.departementService = departementService;
 	}
+
 	public GroupeDto getGroupeDto() {
 		return groupeDto;
 	}
@@ -85,14 +86,6 @@ public class GroupeBean implements Serializable {
 	}
 	public void setNiveau(long niveau) {
 		this.niveau = niveau;
-	}
-
-	public EnseignantService getEnseignantService() {
-		return enseignantService;
-	}
-
-	public void setEnseignantService(EnseignantService enseignantService) {
-		this.enseignantService = enseignantService;
 	}
 
 	public long getSelectedParcours() {
@@ -109,6 +102,14 @@ public class GroupeBean implements Serializable {
 
 	public void setListeNiveaux(Collection<NiveauDto> listeNiveaux) {
 		this.listeNiveaux = listeNiveaux;
+	}
+
+	public String getAbbreviation() {
+		return abbreviation;
+	}
+
+	public void setAbbreviation(String abbreviation) {
+		this.abbreviation = abbreviation;
 	}
 	
 	

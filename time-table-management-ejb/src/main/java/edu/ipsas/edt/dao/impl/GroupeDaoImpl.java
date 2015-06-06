@@ -20,4 +20,11 @@ public class GroupeDaoImpl extends GenericDaoImpl<Groupe> implements GroupeDao{
 		return em.createQuery("select g from Groupe where g.niveau.niveauId=:niveauId").setParameter("niveauId", niveauId).getResultList();
 	}
 
+	
+	@SuppressWarnings("unchecked")
+	public Collection<Groupe> findAllGroupeByParcours(long parcoursId) {
+		
+		return em.createQuery("select g from Groupe g where g.niveau.parcours.parcoursId=:parcoursId").setParameter("parcoursId", parcoursId).getResultList();
+	}
+
 }

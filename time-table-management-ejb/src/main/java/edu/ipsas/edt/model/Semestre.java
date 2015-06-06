@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,6 +33,9 @@ public class Semestre implements Serializable{
 	private byte numero;
 
 	@OneToMany
+	@JoinTable(name="SEMESTRE_PLANS_ETUDE", 
+    joinColumns=@JoinColumn(name="SEMESTRE_ID"),
+    inverseJoinColumns=@JoinColumn(name="PLAN_ETUDE_ID"))
 	private Collection<PlanEtude> plansEtude;
 	
 //	@OneToMany

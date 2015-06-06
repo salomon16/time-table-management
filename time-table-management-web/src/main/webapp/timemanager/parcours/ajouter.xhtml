@@ -14,27 +14,32 @@ template="/templates/template.xhtml">
 					<f:facet name="heading">Nouveau Parcours</f:facet> 
 				<b:row>
 					<b:column span="4"><h:outputLabel value="Nom: " for="nom" /></b:column>
-					<b:column span="4"><b:inputText id="nom" value="#{parcoursBean.nom}" required="true" placeholder="nom de parcours" /></b:column>
+					<b:column span="4"><p:inputText id="nom" value="#{parcoursBean.nom}" required="true" placeholder="nom de parcours" styleClass="form-control input-sm" /></b:column>
 					<b:column span="4"><p:message for="nom"/></b:column>
+				</b:row>
+				<b:row>
+					<b:column span="4"><h:outputLabel value="Abbreviation: " for="abbreviation" /></b:column>
+					<b:column span="4"><p:inputText id="abbreviation" value="#{parcoursBean.abbreviation}"  placeholder="abbreviation" styleClass="form-control input-sm" /></b:column>
+					<b:column span="4"><p:message for="abbreviation"/></b:column>
 				</b:row>
 				<b:row>
 						<b:column span="4"><h:outputLabel for="departement" value="Departement: " /></b:column>
 						<b:column span="4">
-							<p:selectOneMenu id="departement" value="#{parcoursBean.selectedDepartement}" style="width:350px">
-								<p:ajax update="cursus" listener="#{parcoursBean.onDepartementChange}" />
+							<h:selectOneMenu id="departement" value="#{parcoursBean.selectedDepartement}" styleClass="form-control input-sm">
+								<p:ajax update="cursus"  listener="#{parcoursBean.onDepartementChange}" />
 								<f:selectItem itemLabel="Select Departement" itemValue="" noSelectionOption="true" />
 								<f:selectItems value="#{departementBean.allDepartement}" var="departement" itemLabel="#{departement.nom}" itemValue="#{departement.nom}" />
-							</p:selectOneMenu>
+							</h:selectOneMenu>
 						</b:column>
 						<b:column span="4"><p:message for="departement" display="icon" /></b:column>
 				</b:row>	
 						<b:row>
 							<b:column span="4"><h:outputLabel for="cursus" value="Cursus: " /></b:column>
 							<b:column span="4">
-								<p:selectOneMenu id="cursus" value="#{parcoursBean.cursus}" style="width:350px" required="true">
+								<h:selectOneMenu id="cursus" value="#{parcoursBean.cursus}"  required="true" styleClass="form-control input-sm">
 									<f:selectItem itemLabel="Select Cursus" itemValue="" noSelectionOption="true" />
 									<f:selectItems value="#{parcoursBean.cursusListe}" var="cursus" itemLabel="#{cursus.nom}" itemValue="#{cursus.cursusId}"/>
-								</p:selectOneMenu>
+								</h:selectOneMenu>
 							</b:column>
 							<b:column span="4"><p:message for="cursus" /></b:column>
 						</b:row>

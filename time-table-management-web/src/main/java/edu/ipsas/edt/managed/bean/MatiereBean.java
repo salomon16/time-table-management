@@ -11,7 +11,7 @@ import javax.faces.context.FacesContext;
 
 import edu.ipsas.edt.dto.MatiereDto;
 import edu.ipsas.edt.dto.UniteDto;
-import edu.ipsas.edt.service.EmploiDuTempsService;
+import edu.ipsas.edt.service.DepartementService;
 
 @ManagedBean(name="matiereBean")
 @ViewScoped
@@ -23,11 +23,11 @@ public class MatiereBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private EmploiDuTempsService emploiDuTempsService;
+	private DepartementService departementService;
 	
 	private String nom;
 
-	private int nombreHeure;
+	private float nombreHeure;
 	
 	private String description;
 
@@ -48,10 +48,10 @@ public class MatiereBean implements Serializable {
 	public void save(){
 		
 		MatiereDto matiereDto = new MatiereDto(nom, nombreHeure, type, volumeC, volumeTP, volumeTD, credit, coefficient);
-		UniteDto uniteDto = emploiDuTempsService.getUniteById(unite);
+		UniteDto uniteDto = departementService.getUniteById(unite);
 		
 		matiereDto.setUniteDto(uniteDto);
-		long id = emploiDuTempsService.addMatiere(matiereDto);
+		long id = departementService.addMatiere(matiereDto);
 		
 		if(id>0){
 			 FacesContext fc = FacesContext.getCurrentInstance();  
@@ -60,14 +60,15 @@ public class MatiereBean implements Serializable {
 	}
 	
 	public Collection<MatiereDto> getAllMatiere(){
-		return emploiDuTempsService.getAllMatiere();
-	}
-	public EmploiDuTempsService getEmploiDuTempsService() {
-		return emploiDuTempsService;
+		return departementService.getAllMatiere();
 	}
 
-	public void setEmploiDuTempsService(EmploiDuTempsService emploiDuTempsService) {
-		this.emploiDuTempsService = emploiDuTempsService;
+	public DepartementService getDepartementService() {
+		return departementService;
+	}
+
+	public void setDepartementService(DepartementService departementService) {
+		this.departementService = departementService;
 	}
 
 	public String getNom() {
@@ -142,11 +143,11 @@ public class MatiereBean implements Serializable {
 		this.unite = unite;
 	}
 
-	public int getNombreHeure() {
+	public float getNombreHeure() {
 		return nombreHeure;
 	}
 
-	public void setNombreHeure(int nombreHeure) {
+	public void setNombreHeure(float nombreHeure) {
 		this.nombreHeure = nombreHeure;
 	}
 	

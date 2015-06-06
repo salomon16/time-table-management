@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -32,6 +34,9 @@ public class Unite implements Serializable {
 	private String nom;
 	
 	@OneToMany
+	@JoinTable(name="UNITE_ENSEIGNEMENT_MATIERES", 
+    joinColumns=@JoinColumn(name="UNITE_ID"),
+    inverseJoinColumns=@JoinColumn(name="MATIERE_ID"))
 	private Collection<Matiere> matieres;
 
 	

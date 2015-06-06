@@ -10,7 +10,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import edu.ipsas.edt.dto.NiveauDto;
-import edu.ipsas.edt.service.EmploiDuTempsService;
+import edu.ipsas.edt.service.DepartementService;
 
 @ManagedBean(name="niveauBean")
 @ViewScoped
@@ -22,7 +22,7 @@ public class NiveauBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private EmploiDuTempsService emploiService;
+	private DepartementService departementService;
 	
 	private NiveauDto niveauDto;
 	private long selectedParcours;
@@ -34,9 +34,9 @@ public class NiveauBean implements Serializable {
 	
 	public String save(){
 		
-		niveauDto.setParcoursDto(emploiService.getParcoursParId(selectedParcours));
+		niveauDto.setParcoursDto(departementService.getParcoursParId(selectedParcours));
 		
-		long id = emploiService.addNiveau(niveauDto);
+		long id = departementService.addNiveau(niveauDto);
 		
 		if(id > 0){
 			 FacesContext fc = FacesContext.getCurrentInstance();  
@@ -51,14 +51,15 @@ public class NiveauBean implements Serializable {
 
 	public Collection<NiveauDto> getAllNiveau(){
 		
-		return emploiService.getAllNiveau();
-	}
-	public EmploiDuTempsService getEmploiService() {
-		return emploiService;
+		return departementService.getAllNiveau();
 	}
 
-	public void setEmploiService(EmploiDuTempsService emploiService) {
-		this.emploiService = emploiService;
+	public DepartementService getDepartementService() {
+		return departementService;
+	}
+
+	public void setDepartementService(DepartementService departementService) {
+		this.departementService = departementService;
 	}
 
 	public NiveauDto getNiveauDto() {

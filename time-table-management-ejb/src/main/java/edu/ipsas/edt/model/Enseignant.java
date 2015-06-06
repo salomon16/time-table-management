@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -32,9 +33,15 @@ public class Enseignant extends Personne implements Serializable {
 	private String specialite;
 	
 	@OneToMany
+	@JoinTable(name="ENSEIGNANT_DEPARTEMENTS", 
+    joinColumns=@JoinColumn(name="ENSEIGNANT_ID"),
+    inverseJoinColumns=@JoinColumn(name="DEPARTEMENT_ID"))
 	private Collection<Departement> departements;
 	
 	@OneToMany
+	@JoinTable(name="ENSEIGNANT_DISPONIBILITES", 
+    joinColumns=@JoinColumn(name="ENSEIGNANT_ID"),
+    inverseJoinColumns=@JoinColumn(name="DIPONIBILITE_ID"))
 	private Collection<Disponibilite> disponibilites;
 
 	@ManyToOne
@@ -46,6 +53,9 @@ public class Enseignant extends Personne implements Serializable {
 	private Statut statut;
 	
 	@OneToMany
+	@JoinTable(name="ENSEIGNANT_VOEUX_MATIERE", 
+    joinColumns=@JoinColumn(name="ENSEIGNANT_ID"),
+    inverseJoinColumns=@JoinColumn(name="VOEUX_MATIERE_ID"))
 	private Collection<VoeuxMatiere> voeuxMatieres;
 
 	public Enseignant() {

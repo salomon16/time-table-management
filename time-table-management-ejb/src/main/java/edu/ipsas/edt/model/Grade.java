@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,12 +22,15 @@ public class Grade implements Serializable {
 	@Id
 	@Column(name="GRADE_ID", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long gradeID;
+	private long gradeId;
 	
 	@Column(name="NOM", unique = true, nullable = false)
 	private String nom;
 	
 	@OneToMany
+	@JoinTable(name="GRADE_ENSEIGNANTS", 
+    joinColumns=@JoinColumn(name="GRADE_ID"),
+    inverseJoinColumns=@JoinColumn(name="ENSEIGNANT_ID"))
 	private Collection<Enseignant> enseignants;
 
 	public Grade() {
@@ -39,12 +44,12 @@ public class Grade implements Serializable {
 		enseignants = new ArrayList<Enseignant>();
 	}
 
-	public long getGradeID() {
-		return gradeID;
+	public long getGradeId() {
+		return gradeId;
 	}
 
 	public void setGradeID(long gradeID) {
-		this.gradeID = gradeID;
+		this.gradeId = gradeID;
 	}
 
 	public String getNom() {

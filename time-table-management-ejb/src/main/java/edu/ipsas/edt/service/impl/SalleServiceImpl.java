@@ -124,4 +124,9 @@ public class SalleServiceImpl implements SalleService {
 	public void setRessourceDao(RessourceDao ressourceDao) {
 		this.ressourceDao = ressourceDao;
 	}
+	
+	public Collection<SalleDto> getAllSalleByDepartement(String departementName) {
+		
+		return SalleHelper.modelsToDto(salleDao.findAllSalleByDepartement(departementName));
+	}
 }

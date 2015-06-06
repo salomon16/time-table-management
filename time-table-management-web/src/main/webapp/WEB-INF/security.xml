@@ -1,44 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <beans:beans xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+  
+ <http use-expressions="true" access-denied-page="/pages/static/accessDenied.jsf">
+    <intercept-url pattern="/login.xhtml" filters="none" />
+    <intercept-url pattern="/timemanager/index.xhtml" access="isAuthenticated()" />
+    <intercept-url pattern="/timemanager/**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
+    <form-login login-page="/login.xhtml" default-target-url="/timemanager/index.xhtml"
+        authentication-failure-url="/login.xhtml?state=failure" />
+    <logout logout-success-url="/login.xhtml?state=logout" />
+</http>
+ 
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider>
+<!--           <password-encoder hash="md5" /> -->
+          <user-service>
+            <user name="user" password="1234" authorities="ROLE_USER, ROLE_ADMIN" />
+            <user name="user2" password="password2" authorities="ROLE_USER" />
+          </user-service>
+        </authentication-provider>
+  </authentication-manager>
+<!--   <beans:bean name="authenticationBean" class="edu.ipsas.edt.managed.bean.AuthenticationBean"> -->
+<!--   	<beans:property name="authenticationManager" ref="authenticationManager"></beans:property> -->
+<!--   </beans:bean> -->
 
-	
-	<http auto-config="true">
-		
-		<intercept-url pattern="/timemanager/**" access="ROLE_ADMIN, ROLE_USER" />
-<!-- 		<intercept-url pattern="/**" access="permitAll()" /> -->
-		
-<!-- 		Custom login page -->
-		<form-login login-page="/login.xhtml" login-processing-url="/j_spring_security_check"/>
-		
-<!-- 		Custom logout page -->
-	 	<logout logout-success-url="/login.xhtml"/>
-	 	
-	</http>
-
-
-
-<!-- 	<authentication-manager> -->
-<!-- 		<authentication-provider> -->
-<!-- 			<jdbc-user-service data-source-ref="dataSource" -->
-<!-- 				users-by-username-query="select username,password, enabled from users where username=?" -->
-<!-- 				authorities-by-username-query="select username, role from user_roles where username =?  " /> -->
-<!-- 		</authentication-provider> -->
-<!-- 	</authentication-manager> -->
-
-	<authentication-manager alias="authenticationManager">
-		<authentication-provider>
-			<user-service>
-				<user name="admin" password="1234" authorities="ROLE_ADMIN" />
-			</user-service>
-		</authentication-provider>
-	</authentication-manager>
-	
-	 <!-- Inject authentication Manager to our LoginBean -->
-<!--     <beans:bean name="authenticationBean" class="edu.ipsas.edt.managed.bean.AuthenticationBean"> -->
-<!--         <beans:property name="authenticationManager" ref="authenticationManager"></beans:property> -->
+<!-- <authentication-manager> -->
+<!--         <authentication-provider> -->
+<!--             <jdbc-user-service data-source-ref="dataSource" -->
+<!--                users-by-username-query="SELECT login, password, enable FROM personne_administratif WHERE login=?" -->
+<!--                authorities-by-username-query="SELECT p.login as username, r.nom as authority FROM personnel_administratif p, role r WHERE p.personnel_id=r.personnel_id and p.login=?" -->
+<!--                role-prefix="ROLE_" -->
+<!--             /> -->
+<!--         </authentication-provider> -->
+<!--     </authentication-manager> -->
+ 
+<!--     <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" > -->
+<!--         <beans:property name="url" value="jdbc:mysql://localhost:3306/emploidutemps_db" /> -->
+<!--         <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+<!--         <beans:property name="username" value="root" /> -->
+<!--         <beans:property name="password" value="" /> -->
 <!--     </beans:bean> -->
+    
 </beans:beans>

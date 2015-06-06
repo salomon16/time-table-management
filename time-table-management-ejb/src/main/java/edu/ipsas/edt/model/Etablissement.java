@@ -7,6 +7,8 @@ import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,27 +29,29 @@ public class Etablissement implements Serializable {
 
 	@Column(name = "ADRESSE", unique = true, nullable = false)
 	private String adresse;
-
+	
+	@Column(name = "LOGO", unique = true, nullable = false)
+	private String logo;
 	
 	@OneToMany
+	@JoinTable(name="DEPARTEMENT_ETABLISSEMENT", 
+    joinColumns=@JoinColumn(name="ETABLISSEMENT_ID"),
+    inverseJoinColumns=@JoinColumn(name="DEPARTEMENT_ID"))
 	private Collection<Departement> departements;
 
-	@OneToMany
-	private Collection<Salle> salles;
 
 	public Etablissement() {
 		super();
 		departements = new ArrayList<Departement>();
-		salles = new ArrayList<Salle>();
 	}
 
-	public Etablissement(String nom, String abbreviation, String adresse) {
+	public Etablissement(String nom, String abbreviation, String adresse, String logo) {
 		super();
 		this.nom = nom;
 		this.abbreviation = abbreviation;
 		this.adresse = adresse;
+		this.logo = logo;
 		departements = new ArrayList<Departement>();
-		salles = new ArrayList<Salle>();
 	}
 
 	public String getEtablissementID() {
@@ -90,12 +94,21 @@ public class Etablissement implements Serializable {
 		this.departements = departements;
 	}
 
-	public Collection<Salle> getSalles() {
-		return salles;
+	public String getEtablissementId() {
+		return etablissementId;
 	}
 
-	public void setSalles(Collection<Salle> salles) {
-		this.salles = salles;
+	public void setEtablissementId(String etablissementId) {
+		this.etablissementId = etablissementId;
 	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
 
 }

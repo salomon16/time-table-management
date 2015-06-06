@@ -13,17 +13,16 @@
 						<p:messages id="msg"/>
 						<f:facet name="heading">Saisie Horaire</f:facet>
 						<b:row>
-							<b:column span="4"><p:outputLabel for="horaireDebut" value="Horaire Debut:" /></b:column>
-							<b:column span="4">	<p:calendar id="horaireDebut" value="#{creneauBean.horaireDebut}" pattern="HH:mm" timeOnly="true" showOn="button"  required="true" /></b:column>
-							<b:column span="4"><p:message for="horaireDebut" /></b:column>
+							<b:column span="4"><p:outputLabel for="ordre" value="Ordre:" /></b:column>
+							<b:column span="4"><p:spinner id="ordre" min="0" required="true" value="#{creneauBean.ordre}"/></b:column>
+							<b:column span="4"><p:message for="ordre" /></b:column>
 						</b:row>
 						<b:row>
-							<b:column span="4"><p:outputLabel for="horaireFin" value="Horaire Fin:" /></b:column>
+							<b:column span="4"><p:outputLabel for="libelle" value="Libelle:" /></b:column>
 							<b:column span="4">
-								<p:calendar id="horaireFin" value="#{creneauBean.horaireFin}" pattern="HH:mm" timeOnly="true" showOn="button" required="true">
-								</p:calendar>
+								<p:inputMask id="libelle" value="#{creneauBean.libelle}" required="true" styleClass="form-control"  mask="99:99 - 99:99" />
 							</b:column>
-							<b:column span="4"><p:message for="horaireFin" /></b:column>
+							<b:column span="4"><p:message for="libelle" /></b:column>
 						</b:row>
 						<p:separator/>
 						<b:row>

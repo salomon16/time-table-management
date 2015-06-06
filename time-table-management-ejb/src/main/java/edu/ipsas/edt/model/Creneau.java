@@ -3,7 +3,6 @@ package edu.ipsas.edt.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,13 +24,21 @@ public class Creneau implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long creneauId;
 	
-	@Column(name = "HEURE_DEBUT", unique = true, nullable = false)
-	private Date heureDebut;
+//	@Column(name = "HEURE_DEBUT", unique = true, nullable = false)
+//	private Date heureDebut;
+//	
+//	@Column(name = "HEURE_FIN", unique = true, nullable = false)
+//	private Date heureFin;
+	@Column(name = "ORDRE", unique = true, nullable = false)
+	private int ordre;
 	
-	@Column(name = "HEURE_FIN", unique = true, nullable = false)
-	private Date heureFin;
-
+	@Column(name = "LIBELLE", unique = true, nullable = false)
+	private String libelle;
+	
 	@OneToMany
+	@JoinTable(name="CRENEAU_SEANCES", 
+    joinColumns=@JoinColumn(name="CRENEAU_ID"),
+    inverseJoinColumns=@JoinColumn(name="SEANCE_ID"))
 	private Collection<Seance> seances;
 	
 	@OneToMany
@@ -49,12 +56,7 @@ public class Creneau implements Serializable {
 		seances = new ArrayList<Seance>();
 	}
 
-	public Creneau(Date heureDebut, Date heureFin) {
-		super();
-		this.heureDebut = heureDebut;
-		this.heureFin = heureFin;
-	}
-
+	
 	public long getCreneauID() {
 		return creneauId;
 	}
@@ -63,21 +65,24 @@ public class Creneau implements Serializable {
 		creneauId = creneauID;
 	}
 
-	public Date getHeureDebut() {
-		return heureDebut;
+	public int getOrdre() {
+		return ordre;
 	}
 
-	public void setHeureDebut(Date heureDebut) {
-		this.heureDebut = heureDebut;
+	public void setOrdre(int ordre) {
+		this.ordre = ordre;
 	}
 
-	public Date getHeureFin() {
-		return heureFin;
+
+	public String getLibelle() {
+		return libelle;
 	}
 
-	public void setHeureFin(Date heureFin) {
-		this.heureFin = heureFin;
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
 	}
+
 
 	public Collection<Disponibilite> getDisponibilites() {
 		return disponibilites;

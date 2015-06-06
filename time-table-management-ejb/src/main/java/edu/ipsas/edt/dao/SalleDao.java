@@ -1,5 +1,7 @@
 package edu.ipsas.edt.dao;
 
+import java.util.Collection;
+
 import javax.ejb.Local;
 
 import edu.ipsas.edt.model.Salle;
@@ -8,4 +10,6 @@ import edu.ipsas.edt.model.Salle;
 public interface SalleDao extends GenericDao<Salle>{
 
 	public Salle findSalleByName(String name);
+
+	public Collection<Salle> findAllSalleByDepartement(String departementName);
 }

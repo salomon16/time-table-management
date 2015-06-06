@@ -15,8 +15,11 @@
 		</f:metadata>
 		
 		<h:head>
-			<h:outputStylesheet library="css" name="font-awesome.css"></h:outputStylesheet>
-<!-- 			<f:facet name="no-fa">true</f:facet> -->
+			<h:outputStylesheet library="css" name="global.css"></h:outputStylesheet>
+			<h:outputStylesheet library="css" name="layout.css"></h:outputStylesheet>
+			<h:outputStylesheet library="css" name="themeSwitcher.css"></h:outputStylesheet>
+			<h:outputStylesheet library="css" name="usecases.css"></h:outputStylesheet>
+			<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
 			<style type="text/css">
 				.ui-layout-north {
 				        z-index: 20 !important;
@@ -26,6 +29,40 @@
 					.ui-layout-north .ui-layout-unit-content {
 					        overflow: visible !important;
 					}
+					.ui-wizard {
+        margin:0;
+        padding:0;
+        
+}
+
+.ui-wizard-content {
+        margin:3px 0;
+}
+
+.ui-wizard-navbar {
+        text-align: right;
+}
+
+.ui-wizard-nav-back, 
+.ui-wizard-nav-next {
+        cursor: pointer;
+}
+
+.ui-wizard-nav-back {
+        float:left;
+}
+
+.ui-wizard-nav-next {
+        float:right;
+}
+
+.ui-wizard-step-title {
+    font-size: 18px;
+    margin:0 3px 0 0;
+    padding:0.4em;
+    float:left;
+   
+}
 			</style>
 		</h:head>
 

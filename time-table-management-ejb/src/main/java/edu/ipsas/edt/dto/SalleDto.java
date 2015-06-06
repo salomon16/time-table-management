@@ -21,11 +21,12 @@ public class SalleDto implements Serializable{
 
 	private String typeSalle;
 	
-	private DepartementDto departementDto;
+	private Collection<DepartementDto> departementDto;
 
 	public SalleDto() {
 		super();
 		ressourcesDto = new ArrayList<RessourceDto>();
+		 departementDto = new ArrayList<DepartementDto>();
 	}
 
 	public SalleDto(String numero, String typeSalleDto) {
@@ -33,6 +34,7 @@ public class SalleDto implements Serializable{
 		this.numero = numero;
 		this.typeSalle = typeSalleDto;
 		ressourcesDto = new ArrayList<RessourceDto>();
+		 departementDto = new ArrayList<DepartementDto>();
 	}
 
 	public long getSalleId() {
@@ -75,13 +77,11 @@ public class SalleDto implements Serializable{
 		this.capacite = capacite;
 	}
 
-	public DepartementDto getDepartementDto() {
+	public Collection<DepartementDto> getDepartementDto() {
 		return departementDto;
 	}
 
-	public void setDepartementDto(DepartementDto departementDto) {
+	public void setDepartementDto(Collection<DepartementDto> departementDto) {
 		this.departementDto = departementDto;
 	}
-
-	
 }

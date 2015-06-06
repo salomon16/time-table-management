@@ -1,5 +1,5 @@
 package edu.ipsas.edt.dao;
 
-public class AnneeDao {
+public interface AnneeDao {
 
 }

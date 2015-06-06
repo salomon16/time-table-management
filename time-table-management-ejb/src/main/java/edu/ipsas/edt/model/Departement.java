@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -34,15 +35,27 @@ public class Departement implements Serializable {
 	private Etablissement etablissement;
 
 	@OneToMany
+	@JoinTable(name="DEPARTEMENT_ENSEIGNANTS", 
+    joinColumns=@JoinColumn(name="DEPARTEMENT_ID"),
+    inverseJoinColumns=@JoinColumn(name="ENSEIGNANT_ID"))
 	private Collection<Enseignant> enseignants;
 
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinTable(name="DEPARTEMENT_CURSUS", 
+    joinColumns=@JoinColumn(name="DEPARTEMENT_ID"),
+    inverseJoinColumns=@JoinColumn(name="CURSUS_ID"))
 	private Collection<Cursus> cursus;
 	
 	@OneToMany
+	@JoinTable(name="DEPARTEMENT_SALLES", 
+    joinColumns=@JoinColumn(name="DEPARTEMENT_ID"),
+    inverseJoinColumns=@JoinColumn(name="SALLE_ID"))
 	private Collection<Salle> salles;
 	
 	@OneToMany
+	@JoinTable(name="DEPARTEMENT_PERSONNELS", 
+    joinColumns=@JoinColumn(name="DEPARTEMENT_ID"),
+    inverseJoinColumns=@JoinColumn(name="PERSONNEL_ADMINISTRATIF_ID"))
 	private Collection<PersonnelAdministratif> personnels;
 
 	public Departement() {
@@ -69,6 +82,7 @@ public class Departement implements Serializable {
 		enseignants = new ArrayList<Enseignant>();
 		cursus = new ArrayList<Cursus>();
 		personnels = new ArrayList<PersonnelAdministratif>();
+		salles = new ArrayList<Salle>();
 	}
 
 	public long getDepartementID() {

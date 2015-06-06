@@ -10,4 +10,6 @@ public interface GroupeDao extends GenericDao<Groupe> {
 
 	Collection<Groupe> findGroupByLevel(long niveauId);
 
+	Collection<Groupe> findAllGroupeByParcours(long parcoursId);
+
 }

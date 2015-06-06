@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,6 +28,9 @@ public class Cursus implements Serializable{
 	private String nom;
 	
 	@OneToMany
+	@JoinTable(name="CURSUS_PARCOURS", 
+    joinColumns=@JoinColumn(name="CURSUS_ID"),
+    inverseJoinColumns=@JoinColumn(name="PARCOURS_ID"))
 	private Collection<Parcours> parcours;
 	
 	@ManyToOne

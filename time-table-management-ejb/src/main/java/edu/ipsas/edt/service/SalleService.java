@@ -41,5 +41,7 @@ public interface SalleService {
 	
 	public TypeSalleDto getTypeSalleByName(String name);
 
+	public Collection<SalleDto> getAllSalleByDepartement(String departementName);
+
 
 }

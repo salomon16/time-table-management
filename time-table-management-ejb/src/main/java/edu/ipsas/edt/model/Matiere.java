@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -40,7 +41,7 @@ public class Matiere implements Serializable{
 	private String type;
 	
 	@Column(name="NOMBRE_HEURE", nullable=false, unique=false)
-	private int nombreHeure;
+	private float nombreHeure;
 	
 	@Column(name="VOLUME_C", nullable=true, unique=false)
 	private float volumeC;
@@ -62,6 +63,9 @@ public class Matiere implements Serializable{
 	private Unite unite;
 	
 	@OneToMany
+	@JoinTable(name="MATIERE_PLAN_ETUDE", 
+    joinColumns=@JoinColumn(name="PLAN_ETUDE_ID"),
+    inverseJoinColumns=@JoinColumn(name="MATIERE_ID"))
 	private Collection<PlanEtude> plansEtude;
 	
 	public Matiere() {
@@ -69,7 +73,7 @@ public class Matiere implements Serializable{
 		plansEtude = new ArrayList<PlanEtude>();
 	}
 
-	public Matiere(String nom, int nombreHeure, String description, String type, float volumeC,
+	public Matiere(String nom, float nombreHeure, String description, String type, float volumeC,
 			float volumeTp, float volumeTd, float credit, int coefficient, Unite unite) {
 		super();
 		this.nom = nom;
@@ -174,11 +178,11 @@ public class Matiere implements Serializable{
 		this.plansEtude = plansEtude;
 	}
 
-	public int getNombreHeure() {
+	public float getNombreHeure() {
 		return nombreHeure;
 	}
 
-	public void setNombreHeure(int nombreHeure) {
+	public void setNombreHeure(float nombreHeure) {
 		this.nombreHeure = nombreHeure;
 	}
 	

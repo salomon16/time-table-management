@@ -20,4 +20,10 @@ public class SalleDaoImpl extends GenericDaoImpl<Salle> implements SalleDao {
 		
 		return null;
 	}
+
+	@SuppressWarnings("unchecked")
+	public Collection<Salle> findAllSalleByDepartement(String departementName) {
+		
+		return em.createQuery("select s from Salle s where s.departements=(select d from Departement d where d.nom=:departementName)").setParameter("departementName", departementName).getResultList();
+	}
 }

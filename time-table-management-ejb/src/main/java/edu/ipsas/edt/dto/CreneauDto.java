@@ -3,7 +3,6 @@ package edu.ipsas.edt.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 import edu.ipsas.edt.model.Seance;
 
@@ -16,10 +15,14 @@ public class CreneauDto implements Serializable {
 
 	private long CreneauID;
 
-	private Date heureDebut;
+//	private Date heureDebut;
+//
+//	private Date heureFin;
 
-	private Date heureFin;
-
+	private int ordre;
+	
+	private String libelle;
+	
 	private Collection<DisponibiliteDto> disponibilites;
 
 	private Collection<Seance> seances;
@@ -30,13 +33,6 @@ public class CreneauDto implements Serializable {
 		seances = new ArrayList<Seance>();
 	}
 
-	public CreneauDto(Date heureDebut, Date heureFin) {
-		super();
-		this.heureDebut = heureDebut;
-		this.heureFin = heureFin;
-		disponibilites = new ArrayList<DisponibiliteDto>();
-		seances = new ArrayList<Seance>();
-	}
 
 	public long getCreneauID() {
 		return CreneauID;
@@ -46,21 +42,23 @@ public class CreneauDto implements Serializable {
 		CreneauID = creneauID;
 	}
 
-	public Date getHeureDebut() {
-		return heureDebut;
+	public int getOrdre() {
+		return ordre;
 	}
 
-	public void setHeureDebut(Date heureDebut) {
-		this.heureDebut = heureDebut;
+	public void setOrdre(int ordre) {
+		this.ordre = ordre;
 	}
 
-	public Date getHeureFin() {
-		return heureFin;
+	public String getLibelle() {
+		return libelle;
 	}
 
-	public void setHeureFin(Date heureFin) {
-		this.heureFin = heureFin;
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
 	}
+
 
 	public Collection<DisponibiliteDto> getDisponibilites() {
 		return disponibilites;

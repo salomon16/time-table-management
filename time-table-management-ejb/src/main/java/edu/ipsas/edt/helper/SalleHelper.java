@@ -17,7 +17,7 @@ public class SalleHelper {
 		salle.setNumero(salleDto.getNumero());
 		salle.setCapacite(salleDto.getCapacite());
 		salle.setTypeSalle(salleDto.getTypeSalle());
-		salle.setDepartement(DepartementHelper.dtoToModel(salleDto.getDepartementDto()));
+		salle.setDepartements(DepartementHelper.dtoToModels(salleDto.getDepartementDto()));
 		salle.setRessources(RessourceHelper.dtoToModels(salleDto
 				.getRessourcesDto()));
 		return salle;
@@ -34,7 +34,7 @@ public class SalleHelper {
 		salleDto.setNumero(salle.getNumero());
 		salleDto.setCapacite(salle.getCapacite());
 		salleDto.setTypeSalle(salle.getTypeSalle());
-		salleDto.setDepartementDto(DepartementHelper.modelToDto(salle.getDepartement()));
+		salleDto.setDepartementDto(DepartementHelper.modelsToDto(salle.getDepartements()));
 		salleDto.setRessourcesDto(RessourceHelper.modelsToDto(salle
 				.getRessources()));
 

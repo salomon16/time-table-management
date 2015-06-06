@@ -3,6 +3,7 @@ package edu.ipsas.edt.dao.impl;
 import java.util.Collection;
 
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 
 import edu.ipsas.edt.dao.PlanEtudeDao;
 import edu.ipsas.edt.model.PlanEtude;
@@ -17,7 +18,10 @@ public class PlanEtudeImpl extends GenericDaoImpl<PlanEtude> implements PlanEtud
 	
 	public PlanEtude findStudyPlanBySemesterAndParcours(long semestreId,long parcoursId) {
 		
-		return (PlanEtude) em.createQuery("select p from PlanEtude p where p.semestre.semestreId=:semestreId and p.parcours.parcoursId=:parcoursId").setParameter("semestreId", semestreId).setParameter("parcoursId", parcoursId).getSingleResult();
+		 Query q = em.createQuery("select p from PlanEtude p where p.semestre.semestreId = :semestreId and p.parcours.parcoursId = :parcoursId");
+				q.setParameter("semestreId", semestreId);
+				q.setParameter("parcoursId", parcoursId);
+				return (PlanEtude) q.getSingleResult();
 	}
 
 	

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -39,6 +40,9 @@ public class Niveau implements Serializable {
 	private Parcours parcours;
 	
 	@OneToMany
+	@JoinTable(name="NIVEAU_GROUPES", 
+    joinColumns=@JoinColumn(name="GROUPE_ID"),
+    inverseJoinColumns=@JoinColumn(name="NIVEAU_ID"))
 	private Collection<Groupe> groupes;
 
 	public Niveau() {

@@ -19,6 +19,7 @@ public static PersonnelAdministratif dtoToModel(PersonnelAdministratifDto person
 		personnelAdministratif.setPrenom(personnelAdministratifDto.getPrenom());
 		personnelAdministratif.setCin(personnelAdministratifDto.getCin());
 		personnelAdministratif.setAdresse(personnelAdministratifDto.getAdresse());
+		personnelAdministratif.setEnabled(personnelAdministratif.isEnabled());
 		personnelAdministratif.setEmail(personnelAdministratifDto.getEmail());
 		personnelAdministratif.setLogin(personnelAdministratifDto.getLogin());
 		personnelAdministratif.setPassword(personnelAdministratifDto.getPassword());
@@ -27,7 +28,7 @@ public static PersonnelAdministratif dtoToModel(PersonnelAdministratifDto person
 		personnelAdministratif.setTelFixe(personnelAdministratifDto.getTelephoneMobile());
 		personnelAdministratif.setDepartement(DepartementHelper.dtoToModel(personnelAdministratifDto
 				.getDepartementDto()));
-		personnelAdministratif.setRoles(RoleHelper.dtoToModels(personnelAdministratifDto.getRoles()));
+		personnelAdministratif.setRole(RoleHelper.dtoToModel(personnelAdministratifDto.getRole()));
 		return personnelAdministratif;
 	}
 
@@ -44,12 +45,13 @@ public static PersonnelAdministratif dtoToModel(PersonnelAdministratifDto person
 		personnelAdministratifDto.setCin(personnelAdministratif.getCin());
 		personnelAdministratifDto.setAdresse(personnelAdministratif.getAdresse());
 		personnelAdministratifDto.setEmail(personnelAdministratif.getEmail());
+		personnelAdministratifDto.setEnabled(personnelAdministratif.isEnabled());
 		personnelAdministratifDto.setTelephoneMobile(personnelAdministratif.getTelephoneMobile());
 		personnelAdministratifDto.setDepartementDto(DepartementHelper.modelToDto(personnelAdministratif
 				.getDepartement()));
 		personnelAdministratifDto.setLogin(personnelAdministratif.getLogin());
 		personnelAdministratifDto.setPassword(personnelAdministratif.getPassword());
-		personnelAdministratifDto.setRoles(RoleHelper.modelsToDto(personnelAdministratif.getRoles()));
+		personnelAdministratifDto.setRole(RoleHelper.modelToDto(personnelAdministratif.getRole()));
 		personnelAdministratifDto.setFonction(personnelAdministratif.getFonction());
 		personnelAdministratifDto.setTelFixe(personnelAdministratif.getTelFixe());
 		return personnelAdministratifDto;

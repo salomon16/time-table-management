@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -41,17 +40,23 @@ public class Salle implements Serializable {
 	@Column(name = "TYPE_SALLE", unique = false, nullable = true)
 	private String typeSalle;
 	
-	@ManyToOne
-	@JoinColumn(name="DEPARTEMENT_ID")
-	private Departement departement;
+	@OneToMany
+	@JoinTable(name="SALLE_DEPARTEMENTS", 
+    joinColumns=@JoinColumn(name="SALLE_ID"),
+    inverseJoinColumns=@JoinColumn(name="DEPARTEMENT_ID"))
+	private Collection<Departement> departements;
 	
 	@OneToMany
+	@JoinTable(name="SALLE_SEANCES", 
+    joinColumns=@JoinColumn(name="SALLE_ID"),
+    inverseJoinColumns=@JoinColumn(name="SEANCE_ID"))
 	private Collection<Seance> seances;
 
 	public Salle() {
 		super();
 		ressources = new ArrayList<Ressource>();
 		seances = new ArrayList<Seance>();
+		departements = new ArrayList<Departement>();
 	}
 
 	
@@ -61,8 +66,10 @@ public class Salle implements Serializable {
 		this.numero = numero;
 		this.capacite = capacite;
 		this.typeSalle = typeSalle;
-		this.departement = departement;
-		this.departement.getSalles().add(this);
+		ressources = new ArrayList<Ressource>();
+		seances = new ArrayList<Seance>();
+		departements = new ArrayList<Departement>();
+		
 	}
 
 
@@ -127,12 +134,13 @@ public class Salle implements Serializable {
 		this.seances = seances;
 	}
 
-	public Departement getDepartement() {
-		return departement;
+	public Collection<Departement> getDepartements() {
+		return departements;
 	}
 
-	public void setDepartement(Departement departement) {
-		this.departement = departement;
+
+	public void setDepartements(Collection<Departement> departements) {
+		this.departements = departements;
 	}
 
 
